@@ -18,6 +18,7 @@ import java.util.List;
 /**
  * 转换字符串
  * 通过dom4j遍历xsl的各个节点
+ * TODO:转换引用方法的freemarker模板
  */
 
 public class ToFtlUtil {
@@ -55,6 +56,15 @@ public class ToFtlUtil {
                     }
                     while (iterator.hasNext()) {//遍历template下节点
                         Element next = (Element) iterator.next();
+
+                        //如果子节点为call-template
+                        if (next.getName().equals("call-template")){
+                            //1.得到方法名字,类名暂时不用管，测试时再看
+                            //2.得到子节点的迭代器，进行遍历
+                            //3.再判断每个子节点中的子节点
+
+                        }
+
                         //如果子节点为"text"
                         if (next.getName().equals("text")){
                             String text = next.getName();//获取节点的文字
