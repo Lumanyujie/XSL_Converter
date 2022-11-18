@@ -1,0 +1,20 @@
+
+1503
+SUBJECT
+"模型运行时间情况报告" 0
+MAIN
+"<p class='title'>  模型运行时间情况报告 </p> \n" 0
+SUB 1
+"  接口程序的运行时间至少每%s分更新一次。\n\n"
+                                  1 DURATION(S1.D1, "%.2Tm")
+END_SUB
+
+SUB 2
+"  自动保存的时间间隔是：%s(%s)。" 
+                                  2  DURATION(S2.D1, "%.2Td天")
+                                     DURATION(S2.D1, "%.2Th小时") 
+"下一次自动保存是在模拟时间：%s%s。\n\n "  2 GTIME(S2.D2) GTIME(S2.D2, "%f")
+END_SUB
+
+END_MAIN
+

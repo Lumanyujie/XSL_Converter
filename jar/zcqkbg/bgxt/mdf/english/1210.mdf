@@ -1,0 +1,188 @@
+
+1210
+SUBJECT
+"外部事件列表" 0
+MAIN
+"<p class='title'>外部事件列表</p>" 0
+SUB 1
+"\n没有需要报告的外部事件。" 0
+END_SUB	
+
+SUB 2
+"__start_table|序列号|时间|事件内容\n" 0
+
+GROUP 1
+   SUB 1
+"|%s|%s|调整目标%s位置至" 3 S2.G1.S1.D1 GTIME(S2.G1.S1.D2) S2.G1.S1.D3
+"%s，" 1 LOCATION(S2.G1.S1.D4,S2.G1.S1.D5)
+"到达时间：%s。\n" 1 GTIME(S2.G1.S1.D6)
+   END_SUB
+
+   SUB 2
+"|%s|%s|" 2 S2.G1.S2.D1 GTIME(S2.G1.S2.D2)
+"在%s，" 1 LOCATION(S2.G1.S2.D4,S2.G1.S2.D5)
+"创建新目标%s。" 1 S2.G1.S2.D3
+      SUB 1
+"没有提供补给。" 0
+      END_SUB
+      SUB 2
+         SUB 4
+"在该目标处卸载下列补给：" 0
+            GROUP 1
+"<br>——%s，%s，%s%s" 4
+                     S2.G1.S2.S2.S4.G1.D1
+                     SLP_Category_Name[S2.G1.S2.S2.S4.D1,S2.G1.S2.S2.S4.G1.D1]
+       SLP_SC_AMT(S2.G1.S2.S2.S4.D1,S2.G1.S2.S2.S4.G1.D1,S2.G1.S2.S2.S4.G1.D2)
+       SLP_SC_UOM(S2.G1.S2.S2.S4.D1,S2.G1.S2.S2.S4.G1.D1)
+            END_GROUP
+         END_SUB
+         SUB 5
+"没有卸载的补给。" 0
+         END_SUB
+      END_SUB
+"\n" 0
+   END_SUB
+
+   SUB 3
+"|%s|%s|区域报告，接收集团：%s。" 3 S2.G1.S3.D1 GTIME(S2.G1.S3.D2)
+                                              S2.G1.S3.D3
+"该区域由以下坐标点围成：" 0
+      GROUP 1
+"<br>——%s" 1 LOCATION(S2.G1.S3.G1.D1,S2.G1.S3.G1.D2)
+      END_GROUP  
+"<br>该事件基本发现概率：" 0
+"对部队%s%%，" 1 S2.G1.S3.D4
+"对目标%s%%，" 1 S2.G1.S3.D5
+"对空%s%%。" 1 S2.G1.S3.D6
+"<br>情报平均延迟时间：%s分钟。" 1 DURATION(S2.G1.S3.D7, "%.2Tm")
+      SUB 1
+"<br>该事件一次性发生，其来源为%s。" 1    unit_name_transform(S2.G1.S3.S1.D1)       
+      END_SUB
+      SUB 2
+"<br>该事件每%s小时发生一次，其来源为%s。" 2
+                                                  DURATION(S2.G1.S3.S2.D1, "%.2Th")  unit_name_transform(S2.G1.S3.S2.D2)
+      END_SUB
+      SUB 3
+"<br>该事件将持续发生直至被取消。" 0
+      END_SUB
+      SUB 4
+"<br>下一个事件为最后事件。" 0
+      END_SUB
+      SUB 5
+"<br>该事件将持续到%s为止。" 1    GTIME(S2.G1.S3.S5.D1)
+      END_SUB
+      SUB 6
+"<br>此为超视距传感器区域报告。" 0
+      END_SUB
+"\n" 0
+   END_SUB
+   
+   SUB 4
+"|%s|%s|部队报告，接收集团：%s。" 3 S2.G1.S4.D1 GTIME(S2.G1.S4.D2) unit_name_transform(S2.G1.S4.D3)
+"部队列表：" 0
+      GROUP 1
+"<br>——%s" 1 unit_name_transform(S2.G1.S4.G1.D1)
+      END_GROUP
+"\n" 0
+   END_SUB
+
+   SUB 5
+"|%s|%s|装备设施报告：接收集团：%s。" 3 S2.G1.S5.D1 GTIME(S2.G1.S5.D2) unit_name_transform(S2.G1.S5.D3)
+"装备设施列表：" 0
+      GROUP 1
+"<br>——%s" 1 unit_name_transform(S2.G1.S5.G1.D1)
+      END_GROUP
+"\n" 0
+   END_SUB
+
+   SUB 6
+"|%s|%s|改变目标%s的效能，" 3 S2.G1.S6.D1 GTIME(S2.G1.S6.D2) unit_name_transform(S2.G1.S6.D3) 
+"新效能比率：%s%%，" 1 S2.G1.S6.D4
+"原比率：%s%%。\n" 1 S2.G1.S6.D5
+   END_SUB
+
+   SUB 8
+"|%s|%s|毁伤%s" 3 S2.G1.S8.D1 GTIME(S2.G1.S8.D2) unit_name_transform(S2.G1.S8.D3)
+"的%s，数量：%s台（套、个），" 2
+                                     CSP_System_Name[S2.G1.S8.D7,S2.G1.S8.D4]
+                                               S2.G1.S8.D5
+"原因：%s。\n" 1 unit_name_transform(S2.G1.S8.D6)
+   END_SUB
+
+   SUB 9
+"|%s|%s|毁伤%s" 3 S2.G1.S9.D1 GTIME(S2.G1.S9.D2) unit_name_transform(S2.G1.S9.D3)
+"补给：%s，数量：%s吨，" 2
+                                  SLP_Category_Name[S2.G1.S9.D7,S2.G1.S9.D4]
+                                          UOM_AMT("DRY_WEIGHT",S2.G1.S9.D5)
+"原因：%s。\n" 1 unit_name_transform(S2.G1.S9.D6)
+   END_SUB
+
+   SUB 10
+"|%s|%s|武器毁伤评估，" 2 S2.G1.S10.D1 GTIME(S2.G1.S10.D2)
+"发射方：%s，" 1 No_Force_Side[S2.G1.S10.D3]
+"%s%s枚（发），" 2 Targetable_Weapon[S2.G1.S10.D5]
+                                    S2.G1.S10.D4 
+"覆盖半径%s米，" 1 S2.G1.S10.D6
+ 
+      SUB 1
+"打击位置：%s。" 1
+                                  LOCATION(S2.G1.S10.S1.D1,S2.G1.S10.S1.D2)
+      END_SUB
+      SUB 2
+"打击部队：%s。" 1 unit_name_transform(S2.G1.S10.S2.D1)
+      END_SUB
+      SUB 3
+"打击目标：%s。" 1 unit_name_transform(S2.G1.S10.S3.D1)
+      END_SUB
+ "\n" 0
+  END_SUB
+
+   SUB 11
+"|%s|%s|创建雷场，" 2 S2.G1.S11.D1 GTIME(S2.G1.S11.D2)
+"%s-%s枚，" 2 unit_name_transform(S2.G1.S11.D3) S2.G1.S11.D4
+"布设位置：%s。\n" 1  LOCATION(S2.G1.S11.D5,S2.G1.S11.D6)
+   END_SUB
+
+   SUB 12
+"|%s|%s|改变%s战斗力，" 3 S2.G1.S12.D1 GTIME(S2.G1.S12.D2) unit_name_transform(S2.G1.S12.D3)
+"新战斗力比率：%s%%，" 1 S2.G1.S12.D4
+      SUB 1
+"其所属部队随之改变，" 0
+      END_SUB
+      SUB 2
+"其所属部队不改变，" 0
+      END_SUB
+      SUB 3
+"其所属目标随之改变，" 0
+      END_SUB
+      SUB 4
+"其所属目标不改变，" 0
+      END_SUB
+      SUB 5
+"变化原因是：%s。" 1 unit_name_transform(S2.G1.S12.S5.D1)
+      END_SUB
+"\n" 0
+   END_SUB
+
+   SUB 13
+"|%s|%s|卫星过境侦察，" 2 S2.G1.S13.D1 GTIME(S2.G1.S13.D2)
+"设备名：%s，" 1 unit_name_transform(S2.G1.S13.D3)
+"覆盖带起点：%s，" 1        LOCATION(S2.G1.S13.D4,S2.G1.S13.D5)
+"覆盖带终点：%s，" 1     LOCATION(S2.G1.S13.D6,S2.G1.S13.D7)
+"传感器：%s，" 1 Sensor_Type[S2.G1.S13.D9]
+"每次过境最大搜索区数量：%s，" 1 S2.G1.S13.D10
+"最小指定搜索区完成任务时间：%s，" 1    DURATION(S2.G1.S13.D8, "%d天%h小时%Rm分钟")
+      SUB 1
+"过境周期：%s。" 1  DURATION(S2.G1.S13.S1.D1, "%d天%h小时%Rm分钟")
+      END_SUB
+      SUB 2
+"过境仅一次。" 0
+      END_SUB 
+"\n" 0
+   END_SUB
+END_GROUP
+
+END_SUB
+
+END_MAIN
+

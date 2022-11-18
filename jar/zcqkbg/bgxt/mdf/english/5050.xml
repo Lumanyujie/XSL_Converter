@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="5050"> <subject> <line>创建情报搜索区命令（编号<D2/>）执行情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;创建情报搜索区命令（编号<D2/>）执行情况报告&lt;/p&gt;</line>  <sub n="5"> <line><br/>创建情报搜索区命令（编号<D2/>）已执行，</line> <line>名称为<S5.D1/>的情报搜索区创建成功。</line> </sub></main> </msg> </msgs>

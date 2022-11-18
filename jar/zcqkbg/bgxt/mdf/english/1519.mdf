@@ -1,0 +1,61 @@
+
+1519
+SUBJECT
+"%s地地导弹属性" 1 Surface_Surface_Missile[D2]
+MAIN
+
+ "<p class='title'>  %s(编号%s)发射架属性 </p>\n\n" 
+               2 Surface_Surface_Missile[D2] D2
+SUB 1
+"  射程: %s %s\n" 
+               2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+"  修复时间: %s\n" 
+               1 DURATION(S1.D2,  "%d天%h时%Rm分")
+"  摧毁时间: %s\n" 
+               1 DURATION(S1.D3,  "%d天%h时%Rm分")
+END_SUB
+
+SUB 2
+"  准备时间: %s\n" 
+               1 DURATION(S2.D1, "%d天%h时%Rm分")
+"  发射探测手段: %s传感器\n" 
+                                   1 Sensor_Collection_Mode[S2.D2]
+END_SUB
+
+SUB 3 
+"  发射可命中目标的武器: " 0
+
+   GROUP 1
+"%s(编号%s) \n" 
+                       2 S3.G1.D1 S3.G1.D2
+             
+   END_GROUP
+
+END_SUB
+
+SUB 4
+"  目标分类码: %s\n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  允许突击港口: %s\n" 1 Answer[S5.D1]
+END_SUB
+
+SUB 6
+"  国外航线: %s\n" 1 Answer[S6.D1]
+END_SUB
+
+SUB 7
+"  目标图标符号: %s\n" 1 S7.D1
+END_SUB
+
+SUB 8
+"  地下标记: %s\n" 1 S8.D1
+END_SUB
+
+SUB 9
+"  DIS代码: %s\n" 1 S9.D1
+END_SUB   
+
+END_MAIN
+

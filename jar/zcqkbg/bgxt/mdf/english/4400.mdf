@@ -1,0 +1,43 @@
+
+4400
+SUBJECT
+"%s战略补给情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s战略补给情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+   "\n为%s计划的战略补给行动如下：" 1 unit_name_transform(D2)
+      GROUP 1
+         SUB 1
+            "\n\n—名称：%s" 1 unit_name_transform(S1.G1.S1.D1)
+            "\n到达时间：%s（%s），" 
+                 2 GTIME(S1.G1.S1.D2) GTIME(S1.G1.S1.D2, "%f")
+            "卸载港口：%s，" 1 unit_name_transform(S1.G1.S1.D3)
+            "序列号：%s。" 1 S1.G1.S1.D4
+         END_SUB
+         SUB 2
+            "\n\n—名称：%s" 1 unit_name_transform(S1.G1.S2.D1)
+            "\n到达时间：%s（%s），" 
+                 2 GTIME(S1.G1.S2.D2) GTIME(S1.G1.S2.D2, "%f")
+            "卸载港口：无，" 0
+            "序列号：%s。" 1 S1.G1.S2.D3
+         END_SUB
+         SUB 3
+            "\n包括以下补给：" 0
+            GROUP 1
+               "\n——%s，%s%s" 3 
+                      SLP_Category_Name[S1.D1,S1.G1.S3.G1.D1]
+                      SLP_SC_AMT(S1.D1,S1.G1.S3.G1.D1,S1.G1.S3.G1.D2)
+                      SLP_SC_UOM(S1.D1,S1.G1.S3.G1.D1)
+            END_GROUP
+         END_SUB
+      END_GROUP
+END_SUB
+
+SUB 2
+   "\n无针对%s的战略补给行动。" 1 unit_name_transform(D2)
+END_SUB
+ 
+END_MAIN
+

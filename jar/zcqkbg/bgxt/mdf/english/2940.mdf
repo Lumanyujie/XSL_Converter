@@ -1,0 +1,46 @@
+
+2940
+SUBJECT
+"天气预报" 0
+MAIN
+"<p class='title'>天气预报</p>" 0 
+
+"\n时间：%s。" 1 GTIME(D1)
+
+SUB 1
+"\n无气象变化报告。" 0
+END_SUB
+
+SUB 2
+
+"\n第%s号气象锋面（%s天气）预计将经过以下区域：" 
+                         2 S2.D1 Weather_Condition[S2.D2]
+
+"<p class='table_name'>天气预报明细</p>" 0
+"__start_table|时间|经过地域\n" 0
+   GROUP 1
+      SUB 1
+"|%s|" 1 GTIME(S2.G1.D1)
+"%s，%s<br>" 2 LOCATION(S2.G1.D4, S2.G1.D5) LOCATION(S2.G1.D8, S2.G1.D9)
+"%s，%s\n" 2 LOCATION(S2.G1.D2, S2.G1.D3) LOCATION(S2.G1.D6, S2.G1.D7)
+      END_SUB
+
+      SUB 2
+"|%s|退出演习区域\n" 1 GTIME(S2.G1.D1)
+      END_SUB
+
+      SUB 3
+"|%s|到达演习区域\n" 1 GTIME(S2.G1.D1)
+      END_SUB
+
+      SUB 4
+"|%s|该气象锋面消散\n" 1 GTIME(S2.G1.D1)
+      END_SUB
+
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="1535"> <subject> <line><f n="Political_Country"><D2/></f>政治属性</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;  <f n="Political_Country"><D2/></f>政治属性&lt;/p&gt;<br/><br/></line> <line>  行政国家<f n="Political_Country"><D2/></f> (编号<D2/>) 由下列参数构成：<br/></line> <line>  对外联络国家编码: <D3/><br/></line> <line>  对外联络DIS码: <D4/><br/></line> </main> </msg> </msgs>

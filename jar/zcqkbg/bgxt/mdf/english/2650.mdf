@@ -1,0 +1,64 @@
+
+2650
+SUBJECT
+"%s雷场作业情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s雷场作业情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+"\n%s当前位于%s, " 2 unit_name_transform(D2) LOCATION(S1.D1,S1.D2)
+"正在%s时，" 1 Unit_Posture[S1.D3]
+   SUB 1
+"遭遇一个雷场。" 0
+   END_SUB
+   SUB 2
+"在该地域发现数个雷场。" 0
+   END_SUB
+   SUB 3
+"在该地域发现多处雷场。" 0
+   END_SUB
+   SUB 4
+"该部队已完成扫雷。" 0
+   END_SUB
+   SUB 5
+"该部队已完成对一个雷场的清除。" 0
+   END_SUB
+
+   SUB 6
+"雷场导致以下人员和装备损失：" 0
+"<p class='table_name'>人员和装备损失清单</p>" 0
+"__start_table|名称|数量\n" 0
+      GROUP 1
+"|%s|%s\n" 2 CSP_System_Name[S1.D4,S1.S6.G1.D2] S1.S6.G1.D1
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 7
+"雷场没有造成人员和装备损失。" 0
+   END_SUB
+   SUB 8
+"正在清除总计%s个雷场，大约需要%s小时。"  2  S1.S8.D1 DURATION(S1.S8.D2, "%.2Th")
+   END_SUB
+END_SUB
+ 
+SUB 2
+"\n%s当前位于%s，执行扫雷任务。" 2 unit_name_transform(D2) LOCATION(S2.D1,S2.D2)
+"现附近已无雷可排，等候指令。" 0
+END_SUB  
+ 
+SUB 3
+"\n%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(S3.D2,S3.D3)
+"正在执行布雷任务，现已布雷%s枚，" 1 S3.D1
+"构设形成标准雷场%s个。" 1 S3.D4
+END_SUB
+
+SUB 4
+"\n由于%s接到一个新命令，" 1 unit_name_transform(D2)
+"之前编号为%s的布雷任务中止。" 1 S4.D1
+"中止任务前，已在%s布雷%s枚。" 2 LOCATION(S4.D3,S4.D4) S4.D2
+END_SUB
+
+END_MAIN
+

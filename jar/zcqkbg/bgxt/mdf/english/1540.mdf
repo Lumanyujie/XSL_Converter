@@ -1,0 +1,282 @@
+1540
+SUBJECT
+"道路河流桥属性报告：" 0
+MAIN
+"<p class='title'>道路河流桥属性报告</p>\n" 0
+
+SUB 1
+"  管道 %s当前由: %s单元控制。 \n" 2 S1.D1, S1.D2
+"这个管道由 %s 节点组成，这些节点通过%s 线路连接，\n" 2 S1.D3 S1.D4
+"它是包含了地区所有物资分配和存储中心。\n" 0
+END_SUB
+
+SUB 2
+"  %s铁路有%s个节点，这些节点通过 %s 线路相连。\n" 3 S2.D1 S2.D2 S2.D3
+"它是当地所有关联目标节点 %s的总合。 \n" 1 S2.D4
+
+   SUB 1
+"  <p class='paragraph'>   下面这些节点数据已按指令完成更新:</p> \n" 0
+ " __start_table |节点名称|高度	 |节点延迟时间 \n" 0
+      GROUP 1
+"|%-40.40s  |%4.4s 米  |   %s \n" 3 S2.S1.G1.D1 UOM_AMT("AIRDISTANCE",S2.S1.G1.D2) 
+                       DURATION(S2.S1.G1.D3, "%d Days %h Hours %Rm Minutes")
+      END_GROUP
+"__stop_table" 0 
+"\n" 0
+   END_SUB
+
+
+   SUB 2
+"  下面这些节点没有更新数据:\n" 0
+      GROUP 1
+"%s，因为它们没有联网。\n" 1 S2.S2.G1.D1
+      END_GROUP
+"\n" 0
+   END_SUB
+
+   SUB 3
+"  下面这些线路数据已按指令完成更新:\n" 0
+"__start_table |线路名称|　 高度  |  类型   |  延迟 |  长度  |  带宽　　\n\n" 0
+      GROUP 1
+"|%-40.40s| %4.4s 米 | %6.6s |  %8.8s %-5.5s |  %7.7s %-5.5s |  %9.9s %s \n" 9
+                                    S2.S3.G1.D1
+                                    UOM_AMT("AIRDISTANCE",S2.S3.G1.D2)  Arc_Type[S2.S3.G1.D3]
+                           UOM_AMT(DRY_WEIGHT,S2.S3.G1.D4) UOM(DRY_WEIGHT)
+                               UOM_AMT(DISTANCE,S2.S3.G1.D5) UOM(DISTANCE)
+                                     UOM_AMT(SPEED,S2.S3.G1.D6) UOM(SPEED)
+      END_GROUP
+"__stop_table" 0 
+"\n" 0
+   END_SUB
+
+   SUB 4
+"   下面这些线路没有更新数据:\n" 0
+      GROUP 1
+"%-40.40s\n" 1 S2.S4.G1.D1
+         SUB 1
+"    没有联网。\n" 0
+         END_SUB
+         SUB 2
+"    新的线路长度小于连接的两个节点之间的直线长度。\n" 0
+         END_SUB
+         SUB 3
+"    改变将导致高架线有一个深度。\n" 0
+         END_SUB
+         SUB 4
+"    改变将导致地下线有一个高度。\n" 0
+         END_SUB
+      END_GROUP
+   END_SUB
+
+   SUB 5
+"   下面这些线路和节点组成了网络:\n" 0
+"__start_table |线路名称|  源节点 (延迟）|  高度|   类型 |    延迟 | 长度 | 带宽\n\n" 0
+      GROUP 1
+"| %-40.40s  | %-40.40s (%s米, %s) |   %4.4s米 |  %6.6s|  %8.8s %-5.5s |  %7.7s %-5.5s  | %9.9s %s \n" 12
+   S2.S5.G1.D1
+   S2.S5.G1.D2 UOM_AMT("AIRDISTANCE",S2.S5.G1.D3) 
+                       DURATION(S2.S5.G1.D4, "%d 天 %h 小时 %Rm 分钟")                           
+ UOM_AMT("AIRDISTANCE",S2.S5.G1.D5)  Arc_Type[S2.S5.G1.D6]
+                           UOM_AMT(DRY_WEIGHT,S2.S5.G1.D7) UOM(DRY_WEIGHT)
+                               UOM_AMT(DISTANCE,S2.S5.G1.D8) UOM(DISTANCE)
+                                     UOM_AMT(SPEED,S2.S5.G1.D9) UOM(SPEED)
+      END_GROUP
+"__stop_table" 0 
+   END_SUB
+
+END_SUB
+
+SUB 3
+"  %s通路共由%s条线路组成。" 2 S3.D1 S3.D2
+"它是%s目标本地节点的联合体。\n" 1 S3.D3
+   SUB 1
+"  下面这些节点数据已按指令完成更新:\n" 0
+"__start_table |节点名称 | 高度\n\n" 0
+      GROUP 1
+"|%-40.40s | %4.4s 米\n" 2 S3.S1.G1.D1 UOM_AMT("AIRDISTANCE",S3.S1.G1.D2)
+      END_GROUP
+"__stop_table" 0 
+"\n" 0
+   END_SUB
+
+   SUB 2
+"  下面这些节点数据没有更新:\n" 0
+      GROUP 1
+"  %s ，它们没有联网。\n" 1 S3.S2.G1.D1
+      END_GROUP
+"\n" 0
+   END_SUB
+
+   SUB 3
+"  下面这些线路数据已按指令完成更新:\n" 0
+"线路名称\n" 0
+"    　　  高度    类型     延迟         长度          带宽　　\n" 0
+"                     进出网关：\n\n" 0
+      GROUP 1
+"%-40.40s\n" 1 S3.S3.G1.D1
+
+
+"      %4.4s 米  %6.6s  %11.11s  %2.2s %2.2s   %7.7s %-5.5s  %9.9s %s \n" 9
+            UOM_AMT("AIRDISTANCE",S3.S3.G1.D2) Arc_Type[S3.S3.G1.D3]  Road_Composition[S3.S3.G1.D4]
+                                      S3.S3.G1.D5  S3.S3.G1.D6
+                               UOM_AMT(DISTANCE,S3.S3.G1.D7) UOM(DISTANCE)
+                                     UOM_AMT(SPEED,S3.S3.G1.D8) UOM(SPEED)
+      END_GROUP
+"\n" 0
+   END_SUB
+
+   SUB 4
+"  下面这些线路数据没有更新:\n" 0
+      GROUP 1
+"%-40.40s\n" 1 S3.S4.G1.D1
+         SUB 1
+"  这些线路没有联网\n" 0
+         END_SUB
+         SUB 2
+"  新的线路长度小于连接的两个节点之间的直线长度。\n" 0
+         END_SUB
+         SUB 3
+"  改变将导致高架线有一个深度。\n" 0
+         END_SUB
+         SUB 4
+"  改变将导致地下线有一个高度。\n" 0
+         END_SUB
+      END_GROUP
+   END_SUB
+
+   SUB 5
+"  下面这些线路组成了网络：\n" 0
+"线路名称\n" 0
+"        从: 节点名称\n" 0
+"              位置, 网速, 平均延迟时间:\n" 0
+"          到: 节点名称\n" 0
+"              位置, 网速, 平均延迟时间:\n" 0
+"       线路     线路        通路      路线   长度限制\n" 0
+"      高度   类型    进出网关                    \n\n" 0
+
+
+      GROUP 1
+
+"%-40.40s\n" 1 S3.S5.G1.D1  
+"        从: %-40.40s\n" 1 S3.S5.G1.D2
+"              %s  %s %s  %s:\n" 4 LOCATION(S3.S5.G1.D3, S3.S5.G1.D4)
+                          UOM_AMT(DISTANCE,S3.S5.G1.D5) UOM(DISTANCE)
+                          DURATION(S3.S5.G1.D6, "%d Days %h Hrs %Rm Min")
+"          到: %-40.40s\n" 1 S3.S5.G1.D7
+"              %s  %s %s  %s:\n" 4 LOCATION(S3.S5.G1.D8, S3.S5.G1.D9)
+                          UOM_AMT(DISTANCE,S3.S5.G1.D10) UOM(DISTANCE)
+                          DURATION(S3.S5.G1.D11, "%d 天 %h 小时 %Rm 分钟")
+"     %4.4s米  %6.6s  %11.11s  %2.2s %2.2s   %7.7s %-5.5s  %9.9s %s \n" 9
+                                     UOM_AMT("AIRDISTANCE",S3.S5.G1.D12)  Arc_Type[S3.S5.G1.D13]
+                                     Road_Composition[S3.S5.G1.D14]
+                                      S3.S5.G1.D15  S3.S5.G1.D16
+                               UOM_AMT(DISTANCE,S3.S5.G1.D17) UOM(DISTANCE)
+                                     UOM_AMT(SPEED,S3.S5.G1.D18) UOM(SPEED)
+     END_GROUP
+
+   END_SUB
+
+END_SUB
+
+SUB 4
+"  %s河流共有%s分支。\n" 2 unit_name_transform(S4.D1) S4.D2
+
+   SUB 1
+"  下面这些节点数据已按指令完成更新。\n" 0
+
+"__start_table |节点名称|平均延迟时间\n\n" 0
+      GROUP 1
+"|%-40.40s | %s\n" 2 S4.S1.G1.D1
+                   DURATION(S4.S1.G1.D2,"%d 天 %h 小时 %Rm 分钟")
+      END_GROUP
+"__stop_table" 0 
+"\n" 0
+   END_SUB
+
+   SUB 2
+"  如果节点按要求操作进行的改变是被允许的。" 0
+"设置提醒是为了防止不合理的修改。\n" 0
+   END_SUB
+
+   SUB 3
+"  下面这些线路数据已按指令完成更新。:\n" 0
+"__start_table | 线路名称 | 深度  |   宽度 | 长度 |  线路组成\n" 0
+
+      GROUP 1
+"|%-40.40s|  %-7.7s 米| %-7.7s %-5.5s|  %-7.7s %-5.5s | %s\n" 7
+ S4.S3.G1.D1  UOM_AMT("AIRDISTANCE",S4.S3.G1.D2)  
+                               UOM_AMT(DISTANCE,S4.S3.G1.D3) UOM(DISTANCE)
+                               UOM_AMT(DISTANCE,S4.S3.G1.D4) UOM(DISTANCE)
+                                                       Answer[S4.S3.G1.D5]
+      END_GROUP
+"__stop_table" 0 
+"\n" 0
+   END_SUB
+
+   SUB 4
+"  下面这些线路数据没有完成更新:\n" 0
+      GROUP 1
+"%-40.40s\n" 1 S4.S4.G1.D1
+         SUB 1
+"  因为它们没有联网。\n" 0
+         END_SUB
+         SUB 2
+"  新的线路长度小于连接的两个节点之间的直线长度。\n" 0
+         END_SUB
+         SUB 3
+"  命令中的深度超出最大深度范围。\n" 0
+         END_SUB
+      END_GROUP
+
+   END_SUB
+
+   SUB 5
+"  下面这些线路构成为网络：\n" 0
+
+"__start_table |   深度  |   宽度 | 长度 |  线路组成\n" 0
+
+
+      GROUP 1
+"  线路名称：%s\n" 1 S4.S5.G1.D1  
+"  从:网络节点%s" 1 unit_name_transform(S4.S5.G1.D2)
+"位置%s 平均延迟时间:%s" 2 LOCATION(S4.S5.G1.D3, S4.S5.G1.D4)
+                          DURATION(S4.S5.G1.D5, "%d 天 %h 小时 % 分钟")
+"到:网络节点 %s\n" 1 unit_name_transform(S4.S5.G1.D6)
+"位置 %s 平均延迟时间%s:\n" 2 LOCATION(S4.S5.G1.D7, S4.S5.G1.D8)
+                          DURATION(S4.S5.G1.D9, "%d 天 %h 小时 % 分钟")
+
+
+
+
+"|%-7.7s 米|  %-7.7s %-5.5s|  %-7.7s %-5.5s | %s\n" 6  UOM_AMT("AIRDISTANCE",S4.S5.G1.D10)  
+                             UOM_AMT(DISTANCE,S4.S5.G1.D11) UOM(DISTANCE)
+                             UOM_AMT(DISTANCE,S4.S5.G1.D12) UOM(DISTANCE)
+                                                     Answer[S4.S5.G1.D13]
+      END_GROUP
+"__stop_table" 0 
+   END_SUB
+
+END_SUB
+
+SUB 5
+"  连接目标的%s和%s网络线路属性如下：\n" 2 S5.D1 S5.D2
+
+   SUB 1
+"  最坏延迟时间:%s\n" 1 S5.S1.D1
+   END_SUB
+
+   SUB 2
+"  平均延迟时间:%s\n" 1 S5.S2.D1
+   END_SUB
+
+   SUB 3
+"  最好延迟时间:%s\n\n" 1 S5.S3.D1
+   END_SUB
+
+   SUB 4
+"  目标主体%s(原始目标)设置为%s\n" 2 S5.D2 Answer[S5.S4.D1]
+   END_SUB
+
+END_SUB
+
+END_MAIN

@@ -1,0 +1,38 @@
+
+3175
+SUBJECT
+"空中%s编队攻击目标分配情况报告" 1 D2
+MAIN
+"<p class='title'>空中%s编队攻击目标分配情况报告</p>" 1 D2
+
+"\n空中%s编队当前对地攻击目标如下：" 1 D2
+
+SUB 1
+"\n没有对地攻击任务。" 0
+END_SUB
+
+SUB 2 
+"<p class='table_name'>编队攻击目标明细</p>" 0
+"__start_table|机型|架数|目标|位置\n" 0
+    GROUP 1
+"|%s|%s|%s，" 3 Targetable_Weapon[S2.G1.D2] S2.G1.D1 S2.G1.D3
+"%s|%s\n" 2 S2.G1.D4 LOCATION(S2.G1.D5,S2.G1.D6)
+   END_GROUP  
+"__stop_table" 0
+END_SUB 
+
+SUB 3
+"\n编队所有挂载的对地攻击武器都分配了突击目标。" 0
+END_SUB
+
+
+SUB 4 
+"<p class='table_name'>编队未分配目标的对地攻击武器列表</p>" 0
+"__start_table|武器类型|数量\n" 0
+    GROUP 1
+"|%s|%s\n" 2 Targetable_Weapon[S4.G1.D2] S4.G1.D1
+   END_GROUP  
+"__stop_table" 0
+END_SUB 
+
+END_MAIN

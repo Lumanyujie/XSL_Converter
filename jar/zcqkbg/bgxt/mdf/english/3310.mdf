@@ -1,0 +1,30 @@
+
+3310
+SUBJECT
+"空中%s编队飞机损毁情况报告" 1 D2
+MAIN
+"<p class='title'>空中%s编队飞机损毁情况报告</p>" 1 D2
+
+"\n执行空中任务的%s编队的%s架飞机，在%s地域附近坠毁。" 3 D2 D3 LOCATION(D4,D5)
+SUB 1
+"损毁原因：%s。" 1 Aircraft_Loss[S1.D1]
+END_SUB
+
+SUB 2
+"损毁原因：%s。" 1 Aircraft_Loss[S2.D1]
+END_SUB
+
+SUB 3
+"机组人员已弹射伞降。" 0
+END_SUB
+
+SUB 4
+"机组人员和乘员中可能有幸存者。" 0
+END_SUB
+
+SUB 5
+"机组人员中可能有幸存者。" 0
+END_SUB
+
+END_MAIN
+

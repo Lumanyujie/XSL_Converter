@@ -1,0 +1,160 @@
+
+2902
+SUBJECT
+"地（海）域情况报告" 0
+MAIN
+"<p class='title'>地（海）域情况报告</p>" 0
+"\n坐标：%s" 1 LOCATION(D2,D3)
+"__start_table|地形编号|地（海）域类型|海拔|深度\n" 0
+"|（%s，%s）|%s|%s%s|%s%s\n"7 D4 D5 Terrain_Type[D6] UOM_AMT(AIRDISTANCE,D19) UOM(AIRDISTANCE) UOM_AMT(AIRDISTANCE,D20) UOM(AIRDISTANCE)
+"__stop_table" 0
+"<p class='table_name'>该区域各方向地形情况</p>" 0
+" __start_table|方向|地形|通路条数\n" 0
+"|正北边|%s|%s\n" 2 Barrier_Type[D7] D8
+"|东北边|%s|%s\n" 2 Barrier_Type[D9] D10
+"|东南边|%s|%s\n" 2 Barrier_Type[D11] D12
+"|正南边|%s|%s\n" 2 Barrier_Type[D13] D14
+"|西南边|%s|%s\n" 2 Barrier_Type[D15] D16
+"|西北边|%s|%s\n" 2 Barrier_Type[D17] D18
+"__stop_table" 0
+"\n该区域当前气象条件：%s。" 1 Weather_Condition[D21]
+
+SUB 1
+"\n该区域当前有化学沾染。" 0
+   SUB 1
+"如果没有新的沾染出现，将于%s结束。" 1 GTIME(S1.S1.D1)
+   END_SUB
+   SUB 2
+"将于%s结束。" 1 GTIME(S1.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 2
+"\n该区域当前有核沾染。" 0
+   SUB 1
+"如果没有新的沾染出现，将于%s结束。" 1 GTIME(S2.S1.D1)
+   END_SUB
+   SUB 2
+"将于%s结束。" 1 GTIME(S2.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 3
+"<p class='table_name'>该区域驻留部队列表</p>" 0
+"__start_table|部队名称|所属方\n" 0
+   GROUP 1
+"|%s|%s\n" 2 unit_name_transform(S3.G1.D1) No_Force_Side[S3.G1.D2]
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 4
+"<p class='table_name'>该区域驻留本方部队列表</p>" 0
+"__start_table|部队名称\n" 0
+   GROUP 1
+"|%s\n" 1 unit_name_transform(S4.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 5
+"<p class='table_name'>该区域驻留外方部队列表</p>" 0
+"__start_table|部队名称|属方|探测时间\n" 0
+   GROUP 1
+"|%s|%s|%s\n" 3 unit_name_transform(S5.G1.D1) No_Force_Side[S5.G1.D2] GTIME(S5.G1.D3)
+   END_GROUP
+"__stop_table" 0    
+END_SUB
+
+SUB 6
+"<p class='table_name'>该区域固定目标列表</p>" 0
+"__start_table|目标名称|属方|类别\n" 0
+   GROUP 1
+"|%s|%s|%s\n" 3 unit_name_transform(S6.G1.D1) No_Force_Side[S6.G1.D2] Target_Category[S6.G1.D3]
+   END_GROUP
+"__stop_table" 0       
+END_SUB
+
+SUB 7
+"<p class='table_name'>该区域驻留特战分队列表</p>" 0
+"__start_table|部队名称|属方|作战态势\n" 0
+   GROUP 1
+"|%s|%s|%s\n" 3 unit_name_transform(S7.G1.D1) No_Force_Side[S7.G1.D2] HRU_Status[S7.G1.D3]
+   END_GROUP
+"__stop_table" 0    
+  
+END_SUB
+
+SUB 8
+"<p class='table_name'>该区域补给运输航（路）线列表</p>" 0
+"__start_table|名称|属方|运输方式|运输状态\n" 0
+   GROUP 1
+"|%s|%s|%s|%s\n" 4 unit_name_transform(S8.G1.D1) No_Force_Side[S8.G1.D2] Type_Convoy[S8.G1.D3] Convoy_Status[S8.G1.D4]
+   END_GROUP
+"__stop_table" 0   
+END_SUB
+
+SUB 9
+"<p class='table_name'>该区域内各类部队、目标统计情况</p>" 0
+"__start_table|类型名称|数量\n" 0
+"|部队|%s\n" 1 S9.D1
+"|目标|%s\n" 1 S9.D2
+"|特战分队|%s\n" 1 S9.D4
+"|空中编队|%s\n" 1 S9.D6
+"|地面编队|%s\n" 1 S9.D7
+"|补给航（路）线|%s\n" 1 S9.D8
+"|心理战传单散布点|%s\n" 1 S9.D9
+"|公路网节点|%s\n" 1 S9.D11
+"|铁路路段|%s\n" 1 S9.D12
+"__stop_table" 0
+
+END_SUB
+
+SUB 10
+"<p class='table_name'>该区域内河流节点情况</p>" 0
+"__start_table|节点|平均延迟时间|深度|宽度|长度|是否海湾\n" 0
+   GROUP 1
+"|%s|%s" 2 S10.G1.D1 DURATION(S10.G1.D3, "%d天%h小时%Rm分")
+"|%s米|%s%s" 3 UOM_AMT("AIRDISTANCE",S10.G1.D5) UOM_AMT(DISTANCE,S10.G1.D6) UOM(DISTANCE)
+"|%s%s|%s\n" 3 UOM_AMT(DISTANCE,S10.G1.D7) UOM(DISTANCE) Answer[S10.G1.D8]
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+SUB 11
+"<p class='table_name'>该区域内道路交叉口情况</p>" 0
+"__start_table|交叉口|海拔高度|类型|路面属性|出口|入口|通行高度|长度|限速\n" 0
+   GROUP 1
+"|%s|%s米" 2 S11.G1.D1 UOM_AMT("AIRDISTANCE",S11.G1.D3)
+"|%s|%s" 2 Arc_Type[S11.G1.D5] Road_Composition[S11.G1.D6]
+"|%s|%s|%s米" 3 S11.G1.D7 S11.G1.D8 UOM_AMT("AIRDISTANCE",S11.G1.D9)
+"|%s%s|%s%s\n" 4 UOM_AMT(DISTANCE,S11.G1.D10) UOM(DISTANCE) UOM_AMT(SPEED,S11.G1.D11) UOM(SPEED)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 12
+"<p class='table_name'>该区域内铁路节点情况</p>" 0
+"__start_table|节点|海拔高度|平均延迟时间|类型|最大承重|通行高度|长度|限速\n" 0
+   GROUP 1
+"|%s|%s米" 2 S12.G1.D1 UOM_AMT("AIRDISTANCE",S12.G1.D3)
+"|%s|%s" 2 DURATION(S12.G1.D4, "%d天%h小时%Rm分") Arc_Type[S12.G1.D6]
+"|%s%s|%s米" 3 UOM_AMT(DRY_WEIGHT,S12.G1.D7) UOM(DRY_WEIGHT) UOM_AMT("AIRDISTANCE",S12.G1.D8)
+"|%s%s|%s%s\n" 4 UOM_AMT(DISTANCE,S12.G1.D9) UOM(DISTANCE) UOM_AMT(SPEED,S12.G1.D10) UOM(SPEED)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 13
+"<p class='table_name'>该区域内管网情况</p>" 0
+"__start_table|节点|节点流量速率" 0
+"（%s/天）|节点卸载速率（%s/天）\n" 2 UOM(WET_WEIGHT) UOM(WET_WEIGHT)
+   GROUP 1
+"|%s|%5.2f|%5.2f\n" 3 S13.G1.D1 UUOM_AMT(WET_WEIGHT,S13.G1.D3) UOM_AMT(WET_WEIGHT,S13.G1.D4)
+
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+END_MAIN

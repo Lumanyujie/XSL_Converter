@@ -1,0 +1,31 @@
+
+1513
+SUBJECT
+"%s属性参数情况" 1 Bridge_Class[D2]
+MAIN
+
+"<p class='title'>%s属性参数情况</p>" 1 Bridge_Class[D2]
+                                                              
+SUB 1
+"\n半径：%s%s，" 2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+"\n维修时间：%s，"      1 DURATION(S1.D2, "%d天%h时%Rm分")
+"\n摧毁时间：%s，"       1 DURATION(S1.D3, "%d天%h时%Rm分")
+"\n架设时间：%s，"      1 DURATION(S1.D4, "%d天%h时%Rm分")
+"\n修复时间：%s。"      1 DURATION(S1.D5, "%d天%h时%Rm分")
+END_SUB
+
+SUB 2
+"\n类别：%s，" 1 Road_or_Rail[S2.D1]
+"\n目标分类码：%s。" 1 S2.D2
+END_SUB
+
+SUB 3
+"\n目标图标符号：%s。" 1 S3.D1
+END_SUB
+
+SUB 4
+"\n演习编码：%s。" 1 S4.D1
+END_SUB
+
+END_MAIN
+

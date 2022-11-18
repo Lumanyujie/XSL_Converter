@@ -1,0 +1,33 @@
+
+2950
+SUBJECT
+"允许%s实施拦截情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>允许%s实施拦截情况报告</p>"  1 unit_name_transform(D2)
+
+"\n对交战规则中是否允许实施拦截的内容做出调整。" 0
+
+SUB 1
+"下列各项允许%s实施拦截：" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 2
+"下列各项允许空中%s编队实施拦截：" 1 D2
+END_SUB
+
+SUB 3
+   GROUP 1
+
+"\n对阵方：%s" 1 No_Force_Side[S3.G1.D1]
+"__start_table|飞机类型|是否允许拦截|部队类型\n" 0
+      GROUP 1
+"|%s|%s|%s\n" 3 Aircraft_Target_Class(S3.G1.G1.D1) 
+		Answer(S3.G1.G1.D2) 
+	        External_Obj_Type(S3.G1.G1.D3)
+
+      END_GROUP
+"__stop_table" 0
+   END_GROUP
+END_SUB
+END_MAIN
+

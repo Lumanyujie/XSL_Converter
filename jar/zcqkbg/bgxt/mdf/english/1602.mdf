@@ -1,0 +1,73 @@
+
+1602
+SUBJECT
+"%s %s指挥控制原型具有下列属性  " 2   Command_Control_Prototype[D2] D2
+MAIN
+"<p class='title'> 指挥控制原型%s属性  </p>\n\n " 1 Command_Control_Prototype[D2]
+
+SUB 1
+"   __start_table  | 作战系统  |      地形类型  |      密度修正系数\n" 0
+
+   GROUP 1
+
+"  | %-20.20s   | %-20.20s |   %-12.7s\n" 3  Combat_System[S1.G1.D1] 
+       Terrain_Type[S1.G1.D2]  S1.G1.D3
+
+   END_GROUP
+"__stop_table"0
+
+"\n" 0
+
+END_SUB
+
+SUB 2
+"  __start_table | 作战系统  |   态势   |   密度修正系数\n" 0
+                                                           
+   GROUP 1
+
+"  | %-20.20s |   %-20.20s  |  %-12.7s\n" 3  Combat_System[S2.G1.D1] 
+       Unit_Posture[S2.G1.D2] S2.G1.D3
+
+   END_GROUP
+"__stop_table"0
+
+"\n" 0
+END_SUB
+
+SUB 3
+"  对于%s类补给，当部队处于%s态势时, 根据不同的地形，对应的补给物资密度为" 
+2  Supply_Category[S3.D2]  Unit_Posture[S3.D1] 
+"%s 或%s。\n" 2  UOM(DRY_WEIGHT) UOM(WET_WEIGHT)
+"    __start_table |   地形类型    |    每平方米\n" 0
+   GROUP 1
+"  | %-20.20s   |    %12.12s\n" 2 Terrain_Type[S3.G1.D1] S3.G1.D2 
+   END_GROUP
+"__stop_table"0
+
+" \n" 0
+END_SUB
+
+SUB 4
+"    __start_table | 作战系统    |      基本密度 \n" 0
+                                                           
+   GROUP 1
+
+" |  %-20.20s      |  %-12.7s  \n" 2  Combat_System[S4.G1.D1] S4.G1.D2
+
+   END_GROUP
+"__stop_table"0
+
+" \n" 0
+END_SUB
+
+SUB 5
+"  特种部队作战范围为：%s %s。\n" 2 S5.D1 UOM(DISTANCE)
+END_SUB
+
+SUB 6
+"  平均反击时间为：%s。\n"
+                  1 DURATION(S6.D1, "%h时%Rm分")
+END_SUB
+
+END_MAIN
+

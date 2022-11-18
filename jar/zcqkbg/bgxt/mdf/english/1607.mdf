@@ -1,0 +1,60 @@
+
+1607
+SUBJECT
+"%s %s情报信息原型探测倍增系数/倍增率属性" 2 Intel_Info_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  %s情报信息原型探测倍增系数/倍增率属性 </p>\n\n" 1 Intel_Info_Prototype[D2]
+
+SUB 1
+"  对于非机动目标类%s:\n" 1 Target_Category[S1.D1]
+   GROUP 1
+" __start_table |子类|  编号   | 倍增系数 \n" 0
+ "|   %-15.15s |  %3.3s | %s    \n"    3 SUBCAT_NAME{S1.G1.D1,S1.G1.D2} S1.G1.D2 S1.G1.D3
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 2  
+"\n  对于%s类部队按照规模：\n" 1 Unit_Type[S2.D1]
+   GROUP 1
+" __start_table | 部队规模 | 编号 | 倍增系数 \n" 0
+"|  %10.10s |  %3.3s  |  %s \n"   3 Unit_Size[S2.G1.D1] S2.G1.D1 S2.G1.D2
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 3
+"\n  与特种作战部队作战的部队，按照规模:\n" 0
+" __start_table | 部队规模  |  编号   |  隐蔽状态特种作战部队每日被搜索的比率\n" 0
+   GROUP 1
+"| %15.15s   | (%3.3s)    |   %12.12s\n" 
+              3 Unit_Size[S3.G1.D1] S3.G1.D1 S3.G1.D2
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 4
+"\n  对于机动目标类 %s:\n" 1 Target_Category[S4.D1]
+   GROUP 1
+"    __start_table|子类 | 编号|  倍增系数 \n" 0
+"| %-15.15s | %3.3s |   %s  \n"   3 SUBCAT_NAME{S4.G1.D1,S4.G1.D2} S4.G1.D2 S4.G1.D3
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 5
+"\n  对于非机动和机动目标类%s的倍增系数:\n"    1 Target_Category[S5.D1]
+" __start_table |  子类 | 编号   |        非机动      |     机动\n" 0
+   GROUP 1
+"|  %-15.15s| (%4.4s):   |       %-10.6s     |           %-10.6s\n"
+          4 SUBCAT_NAME{S5.G1.D1,S5.G1.D2} S5.G1.D2 S5.G1.D3 S5.G1.D4
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+END_MAIN
+
+
+

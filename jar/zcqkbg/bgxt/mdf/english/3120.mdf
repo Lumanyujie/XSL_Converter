@@ -1,0 +1,28 @@
+
+3120
+SUBJECT
+"空中加油编队（批号：%s）情况报告" 1 D2
+MAIN
+
+"<p class='title'>空中加油编队（批号：%s）情况报告</p>" 1 D2
+
+"\n空中加油编队（批号：%s）不能为以下空中编队预留油料：" 1 D2
+"<p class='table_name'>不能预留油料情况明细</p>" 0  
+"__start_table|编队批号|计划预留量（升）|不能预留原因\n" 0
+   GROUP 1
+      SUB 1
+"|%s|%s|该编队不存在\n" 2 G1.S1.D1 UOM_AMT("WET_WEIGHT",G1.S1.D2)
+      END_SUB
+      SUB 2
+"|%s|%s|不能为自己加油\n" 2 G1.S2.D1 UOM_AMT("WET_WEIGHT",G1.S2.D2)
+      END_SUB
+      SUB 3
+"|%s|%s|没有空中加油能力\n" 2 G1.S3.D1 UOM_AMT("WET_WEIGHT",G1.S3.D2)
+      END_SUB
+   END_GROUP
+"__stop_table" 0
+
+"\n以上编队已从加油任务清单中删除。" 0
+
+END_MAIN
+

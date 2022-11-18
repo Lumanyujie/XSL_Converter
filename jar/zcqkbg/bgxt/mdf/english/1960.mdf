@@ -1,0 +1,141 @@
+
+1960
+SUBJECT
+"%s（特战分队）属性参数" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s（特战分队）属性参数</p>" 1 unit_name_transform(D2)
+
+SUB 1
+   "<p class='table_name'>人员、装备情况</p>" 0
+   "__start_table|类型|数量>\n" 0
+   GROUP 1
+      "|%s|%s\n" 2 CSP_System_Name[D3,S1.G1.D1] S1.G1.D2
+   END_GROUP
+   "__stop_table" 0    
+END_SUB
+
+SUB 2
+   SUB 1
+      "<p class='table_name'>补给物资情况</p>" 0
+      "__start_table|类型|数量|单位\n" 0
+      GROUP 1
+         "|%s|%s|%s\n" 3 SLP_Category_Name[D4,S2.S1.G1.D1]
+                SLP_SC_AMT(D4, S2.S1.G1.D1, S2.S1.G1.D2)
+                SLP_SC_UOM(D4, S2.S1.G1.D1)
+      END_GROUP
+      "__stop_table" 0 
+   END_SUB
+
+   SUB 2
+"\n注：曾试图对以下补给类进行调整，" 0
+"但该补给类是由其它推演系统控制的油料或弹药，" 0
+"不能变更。具体为：" 0
+      GROUP 1
+"\n——%s" 1 SLP_Category_Name[D4,S2.S2.G1.D1]
+      END_GROUP
+   END_SUB
+END_SUB
+
+SUB 3
+   "<p class='table_name'>其它情况</p>" 0
+   "__start_table|属性|数值\n" 0
+   "|当前战斗力|%2.2f\n" 1 S3.D1
+END_SUB
+
+SUB 4
+"|开始交战时间|%s\n" 1 GTIME(S4.D1)  
+END_SUB
+
+SUB 5
+"|到达阵位时间|%s\n" 1 GTIME(S5.D1)
+END_SUB
+
+SUB 6
+"|脱离阵位时间|%s\n" 1 GTIME(S6.D1)
+END_SUB
+
+SUB 7
+"|人员评价误差|%s\n" 1 S7.D1
+END_SUB
+
+SUB 8
+"|发现概率|%s\n" 1 S8.D1
+END_SUB
+
+SUB 9
+"|半径|%s%s\n" 2 UOM_AMT(DISTANCE,S9.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 10
+"|下次报告时间|%s\n"  1 GTIME(S10.D1)
+END_SUB
+
+SUB 11
+"|当前速度|%s\n  " 1 S11.D1
+END_SUB
+
+SUB 12
+"|战斗持续时间|%s\n" 1 DURATION(S12.D1, "%d天%h小时%Rm分")
+END_SUB
+
+SUB 13
+"|隶属方|%s\n" 1 No_Force_Side[S13.D1]
+END_SUB
+
+SUB 14
+"|隐蔽情况|%s\n" 1 HRU_Covert_Status[S14.D1]
+END_SUB
+
+SUB 15
+"|隐蔽行动能力|具备\n" 0
+END_SUB
+
+SUB 16
+"|隐蔽行动能力|不具备\n" 0
+END_SUB
+
+SUB 17
+   GROUP 1
+      SUB 1
+         "|被%s发现耗时|%s\n" 2 
+               No_Force_Side[S17.G1.S1.D1] 
+               DURATION(S17.G1.S1.D2, "%d天%h小时%Rm分")
+      END_SUB
+      SUB 2
+         "|被%s发现后摆脱耗时|%s\n" 2 
+               No_Force_Side[S17.G1.S2.D1] 
+               DURATION(S17.G1.S2.D2, "%d天%h小时%Rm分")
+      END_SUB
+      SUB 3
+         "|在当前环境被%s发现耗时|%s\n" 2 
+               No_Force_Side[S17.G1.S3.D1] 
+               DURATION(S17.G1.S3.D2, "%d天%h小时%Rm分")
+      END_SUB
+      SUB 4
+         "|被%s发现耗时|不会被发现\n" 1 
+               No_Force_Side[S17.G1.S4.D1]
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 18
+"|C3效能|%s\n" 1 S18.D1
+END_SUB
+            
+SUB 19
+"|C3质量等级|%s\n" 1 C3_Quality_Rating[S19.D1]
+END_SUB                                               
+
+SUB 20
+"|位置转发器自动报告数量|%s\n" 1 S20.D1
+END_SUB                                               
+
+SUB 21
+"|坐标|%s\n" 1 LOCATION(S21.D1, S21.D2)
+END_SUB
+
+"__stop_table" 0
+
+END_MAIN
+

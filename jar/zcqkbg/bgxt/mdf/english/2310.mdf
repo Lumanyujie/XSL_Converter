@@ -1,0 +1,132 @@
+
+2310
+SUBJECT
+"%s（特战分队）当前行动受阻情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s（特战分队）当前行动受阻情况报告</p>" 1 unit_name_transform(D2)
+"\n%s在完成其指定任务时，遇到困难。" 1 unit_name_transform(D2)
+SUB 2
+"伏击目标%s" 1 unit_name_transform(S2.D1)
+"不在该部侦察地域（%s），因此准备撤出。" 1 LOCATION(S2.D2,S2.D3)
+END_SUB
+SUB 3
+"伏击目标%s" 1 unit_name_transform(S3.D1)
+"已转移至%s，该部无法抵达，因此准备撤出。" 1 LOCATION(S3.D2,S3.D3)
+END_SUB
+SUB 4
+"该部现位于%s，" 1 LOCATION(S4.D1,S4.D2)
+"正试图穿越桥梁、隧道时，" 0
+"一处桥梁、隧道目标被毁，且无其他道路可抵达目的地，该部正原地待命。" 0
+END_SUB
+SUB 5
+"%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(S5.D1, S5.D2)
+"正在执行掩护%s的任务，" 1 unit_name_transform(S5.D3)
+
+  SUB 1
+     SUB 1
+"被掩护目标已转为敌方，" 0
+     END_SUB
+     SUB 2
+"掌握使用被掩护目标的部队已转为敌方，" 0
+     END_SUB
+  END_SUB
+
+  SUB 2 
+     SUB 1
+"被掩护目标已受领自由开火权限，" 0
+     END_SUB
+     SUB 2
+"掌握使用被掩护目标的部队已受领自由开火权限，" 0
+     END_SUB
+  END_SUB
+
+  SUB 3
+     SUB 1
+"被掩护目标已展开进攻行动，" 0
+     END_SUB
+     SUB 2
+"掌握使用被掩护目标的部队已展开进攻行动，" 0
+     END_SUB
+  END_SUB
+
+  SUB 4
+     SUB 1
+"被掩护目标已配属另一支部队，" 0
+     END_SUB
+  END_SUB
+
+  SUB 5
+     SUB 1
+"被掩护目标已登船，执行两栖作战任务，" 0
+     END_SUB
+     SUB 2
+"掌握使用被掩护目标的部队已登船，执行两栖作战任务，" 0
+     END_SUB
+  END_SUB
+
+  SUB 6
+     SUB 1
+"被掩护目标已开始隐蔽行动，" 0
+     END_SUB
+     SUB 2
+"掌握使用被掩护目标的部队已开始隐蔽行动，" 0
+     END_SUB
+  END_SUB
+
+  SUB 7
+     SUB 1
+"被掩护目标已退出演习，" 0
+     END_SUB
+     SUB 2
+"掌握使用被掩护目标的部队已退出演习，" 0
+     END_SUB
+  END_SUB
+
+  SUB 8
+     SUB 1
+"被掩护目标已被消灭，" 0
+     END_SUB
+     SUB 2
+"掌握使用被掩护目标的部队已被消灭，" 0
+     END_SUB
+  END_SUB
+
+  SUB 9
+     SUB 1
+"被掩护目标已开始联合支援行动，" 0
+     END_SUB
+     SUB 2
+"掌握使用被掩护目标的部队已开始联合支援行动，" 0
+     END_SUB
+  END_SUB
+
+  SUB 10
+     SUB 1
+"已被其他方部队发现，" 0
+     END_SUB
+  END_SUB
+
+  SUB 11
+"隐蔽在%s环形防线，已超出作战时限，" 1 S5.S11.D1
+  END_SUB
+
+   SUB 12
+"被掩护目标正在被护送转移，" 0
+   END_SUB
+
+   SUB 13
+"掌握使用被掩护目标的部队遭到电子战、心理战干扰，" 0
+   END_SUB
+
+   SUB 14
+"被掩护目标及其部队开始对我方实施心理战和电磁干扰，" 0
+   END_SUB
+
+"掩护任务中止。" 0
+END_SUB
+
+SUB 30
+"正在准备撤出。" 0 
+END_SUB
+END_MAIN
+

@@ -1,0 +1,1598 @@
+
+2100
+SUBJECT
+"无法执行命令情况报告" 0
+MAIN
+
+SUB 1
+"\n%s不能在%s布设%s（水）雷，" 3 unit_name_transform(D2) LOCATION(S1.D1,S1.D2) S1.D1
+   SUB 1
+"部队没有所需武器弹药，等待命令。" 0
+   END_SUB
+   SUB 2
+"部队只有%s（%s%s），" 3 unit_name_transform(S1.S2.D1)
+       SLP_SC_AMT(S1.S2.D2,S1.S2.D3,S1.S2.D4) SLP_SC_UOM(S1.S2.D2,S1.S2.D3)
+"将全部布设。" 0
+  END_SUB
+END_SUB
+SUB 3
+"\n%s收到火力任务命令，" 1  unit_name_transform(D2)
+   SUB 1
+"突击目标是%s，" 1 S3.S1.D1
+   END_SUB
+   SUB 2
+"突击目标点是%s，" 1 LOCATION(S3.S2.D1,S3.S2.D2)
+   END_SUB
+"但由于正在实施非战斗性机动，不能执行该命令。" 0
+END_SUB
+
+SUB 4
+"\n%s不能执行支援%s的命令，" 2 unit_name_transform(D2) unit_name_transform(S4.D1)
+   SUB 1
+"该支援任务已结束。" 0
+   END_SUB
+   SUB 2
+"被支援部队正在支援%s，无需支援。" 1 unit_name_transform(S4.S2.D1)
+   END_SUB
+   SUB 3
+"支援部队必须是一个地面或海上作战部队。" 0
+   END_SUB
+   SUB 4
+"该部正在支援%s。" 1 unit_name_transform(S4.S4.D1)
+   END_SUB
+   SUB 5
+"支援部队本身正在被支援，无力支援。" 0
+   END_SUB
+   SUB 6
+"%s对%s所属方拥有主动开火权限。" 2 unit_name_transform(S4.S6.D2) unit_name_transform(S4.S6.D1)
+   END_SUB
+END_SUB
+
+SUB 5
+"\n%s无法完成火力打击任务，" 1  unit_name_transform(D2)
+   SUB 1
+"因为不能向%s开火。" 1 unit_name_transform(S5.S1.D1) 
+   END_SUB
+   SUB 2
+"因为不能向%s开火。" 1 unit_name_transform(S5.S2.D1) 
+   END_SUB
+   SUB 3
+"因为不能向%s开火。" 1 LOCATION(S5.S3.D1,S5.S3.D2)
+   END_SUB
+   SUB 4
+"因为不能向方位%s、距离%s%s处开火。" 
+                   3 S5.S4.D1 UOM_AMT(DISTANCE,S5.S4.D2) UOM(DISTANCE) 
+   END_SUB
+   SUB 5
+"因为接收火力打击要素（部队、目标、位置、方位/距离等）不全。" 0
+   END_SUB
+   SUB 6
+"遂行该任务需要%s补给，当前没有可用弹药。" 1
+                                              SLP_Category_Name[S5.D1,S5.S6.D1]
+   END_SUB
+   SUB 7
+"已经发射%s%s枚，当前弹药不足。" 2 SLP_Category_Name[S5.D1,S5.S7.D2] S5.S7.D1
+   END_SUB
+   SUB 8
+"距目标位置%s%s，%s最大射程为%s%s，" 5 
+         UOM_AMT(DISTANCE,S5.S8.D1) UOM(DISTANCE) Targetable_Weapon[S5.S8.D2]
+          UOM_AMT(DISTANCE,S5.S8.D3) UOM(DISTANCE)
+      SUB 1
+"共发射%s%s枚。" 2 Targetable_Weapon[S5.S8.D2] S5.S8.S1.D1
+      END_SUB
+   END_SUB
+   SUB 9
+"目标位于水域，不能用炮兵火力布设水雷。" 0
+   END_SUB
+   SUB 10
+"打击区位于水域，不能把%s发射到水域。" 1
+                                                Targetable_Weapon[S5.S10.D1]
+   END_SUB
+   SUB 11
+"打击区在陆地，不能把%s发射到陆地。" 1
+                                                Targetable_Weapon[S5.S11.D1]
+   END_SUB
+   SUB 12
+"运行火力打击程序时发现一个错误。没有为火力任务指定弹药类型，" 0
+"纬/经度、目标、部队或者方位/距离等均未指定。" 0
+"问题非常严重，必须通报控制员。" 0 
+   END_SUB
+  
+    SUB 13
+"在%s%s范围外不能自动开火，" 2  UOM_AMT(DISTANCE,S5.S13.D1) UOM(DISTANCE)
+"%s突击任务取消。" 1 Targetable_Weapon[S5.S13.D2]   
+    END_SUB
+    SUB 14
+"%s突击的方位/距离，使初始搜索区域超出了战场范围，任务取消。" 1 
+                                               Targetable_Weapon[S5.S14.D1] 
+    END_SUB
+  
+    SUB 15
+"运行火力打击程序时发现一个错误。错误原因不明，应该通报控制员。" 0
+    END_SUB
+  
+    SUB 16
+"收到%s命令时间已超出指定的打击最迟时间%s，" 2 
+                                           trans_word("Order",S5.S16.D1)  GTIME(S5.S16.D2)
+       SUB 1
+"命令取消。" 0
+       END_SUB
+       SUB 2
+"虽然该命令仅要求提供评估报告，但如果付诸实施，命令会被取消。" 0
+       END_SUB
+    END_SUB
+    SUB 17
+"%s命令指定的%s，" 2 trans_word("Order",S5.S17.D1)  Targetable_Weapon[S5.S17.D2]
+"要求发射间隔时间为%s分钟，" 1 DURATION(S5.S17.D3, "%.2Tm")
+"要作为炮兵火力发射，发射间隔时间必须" 0
+"小于战损评估间隔的%s分钟。" 1 DURATION(S5.S17.D4, "%.2Tm")
+       SUB 1
+"任务取消。" 0
+       END_SUB
+       SUB 2
+"虽然该命令仅要求提供评估报告，但如果付诸实施，命令会被取消。" 0
+
+       END_SUB
+    END_SUB
+END_SUB
+
+SUB 6
+"\n%s不能遂行炮兵任务，" 1  unit_name_transform(D2)
+   SUB 1
+"因为不能打击%s。" 1 unit_name_transform(S6.S1.D1) 
+   END_SUB
+   SUB 2
+"因为不能打击%s。" 1 unit_name_transform(S6.S2.D1) 
+   END_SUB
+   SUB 3
+"因为不能向%s处突击。" 1 LOCATION(S6.S3.D1,S6.S3.D2)
+   END_SUB
+   SUB 4
+"因为部队没有装备火炮。" 0
+   END_SUB
+   SUB 5
+"因为部队已丧失%s发射能力。" 1   Targetable_Weapon[S6.S5.D1]
+   END_SUB
+   SUB 6
+"因为部队已失去可发射%s的武器系统。" 1 Targetable_Weapon[S6.S6.D1]
+      SUB 1
+"失去之前已发射%s%s枚。" 2 Targetable_Weapon[S6.S6.D1] S6.S6.S1.D1
+      END_SUB
+   END_SUB
+END_SUB
+
+SUB 7
+"\n命令要求将%s的上级指挥机构改变为%s。" 2 unit_name_transform(D2) unit_name_transform(S7.D1)
+"该命令未执行，因为%s是%s最高指挥官，不能被撤换。" 2  unit_name_transform(D2) No_Force_Side[S7.D2]
+END_SUB
+
+SUB 8
+   SUB 1
+"\n接到%s的指令，" 1 unit_name_transform(S8.D2)
+   END_SUB 
+   SUB 2
+"\n接到%s的指令，" 1 unit_name_transform(S8.D2)
+   END_SUB 
+"命令%s配属给%s。" 2 unit_name_transform(D2) unit_name_transform(S8.D1)
+   SUB 3
+"该命令无法执行，因为%s在%s的指挥链上，" 2 unit_name_transform(S8.D1) unit_name_transform(D2)
+"会导致一个循环。" 0
+   END_SUB 
+END_SUB
+
+SUB 9
+"\n改变%s的指挥机构的命令（编号%s），" 2 unit_name_transform(D2) S9.D1
+"因为指挥机构安排不合理，该命令未执行。" 0
+END_SUB
+
+SUB 10
+"\n%s不能机动至指定地域，因为该地域有空军中队部署。" 1  unit_name_transform(D2)
+"应将空军中队转移到其他基地，机动命令才能执行。相关的空军中队是：" 0
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S10.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 11
+"\n%s收到%s命令，要求" 2 unit_name_transform(D2) trans_word("Order",S11.D1)
+   SUB 1
+"实施布雷，但命令不能执行。" 0
+   END_SUB
+   SUB 2
+"实施排雷，但命令不能执行。" 0
+   END_SUB
+   SUB 3
+"修复%s，但命令不能执行。" 1 unit_name_transform(S11.S3.D1)
+   END_SUB
+   SUB 4
+"摧毁%s，但命令不能执行。" 1 unit_name_transform(S11.S4.D1)
+   END_SUB
+   SUB 5
+"编入%s，但命令不能执行。" 1 unit_name_transform(S11.S5.D1)
+   END_SUB
+   SUB 6
+"实施桥梁作业，但命令不能执行。" 0
+   END_SUB
+   SUB 7
+"支援%s，但命令不能执行。" 1 unit_name_transform(S11.S7.D1)
+   END_SUB
+   SUB 8
+"部队必须通过机动才能完成任务，由于部队位于小岛无法机动，命令撤销。" 0
+   END_SUB
+   SUB 9
+"从%s到%s不存在可通行的机动路线，命令撤消。" 2 LOCATION(S11.S9.D1,S11.S9.D2) LOCATION(S11.S9.D3,S11.S9.D4)
+   END_SUB
+   SUB 10
+"该部队撤退后转入防御，由于部队位于岛屿无法机动，命令撤销。" 0
+   END_SUB
+   SUB 11
+"该部队实施进攻，由于部队位于岛屿无法机动，命令撤销。" 0
+   END_SUB
+   SUB 12
+"该部队实施阻击，由于部队位于岛屿无法机动，命令撤销。" 0
+   END_SUB
+   SUB 13
+"该部队撤离，由于部队位于岛屿无法机动，命令撤销。" 0
+   END_SUB
+
+END_SUB
+
+SUB 12
+"\n%s不是炮兵部队，" 1  unit_name_transform(D2)
+   SUB 1
+"火力命令（编号：%s）撤消。" 1 S12.D1
+   END_SUB
+   SUB 2
+"虽然火力命令（编号：%s）仅要求提供评估报告，" 1 S12.D1
+"但如果付诸实施，命令会被取消。" 0
+   END_SUB
+END_SUB
+
+SUB 13
+"\n命令（编号：%s）要求%s对每个目标发射" 2 S13.D3 unit_name_transform(D2)
+"%s%s枚，但当前没有可用弹药，" 2 Targetable_Weapon[S13.D2] S13.D1
+"需要补给%s。" 1 SLP_Category_Name[S13.D5,S13.D4]
+   SUB 1
+"命令撤消。" 0 
+   END_SUB
+   SUB 2
+"虽然该命令仅要求提供评估报告，" 0
+"但如果付诸实施，命令会被取消。" 0
+   END_SUB
+END_SUB
+
+SUB 14
+"\n此%s命令（编号：%s），" 2 trans_word("Order",S14.D1) S14.D2
+   SUB 1
+"%s未装备可发射%s的装置，" 2 unit_name_transform(D2) Targetable_Weapon[S14.D3]  
+   END_SUB
+   SUB 2
+"%s未装备地地导弹发射装置，" 1  unit_name_transform(D2)
+   END_SUB
+"命令撤消。" 0
+END_SUB
+
+SUB 15
+"\n此%s命令（编号：%s），" 2 trans_word("Order",S15.D1) S15.D2
+   SUB 1
+"%s未部署可发射%s的装置，" 2 unit_name_transform(D2) Targetable_Weapon[S15.D3] 
+"部队正在机动，命令撤消。" 0
+                                                    
+   END_SUB
+   SUB 2 
+"\n命令要求%s发射%s%s枚，" 3 unit_name_transform(D2) Targetable_Weapon[S15.D3] S15.S2.D1
+"由于缺乏%s，没有可用导弹，命令撤消。"  1 SLP_Category_Name[S15.S2.D3,S15.S2.D2]
+   END_SUB
+END_SUB
+
+SUB 16
+"\n%s命令，要求%s选择并发射地地导弹，" 2 trans_word("Order",S16.D1) unit_name_transform(D2)
+   SUB 1
+"部队列装了至少一种地地导弹，但地形限制了导弹的使用，" 0
+   END_SUB
+   SUB 2
+"部队列装了至少一种地地导弹，但没有一种地地导弹能有效打击目标，" 0
+   END_SUB
+   SUB 3
+"部队列装了至少一种地地导弹，但目标超过了导弹射程，" 0
+   END_SUB
+   SUB 4
+"部队列装了至少一种地地导弹，但无弹药补给，" 0
+   END_SUB
+"因此命令撤销。" 0
+END_SUB
+
+SUB 17
+"\n命令（编号：%s），" 1 S17.D1
+"要求取消所有下达给%s的%s命令。" 2 unit_name_transform(D2) trans_word("Order",S17.D2)
+"但未发现相关命令，故未执行。" 0
+END_SUB
+
+SUB 18
+"\n取消加强火力的命令（编号：%s），" 1 S18.D1
+"由于%s并没有对%s实施支援，故未执行。" 2 unit_name_transform(D2) unit_name_transform(S18.D2)
+END_SUB
+
+SUB 19
+"\n命令（编号：%s），" 1 D2
+"要求将%s的对阵方关系改为%s。" 2 No_Force_Side[S19.D1] Relationship[S19.D2]
+
+   SUB 1
+"因你方当前无所属部队，" 0
+   END_SUB
+   SUB 2
+"因对阵方关系已为%s，" 1 Relationship[S19.D2]
+   END_SUB
+"命令撤销。" 0
+END_SUB
+
+SUB 20
+"\n%s当前战斗力仅为%2.2f，" 2 unit_name_transform(D2) S20.D2
+"处于%s态势，" 1 Unit_Posture[S20.D3]
+"因此不能执行防御命令（编号：%s）。" 1 S20.D1
+"\n注：战斗力阈值分别为：" 0
+"防御转阻击%2.2f；" 1 S20.D4
+"阻击转撤出%2.2f；" 1 S20.D5
+"丧失战斗力%2.2f。" 1 S20.D6
+END_SUB
+
+SUB 21
+"\n如果%s被迫撤出，则无法沿指定路线撤出。" 1 unit_name_transform(D2)
+"部队当前位于%s，" 1 LOCATION(S21.D1,S21.D2)
+   SUB 1
+"没有至目的地的可通行路线。" 0
+   END_SUB
+   SUB 2
+"已到达目的地。" 0
+   END_SUB
+END_SUB
+
+SUB 22
+"\n%s当前战斗力仅为%2.2f，" 2 unit_name_transform(D2) S22.D2            
+"处于%s态势，" 1 Unit_Posture[S22.D3]       
+"因此不能执行编号为%s的阻击命令。" 1 S22.D1       
+"\n战斗力阈值分别为：" 0                                     
+"阻击转撤出%2.2f；" 1 S22.D4
+"丧失战斗力%2.2f。" 1 S22.D5
+END_SUB
+
+SUB 23
+"\n%s不能执行指定的阻击路线，" 1  unit_name_transform(D2)
+"部队当前位于%s，" 1 LOCATION(S23.D2,S23.D3)
+   SUB 1
+"没有至目的地的可通行路线。" 0
+   END_SUB
+   SUB 2
+"已到达目的地。" 0
+   END_SUB
+END_SUB
+
+SUB 24
+"\n命令（编号：%s）被拒绝。因为该命令要求" 1 S24.D1
+   SUB 1
+"%s某个发射机开机，" 1  unit_name_transform(D2)
+   END_SUB
+   SUB 2
+"某个发射机开机，" 0
+   END_SUB
+   SUB 3
+"在%s关闭，而现在时间已经是%s，" 2 GTIME(S24.S3.D1) GTIME(S24.S3.D2) 
+"因此命令无法执行。" 0 
+   END_SUB
+END_SUB
+
+SUB 25
+"\n%s不能执行命令（编号：%s），" 2 unit_name_transform(D2) S25.D1 
+"完成该工程任务无限期。命令撤销。" 0
+END_SUB
+
+SUB 26
+"\n%s现位于%s，" 2 unit_name_transform(D2) LOCATION(S26.D3,S26.D4)
+"正与敌近距离交战，处于%s态势，" 1 Unit_Posture[S26.D2]
+"因此不能执行命令（编号：%s）。" 1 S26.D1
+END_SUB
+
+SUB 27
+"\n%s当前%s" 2 unit_name_transform(D2) SLP_Category_Name[S27.D4,S27.D2]  
+"数量仅为%s枚，" 1 S27.D3                                            
+"因此不能执行命令（编号：%s）。" 1 S27.D1                                       
+END_SUB
+
+SUB 28
+"\n%s不能执行摧毁%s的命令，" 2 unit_name_transform(D2) unit_name_transform(S28.D2)
+   SUB 1
+"因为目标不属于你方，非特种部队只能通过攻击目标的所有者来摧毁目标。" 0 
+   END_SUB
+   SUB 2
+"因为目标隶属并受控于%s，非特种部队只能通过攻击目标的所有者来摧毁目标。" 1 No_Force_Side[S28.S2.D1]  
+   END_SUB
+END_SUB
+
+SUB 29
+"\n不能预估%s的到达时间。因为在其预计到达时间时部队不在演习中。" 1  unit_name_transform(D2)
+END_SUB
+
+SUB 30
+"\n从一点行进到同一点的时间为零，" 0
+"必须以一个部队作为起始点，或在路线上设置至少两个点。" 0
+END_SUB
+
+SUB 31
+"\n关于时间估算命令（编号：%s），" 1 S31.D1
+"%s不能机动到%s，" 2 unit_name_transform(D2) LOCATION(S31.D2,S31.D3)
+"如果其此时离开%s，" 1 LOCATION(S31.D4,S31.D5)
+"不可能在估算时间到达目的地。" 0
+END_SUB
+
+SUB 32
+"\n命令（编号：%s）要求合并%s和%s，" 3 D2 unit_name_transform(S32.D1) unit_name_transform(S32.D2) 
+"无法执行，因为%s不存在。" 1 unit_name_transform(S32.D1) 
+"必须选择已有集团，现名单如下：" 0 
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S32.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 33
+"\n命令（编号：%s）要求合并%s和%s，" 3 D2 unit_name_transform(S33.D1) unit_name_transform(S33.D2)
+"无法执行，因为集团属于不同方：" 0
+"%s属于%s，%s属于%s。" 4 unit_name_transform(S33.D1) No_Force_Side[S33.D3] unit_name_transform(S33.D2) No_Force_Side[S33.D4]
+END_SUB
+
+SUB 34
+"\n%s当前战斗力仅为%2.2f，" 2 unit_name_transform(D2) S34.D2
+"处于%s态势，" 1 Unit_Posture[S34.D3]
+"因此不能执行进攻命令（编号：%s）。" 1 S34.D1
+"\n注：战斗力阈值分别为：" 0
+"进攻转防御%2.2f；" 1 S34.D4
+"防御转阻击%2.2f；" 1 S34.D5
+"阻击转撤出%2.2f；" 1 S34.D6
+"丧失战斗力%2.2f。" 1 S34.D7
+   SUB 1
+"\n部队在最近一次交战中人员伤亡%s%%，无力再实施进攻。" 1 S34.S1.D1
+   END_SUB
+END_SUB
+
+SUB 35
+"\n%s在最近一次交战中人员伤亡%s%%，" 2 unit_name_transform(D2) S35.D2
+"在恢复战力前已无力再实施进攻，" 0
+"因此不能执行进攻命令（编号：%s）。" 1 S35.D1
+END_SUB
+
+SUB 36
+"\n%s现位于%s，" 2 unit_name_transform(D2) LOCATION(S36.D2,S36.D3)
+"不能参与地面编组战斗任务，因为" 0
+   SUB 1
+"该部队已被指派为战斗编组总指挥，将作为领导者参加。" 0
+   END_SUB
+   SUB 2
+"该部队没有通过所有已经制定的命令限制。" 0
+   END_SUB
+   SUB 3
+"该部队不能机动。" 0
+   END_SUB
+   SUB 4
+"没有到达最后目的地的可行路线。" 0
+   END_SUB
+"因此，地面战斗编组%s命令无法执行。" 1 S36.D4
+END_SUB
+
+SUB 37
+"\n%s是空军中队，当前搭乘%s，" 2 unit_name_transform(D2) unit_name_transform(S37.D2)
+"不能穿越水域实施机动，" 0
+"因此机动命令（编号：%s）无法执行。" 1 S37.D1
+END_SUB
+
+SUB 38
+"\n%s正在与敌交战，处于%s态势，" 2 unit_name_transform(D2) Unit_Posture[S38.D2]
+"不能实施机动，" 0
+"机动命令（编号：%s）无法执行。" 1 S38.D1
+END_SUB
+
+SUB 39
+"\n%s由于路线问题，不能执行%s命令（编号：%s）。" 3 unit_name_transform(D2) trans_word("Order",S39.D4) S39.D1
+"%s现位于%s，" 2 unit_name_transform(D2) LOCATION(S39.D2,S39.D3)
+"提供的详细行动路线如下：" 0
+   GROUP 1
+      SUB 1
+"\n——%s，有效路径点。" 1 LOCATION(S39.G1.S1.D1,S39.G1.S1.D2)
+      END_SUB
+      SUB 5
+"\n——%s之后，均未选中。" 
+                   1 LOCATION(S39.G1.S5.D1,S39.G1.S5.D2)
+      END_SUB
+      SUB 90
+"\n——%s，六角格地形为小岛不能实施陆上机动。"
+                   1 LOCATION(S39.G1.S90.D1,S39.G1.S90.D2)
+      END_SUB
+      SUB 93
+"\n——%s，部队没有足够燃料抵达。"  
+                   1 LOCATION(S39.G1.S93.D1,S39.G1.S93.D2)
+      END_SUB
+      SUB 99
+"\n——%s，与上一路径点间没有可行路线。" 
+                    1 LOCATION(S39.G1.S99.D1,S39.G1.S99.D2)
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 40
+"\n改变指挥权限命令（编号：%s）存在错误，" 1 D2
+
+   SUB 1
+"导调人员不能选择向所有受训者下达改变指挥权限命令。" 0
+   END_SUB
+
+   SUB 2
+"命令中的接收席位名“%s”无效。" 1 unit_name_transform(S40.S2.D1)
+   END_SUB
+
+   SUB 3
+"命令给出了演习席位名单，但名单中席位名无效，" 0
+   END_SUB
+
+"命令拒绝执行。" 0
+
+END_SUB
+
+SUB 41
+"\n改变指挥权限（编号：%s）命令存在错误，"  1 D2
+
+   SUB 1
+"各参演方只能转移本方指挥权限，%s不隶属本方，命令拒绝执行。" 1 unit_name_transform(S41.S1.D1)
+   END_SUB
+
+   SUB 2
+"该命令下达给所有演习席位，但当前本方仅有本席位，" 0
+"命令不能执行。" 0
+   END_SUB
+
+   SUB 3
+"指定的席位名至少有一个无效，" 0
+"该命令仅选择有效席位。" 0
+"无效名单：" 0
+      GROUP 1
+"\n——%s" 1 unit_name_transform(S41.S3.G1.D1)
+      END_GROUP
+   END_SUB
+ 
+END_SUB
+
+SUB 42
+"\n要求%s改变指挥权限命令存在错误。" 1  unit_name_transform(D2)
+"命令中指定部队的指挥权限均不能改变，" 0
+"命令拒绝执行。" 0
+END_SUB
+
+SUB 43
+"\n关于撤出命令（编号：%s），" 1 S43.D1
+"%s不能沿指定路线撤出，" 1 unit_name_transform(D2)
+"部队现位于%s，" 1 LOCATION(S43.D2,S43.D3)
+   SUB 1
+"无到达目的地的可通行路线。" 0
+   END_SUB
+   SUB 2
+"已到达目的地。" 0
+   END_SUB
+END_SUB
+
+SUB 44
+"\n关于命令（编号：%s），" 1 S44.D1
+"%s隶属于%s，" 2 unit_name_transform(D2) unit_name_transform(S44.D2)
+"不能配属给%s的%s，" 2 unit_name_transform(S44.D4) unit_name_transform(S44.D3)
+"因为来自不同集团的部队不能相互配属。" 0
+END_SUB
+
+SUB 45
+"\n命令（编号：%s）要求从%s中分遣%s， " 3 S45.D1 unit_name_transform(D2) unit_name_transform(S45.D2)
+   SUB 1
+"但%s已分遣部队。" 1  unit_name_transform(D2)
+   END_SUB
+
+   SUB 2
+"%s处于不可使用状态，只有先前配属的初始参演部队可以" 1  unit_name_transform(D2)
+"从其当前的资源所有者中派出，%s不是初始参演部队。"  1 unit_name_transform(S45.D2)
+   END_SUB
+
+   SUB 3
+"%s已在演习中，" 1 unit_name_transform(S45.D2)
+"命令无法执行。" 0
+   END_SUB
+
+   SUB 4
+"要求分遣的%s已在战场中，处于可战斗状态。" 1 unit_name_transform(S45.D2)
+   END_SUB
+
+   SUB 5
+"%s已被消灭，不能从部队中分遣，控制员可以重新激活它。" 1 unit_name_transform(S45.D2)
+   END_SUB
+
+   SUB 6
+"该部队从未配属给其他部队。" 0
+   END_SUB
+
+   SUB 7
+"该部队从未配属给%s。" 1  unit_name_transform(D2)
+   END_SUB
+
+   SUB 8
+"%s现有作战系统无法满足任务需求，" 1  unit_name_transform(D2)
+"主要缺项如下：\n" 0
+" <p class='table_name'> %s主要作战系统明细</p>" 1 unit_name_transform(D2)
+"__start_table|作战系统|短缺量|需求量\n" 0
+      GROUP 1
+"|%s|%s|%s\n"
+        3 CSP_System_Name[S45.D3,S45.S8.G1.D1] S45.S8.G1.D2 S45.S8.G1.D3
+      END_GROUP
+"__stop_table" 0
+
+   END_SUB
+
+   SUB 9
+"%s当前补给缺乏，无法满足任务需求，" 1  unit_name_transform(D2)
+"主要缺项如下：\n" 0
+" <p class='table_name'> %s补给情况明细</p>" 1 unit_name_transform(D2)
+"__start_table|补给类型|单位|短缺量|需求量\n" 0
+      GROUP 1
+" |%s|%s|%s|%s\n"
+        4 SLP_Category_Name[S45.D4,S45.S9.G1.D1] SLP_SC_UOM(S45.D4, S45.S9.G1.D1)
+          SLP_SC_AMT(S45.D4, S45.S9.G1.D1, S45.S9.G1.D2)
+          SLP_SC_AMT(S45.D4, S45.S9.G1.D1, S45.S9.G1.D3)       
+      END_GROUP
+"__stop_table" 0
+
+   END_SUB
+
+   SUB 10 
+"%s没有足够的装载设备完成分遣任务，" 1  unit_name_transform(D2)
+"至少需要%s台（套），" 1 S45.S10.D1
+"但目前仅有%s台（套）。" 1 S45.S10.D2 
+   END_SUB
+
+   SUB 11 
+"这是一个基于部队标识码的分遣命令，" 0
+"但部队标识码%s不符合要求，" 1 S45.S11.D1
+"命令无法执行。" 0 
+   END_SUB
+
+   SUB 12 
+"这是一个基于部队标识码的分遣命令，" 0
+"但部队标识码%s是特种作战部队类型的标识码，" 1 S45.S12.D1
+"不是作战部队原型的标识码，" 0
+"命令无法执行。" 0 
+   END_SUB
+
+   SUB 13 
+"这是一个基于部队标识码的分遣命令，" 0
+"但部队标识码定义不正确，" 0
+"没有指向正确的作战部队原型，" 0
+"命令无法执行。" 0 
+   END_SUB
+
+   SUB 14 
+"这是一个基于战术部队原型的分遣命令，" 0
+"战术部队原型类型%s不能与上级部队相同，" 1 unit_name_transform(S45.S14.D1)
+"命令无法执行。" 0 
+   END_SUB
+
+END_SUB
+
+SUB 46
+"\n该部队没有配备机动式地地导弹发射系统，%s命令无法执行。" 1 trans_word("Order",S46.D1)
+END_SUB
+
+SUB 47
+"\n下达给空中%s编队的拦截命令无法执行，" 1 S47.D1
+"该编队已退出演习。" 0
+END_SUB
+
+SUB 56
+"\n%s不能执行%s命令，" 2 unit_name_transform(D2) trans_word("Order",S56.D1)
+   SUB 1
+"该部队正在卸载优先到达战场的%s。" 1 unit_name_transform(S56.S1.D1)
+   END_SUB
+   SUB 2
+"该部队正在卸载非优先到达战场的%s。" 1 unit_name_transform(S56.S2.D1)
+   END_SUB
+   SUB 3
+"该部队正在为%s卸载优先船运的战略补给物资%s。" 2 unit_name_transform(S56.S3.D2) unit_name_transform(S56.S3.D1)
+   END_SUB
+   SUB 4
+"该部队正在为%s卸载非优先船运的战略补给物资%s。" 2 unit_name_transform(S56.S4.D2) unit_name_transform(S56.S4.D1)
+   END_SUB
+   SUB 5
+"该部队正在为%s编队装载%s。" 2 S56.S5.D2 unit_name_transform(S56.S5.D1)
+   END_SUB
+   SUB 6
+"该部队正在为%s编队）装载补给。" 1 S56.S6.D1
+   END_SUB
+   SUB 7
+"该部队正在为%s编队卸载%s。" 2 S56.S7.D2 unit_name_transform(S56.S7.D1)
+   END_SUB
+   SUB 8
+"该部队正在为%s编队卸载补给。" 1 S56.S8.D1
+   END_SUB
+   SUB 9
+"该部队正在为%s编队重新挂载或补给燃料。" 1 S56.S9.D1
+   END_SUB
+   SUB 10
+"该部队正在为%s编队卸载海上补给物资。" 1 S56.S10.D1
+   END_SUB
+   SUB 11
+"该部队正在为%s编队装载海上补给物资。" 1 S56.S11.D1
+   END_SUB
+   SUB 12
+"该部队正在协助搭载%s编队的%s上岸。 " 2 S56.S12.D2 unit_name_transform(S56.S12.D1)
+   END_SUB
+   SUB 13
+"该部队正在协助%s搭载%s编队。" 2 unit_name_transform(S56.S13.D1) S56.S13.D2
+   END_SUB
+   SUB 14
+"该命令编号为%s。" 1 S56.S14.D1
+   END_SUB
+END_SUB
+
+SUB 57
+"\n命令（编号：%s）被拒绝，" 1  D2
+"集团名%s已被使用，" 1 unit_name_transform(S57.D1)
+"名称必须唯一，当前集团名单如下：" 0
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S57.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 58
+"\n命令（编号：%s）被拒绝，" 1  D2
+"集团名称缩写%s已被使用，" 1 unit_name_transform(S58.D1)
+"名称缩写必须唯一，当前已被使用的集团名称缩写包括：" 0
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S58.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 59
+"\n命令（编号：%s）被拒绝，新的集团指挥机构%s当前不能战斗。" 2 D2 unit_name_transform(S59.D1)
+END_SUB
+
+SUB 60
+"\n命令（编号：%s）被拒绝，集团%s未创建，因为%s是原集团的指挥机构，" 3 D2  unit_name_transform(S60.D1) unit_name_transform(S60.D2)
+"或该方最高指挥机构，不能脱离本集团去组建新集团。" 0
+END_SUB
+
+SUB 61
+"\n命令（编号：%s）被拒绝，集团%s未创建，因为其部队名单中的%s是原集团的" 3 D2 unit_name_transform(S61.D1) unit_name_transform(S61.D2)
+"指挥机构或该方最高指挥机构，不能脱离本集团去组建新集团。" 0
+END_SUB
+
+SUB 62
+"\n命令（编号：%s）被拒绝，集团%s未创建，因为%s的所属部队%s是原集团的" 4 D2 unit_name_transform(S62.D1) unit_name_transform(S62.D3) unit_name_transform(S62.D2)
+"指挥机构或该方最高指挥机构，不能脱离本集团去组建新集团。" 0
+END_SUB
+
+SUB 63
+"\n命令（编号：%s）要求" 1 D2
+"%s脱离%s，" 2 unit_name_transform(S63.D1) unit_name_transform(S63.D2)
+"并转入%s。" 1 No_Force_Side[S63.D3]
+"该命令无法执行，因为集团已隶属于该方。\n" 0
+END_SUB
+
+SUB 64
+"\n%s不能执行编号为%s的%s命令，" 3 unit_name_transform(D2) S64.D2 trans_word("Order",S64.D1)
+   SUB 1
+"因为该部队已搭乘编队。" 0
+   END_SUB
+   SUB 2
+"因为该部队尚未集结完毕。" 0
+   END_SUB
+   SUB 3
+"因为该部队已配属给%s。" 1 unit_name_transform(S64.S3.D1)
+   END_SUB
+   SUB 4
+"因为该部队已不在演习区。" 0
+   END_SUB
+   SUB 5
+"因为该部队当前不能作战。" 0
+   END_SUB
+   SUB 6
+"因为该部队正在机动中。" 0
+   END_SUB
+   SUB 7
+"因为该命令中指定的另一支部队不在演习区。" 0
+   END_SUB
+   SUB 8
+"因为该命令中指定的另一支部队正在空运中。" 0
+   END_SUB
+   SUB 9
+"因为该部队为一支小分队的先遣组。" 0
+   END_SUB
+   SUB 10
+"因为非特战分队不能配属给特战部队。" 0
+   END_SUB
+   SUB 11
+"因为部队不能配属给隶属于其他集团的部队。" 0
+   END_SUB
+   SUB 12
+"因为接收部队隶属方为敌对方。" 0
+   END_SUB
+   SUB 13
+"因为接收部队隶属方为敌对方。" 0
+   END_SUB
+   SUB 14
+"因为至少有一个指定部队已在某编队中。" 0
+   END_SUB
+   SUB 15
+"因为配属部队正在空运。" 0
+   END_SUB
+   SUB 16
+"因为接收部队正在空运。" 0
+   END_SUB
+   SUB 17
+"因为配属部队已在某个编队中。" 0
+   END_SUB
+   SUB 18
+"因为接收部队已在某个编队中，不能执行该命令。" 0
+   END_SUB
+   SUB 19
+"因为配属部队正在空运，不能向其他部队所在地机动。" 0
+   END_SUB
+   SUB 20
+"因为接收部队是先遣组，不能接收配属部队。" 0
+   END_SUB
+   SUB 21
+"因为该特种部队在某个编队中，不能执行该命令。" 0
+   END_SUB
+   SUB 22
+"因为不能完全确定%s能否执行该行动。" 1 unit_name_transform(S64.S22.D1)
+   END_SUB
+   SUB 23
+"因为%s不再有作战能力，" 1 unit_name_transform(S64.S23.D1)
+     SUB 1
+       "命令相关部分无法执行。" 0
+     END_SUB
+     SUB 2
+       "命令无法执行。" 0
+     END_SUB
+   END_SUB
+   SUB 24
+"因为该命令要求%s机动，" 1 unit_name_transform(S64.S24.D1)
+"但该部队刚刚完成一次机动，" 0
+"需要在休整%s之后才能再次机动，" 1 DURATION(S64.S24.D2, "%h小时%Rm分钟")
+"命令无法执行。" 0
+   END_SUB
+   SUB 25
+"因为%s已转隶其他方，信息随后更新。" 1 unit_name_transform(S64.S25.D1)
+   END_SUB
+   SUB 26
+"因为%s已不在演习区。" 1 unit_name_transform(S64.S26.D1)
+   END_SUB
+   SUB 27
+"因为目标%s已不在演习区。" 1 unit_name_transform(S64.S27.D1)
+   END_SUB
+   SUB 28
+"因为%s正在装载，准备参与护航运输。" 1 unit_name_transform(S64.S28.D1)
+   END_SUB
+   SUB 29
+"因为%s正搭乘运输分队。" 1 unit_name_transform(S64.S29.D1)
+   END_SUB
+   SUB 30
+"因为%s刚完成护航运输，正在卸载。" 1 unit_name_transform(S64.S30.D1)
+   END_SUB
+   SUB 31
+"因为%s刚收到取消运输命令。" 1 unit_name_transform(S64.S31.D1)
+   END_SUB
+
+   SUB 32
+"因为目标定位点%s已不存在，" 1 S64.S32.D1
+     SUB 1
+       "命令相关部分被忽略。" 0
+     END_SUB
+     SUB 2
+       "命令无法执行。" 0
+     END_SUB
+   END_SUB
+
+   SUB 33
+"因为配属部队和接收部队不在同一编队中。" 0
+   END_SUB
+
+   SUB 34
+"因为该部队已经列入两栖行动计划，不能执行该命令。" 0
+   END_SUB
+
+END_SUB
+
+SUB 65
+"\n编号为%s的%s命令，" 2 S65.D2 trans_word("Order",S65.D1)
+   SUB 1
+"因无法与%s联系，命令未发送。" 1  unit_name_transform(D2)
+   END_SUB
+   SUB 2
+"因%s无法与%s联系，命令未发送。 " 2 unit_name_transform(S65.S2.D1) unit_name_transform(D2)
+   END_SUB
+   SUB 3
+"无法与被输送部队%s联系，命令未发送。" 1  unit_name_transform(D2)
+   END_SUB
+   SUB 4
+"无法与新的支援部队%s联系，命令未发送。" 1  unit_name_transform(D2)
+   END_SUB
+   SUB 5
+"无法与新的上级指挥机构%s联系，" 1  unit_name_transform(D2)
+"命令未发送。" 0
+   END_SUB
+   SUB 6
+"被指定为新目标所有者的%s已被消灭，目标未创建。" 1  unit_name_transform(D2)
+   END_SUB
+   SUB 7
+"被指定为新目标相关联部队的%s已被消灭，目标未创建。" 1  unit_name_transform(D2)
+   END_SUB
+END_SUB
+
+SUB 66
+"\n下达给%s的命令，要求合并%s和%s，但由于集团原型不同，" 3 unit_name_transform(D2) S66.D1 S66.D2 
+"无法执行。要完成合并，必须首先下达更改原型命令。" 0
+   SUB 1
+"" 0
+   END_SUB
+   SUB 2
+"" 0
+   END_SUB
+   SUB 3
+"" 0
+   END_SUB
+   SUB 4
+"" 0
+   END_SUB
+   SUB 5
+"" 0
+   END_SUB
+   SUB 6
+"" 0
+   END_SUB
+   SUB 7
+"" 0
+   END_SUB
+   SUB 8
+"" 0
+   END_SUB
+   SUB 9
+"" 0
+   END_SUB
+   SUB 10
+"" 0
+   END_SUB
+END_SUB
+
+SUB 67
+"\n命令（编号：%s）" 1 D2
+"要求%s对%s进行广播，" 2  unit_name_transform(D3) unit_name_transform(S67.D1)  
+"但无此集团，该命令撤销。" 0  
+   SUB 1
+"当前存在的集团有：" 0
+   GROUP 1
+"\n——%s" 1 S67.S1.G1.D1 
+   END_GROUP
+   END_SUB
+END_SUB
+
+SUB 69
+"\n命令（编号：%s）" 1 D2
+"要求%s对%s进行广播，" 2  unit_name_transform(D3) unit_name_transform(S69.D1) 
+"但两者隶属于同一方，不允许进行广播，该命令撤销。" 0
+END_SUB
+
+SUB 70
+"\n下达给%s的命令被拒绝，" 1 unit_name_transform(D2)
+"输入的接口程序%s不能定位。" 1 S70.D1
+END_SUB
+
+SUB 71
+"\n下达给%s的命令被拒绝，" 1 unit_name_transform(D2)
+"命令干预系统%s由控制员使用，对任何部队均无指挥权。" 1 S71.D1
+END_SUB
+
+SUB 72
+"\n下达给%s的命令被拒绝，" 1 unit_name_transform(D2)
+"指定的集团%s不存在。" 1 S72.D1
+END_SUB
+
+SUB 73
+"\n下达给%s的命令被拒绝，" 1  unit_name_transform(D2)
+"对%s没有主指挥权或共享指挥权，" 1 unit_name_transform(S73.D2)
+"该单位是命令中指定集团%s的指挥机构。" 1 unit_name_transform(S73.D1)
+END_SUB
+
+SUB 75
+"\n编号为%s的%s命令" 2 S75.D1 trans_word("Order",S75.D2)
+"要求将%s配属给%s，" 2 unit_name_transform(D2) unit_name_transform(S75.D3) 
+"但%s由%s分遣" 2 unit_name_transform(S75.D3) unit_name_transform(D2)
+"或由%s的分遣部队分遣，" 1 unit_name_transform(D2)
+"这样配属不允许，会引起逻辑错误，因此命令撤销。" 0
+END_SUB
+
+SUB 76
+"\n下达给%s的命令被拒绝，" 1  D2
+"命令干预系统%s属于%s。无权查看其他方命令干预系统的部队权限报告。"   2 S76.D1 No_Force_Side[S76.D2]
+END_SUB
+
+SUB 77
+"\n组建特战分队%s的命令已收到，但不能执行。" 1 unit_name_transform(D2)
+"该命令要求从%s中，" 1 unit_name_transform(S77.D1)
+"按照%s，" 1 Highres_Unit_Prototype[S77.D3]
+"抽组特战分队（%s）。" 1 unit_name_transform(S77.D2)
+
+   SUB 1
+"但指定名称“%s”已被某部队或特战分队使用。" 1 unit_name_transform(S77.D2)
+   END_SUB
+   SUB 2
+"但%s当前不能战斗。" 1 unit_name_transform(S77.D1)
+   END_SUB
+   SUB 3
+"但%s缺乏所需的补给物资" 1 unit_name_transform(S77.D1)
+"（特战分队所需补给由其原型确定）。" 0
+"缺少补给物资如下：" 0
+"<p class='table_name'>%s补给物资缺项明细</p>" 1 unit_name_transform(S77.D1)
+"__start_table|补给类型|单位|现有补给|原型所需补给 \n" 0
+      GROUP 1
+"|%s|%s|%s|%s\n" 4 SLP_Category_Name[S77.S3.D1,S77.S3.G1.D1] SLP_SC_UOM(S77.S3.D1,S77.S3.G1.D1) SLP_SC_AMT(S77.S3.D1,S77.S3.G1.D1,S77.S3.G1.D2) SLP_SC_AMT(S77.S3.D1,S77.S3.G1.D1,S77.S3.G1.D3)
+     END_GROUP
+"__stop_table" 0
+   END_SUB
+   SUB 4
+"但%s缺乏所需的装备" 1 unit_name_transform(S77.D1)
+"（特战分队所需装备由其原型确定）。" 0
+"缺编列表如下：" 0
+"<p class='table_name'>%s作战系统缺项明细</p>" 1 unit_name_transform(S77.D1)
+"__start_table|装备|现有数|原型需求数\n" 0
+      GROUP 1
+"|%s|%s|%s\n" 3 CSP_System_Name[S77.S4.D1,S77.S4.G1.D1] S77.S4.G1.D2 S77.S4.G1.D3
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+   SUB 5
+"但命令中输入的路线无法通行。" 0
+   END_SUB
+   SUB 6
+"但特种部队在船艇配备方面存在问题" 0
+"（所需船艇类型和数量由特种部队原型确定）：" 0
+
+      SUB 1
+"特种部队未被分配船艇，%s当前位于水域，" 1 unit_name_transform(S77.D1)
+"特种部队受命向位于陆地的%s机动，"
+                           1 LOCATION(S77.S6.S1.D1,S77.S6.S1.D2)
+"但无合适路线，" 0
+"将回到其组建部队所在位置。" 0
+      END_SUB
+
+      SUB 2
+"特种部队没有船艇，而指定的空降点%s位于水域，"
+                           1 LOCATION(S77.S6.S2.D1,S77.S6.S2.D2)
+"特种部队将回到其组建部队所在位置。" 0
+      END_SUB
+
+      SUB 3
+"特种部队原型规定其应装备%s类型船艇，"  1
+                                   Small_Boat[S77.S6.S3.D1]
+"但其组建部队未配备。" 0
+      END_SUB
+
+      SUB 4
+"特种部队原型规定特种部队应装备%s类型船艇，"  1
+    Small_Boat[S77.S6.S4.D1]
+"但其组建部队没有。" 0
+      END_SUB
+
+      SUB 5
+"在检查是否存在船艇问题时，遇到未知错误码。" 0
+      END_SUB
+
+   END_SUB
+
+   SUB 7
+"计划为特种部队创建一个%s，" 1   Target_Category[S77.S7.D1]
+"此目标应该从组建特种部队的部队所属目标中获得，" 0
+"但在获取该目标时遇到问题。" 0
+   END_SUB
+   SUB 8
+"特种部队不能从其组建部队中获取所需目标" 0
+"（从其组建部队中获取的目标类型由特种部队原型确定）。" 0
+   END_SUB
+   SUB 9
+"命令指定路线(空中、地面、海上)中的某个路段或路径点存在问题。" 0
+   END_SUB
+END_SUB
+
+SUB 78
+"\n特战分队运用现有机动方式不能到达指定位置，" 0
+   SUB 1
+"已取消%s的埋伏行动。" 1 unit_name_transform(S78.S1.D1)
+   END_SUB
+   SUB 2
+"已放弃对%s的袭击行动。" 1 unit_name_transform(S78.S2.D1)
+   END_SUB
+   SUB 3
+"已取消巡逻行动。" 0
+   END_SUB
+   SUB 4
+"不会沿指定路线离开。" 0
+   END_SUB
+   SUB 5
+"已取消对%s的掩护行动。" 1 unit_name_transform(S78.S5.D1)
+   END_SUB
+END_SUB
+
+SUB 79
+"\n%s是%s类型特种部队，"  2 unit_name_transform(S79.D1) Highres_Unit_Prototype[S79.D2]
+   SUB 1
+"不能遂行隐蔽任务。" 0
+   END_SUB
+   SUB 2
+"因没有船艇，不能遂行指定任务，现正搭乘舰船。" 0
+   END_SUB
+END_SUB
+
+SUB 80
+"\n%s不能完成%s命令中的桥梁作业行动，" 2 unit_name_transform(D2) trans_word("Order",S80.D1)
+   SUB 1
+"因为该桥梁已被另一支部队占据。" 0
+   END_SUB
+   SUB 2
+"因为要求架设的桥梁为%s，" 1 Bridge_Class[S80.S2.D1]
+"而该部队没有此类桥体。" 0
+  END_SUB
+   SUB 3
+"因为该部队没有足够的桥梁资源，不能架设指定车道数量的桥梁，" 0
+"它仅有%s个%s车道。" 2 
+                               S80.S3.D2 Bridge_Class[S80.S3.D1]
+   END_SUB
+   SUB 4
+"因为该部队不允许从%s向%s架设%s，" 3 LOCATION(S80.S4.D2,S80.S4.D3) Orientation[S80.S4.D4] Bridge_Class[S80.S4.D1]
+"否则会超出战场边界。" 0
+   END_SUB
+   SUB 5
+"因为该部队按照命令修复%s" 1 unit_name_transform(S80.S5.D1)
+"（%s）所需时间无限长。" 1 Bridge_Class[S80.S5.D2]
+   END_SUB
+
+   SUB 6
+"因为该部队按照命令架设%s" 1 Bridge_Class[S80.S6.D1]
+"所需时间无限长。" 0  
+END_SUB
+   SUB 7
+"因为%s位于%s，没有超出六角格边界，" 2 unit_name_transform(S80.S7.D1) LOCATION(S80.S7.D2,S80.S7.D3)
+"命令中的部队作业位置是%s，" 1 LOCATION(S80.S7.D4,S80.S7.D5)
+"对于未超出六角格边界的桥梁，修复部队与桥梁必须位于同一六角格。" 0
+   END_SUB
+   SUB 8
+"因为%s位于%s，且跨越六角格，" 2 unit_name_transform(S80.S8.D1) LOCATION(S80.S8.D2,S80.S8.D3)
+"命令中的部队作业位置是%s，" 1   LOCATION(S80.S8.D4,S80.S8.D5)
+"该位置不在桥梁所处六角格，也不在与桥梁相交的邻近六角格内。" 0
+"修复部队必须位于桥梁一端，才能对其进行修复。" 0 
+   END_SUB
+   SUB 9
+"因为该部队在近距离交战中，处于%s态势，" 1 unit_name_transform(S80.S9.D1)
+"此时不能机动。" 0
+   END_SUB
+   SUB 10
+"因为该部队原型是%s，" 1 Tactical_Unit_Prototype[S80.S10.D1]
+"该类型部队不能执行桥梁架设或修复任务。" 0
+   END_SUB
+   SUB 11
+"因为%s当前正由%s修复，" 2 unit_name_transform(S80.S11.D1) unit_name_transform(S80.S11.D2)
+"%s加入其中不会加快修复进程。" 1  unit_name_transform(D2)
+   END_SUB
+   SUB 12
+"因为%s正由另一方部队修复，" 1 unit_name_transform(S80.S12.D1) 
+"%s加入其中不会加快修复进程。" 1  unit_name_transform(D2)
+   END_SUB
+   SUB 13
+"因为%s是永久性固定桥梁，不能重新恢复。" 1 unit_name_transform(S80.S13.D1) 
+   END_SUB
+   SUB 14
+"因为%s已占据此桥。" 1 unit_name_transform(S80.S14.D1)
+   END_SUB
+   SUB 15
+"因为%s已占据此桥。" 1 unit_name_transform(S80.S15.D1)
+   END_SUB
+   SUB 16
+"因为%s已占据此桥。" 1 unit_name_transform(S80.S16.D1)
+   END_SUB
+
+   SUB 17
+"该部队不能按照命令修复%s，" 1 unit_name_transform(S80.S17.D1)
+"因为指定的作业位置距离桥体%s%s，" 2 UOM_AMT(DISTANCE,S80.S17.D2) UOM(DISTANCE)
+"而该部队作业半径只有%s%s，" 2 UOM_AMT(DISTANCE,S80.S17.D3) UOM(DISTANCE)
+"只有当到桥体距离小于作业半径时才能修复它。" 0
+   END_SUB
+
+"因此命令不能执行。" 0
+END_SUB
+
+SUB 81
+"\n命令要求%s实施陆上机动，" 1  unit_name_transform(D2)
+"但该部队当前油料仅剩%s%s，" 2
+         UOM_AMT(WET_WEIGHT, S81.D3) UOM(WET_WEIGHT)
+"机动需要油料%s%s，命令无法执行。" 2
+         UOM_AMT(WET_WEIGHT, S81.D4) UOM(WET_WEIGHT)
+   SUB 1
+"该部队已提交油料补给申请。" 0
+   END_SUB
+   SUB 2
+"该部队尚未提交油料补给申请。" 0
+   END_SUB
+END_SUB
+
+SUB 82
+"\n命令指定布设的弹药并非雷弹。" 0
+END_SUB
+
+SUB 83
+"\n%s命令（编号：%s）已被拒绝。" 2 trans_word("Order",S83.D1) S83.D2
+"因为%s是一个" 1 unit_name_transform(D2)
+"原型为%s的特种部队，" 1 Highres_Unit_Prototype[S83.D3]
+   SUB 1
+"不具备摧毁%s的能力。" 1 unit_name_transform(S83.S1.D1)
+   END_SUB
+   SUB 2
+"不具备摧毁%s类型的%s的能力。" 2 Target_Category[S83.S2.D1] unit_name_transform(S83.S2.D2)
+   END_SUB
+   SUB 3
+"不具备摧毁%s目标的能力。" 1 Target_Type_Group[S83.S3.D1]
+   END_SUB
+END_SUB  
+
+SUB 84
+"\n下达给%s的%s命令（编号：%s）已被拒绝。" 3 unit_name_transform(D2) trans_word("Order",S84.D1) S84.D2
+   SUB 1
+"因为该部队正在与敌交火，" 0
+"稍后可重新下达命令。" 0
+   END_SUB
+   SUB 2
+"因为该部队没有足够弹药遂行进攻任务，" 0
+"且在附近区域内无可用弹药，" 0 
+"建议在重新下达任务之前先进行补给。" 0
+   END_SUB
+END_SUB
+
+SUB 85
+"\n以下部队不能按照电子设备管制命令（编号：%s）%s指定设备：" 2 D2 On_Off[D4]
+
+   GROUP 1
+      "\n——%s" 1 unit_name_transform(S85.G1.D1)
+      SUB 1
+       "传感器，%s" 1 Sensor_Function[S85.G1.S1.D1]
+      END_SUB
+      SUB 2
+       "干扰器，%s" 1 Jammer_Function[S85.G1.S2.D1]
+      END_SUB
+      SUB 3
+       "，传感器和干扰器" 0
+      END_SUB
+
+   END_GROUP
+
+END_SUB
+
+SUB 86
+"\n关于给%s的%s命令（编号：%s），"3 unit_name_transform(D2) trans_word("Order",S86.D1) S86.D2
+"%s不能针对%s执行该任务。因为" 2 unit_name_transform(D2) unit_name_transform(S86.D3)
+
+   SUB 1
+"%s没有此需求，" 1 unit_name_transform(S86.D3)
+      SUB 1
+"该部队已被消灭。" 0
+      END_SUB
+      SUB 2
+"该部队已被配属。" 0
+      END_SUB
+      SUB 3
+"该部队是敌方部队。" 0
+      END_SUB
+      SUB 4
+"该部队拥有允许开火权。" 0
+      END_SUB
+      SUB 5
+"该部队处于进攻态势。" 0
+      END_SUB
+      SUB 9
+"该潜艇已隐蔽。" 0
+      END_SUB
+      SUB 10
+"该部队正执行两栖作战任务。" 0
+      END_SUB
+      SUB 11
+"指定的时间已过。" 0
+      END_SUB
+      SUB 12
+"原因不明。" 0
+      END_SUB
+      SUB 13
+"搭载的空军中队不能执行掩护任务。" 0
+      END_SUB
+      SUB 14
+"该部队已展开陆上作战，" 0
+"不能执行新的掩护任务。" 0
+      END_SUB
+      SUB 15
+"该部队正对我方实施电子干扰或心理战。" 0
+      END_SUB
+   END_SUB
+
+   SUB 2
+"%s没有此需求。" 1 unit_name_transform(S86.D3)
+      SUB 1
+"该目标已退出演习。" 0
+      END_SUB
+      SUB 2
+"" 0
+      END_SUB
+      SUB 3
+"该目标属于敌方。" 0
+      END_SUB
+      SUB 4
+"该目标隶属部队拥有允许开火权。" 0
+      END_SUB
+      SUB 5
+"该目标隶属部队处于进攻态势。" 0
+      END_SUB
+      SUB 6
+"该目标隶属于%s。" 1  unit_name_transform(D2)
+      END_SUB
+      SUB 7
+"该目标隶属于一个正执行掩护任务的特种部队。" 0
+      END_SUB
+      SUB 8
+"该目标隶属于一个正执行联合支援任务的特种部队。" 0
+      END_SUB
+      SUB 9
+"该目标隶属部队处于隐蔽状态。" 0
+      END_SUB
+      SUB 10
+"该目标隶属部队正执行两栖作战任务。" 0
+      END_SUB
+      SUB 11
+"指定的时间已过。" 0
+      END_SUB
+      SUB 12
+"未知原因。" 0
+      END_SUB
+      SUB 13
+"该目标隶属于一个正被搭载的空军中队，该部队不能执行掩护任务。" 0
+      END_SUB
+      SUB 15
+"该目标正在对我方实施电子干扰或心理战活动。" 0
+      END_SUB
+   END_SUB
+
+   SUB 3
+"%s没有此需求。" 1 unit_name_transform(S86.D3)
+      SUB 1
+"该特种部队已被消灭。" 0
+      END_SUB
+      SUB 3
+"该特种部队属于敌方。" 0
+      END_SUB
+      SUB 4
+"该特种部队拥有允许开火权。" 0
+      END_SUB
+      SUB 5 
+"该特种部队正执行进攻任务。" 0
+      END_SUB
+      SUB 7
+"该特种部队正执行掩护任务。" 0
+      END_SUB
+      SUB 8
+"该特种部队正执行联合支援任务。" 0
+      END_SUB
+      SUB 9
+"该特种部队正准备隐蔽作战。" 0
+      END_SUB
+      SUB 10
+"该特种部队正进行两栖作战。" 0
+      END_SUB
+      SUB 11
+"指定时间已过。" 0
+      END_SUB
+      SUB 12
+"未知原因。" 0
+      END_SUB
+      SUB 15
+"该特种部队正对我方实施电子干扰或者心理战活动。" 0
+      END_SUB
+   END_SUB
+
+   SUB 4
+"%s不能对%s实施掩护。" 2 unit_name_transform(D2) S86.D3
+       SUB 1
+"  %s正在对该方进行电子干扰。" 1  unit_name_transform(D2)
+       END_SUB
+       SUB 2
+"  %s正在对该方某部进行心理战活动。" 1  unit_name_transform(D2)
+       END_SUB
+   END_SUB
+END_SUB
+
+SUB 87
+"\n关于%s命令（编号：%s），" 2 trans_word("Order",S87.D1) S87.D2
+"%s不能执行，因为" 1 unit_name_transform(D2)
+   SUB 1
+"没有执行掩护任务，无掩护任务可取消。" 0     
+   END_SUB
+END_SUB 
+
+SUB 89
+"\n命令（编号：%s）要求改变国界。" 1 D2
+   SUB 1
+"但与%s相关的以下国界名无效：" 1 unit_name_transform(S89.S1.D1)
+   END_SUB
+   SUB 2
+"但在设置中有以下无效国界名：" 0
+   END_SUB
+
+   GROUP 1
+"\n——%s，不存在。" 1 unit_name_transform(S89.G1.D1)
+   END_GROUP
+
+   SUB 3
+"以下国界有效，并已处理：" 0
+      GROUP 1
+"\n——%s" 1 unit_name_transform(S89.S3.G1.D1)
+      END_GROUP
+   END_SUB
+"\n注：可以用国界报告命令来获取关于国界方设置及所包含区域的列表。" 0
+END_SUB
+
+SUB 90
+"\n关于%s命令（编号：%s），" 2 trans_word("Order",S90.D1) S90.D2
+"%s不能完成针对%s的任务，因为" 2 unit_name_transform(D2) S90.D3
+   SUB 1
+"%s正由我方的另一支特种部队掩护。" 1 unit_name_transform(S90.D3)
+   END_SUB
+   SUB 2
+"任务被中断。" 0
+   END_SUB 
+END_SUB
+
+SUB 91
+"\n%s不能完成命令（编号：%s），任务取消。" 2  unit_name_transform(D2) D4
+   SUB 1
+"因为%s正联络或者掩护一个处于水域六角格的目标，" 1  unit_name_transform(D2)   
+"该水域内无船艇可用。" 0
+   END_SUB
+   SUB 2
+"因为要求该特种部队掩护一个目标，该目标隶属于%s（舰船），" 1 unit_name_transform(S91.S2.D1)   
+"而特种部队不能掩护舰船或属于舰船的目标。" 0
+   END_SUB
+END_SUB
+
+SUB 92
+"\n收到%s命令（编号：%s），" 2 trans_word("Order",S92.D1) S92.D2
+"由于时间、距离等原因，" 0
+"无法执行。" 0
+END_SUB
+
+SUB 93
+"\n命令（编号：%s）被拒绝。该命令要求" 1 D2
+   SUB 1
+"%s打开无线电发射机，但未指明部队。" 1 unit_name_transform(D3)
+"命令中指定的其他类型发射机已经打开。" 0
+   END_SUB
+END_SUB
+
+SUB 94
+"\n%s不能完成此任务，" 1  unit_name_transform(D2)
+"命令取消。\n" 0
+   SUB 1
+"因为%s位于小岛地形六角格，自身不能在该六角格内机动。" 1  unit_name_transform(D2)
+"在小岛六角格机动需要船艇，但是该部队未配备。" 0
+   END_SUB
+END_SUB
+
+SUB 99
+"\n下达给%s的%s命令（编号：%s）被拒绝。" 3 unit_name_transform(D2) trans_word("Order",S99.D1) S99.D2
+   SUB 1
+"因为该部队现属于地面战斗编组%s。" 1 unit_name_transform(S99.D3)
+   END_SUB
+   SUB 2
+     SUB 1
+"该地面战斗编组正在组织进攻。" 0
+     END_SUB
+     SUB 2
+"该地面战斗编组正在组织非战斗状态下机动。" 0
+     END_SUB
+   END_SUB
+"\n注：下达防御或撤出命令可以使其离开地面战斗编组。" 0
+END_SUB
+
+
+SUB 100
+"\n下达给%s的%s命令（编号：%s）存在错误。" 3 unit_name_transform(D2) trans_word("Order",S100.D1) S100.D2 
+   SUB 1
+"因为%s不是反炮兵雷达，" 1 unit_name_transform(S100.S1.D1)
+"不能进行反炮兵行动。" 0
+   END_SUB
+   SUB  2
+"因为%s的口径不可能发射%s。"    2 unit_name_transform(S100.S2.D1) Targetable_Weapon[S100.S2.D2]
+   END_SUB
+   SUB 3
+"因为%s的所有战斗系统都不能发射%s。" 2 unit_name_transform(S100.S3.D1) Targetable_Weapon[S100.S3.D2]  
+   END_SUB
+   SUB 4
+"所有正在交战部队被排除，" 0
+"没有战斗部队加入战斗部队名单%s。" 1 unit_name_transform(S100.S4.D1)
+   END_SUB
+   SUB 5
+"部分反击行动已执行，不能重复下达命令。" 0
+"当前交战部队名单如下：\n" 0
+"<p class='table_name'>交战部队情况明细</p>" 0
+"  __start_table |交战部队|弹药类型|发射弹数|覆盖半径|反击最少用弹量|接敌后最迟反击时间\n" 0
+     GROUP 1
+"|%s|%s|%s|%s%s|%s|%s分钟\n" 7 unit_name_transform(S100.S5.G1.D1) Targetable_Weapon[S100.S5.G1.D2] S100.S5.G1.D3 UOM_AMT(DISTANCE,S100.S5.G1.D6) UOM(DISTANCE) S100.S5.G1.D4 DURATION(S100.S5.G1.D5, "%.2Tm")
+      END_GROUP
+"__stop_table" 0
+
+   END_SUB
+END_SUB
+
+SUB 101
+"\n命令（编号：%s）要求%s实施广播干扰，"  2 D2 unit_name_transform(D3)
+"但由于命令中没有指定集团或部队，广播干扰机无法打开。" 0
+
+END_SUB
+
+SUB 102
+"\n命令（编号：%s）要求%s实施通信干扰，"  2 D2 unit_name_transform(D3)
+"但由于命令中没有指定属方或部队，该命令无法执行。" 0
+END_SUB
+
+SUB 103
+"\n%s不能在%s布雷，" 2 unit_name_transform(D2) LOCATION(S103.D1,S103.D2)
+   SUB 1
+"陆上雷区不能在水系六角格布设。" 0
+   END_SUB
+   SUB 2
+"水雷区不能在陆上六角格布设。" 0
+   END_SUB
+   SUB 3
+"反入侵雷区不能布设在海洋六角格。" 0
+   END_SUB
+   SUB 4
+"反入侵雷区不能布设在完全的陆地六角格。" 0
+   END_SUB
+END_SUB
+
+SUB 104
+"\n配属命令无法执行。" 0
+"因为%s已失去作战能力，不能配属给%s。" 2 unit_name_transform(S104.D1) unit_name_transform(S104.D2)
+END_SUB
+
+SUB 105
+"\n%s不能配属给%s，" 2 unit_name_transform(S105.D1) unit_name_transform(S105.D2)
+"因为%s已失去作战能力。" 1 unit_name_transform(S105.D1)
+END_SUB
+
+SUB 110
+"\n%s不能完成针对%s的" 2 unit_name_transform(D2) unit_name_transform(S110.D3)
+"%s命令（编号：%s），" 2 trans_word("Order",S110.D1) S110.D2
+   SUB 1
+"因为该目标感知能力已经是100%。" 0
+   END_SUB
+   SUB 2
+"因为该目标感知能力已经为0，不能再被摧毁。" 0
+   END_SUB 
+END_SUB
+
+SUB 115
+
+   SUB 1
+"\n%s不能" 1 unit_name_transform(D2)
+"发射%s，" 1 Targetable_Weapon[S115.S1.D1]
+"因为该武器规定必须在%s发射，" 1  Sub_Weap_Firing_Ability[S115.S1.D2]
+"而该水域深度不够，" 0
+"潜艇无法调整到%s状态。" 1  Depth_State[S115.S1.D3]
+   END_SUB
+
+"%s命令（编号：%s）取消。" 2 trans_word("Order",S115.D1) S115.D2
+END_SUB
+
+END_MAIN
+

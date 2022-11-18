@@ -1,0 +1,38 @@
+
+2010
+SUBJECT
+"作战区命令执行情况报告" 0
+MAIN
+
+"<p class='title'>作战区命令执行情况报告</p>" 0
+"\n命令已执行。" 0
+SUB 3
+"作战区%s地域已界定。" 1 S3.D1 
+END_SUB
+
+SUB 4
+"作战区%s对各对阵方的透明度已确定。" 1 S4.D1 
+END_SUB
+
+SUB 5
+"作战区%s地面交战规则已规定。" 1 S5.D1 
+END_SUB
+
+SUB 6
+"作战区%s空空交战规则已规定。" 1 S6.D1 
+END_SUB
+
+SUB 7
+"作战区%s地空交战规则已规定。" 1 S7.D1 
+END_SUB
+SUB 8
+"作战区%s空地交战规则已规定。" 1 S8.D1
+END_SUB
+
+SUB 9
+"作战区%s与%s通过%s方式相关联。"
+                    3 S9.D1 unit_name_transform(S9.D2) Station_Keeping_Method[S9.D3]
+END_SUB
+
+END_MAIN
+

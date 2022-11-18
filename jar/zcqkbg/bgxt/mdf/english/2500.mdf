@@ -1,0 +1,57 @@
+
+2500
+SUBJECT
+"%s补给短缺情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s补给短缺情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+"\n%s已到达部署地域，面临补给短缺。" 1 unit_name_transform(S1.D1)
+END_SUB
+
+SUB 2
+"\n该部队已到达部署地域，没有初始保障部队，" 0
+"且没有携带补给。" 0
+END_SUB
+
+SUB 3
+"\n该部队不能从其初始保障部队%s处，" 1 unit_name_transform(S3.D1)
+"得到全部携行量的补给。" 0
+END_SUB
+
+SUB 4
+"其初始保障部队尚未抵达。" 0
+END_SUB
+
+SUB 5
+"其初始保障部队已被敌消灭。" 0
+END_SUB
+
+SUB 6
+"<p class='table_name'>装备短缺情况</p>" 0
+"__start_table|类型|短缺数量（台、套）\n" 0
+   GROUP 1
+"|%s|%s\n" 2 CSP_System_Name[S6.D1,S6.G1.D1] S6.G1.D2
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+SUB 7
+"\n装备没有短缺。" 0 
+END_SUB
+
+SUB 8
+"<p class='table_name'>物资短缺情况</p>" 0
+"__start_table|类型|短缺数量\n" 0
+   GROUP 1
+"|%s|%s%s\n" 3 SLP_Category_Name[S8.D1,S8.G1.D1] SLP_SC_AMT(S8.D1,S8.G1.D1,S8.G1.D2) SLP_SC_UOM(S8.D1,S8.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 9
+"\n物资没有短缺。" 0
+END_SUB
+END_MAIN

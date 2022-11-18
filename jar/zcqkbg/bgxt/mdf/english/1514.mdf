@@ -1,0 +1,19 @@
+
+1514
+SUBJECT
+"%s隧道目标属性" 1 Tunnel_Class[D2]
+MAIN
+
+"<p class='title'>  %s隧道(编号%s)属性 </p>\n\n" 2 Tunnel_Class[D2] D2
+
+SUB 1
+"   半径：%s %s  \n" 2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+"   修复时间: %s\n" 1 DURATION(S1.D2, "%d天%h时%Rm分")
+"   摧毁时间: %s\n" 1 DURATION(S1.D3, "%d天%h时%Rm分")
+"   目标分类码: %s\n" 1 S1.D4
+"   目标图标符号: %s\n" 1 S1.D5
+"   DIS代码: %s\n" 1 S1.D6
+END_SUB
+
+END_MAIN
+

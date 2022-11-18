@@ -1,0 +1,29 @@
+
+2701
+SUBJECT
+"%s工程任务中止情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s工程任务中止情况报告</p>" 1 unit_name_transform(D2)
+ 
+"\n%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(D3,D4)
+
+SUB 2
+"正准备执行维修%s的任务，"  1 unit_name_transform(S2.D1)
+"但该目标已被修复，等候新的指令。" 0
+END_SUB
+
+SUB 4
+"正准备执行摧毁%s的任务，"  1 unit_name_transform(S4.D1)
+"但该目标不在该处，等候新的指令。" 0
+END_SUB
+
+SUB 7
+"正准备执行摧毁%s的任务，"  1 unit_name_transform(S7.D1)
+"但该目标隶属%s，并由其负责防护，"  1 unit_name_transform(S7.D2)
+"因此只有在隐蔽状态下，才能摧毁该目标。" 0
+"等候新的指令。" 0
+END_SUB
+
+END_MAIN
+

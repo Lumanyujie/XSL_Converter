@@ -1,0 +1,520 @@
+
+2050
+SUBJECT
+"命令执行情况" 0
+ 
+MAIN
+"<p class='title'>命令执行情况</p>" 0
+SUB 1
+"\n%s已开始对%s实施支援，" 2 unit_name_transform(S1.D1) unit_name_transform(S1.D2)
+"但仍有%s项待执行火力任务，" 1 S1.D3
+"所以支援非常有限。" 0
+END_SUB
+
+SUB 2
+"\n%s受命发射" 1 unit_name_transform(S2.D1)
+"%s%s%s，" 3 SLP_Category_Name[S2.D5,S2.D3] SLP_SC_AMT(S2.D5,S2.D3,S2.D2) SLP_SC_UOM(S2.D5,S2.D3)
+"但当前仅余%s%s，" 2 SLP_SC_AMT(S2.D5,S2.D3,S2.D4) SLP_SC_UOM(S2.D5,S2.D3)
+"将全部发射。" 0
+END_SUB
+
+SUB 3
+"\n%s受命发射" 1 unit_name_transform(S3.D1)
+"%s%s枚，" 2 Targetable_Weapon[S3.D3] S3.D2
+"完成该任务需%s%s%s，" 3 SLP_Category_Name[S3.D7,S3.D5] SLP_SC_AMT(S3.D7,S3.D5,S3.D4) SLP_SC_UOM(S3.D7,S3.D5)            
+"但当前仅有%s%s，" 2 SLP_SC_AMT(S3.D7,S3.D5,S3.D6) SLP_SC_UOM(S3.D7,S3.D5)                 
+"将全部应用。" 0        
+END_SUB
+
+SUB 4
+"\n命令（编号：%s）执行情况：%s" 2 D2 unit_name_transform(S4.D2)
+"撤消计划执行的所有%s命令，总计撤消%s项。" 2 trans_word("Order",S4.D1) S4.D3
+END_SUB
+
+SUB 5
+"\n%s已按命令要求撤消了火力任务。" 1  unit_name_transform(S5.D1)
+END_SUB
+
+SUB 6
+"\n%s命令（编号%s）执行情况：" 2 trans_word("Order",S6.D1) D2
+   SUB 1
+"没有下达给%s的命令被撤消，因为不符合条件。" 1 unit_name_transform(S6.S1.D1)
+   END_SUB
+   SUB 2
+"下达给%s的" 1 unit_name_transform(S6.S2.D3)
+"%s命令（编号%s）被撤消。" 2 trans_word("Order",S6.S2.D1) S6.S2.D2
+   END_SUB
+   SUB 3
+      SUB 1
+"所有下达给%s的地面作战命令被撤消，共计%s条。" 2 unit_name_transform(S6.S3.D1) S6.S3.D2
+      END_SUB
+      SUB 2
+"所有下达给%s的特战命令被撤消，共计%s条。" 2 unit_name_transform(S6.S3.D1) S6.S3.D2
+      END_SUB
+   END_SUB
+   SUB 4
+"所有下达给%s的%s" 2 unit_name_transform(S6.S4.D2) trans_word("Order",S6.S4.D1)
+"命令被撤消，共计%s条。" 1 S6.S4.D3
+   END_SUB
+END_SUB
+
+SUB 7
+"\n按照命令（编号：%s），%s不再为%s提供火力支援。" 3 D2 unit_name_transform(S7.D1) unit_name_transform(S7.D2)
+   SUB 1
+      "当前支援行动中止。" 0
+   END_SUB
+   SUB 2
+      "之后的%s条命令同时撤消。" 1 S7.S2.D1
+   END_SUB 
+END_SUB
+
+SUB 8
+"\n%s命令（编号%s）已执行，该命令要求将与%s的对阵方关系调整为%s。" 4 No_Force_Side[S8.D1] D2  No_Force_Side[S8.D4] Relationship[S8.D2] 
+   SUB 1 
+      "之前隶属于由%s舰艇指挥的编队的以下舰船，做出如下调整：" 1 No_Force_Side[S8.D1]
+
+      GROUP 1
+         SUB 1
+         "\n——%s，脱离%s编队。" 2 unit_name_transform(S8.S1.G1.S1.D1) S8.S1.G1.S1.D2
+         END_SUB
+
+         SUB 2
+           "\n——%s,不能脱离%s编队，因为"
+                  2 unit_name_transform(S8.S1.G1.S2.D1) S8.S1.G1.S2.D2
+
+           SUB 1
+           "需要搭载该编队。" 0
+           END_SUB
+
+           SUB 2
+           "需要该编队提供海上补给。" 0 
+           END_SUB
+
+           SUB 3
+           "需要依托该编队实施两栖攻击。" 0
+           END_SUB
+
+           SUB 4
+           "需要依托该编队实施两栖装载。" 0
+           END_SUB
+
+           SUB 5
+           "该部队目前无法实施行动。" 0
+           END_SUB
+
+         END_SUB
+      END_GROUP
+      "\n" 0
+   END_SUB
+
+   SUB 2
+
+      "仍有舰艇隶属于还包括%s舰艇的外方编队，" 1 No_Force_Side[S8.D1]
+      "如果不再同该方舰艇协同作战，必须下令使其脱离该编队。" 0
+      "这些舰艇如下：" 0
+
+      GROUP 1
+         "\n——%s，隶属%s%s编队。"  3 unit_name_transform(S8.S2.G1.D1) No_Force_Side[S8.S2.G1.D3] S8.S2.G1.D2
+      END_GROUP
+
+      "\n" 0
+
+   END_SUB
+
+   SUB 3
+
+      "\n以下%s舰艇隶属于本方编队，当前动向：" 1 No_Force_Side[S8.D1]
+
+      GROUP 1
+
+         SUB 1
+         "\n——%s，不再与%s编队共同执行任务。" 
+                         2 unit_name_transform(S8.S3.G1.S1.D1) S8.S3.G1.S1.D2
+         END_SUB
+
+         SUB 2
+          "\n——%s，仍隶属于%s编队，因为" 
+                         2 unit_name_transform(S8.S3.G1.S2.D1) S8.S3.G1.S2.D2
+           
+SUB 1
+           "需要搭载该编队。" 0
+           END_SUB
+
+           SUB 2
+           "需要该编队提供海上补给。" 0 
+           END_SUB
+
+           SUB 3
+           "需要依托该编队实施两栖攻击。" 0
+           END_SUB
+
+           SUB 4
+           "需要依托该编队实施两栖装载。" 0
+           END_SUB
+
+           SUB 5
+           "该部队目前无法实施行动。" 0
+           END_SUB
+
+         END_SUB
+
+      END_GROUP
+
+      "\n" 0
+
+   END_SUB
+
+END_SUB
+
+SUB 9
+"\n下达给%s的" 1 unit_name_transform(S9.D1)
+"变更报告席位命令（编号%s），" 1 D2
+   SUB 1
+"已经执行，其所属部队同时有效。" 0
+   END_SUB
+   SUB 2
+"已经执行。" 0
+   END_SUB
+   GROUP 1
+      SUB 1
+"\n——改变%s席位：%s不存在。" 2 Player_Function[S9.G1.S1.D1] S9.G1.S1.D2
+      END_SUB
+      SUB 2
+"\n——改变%s席位：%s的隶属方不符合要求。" 2 Player_Function[S9.G1.S2.D1] S9.G1.S2.D2
+      END_SUB
+      SUB 3
+"\n——改变%s席位：%s不是演习人员客户端。" 2    Player_Function[S9.G1.S3.D1]  S9.G1.S3.D2
+      END_SUB
+      SUB 4
+"\n——改变%s席位：%s已接受，但未执行。" 2    Player_Function[S9.G1.S4.D1] S9.G1.S4.D2
+      END_SUB
+      SUB 5
+"\n——改变%s席位：%s已被设置。" 2 Player_Function[S9.G1.S5.D1] S9.G1.S5.D2
+      END_SUB
+      SUB 6
+"\n——改变%s席位：未申请。" 1 Player_Function[S9.G1.S6.D1]
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 10
+"\n%s受命实施阻击。" 1 unit_name_transform(S10.D1)
+   SUB 1
+"该部还需机动%s，" 1 DURATION(S10.S1.D1, "%d天%h时%Rm分")
+"预计到达时间为%s。" 1 GTIME(S10.S1.D2)
+   END_SUB
+   SUB 2
+"部队当前未参加作战。" 0
+   END_SUB
+END_SUB
+
+SUB 11
+"\n%s已从%s中抽组，" 2 unit_name_transform(S11.D1) unit_name_transform(S11.D2)
+"%s当前战斗力%2.2f，" 2 unit_name_transform(S11.D1) S11.D3
+"%s当前战斗力为%2.2f。" 2 unit_name_transform(S11.D2) S11.D4
+
+   SUB 1
+"%s目前控制%s资源。" 2 unit_name_transform(S11.D2) S11.S1.D1
+   END_SUB
+
+   SUB 2
+"在抽组过程中，%s获得了下列目标：" 1 unit_name_transform(S11.D1)
+"<p class='table_name'>该部目标清单</p>" 0 
+"__start_table|目标|类型|子类|单元数量\n" 0
+      GROUP 1
+"|%s|%s|%s|%s\n" 4 unit_name_transform(S11.S2.G1.D1)
+         Target_Category[S11.S2.G1.D2] SUBCAT_NAME{S11.S2.G1.D2,S11.S2.G1.D3}
+                                        S11.S2.G1.D4
+      END_GROUP
+"__stop_table" 0
+
+   END_SUB
+
+   SUB 3
+"在抽组过程中，%s未获得目标。" 1 unit_name_transform(S11.D1)
+   END_SUB
+
+   SUB 4
+"该部部队标识码为%s。" 1 S11.S4.D1
+   END_SUB
+
+   SUB 5
+"\n警告: 该部队在没有足够战斗系统和补给条件下抽组创建，" 0
+"如果不能立即补充，在%s（作战时间）内，" 1 GTIME(S11.S5.D1)
+"该部将被消灭，从演习中退出。" 0
+   END_SUB
+
+END_SUB
+
+SUB 12
+"\n如果连续行军，%s" 1 unit_name_transform(S12.D1)
+"从%s机动至%s，" 2 LOCATION(S12.D3,S12.D4) LOCATION(S12.D5,S12.D6)
+"将耗时%s。 " 1 DURATION(S12.D2, "%d天%h时%Rm分")
+"如果将该部队类型的每天最大允许机动时间考虑在内，" 0
+"该部将于%s到达目的地。" 1 GTIME(S12.D7)
+"实际机动时间还取决于在机动途中的敌情和燃油补给等因素。" 0
+END_SUB
+
+SUB 13
+"\n编号为%s的指令已执行。" 1 D2
+"已经创建新集团%s，按照命令，该集团由以下部队组成，" 1 S13.D1
+"由%s指挥，" 1 unit_name_transform(S13.D2)
+"如果以下部队不能加入该集团，必须说明原因。" 0
+
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S13.G1.D1)
+      SUB 1
+"已加入" 0
+      END_SUB
+      SUB 2
+"尚未加入，该部之前同集团指挥部队不隶属同一集团。" 0
+      END_SUB
+      SUB 3
+"尚未加入，当前未加入演习。" 0
+      END_SUB
+   END_GROUP
+"\n" 0
+END_SUB
+
+SUB 14
+"\n由于该集团的创建，以下部队的保障关系发生改变，建议告知相关参演人员。" 0
+"<p class='table_name'>部队保障关系变更情况</p>" 0 
+"__start_table |部队名称|保障部队|所属集团\n" 0
+   GROUP 1
+      SUB 1
+"|%s|无|%s\n" 2 unit_name_transform(S14.G1.S1.D1) unit_name_transform(S14.G1.S1.D2)
+      END_SUB
+      SUB 2
+"|%s|%s|%s\n" 3 unit_name_transform(S14.G1.S2.D1) unit_name_transform(S14.G1.S2.D2) unit_name_transform(S14.G1.S2.D3)
+      END_SUB
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 15
+"\n命令（编号：%s）执行情况：" 1 D2
+"该命令要求将%s集团并入%s集团，现已执行。" 2  S15.D2 S15.D1
+   GROUP 1
+      SUB 1
+"外部事件序号为%s的行动区报告，原计划由%s集团接收，" 2 S15.G1.S1.D1 S15.G1.S1.D2
+"现改由%s集团接收。" 1 S15.G1.S1.D3
+      END_SUB
+      SUB 2
+"外部事件序号为%s的部队报告，原计划由%s集团接收，" 2 S15.G1.S2.D1 S15.G1.S2.D2
+"现改由%s集团接收。" 1 S15.G1.S2.D3
+      END_SUB
+      SUB 3
+"外部事件序号为%s的目标报告，原计划由%s集团接收，" 2 S15.G1.S3.D1 S15.G1.S3.D2
+"现改由%s集团接收。" 1 S15.G1.S3.D3
+      END_SUB
+      SUB 4
+"类型为%s、序号为%s的外部事件，" 2   S15.G1.S4.D1 S15.G1.S4.D2
+"原计划由%s集团接收，" 1   S15.G1.S4.D3
+"现改由%s集团接收。建议通知技术人员。" 1   S15.G1.S4.D4
+"因为如果集团不能接收此类报告，将会是严重错误。" 0
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 16
+"\n%s收到进攻命令，" 1 unit_name_transform(S16.D1)
+"前期%s%s" 2 UOM_AMT(DISTANCE,S16.D2) UOM(DISTANCE)
+"约%s，" 1 DURATION(S16.D3, "%Th时%Rm分")
+"剩余时间约为%s，" 1 DURATION(S16.D4, "%d天%h时%Rm分")
+"预计将于%s到达。" 1 GTIME(S16.D5)
+END_SUB
+
+SUB 17
+"\n%s还需机动%s，" 2  unit_name_transform(S17.D1) DURATION(S17.D2, "%d天%h时%Rm分")
+"预计将于%s到达。" 1 GTIME(S17.D3)
+END_SUB
+
+SUB 18
+"\n变更指挥权限命令（编号%s）已经处理完毕，" 1 D2
+"可以使用部队权报告命令查询结果。" 0
+END_SUB
+
+SUB 20
+"" 0
+END_SUB
+
+SUB 21
+"\n%s还需%s撤出，" 2 unit_name_transform(S21.D1) DURATION(S21.D2, "%d天%h时%Rm分")
+"预计将于%s完成。" 1 GTIME(S21.D3)
+END_SUB
+
+SUB 22
+"\n%s已配属给%s，" 2 unit_name_transform(S22.D1) unit_name_transform(S22.D2)
+"%s当前战斗力%s%%。" 2 unit_name_transform(S22.D2) S22.D3
+END_SUB
+
+SUB 23
+"\n对于隶属于%s的所有部队，" 1 unit_name_transform(S23.D1)
+"如果伤员需要的治疗时间超过%s，" 1  DURATION(S23.D2, "%d天%h时%Rm分")
+"那么需要将这部分伤员送至后方医治。" 0
+END_SUB
+
+SUB 24
+"\n命令（编号：%s）要求从%s派出特种部队。" 2 D2 unit_name_transform(S24.D1)
+"现特种部队%s已派出，" 1 unit_name_transform(S24.D2)
+"其原型为%s。" 1 Highres_Unit_Prototype[S24.D3]
+   SUB 1
+"但是，该部队不可能沿命令指定的路线机动至指定地域。该部队虽然已被派遣，但将停留在其上级单位所在位置。" 0
+   END_SUB
+   SUB 2
+"特种部队没有从其上级单位收到必要的位置信息，" 0
+"将影响其自动定位。" 0
+
+   END_SUB
+END_SUB
+
+SUB 25
+"\n%s已按照命令（编号：%s），开始机动。" 2 unit_name_transform(D3) D2
+END_SUB
+
+SUB 26
+"\n%s已开始按照命令（编号：%s），组织埋伏行动。" 2 unit_name_transform(D3) D2
+END_SUB
+
+SUB 27
+"\n%s正在执行命令（编号：%s），现在还没有执行情况信息。" 2 unit_name_transform(D3) D2
+END_SUB
+
+SUB 28
+"\n%s正按照命令（编号：%s），向%s机动。" 3 unit_name_transform(D3) D2 unit_name_transform(S28.D1)
+END_SUB
+
+SUB 29
+"\n新建集团的国家代码为：%s。" 1 S29.D1
+END_SUB
+
+SUB 30
+"\n新建集团与%s之间存在隶属关系。" 1 S30.D1
+END_SUB
+
+SUB 31
+"\n%s正在按照命令（编号：%s），" 2 unit_name_transform(D3) D2
+   SUB 1
+"向指定位置机动。" 0
+   END_SUB
+   SUB 2
+"向指定位置隐蔽机动。" 0
+   END_SUB
+END_SUB
+SUB 32
+"\n%s按照命令（编号：%s），已开始组织巡逻。" 2 unit_name_transform(D3) D2 
+END_SUB
+
+SUB 33
+"\n%s按照命令（编号：%s），已展开突袭行动。" 2 unit_name_transform(D3) D2
+END_SUB
+
+SUB 34
+"\n%s按照命令（编号：%s），已变更交战规则。" 2 unit_name_transform(D3) D2
+END_SUB
+
+SUB 35
+"\n%s已收到命令（编号：%s），要求" 2 unit_name_transform(S35.D1) D2
+
+SUB 1
+"向%s发射"  1 unit_name_transform(S35.S1.D3)
+"%s%s发。"  2 Targetable_Weapon[S35.S1.D2] S35.S1.D1
+  END_SUB
+  SUB 2
+"向%s地域发射" 1 LOCATION(S35.S2.D3,S35.S2.D4)
+"%s%s发。" 2 Targetable_Weapon[S35.S2.D2] S35.S2.D1
+  END_SUB
+  SUB 3
+"向%s发射" 1 unit_name_transform(S35.S3.D3)
+"%s%s枚。" 2 Targetable_Weapon[S35.S3.D2] S35.S3.D1
+  END_SUB
+  SUB 4
+"向%s地域发射" 1 LOCATION(S35.S4.D3,S35.S4.D4)
+"%s%s枚。" 2 Targetable_Weapon[S35.S4.D2] S35.S4.D1
+ END_SUB
+  SUB 5
+"发射%s%s枚，"  2 Targetable_Weapon[S35.S5.D2] S35.S5.D1
+"方位%s，距离%s%s。" 3 S35.S5.D3 UOM_AMT(DISTANCE,S35.S5.D4) UOM(DISTANCE)
+  END_SUB
+  SUB 6
+"向目标定位点%s" 1 S35.S6.D3
+"发射%s%s枚。" 2 Targetable_Weapon[S35.S6.D2] S35.S6.D1
+END_SUB  
+"正按计划执行。" 0
+END_SUB
+
+SUB 36
+   SUB 1
+"\n%s已发射%s，" 2  unit_name_transform(D2) Targetable_Weapon[S36.S1.D1]
+   END_SUB
+   SUB 2
+"\n%s执行火力任务，" 1 unit_name_transform(D2)
+"发射%s%s发，" 2 Targetable_Weapon[S36.S2.D4]  S36.S2.D1
+   END_SUB
+   SUB 3
+     SUB 1
+"目标：%s。" 1 unit_name_transform(S36.S3.S1.D1)
+      END_SUB
+      SUB 2
+"目标：%s。" 1 LOCATION(S36.S3.S2.D1,S36.S3.S2.D2)
+      END_SUB
+      SUB 3
+"目标：方位%s度，" 1 S36.S3.S3.D1
+"距离%s%s。" 2 UOM_AMT(DISTANCE,S36.S3.S3.D2) UOM(DISTANCE)
+      END_SUB
+   END_SUB
+   SUB 4
+"预计命中目标时间：%s。" 1  GTIME(D3)
+   END_SUB
+   SUB 5
+"开始发射，预计完成时间：%s。" 1 GTIME(D3)
+   END_SUB
+
+END_SUB
+
+SUB 37
+"\n%s正在执行特战分队作战任务（编号：%s）。" 2 unit_name_transform(D3) D2
+END_SUB
+
+SUB 38
+"\n变更国界命令（编号：%s）已执行，" 1 D2
+   SUB 1
+"实现了对%s的国界调整。" 1 unit_name_transform(S38.S1.D1)
+   END_SUB
+   SUB 2
+"完成了对你部的隶属方设置。" 0
+   END_SUB
+"对以下国界做出调整：" 0
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S38.G1.D1)
+   END_GROUP
+"\n注：可通过国界报告命令获取当前国界中的对阵方设置和越界情况。" 0
+END_SUB
+
+SUB 39
+"<p class='table_name'>%s%s火力半径评估报告</p>" 2 unit_name_transform(S39.D1) Targetable_Weapon[S39.D2]
+   SUB 1
+"__start_table|部队|半径（米）\n" 0
+   END_SUB
+   SUB 2
+"__start_table|目标|半径（米）\n" 0
+   END_SUB
+   SUB 3
+"__start_table|坐标|半径（米）\n" 0
+   END_SUB
+   SUB 4
+"__start_table|目标定位点|半径（米）\n" 0
+   END_SUB
+   GROUP 1
+      SUB 1
+"|%s|%s\n" 2 unit_name_transform(S39.G1.S1.D1) S39.G1.S1.D2
+      END_SUB
+      SUB 2
+"|%s|%s\n" 2 LOCATION(S39.G1.S2.D1,S39.G1.S2.D2) S39.G1.S2.D3
+      END_SUB
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+END_MAIN
+

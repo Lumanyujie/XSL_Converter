@@ -1,0 +1,20 @@
+
+1726
+SUBJECT
+"兰切斯特/FWL案例" 0
+MAIN
+
+" <p class='title'>  兰切斯特/FWL案例 </p> \n\n" 0
+
+SUB 1
+"  攻方系统处于%s态势，守方系统处于%s态势。" 2 Active_Unit_Posture[S1.D1] Active_Unit_Posture[S1.D2] 
+"兰切斯特/FWL案例是%s。\n" 1 FWL_Case[S1.D3]
+END_SUB
+SUB 2
+"  攻方态势设置为%s, 守方态势设置为%s。\n" 2 Active_Unit_Posture[S2.D1] Active_Unit_Posture[S2.D2] 
+END_SUB
+SUB 3
+"  由于攻方系统处于%s态势，而守方态势处于%s。" 2 Active_Unit_Posture[S3.D1] Active_Unit_Posture[S3.D2] 
+"兰切斯特/FWL案例是%s。\n" 1 FWL_Case[S3.D3]
+END_SUB
+END_MAIN

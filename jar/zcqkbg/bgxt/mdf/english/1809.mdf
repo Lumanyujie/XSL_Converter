@@ -1,0 +1,23 @@
+
+1809
+SUBJECT
+"战术部队原型%s(编号%s)战斗力默认的部署方向\n" 2 Tactical_Unit_Prototype[D2] D2
+
+MAIN
+"<p class='title'> 战术部队原型%s(编号%s)战斗力默认的部署方向</p>\n\n"          2 Tactical_Unit_Prototype[D2] D2
+
+
+
+"  在没有实施进攻和遭受攻击的情况下，使用战术部队原型%s(编号%s)的部队"                                          2 Tactical_Unit_Prototype[D2] D2
+"应努力按以下方式部署作战系统。" 0
+
+"方向1是部队正面方向。" 0
+SUB 1
+"  百分之%s部队部署到部队正前方。\n\n " 1 S1.D1
+"  %s部队部署到左前翼, %s部队部署到右前翼。\n" 2 S1.D6 S1.D2
+"  %s部署到左后翼, %s部署到右后翼。\n " 2 S1.D5 S1.D3
+"  百分之%s部队部署到部队正后方。 \n\n" 1 S1.D4
+END_SUB                                                    
+
+
+END_MAIN

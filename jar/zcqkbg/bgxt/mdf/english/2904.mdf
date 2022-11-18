@@ -1,0 +1,23 @@
+
+2904
+SUBJECT
+"演习站位情况报告" 0
+
+MAIN
+"<p class='title'>演习站位情况报告</p>" 0
+
+
+"__start_table|演习站位|是否主权限|是否执行权限|参演方|颜色\n" 0
+  GROUP 1
+ SUB 1
+"|%s|%s|%s|导控席|——\n" 3 unit_name_transform(G1.S1.D1) Answer[G1.S1.D2]  unit_name_transform(G1.S1.D3)
+   END_SUB
+   SUB 2
+"|%s|%s|%s|%s|%s\n" 5 unit_name_transform(G1.S2.D1) Answer[G1.S2.D2]
+                                  unit_name_transform(G1.S2.D3) No_Force_Side[G1.S2.D4] Color[G1.S2.D5]
+   END_SUB
+END_GROUP
+"__stop_table" 0
+
+END_MAIN
+

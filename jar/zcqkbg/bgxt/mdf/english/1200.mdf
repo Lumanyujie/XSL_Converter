@@ -1,0 +1,67 @@
+
+1200
+SUBJECT
+"%s编成情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s编成情况报告</p>" 1 unit_name_transform(D2)
+GROUP 1
+
+   SUB 1
+"\n%s为%s部队，" 2 unit_name_transform(G1.S1.D2) No_Force_Side[G1.S1.D1]
+"隶属于%s集团，" 1 unit_name_transform(G1.S1.D3)
+"所属部队包括：" 0
+   END_SUB
+
+   SUB 2
+"\n—%s（%s集团）" 2 unit_name_transform(G1.S2.D1) unit_name_transform(G1.S2.D2)
+   END_SUB
+
+   SUB 3
+"\n——%s（%s集团）" 2 unit_name_transform(G1.S3.D1) unit_name_transform(G1.S3.D2)
+   END_SUB
+
+   SUB 4
+"\n———%s（%s集团）" 2 unit_name_transform(G1.S4.D1) unit_name_transform(G1.S4.D2)
+   END_SUB
+
+   SUB 5
+"\n————%s（%s集团）" 2 unit_name_transform(G1.S5.D1) unit_name_transform(G1.S5.D2)
+   END_SUB
+
+   SUB 6
+"\n—————%s（%s集团）" 2 unit_name_transform(G1.S6.D1) unit_name_transform(G1.S6.D2)
+   END_SUB
+
+   SUB 7
+"\n——————%s（%s集团）" 2 unit_name_transform(G1.S7.D1) unit_name_transform(G1.S7.D2)
+   END_SUB
+
+   SUB 8
+"\n———————%s（%s集团）" 2 unit_name_transform(G1.S8.D1) unit_name_transform(G1.S8.D2)
+   END_SUB
+
+   SUB 9
+"\n————————%s（%s集团）" 2 unit_name_transform(G1.S9.D1) unit_name_transform(G1.S9.D2)
+   END_SUB
+
+   SUB 10
+"\n—————————%s（%s集团）" 2 unit_name_transform(G1.S10.D1) unit_name_transform(G1.S10.D2)
+   END_SUB
+
+   SUB 11
+"\n——————————%s（%s集团）" 2 unit_name_transform(G1.S11.D1) unit_name_transform(G1.S11.D2)
+   END_SUB
+
+   SUB 12
+"\n———————————%s（%s集团）" 2 unit_name_transform(G1.S12.D1) unit_name_transform(G1.S12.D2)
+   END_SUB
+
+   SUB 13
+"\n————————————%s（%s集团）" 2 unit_name_transform(G1.S13.D1) unit_name_transform(G1.S13.D2)
+   END_SUB
+
+END_GROUP
+
+END_MAIN
+

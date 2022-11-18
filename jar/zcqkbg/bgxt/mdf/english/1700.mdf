@@ -1,0 +1,92 @@
+
+1700
+SUBJECT
+"飞机分配显示" 0
+MAIN
+"<p class='title'>  飞机分配显示报告 </p> \n" 0
+SUB 1
+"  在%s条件下，当前挂载备案%s没有为%s飞机确定挂载。\n" 3 Day_Night[S1.D3] S1.D1  Aircraft_Type[S1.D2]
+ END_SUB
+
+SUB 2
+"  打击%s目标。\n" 1 Load_Type[S2.D1]
+END_SUB
+
+SUB 3
+"  需要%s挂载执行飞行任务。\n" 1 Load_Type[S3.D1]
+END_SUB  
+
+SUB 13
+"  %s飞机可替换挂载%s。\n" 2 Aircraft_Type[S13.D2] S13.D1
+END_SUB
+
+SUB 14
+"  在%s条件下攻击%s目标。\n" 2  Day_Night[S14.D2] Load_Type[S14.D1]
+END_SUB
+
+SUB 15
+"  在%s条件下执行%s挂载飞行任务。\n" 2
+                                Day_Night[S15.D2] Load_Type[S15.D1]
+END_SUB
+
+SUB 25
+"  %s" 1 S25.D1
+   SUB 1
+"飞机挂载%s的清单如下：\n" 1 S25.S1.D1
+      SUB 1
+"  包括下列武器:\n" 0
+         SUB 1
+            GROUP 1
+"  %-15.15s   %s\n" 2 Targetable_Weapon[S25.S1.S1.S1.G1.D1]
+                                                     S25.S1.S1.S1.G1.D2
+            END_GROUP
+         END_SUB
+         SUB 2
+"  无\n" 0
+         END_SUB
+      END_SUB
+      SUB 2
+"  包括下列传感器:\n" 0
+         SUB 1
+            GROUP 1
+"  %s\n" 1 Sensor_Type[S25.S1.S2.S1.G1.D1]
+            END_GROUP
+         END_SUB
+         SUB 2
+"  无\n" 0
+         END_SUB
+      END_SUB
+      SUB 3
+"  包括下列干扰机:\n" 0
+         SUB 1
+            GROUP 1
+"  %s\n" 1 Jammer_Type[S25.S1.S3.S1.G1.D1]
+            END_GROUP
+         END_SUB
+         SUB 2
+"  无\n" 0
+         END_SUB
+      END_SUB
+      SUB 4
+"  包括下列补给物资（类别和数量）:\n" 0
+         SUB 1
+            GROUP 1
+"  补给类 %3.3s  %-15.15s  %14.14s %s\n" 4 S25.S1.S4.S1.G1.D1
+                        Supply_Category[S25.S1.S4.S1.G1.D1]
+                           SLP_SC_AMT(0,S25.S1.S4.S1.G1.D1,S25.S1.S4.S1.G1.D2)
+                           SLP_SC_UOM(0,S25.S1.S4.S1.G1.D1)
+            END_GROUP
+         END_SUB
+         SUB 2
+"  空\n" 0
+         END_SUB
+      END_SUB
+      SUB 6
+"  包括以下数量的附加燃料:\n\n" 0
+"  %s %s\n" 2 UOM_AMT(WET_WEIGHT,S25.S1.S6.D1) UOM(WET_WEIGHT)
+      END_SUB
+   END_SUB
+END_SUB
+
+END_MAIN
+

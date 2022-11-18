@@ -1,0 +1,39 @@
+
+1805
+SUBJECT
+"战术部队原型%s(编号%s)改变的补给消耗" 
+                                          2 Tactical_Unit_Prototype[D2] D2
+MAIN
+"<p class='title'>  战术部队原型%s(编号%s)改变的补给消耗 </p>\n\n"  2 Tactical_Unit_Prototype[D2] D2
+
+
+"<p class='paragraph'>  使用战术部队原型%s(编号%s)的部队每天或每千米消耗的补给物资数量 </p>\n\n"
+                                          2 Tactical_Unit_Prototype[D2] D2
+
+SUB 1
+"  __start_table |  种类    |   编号   |  正常消耗\n" 0
+   GROUP 1
+" |%15.15s  | (%5.5s)  | %9.9s %s %s\n" 5
+                                            Supply_Category[S1.G1.D1] S1.G1.D1
+                         SLP_SC_AMT(0,S1.G1.D1,S1.G1.D2) SLP_SC_UOM(0,S1.G1.D1)
+                                                     Consumption_Type[S1.G1.D1] 
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+SUB 2
+"  __start_table | 种类      |  编号    | 每千米消耗\n" 0
+   GROUP 1
+"| %-15.15s   |(%5.5s) | %9.9s %s %s\n" 5
+                                            Supply_Category[S2.G1.D1] S2.G1.D1
+                         SLP_SC_AMT(0,S2.G1.D1,S2.G1.D2) SLP_SC_UOM(0,S2.G1.D1)
+                                                     Consumption_Type[S2.G1.D1] 
+   END_GROUP
+"__stop_table"0
+
+"\n" 0
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,53 @@
+
+1822
+SUBJECT
+"%s（编号s%）舰船部队原型参数：岸上后勤和港口作业" 
+                                              2 Ship_Unit_Prototype[D2] D2
+MAIN
+"<p class='title'>  舰艇部队原型%s（编号%s）部队特征 </p>\n\n"  2 Ship_Unit_Prototype[D2] D2
+"  他们使用岸上后勤力量每天卸载:\n" 0
+
+SUB 1
+"  %s %s干补给物资。 \n" 2
+ UOM_AMT(DRY_WEIGHT,S1.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 2
+"  %s %s液态补给物资。 \n" 2
+ UOM_AMT(WET_WEIGHT,S2.D1) UOM(WET_WEIGHT)
+END_SUB
+
+"\n  他们使用岸上后勤力量每天装载:\n" 0
+SUB 3
+"  %s %s干补给物资。\n" 2
+ UOM_AMT(DRY_WEIGHT,S3.D1) UOM(DRY_WEIGHT)
+END_SUB
+SUB 4
+"  %s %s液态补给物资。\n" 2
+ UOM_AMT(WET_WEIGHT,S4.D1) UOM(WET_WEIGHT)
+END_SUB
+
+"\n  他们使用港口每天卸载:\n" 0
+SUB 5
+"  %s %s干补给物资。\n" 2
+ UOM_AMT(DRY_WEIGHT,S5.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 6
+"  %s %s液态补给物资。 \n" 2
+ UOM_AMT(WET_WEIGHT,S6.D1) UOM(WET_WEIGHT)
+END_SUB
+
+"\n  他们使用港口每天装载:\n" 0
+SUB 7
+"  %s %s干补给物资。 \n" 2
+ UOM_AMT(DRY_WEIGHT,S7.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 8
+"  %s %s液态补给物资。 \n" 2
+ UOM_AMT(WET_WEIGHT,S8.D1) UOM(WET_WEIGHT)
+END_SUB
+
+END_MAIN
+

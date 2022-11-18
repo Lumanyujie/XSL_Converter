@@ -1,0 +1,61 @@
+
+1620
+SUBJECT
+" %s %s后勤保障原型的运输队属性" 2 Sustainment_Log_Prototype[D2] D2
+MAIN
+
+"  %s后勤原型的运输队属性:\n\n" 1 Sustainment_Log_Prototype[D2]
+
+SUB 1 
+"  接收并处理一个补给请求耗时%s\n\n" 1 DURATION(S1.D1, "%d Days %h Hours %Rm Minutes")
+END_SUB
+
+SUB 2
+"  派遣一支隐式运输队耗时%s\n\n" 1
+      DURATION(S2.D1, "%d Days %h Hours %Rm Minutes")
+END_SUB
+
+SUB 3
+"  卸载一支隐式运输队耗时%s\n\n" 1
+      DURATION(S3.D1, "%d days %h hours %Rm minutes")
+END_SUB
+ 
+SUB 4
+"  当运输距离小于等于%s %s时使用隐式运输队\n\n" 2
+      UOM_AMT(DISTANCE, S4.D1)  UOM(DISTANCE)
+END_SUB
+
+SUB 5
+"  在开阔地上显式运输队的机动速度为%s %s\n\n" 2
+       UOM_AMT(SPEED, S5.D1)  UOM(SPEED)
+END_SUB
+
+SUB 6
+"  不考虑地形因素的影响，隐式运输队的机动速度为%s %s\n\n" 2
+      UOM_AMT(SPEED, S6.D1)  UOM(SPEED)
+END_SUB
+
+SUB 7
+"  水上运输队的航速为%s %s\n\n" 2
+      UOM_AMT(SPEED, S7.D1)  UOM(SPEED)
+END_SUB
+
+SUB 8
+"  重型装备运输队的机动速度为%s %s\n\n" 2
+      UOM_AMT(SPEED, S8.D1)  UOM(SPEED)
+END_SUB
+
+SUB 9
+"  陆上运输队标志%s,索引%s\n\n" 2 S9.D1 S9.D2
+END_SUB
+
+SUB 10
+"  水上运输队标志%s,索引%s\n\n" 2 S10.D1 S10.D2
+END_SUB
+
+SUB 11
+"  铁路运输队标志%s,索引%s\n\n" 2 S11.D1 S11.D2
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="2353"> <subject> <line><f n="unit_name_transform"><D2/></f>在机场被毁后转移情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;<f n="unit_name_transform"><D2/></f>在机场被毁后转移情况报告&lt;/p&gt;</line>  <sub n="1"> <line><br/><f n="unit_name_transform"><D2/></f>在机场被毁后，</line> <line><S1.D1/>架飞机正在飞往<f n="LOCATION"><S1.D3/><S1.D4/></f>。</line> <line>同时，试图同位于该地域的<f n="unit_name_transform"><S1.D2/></f>重新建立联系。</line> </sub></main> </msg> </msgs>

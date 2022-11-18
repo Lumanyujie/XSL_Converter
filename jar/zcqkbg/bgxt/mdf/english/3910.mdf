@@ -1,0 +1,204 @@
+
+3910
+SUBJECT
+"%sLink-16数据块赋值报告" 1 D2
+MAIN
+
+"<p class='title'>%sLink-16数据块赋值报告</p>" 1 D2
+
+SUB 1
+"  命令将修改%sLink-16数据块赋值\n" 1 D2
+"  MLB标志符    开始号      结束号\n" 0
+
+   SUB 1
+"\n  以下MLB被添加:\n" 0
+      GROUP 1
+"   %s            %s            %s\n" 3 S1.S1.G1.D1 S1.S1.G1.D2 S1.S1.G1.D3
+      END_GROUP
+   END_SUB
+
+   SUB 2
+"\n以下MLB被修改:\n" 0
+      GROUP 1
+"   %s            %s            %s\n" 3 S1.S2.G1.D1 S1.S2.G1.D2 S1.S2.G1.D3
+      END_GROUP
+   END_SUB
+
+   SUB 3
+"\n以下MLB被删除:\n" 0
+      GROUP 1
+"   %s            %s            %s\n" 3 S1.S3.G1.D1 S1.S3.G1.D2 S1.S3.G1.D3
+      END_GROUP
+   END_SUB
+
+   SUB 4
+"\n以下修改MLB的命令无效:\n" 0
+      GROUP 1
+"   %s            %s            %s\n" 3 S1.S4.G1.D1 S1.S4.G1.D2 S1.S4.G1.D3
+         SUB 1
+"      不属于空军中队，不允许删除\n" 0
+         END_SUB
+
+         SUB 2
+"      不属于空军中队，不允许修改\n" 0
+         END_SUB
+
+         SUB 3
+"      其他中队已经拥有同名的MLB，不允许增加\n" 0
+         END_SUB
+
+         SUB 4
+"      数据块开始号于结束号，不允许增加\n" 0
+         END_SUB
+
+         SUB 5
+"      数据块开始号高于结束号，不允许修改\n" 0
+         END_SUB
+
+         SUB 6
+"      该中队已经拥有同名的MLB，不允许增加\n" 0
+         END_SUB
+
+         SUB 7
+"      其他中队已经拥有同名的MLB，不允许修改\n" 0
+         END_SUB
+
+      END_GROUP
+
+   END_SUB
+
+   SUB 5
+"  注意：在数据开始号或结束号键入一个少于5个字符的文本串，模型会校对并修正该值，以确保校正后的值是正确的\n" 0
+   END_SUB
+
+   SUB 6
+"  管理中队JU的数据块开始/结束号命令没有更改\n" 0
+"  可能是尝试定义数据块的设置前，部队已经定义过\n" 0
+"  没有自动生成数据\n" 0
+"  使用显示数据块选项来查看当前的赋值\n" 0
+   END_SUB
+
+END_SUB
+
+SUB 2
+"  以下%sLink-16数据块赋值存在：\n" 1 D2
+"  MLB标识符    开始号      结束号\n" 0
+   GROUP 1
+"   %s            %s            %s\n" 3 S2.G1.D1 S2.G1.D2 S2.G1.D3
+   END_GROUP
+
+   SUB 1
+"   以下空军中队当前没有分配MLB\n" 0
+   END_SUB
+    
+   SUB 2
+"   当前空军中队没有分配MLB给任何编队\n" 0
+   END_SUB
+
+   SUB 3
+"   以下MLB分配给空军中队编队:\n" 0
+
+      GROUP 1
+"   空中编队： %s   使用MLB：   %s\n" 2 S2.S3.G1.D1 S2.S3.G1.D2
+      END_GROUP
+
+   END_SUB
+
+END_SUB
+
+SUB 3
+"  为%s修改部队JU号码段\n" 1 D2
+
+   SUB 1
+"  %s已经分配给一个部队，为其赋新值的命令被拒绝\n" 1 S3.D1
+   END_SUB
+
+   SUB 2
+"  部队的JU号码段已经被改为%s\n" 1 S3.D1
+   END_SUB
+
+   SUB 3
+"  部队没有空中搜寻雷达\n" 0
+   END_SUB
+
+   SUB 4
+"  该部队启用以下空中搜寻雷达:\n" 0
+
+      GROUP 1
+"     %s具有从%s到%s的%s个号码\n" 4 S3.S4.G1.D1 S3.S4.G1.D3 S3.S4.G1.D4 S3.S4.G1.D2 
+      END_GROUP 
+
+   END_SUB
+
+END_SUB
+ 
+SUB 4
+"  命令将为%s改变号码段赋值\n" 1 D2
+
+   SUB 1
+"  %s不是空中搜寻雷达，命令被拒绝\n" 1 D2
+   END_SUB
+
+   SUB 2
+"  目标数据块的开始号%s大于数据块的结束号%s，命令被拒绝\n" 2 S4.D1 S4.D2
+   END_SUB
+
+   SUB 3
+"  目标数据块的开始号%s和结束号%s已经赋值给该数据块，命令被拒绝\n" 2 S4.D1 S4.D2
+   END_SUB
+
+   SUB 4
+"  当前目标数据块赋值的Link16号码段在%s和%s之间，共计%s个可能号码。接受命令\n" 3 S4.D1 S4.D2 S4.S4.D1
+   END_SUB
+
+   SUB 5
+"  注意：在数据开始号或结束号键入一个少于5个字符的文本串，模型会校对并修正该值，以确保校正后的值是正确的\n" 0
+   END_SUB
+
+END_SUB
+
+SUB 5
+"  该命令显示为%s号码段赋值\n" 1 D2
+
+   SUB 1
+"  %s不是空中搜寻雷达，任何号码段的赋值都没有意义\n" 1 D2
+   END_SUB
+
+   SUB 2
+"  目标数据块赋值的Link16号码段在%s和%s之间\n" 2 S5.D1 S5.D2
+"  %s的号码赋值总数可用\n" 1 S5.S2.D1
+   END_SUB
+
+   SUB 3
+"  注意：控制目标数据块的部队%s没有给JU号码段赋值，该部队没有参与到LINK16中\n" 1 D3
+   END_SUB
+
+END_SUB
+
+SUB 6
+"  命令为%s显示LINK16数据\n" 1 D2
+
+   SUB 1
+"  该部队的JU号码段是%s\n" 1 S6.D1
+   END_SUB
+
+   SUB 2
+"  该部队当前没有JU号码段赋值\n" 0
+   END_SUB
+
+   SUB 3
+"  该部队没有空中搜寻雷达\n" 0
+   END_SUB
+
+   SUB 4
+"  该部队启用以下空中搜寻雷达:\n" 0
+
+      GROUP 1
+"     %s具有从%s到%s的%s个号码\n" 4 S6.S4.G1.D1 S6.S4.G1.D3 S6.S4.G1.D4 S6.S4.G1.D2
+      END_GROUP 
+
+   END_SUB
+
+END_SUB
+
+END_MAIN

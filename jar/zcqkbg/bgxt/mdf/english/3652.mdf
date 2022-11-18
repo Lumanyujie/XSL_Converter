@@ -1,0 +1,73 @@
+
+3652
+SUBJECT
+"空中%s编队投送特战分队行动情况报告" 1 D2
+MAIN
+"<p class='title'>空中%s编队投送特战分队行动情况报告</p>" 1 D2
+ 
+SUB 1
+"\n%s编队按照命令要求，执行特战分队空中投送" 1 D2
+"任务有关情况及预计完成时间：" 0
+END_SUB
+
+SUB 2
+"\n该编队预计起飞时间：未计划。" 0
+END_SUB
+
+SUB 3
+"\n该编队预计起飞时间：%s。" 1 GTIME(S3.D1)
+END_SUB
+ 
+SUB 4
+"\n该编队当前所处状态：%s。" 1 Air_Mission_Posture[S4.D1]
+END_SUB
+ 
+SUB 5
+"\n该编队预计开始时间：%s。" 1 GTIME(S5.D1)
+END_SUB
+ 
+SUB 6
+"\n该编队行动延迟，当前所处状态：%s。" 1 Air_Mission_Posture[S6.D1]
+END_SUB
+
+SUB 7
+"\n以下部队当前已登机：" 0
+   GROUP 1
+      "\n——%s" 1 unit_name_transform(S7.G1.D1)
+   END_GROUP
+END_SUB 
+
+SUB 8
+"\n当前还没有部队登机。" 0
+END_SUB
+
+SUB 9
+"\n该编队空运能力：%s%s。" 2 UOM_AMT(DRY_WEIGHT,S9.D1) UOM(DRY_WEIGHT)
+"\n已用运力百分比：%s%%。" 1 S9.D2
+"\n人员运力百分比：%s%%。" 1 S9.D3
+END_SUB
+
+SUB 10
+"\n该编队当前遇突发状况，起飞时间无法确定，问题解决后即刻起飞。" 0
+END_SUB
+
+SUB 11
+"<p class='table_name'>空中投送计划</p>" 0
+"__start_table|序号|节点|坐标|到达时间|出发时间|部队番号\n" 0
+
+   GROUP 1
+"|%s|%s|%s" 3 S11.G1.D6 All_Transport_Types[S11.G1.D2] LOCATION(S11.G1.D3,S11.G1.D4)
+"|%s|%s|%s\n" 3 GTIME(S11.G1.D1) GTIME(S11.G1.D5) unit_name_transform(S11.G1.D7)
+   END_GROUP
+
+"__stop_table" 0
+END_SUB
+
+SUB 12
+"\n该编队将返回%s，"  1 unit_name_transform(S12.D1)
+"坐标：%s，"  1 LOCATION(S12.D2, S12.D3)
+"预计完成时间：%s。" 1 GTIME(S12.D4)
+END_SUB
+
+END_MAIN
+

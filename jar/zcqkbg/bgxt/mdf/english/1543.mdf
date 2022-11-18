@@ -1,0 +1,29 @@
+1543
+SUBJECT
+" %s参数" 1 Mine_Search_Capability[D2]
+MAIN
+
+"<p class='title'>%s参数</p>" 1 Mine_Search_Capability[D2]
+
+SUB 1
+"<p class='table_name'>对于%s的探测概率</p>" 1 Minefield_Type[S1.D1]
+"__start_table | 编号 |深度|能力\n" 0
+   GROUP 1
+" | %s | %s | %s\n" 3
+            S1.G1.D1 Depth_Zone[S1.G1.D1] S1.G1.D2
+   END_GROUP
+   "__stop_table" 0
+END_SUB
+
+SUB 2
+"<p class='table_name'>对于%s的已做变更的探测概率</p>" 1 Minefield_Type[S2.D1]
+
+   "__start_table | 编号|深度|能力\n" 0
+   GROUP 1
+" | %s |%s | %s\n" 3
+            S2.G1.D1 Depth_Zone[S2.G1.D1] S2.G1.D2
+   END_GROUP
+  "__stop_table" 0
+END_SUB
+
+END_MAIN

@@ -1,0 +1,88 @@
+
+3450
+SUBJECT
+"空中%s编队遭遇问题情况报告" 1 D2
+MAIN
+  "<p class='title'>空中%s编队遭遇问题情况报告</p>" 1 D2
+SUB 1
+"\n命令要求空中%s编队加入%s，" 2 D2 unit_name_transform(S1.D1)
+"但该编队同其突击编队以及其他支援编队间" 0
+"尚未建立友好关系，命令无法执行。" 0
+END_SUB
+
+SUB 2
+"\n空中%s编队现位于%s，燃油不足。" 2 D2 LOCATION(S2.D1,S2.D2)
+END_SUB
+
+SUB 3
+"\n命令指定空中%s编队挂载的巡航导弹在目标分配上存在问题。"  1 D2
+   SUB 1
+"部分目标分配不适于巡航导弹。" 0
+"<p class='table_name'>存在问题的目标分配表</p>" 0
+  "__start_table|分配目标|指定武器\n" 0
+    GROUP 1
+   "|%s|%s\n" 2 unit_name_transform(S3.S1.G1.D1) Targetable_Weapon[S3.S1.G1.D2]
+   END_GROUP  
+"__stop_table" 0   
+   END_SUB
+"\n当前无其他问题。" 0
+END_SUB
+
+SUB 4
+"\n空中%s编队已自动解散，" 1 D2
+"机群指挥%s已不再存在。" 1 unit_name_transform(S4.D1)
+END_SUB
+
+SUB 5
+"\n空中支援待战编队不能按批号为%s的命令要求执行，" 1 D2
+"指定的缺省打击目标%s为无效实体。" 1 unit_name_transform(S5.D1)
+"该编队按照无缺省目标选项继续飞行。" 0
+END_SUB
+
+SUB 7
+"\n从%s抽组的空中%s编队奉命" 2 unit_name_transform(D3) D2
+"转场至航母%s。" 1 unit_name_transform(S7.D1)
+"虽然该航母可供该编队飞机机型起降，" 0
+"但由于%s的飞行员没有航母起降资格，" 1 unit_name_transform(D3)
+"编队不能在航母上降落，任务取消。" 0
+END_SUB
+
+SUB 8
+"\n从%s抽组的空中%s编队" 2 unit_name_transform(D3) D2
+"支持LINK16数据链，" 0
+"但该部队没有足够的空情轨迹模块提供给编队中每架飞机。" 0
+"当前编队需要%s个模块，但仅有%s个模块。" 2 S8.D1 S8.D2
+END_SUB
+
+SUB 9
+"\n一枚%s巡航导弹被%s击毁。" 2
+                 Targetable_Weapon[S9.D1] unit_name_transform(S9.D2)
+
+   SUB 1
+"该导弹未能飞抵目标。" 0
+   END_SUB
+
+   SUB 2
+"该导弹在飞过陆地时自毁。" 0
+   END_SUB
+
+   SUB 3
+"该导弹在飞过开阔水域时自毁。" 0
+   END_SUB
+
+   SUB 4
+"该导弹在着陆时自毁，似乎是采取了方位角/距离的突击目标方式。" 0
+   END_SUB
+
+   SUB 5
+"该导弹燃料耗尽爆炸。" 0
+   END_SUB
+
+   SUB 6
+"该巡航导弹已失去联系，原因不明。" 0
+   END_SUB
+
+END_SUB
+
+END_MAIN
+

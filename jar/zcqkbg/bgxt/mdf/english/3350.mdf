@@ -1,0 +1,48 @@
+
+3350
+SUBJECT
+"空运空投%s任务进展情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>空中投送%s任务进展情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n当前空运部队%s正在空运途中，" 1 unit_name_transform(D2)
+"\n按要求，将于" 0
+"%s同%s编队会合，" 2 LOCATION(S1.D2,S1.D3) S1.D1
+"该编队一直在该处等待，截止时间：%s。"  1 GTIME(S1.D4)
+END_SUB
+
+SUB 2
+"\n按要求，空运部队%s将在" 1 unit_name_transform(D2)
+"%s处同空中%s编队会合，" 2 LOCATION(S2.D2,S2.D3) S2.D1
+"但该部队尚未展开机动，" 0
+"编队一直在该处等待，截止时间：%s。"  1 GTIME(S2.D4)
+END_SUB
+
+SUB 3
+"\n按照约定，%s由空中%s编队负责装载。" 2 unit_name_transform(D2) S3.D1
+   SUB 1
+"该编队将计划实施空运。" 0
+   END_SUB
+   SUB 2
+"该编队将计划实施空投。" 0
+   END_SUB
+   SUB 3
+"由于配属了空军中队，空运行动无法继续进行，以下空军中队需要离开：" 0
+      GROUP 1
+"\n——%s" 1 S3.S3.G1.D1
+      END_GROUP
+"\n" 0
+   END_SUB
+   SUB 4
+"由于该部队正在实施港口作业，且不能中止，因此空运行动无法继续进行。" 0
+   END_SUB
+   SUB 5
+"由于正在执行另一项空运任务，此空运行动无法继续进行。" 0
+   END_SUB
+   SUB 6
+"当前，空运行动无法继续执行。" 0
+   END_SUB
+END_SUB
+
+END_MAIN
+

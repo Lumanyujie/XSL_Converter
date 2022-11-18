@@ -1,0 +1,16 @@
+
+9566
+SUBJECT
+"未知的(ULN) %s" 1 D2
+MAIN
+
+"<p class='title'> 物资编码（ULN ID）%s在想定数据中没有与其对应的物资</p>\n" 1 D2
+
+SUB 1
+"  在下达的命令中，%s被指定为货单物资编码（ULN ID）," 1 D2
+"命令名称%s, 但该物资不存在。拥有该ID的项目" 1 S1.D1
+"将被排除在要求的货单之外。\n" 0
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,28 @@
+
+1522
+SUBJECT
+"%s的物资装卸设施属性" 1 MHE_Facility[D2]
+MAIN
+
+"<p class='title'>  %s的物资装卸设施属性 </p>"  1 MHE_Facility[D2]
+
+SUB 1
+"  目标半径：%s %s\n"      2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+"  修复时间：%s \n"           1 DURATION(S1.D2, "%d天%h时%Rm分")
+"  摧毁时间：%s \n"         1 DURATION(S1.D3, "%d天%h时%Rm分")
+
+END_SUB
+
+SUB 2 
+"  目标分类码: %s\n" 1 S2.D4
+"  目标图标符号: %s\n" 1 S2.D5
+"  DIS码: %s\n\n" 1 S2.D6
+"  此类设施一天的装卸能力为:%s%s干补给物资" 2
+                                UOM_AMT(DRY_WEIGHT,S2.D1) UOM(DRY_WEIGHT)
+"和%s%s液态补给物资," 2 UOM_AMT(WET_WEIGHT,S2.D2) UOM(WET_WEIGHT)
+"以及装%s%s自行补给物资。\n" 2
+                                UOM_AMT(DRY_WEIGHT,S2.D3) UOM(DRY_WEIGHT)
+END_SUB
+
+END_MAIN
+

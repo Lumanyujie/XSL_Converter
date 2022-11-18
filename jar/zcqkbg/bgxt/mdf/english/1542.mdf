@@ -1,0 +1,28 @@
+
+1542
+SUBJECT
+"%s气象锋面属性" 1 D2
+MAIN
+
+"<p class='title'>气象锋面%s属性</p>" 1 D2
+
+SUB 1
+"\n锋面名称：%s；" 1 S1.D1
+"\n气象条件名称：%s；" 1 Weather_Condition[S1.D2]
+"\n开始经度和纬度：%s；" 1 LOCATION(S1.D3,S1.D4)
+"\n宽：%s个六角格；" 1 S1.D5
+"\n高：%s个六角格；" 1 S1.D6
+"\n速度：%s%s；" 2 UOM_AMT(SPEED,S1.D7) UOM(SPEED) 
+"\n起始时间：%s；" 1 GTIME(S1.D8)
+"\n最大持续时间：%s；" 1 DURATION(S1.D9, "%d天%.2Th小时")
+"\n发生概率：" 0
+"\n——北方：%2.4f；" 1 S1.D10
+"\n——东北：%2.4f；" 1 S1.D11
+"\n——东南：%2.4f；" 1 S1.D12
+"\n——南方：%2.4f；" 1 S1.D13
+"\n——西南：%2.4f；" 1 S1.D14
+"\n——西北：%2.4f。" 1 S1.D15
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,58 @@
+
+4260
+SUBJECT
+"%s运输情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s运输情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n%s向%s补给物资的一支运输队，" 2 unit_name_transform(D2) unit_name_transform(S1.D1)
+"在补给途中，" 0
+"于%s地域，因道路损毁被困，" 1 LOCATION(S1.D2,S1.D3)
+"遭敌歼灭，所有补给物资损失。" 0
+   SUB 1
+"接收物资补给的部队已离开预定卸载点。" 0
+   END_SUB
+   SUB 2
+"<p class='table_name'>%s损失运输工具情况</p>" 1 unit_name_transform(S1.S2.D1)
+"__start_table|类型|数量（台、套）\n" 0
+      GROUP 1
+"|%s|%s\n" 2 Transportation_Class[S1.S2.G1.D2] S1.S2.G1.D1  
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+   SUB 3
+"" 0
+   END_SUB
+"\n" 0
+END_SUB
+
+SUB 2
+"\n一批%s输送物资抵达%s。" 2 Supply_Shipment_Method[S2.D1] unit_name_transform(S2.D2)
+"但由于该处无所需的物资装卸设施，" 0
+"%s被迫将物资收回。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 3
+"\n%s向%s运输补给物资的一支运输队，" 2 unit_name_transform(D2) unit_name_transform(S3.D1)
+"在运输途中曾经被困，" 0
+"现继续前进，已机动至%s地域。" 1 LOCATION(S3.D2,S3.D3)
+END_SUB
+
+SUB 4
+"\n%s已完成对%s" 2 unit_name_transform(D2) unit_name_transform(S4.D1)
+"的部队间支援任务，补给物资如下：" 0
+"__start_table|物资类型|需求数|补给数|返还数\n" 0
+   GROUP 1
+"|%s|%s%s|%s%s|%s%s\n" 7 
+    SLP_Category_Name[S4.D2,S4.G1.D1]
+    SLP_SC_AMT(S4.D2,S4.G1.D1,S4.G1.D2) SLP_SC_UOM(S4.D2,S4.G1.D1)
+    SLP_SC_AMT(S4.D2,S4.G1.D1,S4.G1.D3) SLP_SC_UOM(S4.D2,S4.G1.D1)
+    SLP_SC_AMT(S4.D2,S4.G1.D1,S4.G1.D4) SLP_SC_UOM(S4.D2,S4.G1.D1)
+   END_GROUP
+"__stop_table" 0
+
+"\n注：由于%s物资储备能力不足，因此返还部分物资。" 1 unit_name_transform(S4.D1)
+END_SUB
+
+END_MAIN
+

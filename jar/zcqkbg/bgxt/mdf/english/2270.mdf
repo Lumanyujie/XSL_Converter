@@ -1,0 +1,74 @@
+2270
+SUBJECT
+"%s（特战分队）作战情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s（特战分队）作战情况报告</p>" 1 unit_name_transform(D2)
+
+"\n%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(D3,D4)
+SUB 1
+"已完成巡逻任务，等待新的命令。" 0
+END_SUB
+
+SUB 2
+"该部伏击时间已过，伏击行动结束。" 0
+END_SUB
+
+SUB 3
+"该部对%s的掩护时间已过，掩护任务结束。" 1 unit_name_transform(S3.D1)
+END_SUB
+
+SUB 4
+"该部对%s的掩护任务由其他单位接替，掩护任务中止。" 1 unit_name_transform(S4.D1)
+END_SUB
+
+SUB 6
+"企图对%s实施攻击。" 1 unit_name_transform(S6.D1)
+   
+   SUB 1 
+"\n已召唤炮兵火力对%s进行突击，用弹量如下：" 1 unit_name_transform(S6.D2)
+
+"<p class='table_name'>炮兵火力打击列表</p>" 0
+"__start_table|部队|弹药类型|用弹量（发）\n" 0
+      GROUP 1 
+"|%s|%s|%s\n" 3 unit_name_transform(S6.S1.G1.D1) Targetable_Weapon[S6.S1.G1.D3] S6.S1.G1.D2
+      END_GROUP  
+"__stop_table" 0
+"\n" 0
+   END_SUB
+
+   SUB 2 
+"\n已召唤空中火力对%s进行突击，使用机型及架次如下：" 1  unit_name_transform(S6.D2)
+
+"<p class='table_name'>空中火力打击列表</p>" 0
+"__start_table|部队|机型|架次\n" 0
+      GROUP 1 
+"|%s|%s|%s\n" 3 unit_name_transform(S6.S2.G1.D1) Aircraft_Type[S6.S2.G1.D3] S6.S2.G1.D2
+      END_GROUP
+"__stop_table" 0
+"\n" 0
+   END_SUB
+
+   SUB 3 
+"正在对%s实施火力打击。" 1 unit_name_transform(S6.D2)
+   END_SUB
+   SUB 4 
+"尚未召唤炮火突击。" 0
+   END_SUB
+   SUB 5 
+"尚未召唤空中火力突击。" 0
+   END_SUB
+   SUB 6 
+"但目前不能交战。" 0
+   END_SUB
+END_SUB
+
+SUB 7
+"\n据导演部指令，%s对%s的掩护任务已结束。" 2 unit_name_transform(D2) unit_name_transform(S7.D1)
+END_SUB
+
+SUB 30
+"企图撤退。" 0
+END_SUB
+
+END_MAIN
+

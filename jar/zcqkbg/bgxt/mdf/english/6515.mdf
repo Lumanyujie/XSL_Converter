@@ -1,0 +1,31 @@
+
+6515
+SUBJECT
+"%s编队运输能力报告" 1 D2
+MAIN
+"<p class='title'>%s编队运输能力报告</p>" 1 D2
+SUB 1 
+  "<p class='table_name'>%s编队所属舰船运输能力明细</p>" 1 D2
+  "__start_table|舰船名称（是否在位）|干货初始运力|液货初始运力|干货当前运力|液货当前运力\n" 0
+   GROUP 1
+"|%s（%s）|%s|%s|%s|%s\n" 6 S1.G1.D1
+    Answer[S1.G1.D2] UOM_AMT(DRY_WEIGHT,S1.G1.D3) UOM_AMT(WET_WEIGHT,S1.G1.D4)
+                     UOM_AMT(DRY_WEIGHT,S1.G1.D5) UOM_AMT(WET_WEIGHT,S1.G1.D6)
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+SUB 2
+  "<p class='table_name'>编队合计运输能力</p>" 0
+  "__start_table|明细|数量|单位\n" 0
+"|初始干货运输能力|%s|%s\n" 2 UOM_AMT(DRY_WEIGHT,S2.D1) UOM(DRY_WEIGHT)
+"|初始液货运输能力|%s|%s\n" 2 UOM_AMT(WET_WEIGHT,S2.D2) UOM(WET_WEIGHT)
+"|现有干货运输能力|%s|%s\n" 2 UOM_AMT(DRY_WEIGHT,S2.D3) UOM(DRY_WEIGHT)
+"|现有液货运输能力|%s|%s\n" 2 UOM_AMT(WET_WEIGHT,S2.D4) UOM(WET_WEIGHT)
+"__stop_table" 0
+"\n备注：现有运力是指当前在位舰船的现有运输能力。" 0
+END_SUB
+
+END_MAIN
+

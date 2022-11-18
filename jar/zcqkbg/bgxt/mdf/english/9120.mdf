@@ -1,0 +1,44 @@
+
+9120
+SUBJECT
+"%s获取其他方部队情报%s报告" 2 No_Force_Side[D2] Periodic_or_Summary[D5]
+MAIN
+
+"<p class='title'>%s获取其他方部队情报%s报告</p>" 2 No_Force_Side[D2] Periodic_or_Summary[D5]
+"\n报告时间段：%s到%s。" 2 GTIME(D3) GTIME(D1)
+
+"__start_table|部队名称|感知态势|战斗力损耗|当前战斗力|坐标|距情报时间间隔（小时）|情报源\n" 0
+GROUP 1
+   SUB 1
+"<p class='table_name'>%s部队明细</p>" 1 No_Force_Side[G1.S1.D1]
+   END_SUB
+   SUB 2
+"|%s|%s|%2.2f|%2.2f|%s|%s|%s\n" 7
+                               unit_name_transform(G1.S2.D1)
+                               Unit_Posture[G1.S2.D2]
+                               G1.S2.D3
+                               G1.S2.D4
+                               LOCATION(G1.S2.D5,G1.S2.D6)
+                               DURATION(G1.S2.D7, "%.2Th")
+                               trans_word("QingBao",G1.S2.D8)
+   END_SUB
+   SUB 3
+"|%s|%s|%2.2f|%2.2f|%s|%s|%s\n" 7
+                              unit_name_transform(G1.S3.D1)
+                              Unit_Posture[G1.S3.D2]
+                               G1.S3.D3
+                               G1.S3.D4
+                               LOCATION(G1.S3.D5,G1.S3.D6)
+                               DURATION(G1.S3.D7, "%.2Th")
+                               trans_word("QingBao",G1.S3.D8)
+   END_SUB
+   SUB 4
+"\n本时段未获取情报。" 0
+   END_SUB
+   SUB 5
+"" 0
+   END_SUB
+END_GROUP
+"__stop_table" 0
+END_MAIN
+

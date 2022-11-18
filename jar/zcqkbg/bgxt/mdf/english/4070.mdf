@@ -1,0 +1,26 @@
+4070
+SUBJECT
+"物资编码报告：%s。" 1 D2
+
+MAIN
+"<p class='title'> 物资编码报告</p>" 0
+"\n%s方物资编码已经到达或将按计划到达，等待下一步处理。\n\n" 1 No_Force_Side[D3]
+
+GROUP 1
+"								原计划		预计\n" 0
+"%-20.20s %-9.9s           PAX   %-5.5s         ICAO         　　 时到达\n" 3 G1.D1 G1.D2 UOM(DRY_WEIGHT)
+   GROUP 1
+"   ULN %-30.30s %6.6s  %6.6s         %-9.9s    %s\n" 5
+    G1.G1.D1 G1.G1.D2 UOM_AMT(DRY_WEIGHT, G1.G1.D3) G1.G1.D4 GTIME(G1.G1.D5)
+   END_GROUP
+
+   SUB 1
+"             Total                    %6.6s  %6.6s\n\n" 2 G1.S1.D1 UOM_AMT(DRY_WEIGHT, G1.S1.D2)
+   END_SUB
+END_GROUP
+SUB 1
+"                                         PAX   %-5.5s\n" 1 UOM(DRY_WEIGHT)
+"             总数为          %6.6s  %6.6s\n" 2 S1.D1 UOM_AMT(DRY_WEIGHT, S1.D2)
+END_SUB
+
+END_MAIN

@@ -1,0 +1,108 @@
+5100
+SUBJECT
+"情报命令（编号：%s）无法执行" 1 D2
+MAIN
+"<p class='title'>情报命令（编号：%s）无法执行</p>" 1 D2
+
+SUB 1
+"\n编号为%s的情报命令收到但不能执行，" 1 D2
+"因为%s与%s不在同一方，" 2 unit_name_transform(S1.D1) unit_name_transform(S1.D2)
+"且%s正在对对方实施干扰和心理战，" 1 unit_name_transform(S1.D1)
+"两者间不能关联。" 0
+END_SUB
+SUB 6
+"\n编号为%s的警戒命令要求%s执行警戒任务，" 2 D2 unit_name_transform(S6.D1)
+"但海军部队不能执行警戒任务，命令取消。" 0
+END_SUB
+
+SUB 7
+"\n%s所属地面部队都在执行警戒任务。" 1 unit_name_transform(S7.D1)
+END_SUB
+
+SUB 8
+"\n命令不可行，因此取消。" 0
+END_SUB
+
+SUB 10
+"\n编号为%s的命令，要求%s关联部队，" 2 D2 unit_name_transform(S10.D1)
+"但该部队已同%s相关联，命令取消。" 1 unit_name_transform(S10.D2)
+END_SUB
+
+SUB 11
+"\n编号为%s的命令，要求" 1 D2
+"%s同%s相关联，" 2 unit_name_transform(S11.D1) unit_name_transform(S11.D2)
+"但两者均隶属于%s，不允许关联，" 1 unit_name_transform(S11.D3)
+"命令取消。" 0
+END_SUB
+
+SUB 13
+"\n编号为%s的命令，要求" 1 D2
+"%s同%s相关联，" 2 unit_name_transform(S13.D1) unit_name_transform(S13.D2)
+"但两者互为敌对方，命令取消。" 0
+END_SUB
+
+SUB 14
+"\n编号为%s的命令，要求" 1 D2
+"%s同%s相关联，" 2 unit_name_transform(S14.D1) unit_name_transform(S14.D2)
+"但两者互为敌对方，命令取消。" 0
+END_SUB
+
+SUB 15
+"\n编号为%s的命令，要求" 1 D2
+"%s同%s相关联，" 2 unit_name_transform(S15.D1) unit_name_transform(S15.D2)
+"但%s已同%s相关联，" 2 unit_name_transform(S15.D3) unit_name_transform(S15.D2)
+"而%s又隶属敌对方，因此不能关联，命令取消。" 1 unit_name_transform(S15.D3)
+END_SUB
+
+SUB 17
+"\n编号为%s的命令，要求" 1 D2
+"%s取消关联，" 1 unit_name_transform(S17.D1)
+"但该部队当前未与任何部队关联，命令取消。" 0
+END_SUB
+
+SUB 18
+"\n在编号为%s的情报搜索区命令中，" 1 D2
+"所属集团“%s”在本方不存在，命令取消。" 1 unit_name_transform(S18.D1)
+END_SUB
+
+SUB 19
+"\n在编号为%s的情报搜索区命令中，" 1 D2
+"情报搜索区面积为%s平方千米，" 1 S19.D1
+"已超出%s平方千米的最大区域面积，命令取消。" 1 S19.D2
+END_SUB
+
+SUB 20 
+"\n不能将%s融合至%s，" 2 unit_name_transform(S20.D1) unit_name_transform(S20.D2)
+   SUB 1
+"%s已退出演习。" 1 unit_name_transform(S20.D2)
+   END_SUB
+   SUB 3
+"%s与%s实体属性不同。" 2 unit_name_transform(S20.D1) unit_name_transform(S20.D2)
+   END_SUB
+   SUB 4
+"%s与%s实体属性不同。" 2 unit_name_transform(S20.D1) unit_name_transform(S20.D2)
+   END_SUB
+END_SUB
+
+SUB 21
+"\n由于情报搜索区%s已经存在，" 1 D2
+"编号为%s的情报搜索区命令不能执行。" 1 D2
+END_SUB
+ 
+SUB 22
+"\n编号为%s的共享情报命令，" 1 D2
+"因为命令中要求给%s共享情报的部队列表，其情报已共享，因此命令取消。" 1 No_Force_Side[S22.D1]
+END_SUB
+ 
+SUB 23
+"\n编号为%s的共享情报命令，" 1 D2
+"因为命令中要求给%s共享情报的目标列表，其情报已共享，因此命令取消。" 1 No_Force_Side[S23.D1]
+END_SUB
+ 
+SUB 24
+"\n由于编号为%s的敏感目标区不存在，" 1 S24.D1
+"因此编号为%s的情报搜索区命令不能执行，命令取消。" 1 D2
+END_SUB
+
+
+END_MAIN

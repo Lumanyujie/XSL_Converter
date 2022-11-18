@@ -1,0 +1,38 @@
+
+5600
+SUBJECT
+"获取其他方部队%s毁伤情报" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>获取其他方部队%s毁伤情报</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n%s向%s报告最新情报：" 2 unit_name_transform(S1.D1) unit_name_transform(S1.D9)
+"于%s，" 1 GTIME(D1)
+"%s于%s地域，" 2 unit_name_transform(D2) LOCATION(S1.D4,S1.D5)
+"正被击溃，阵地失陷。" 0
+"我部位于%s。" 1 LOCATION(S1.D2,S1.D3)
+
+   SUB 1
+"<p class='table_name'>参与作战行动的友邻部队情况</p>" 0
+"__start_table|部队名称|作战态势\n" 0
+      GROUP 1
+"|%s|%s\n" 2 unit_name_transform(S1.S1.G1.D1) Unit_Posture[S1.S1.G1.D2] 
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+   SUB 2
+"\n无友邻部队参与作战。" 0
+   END_SUB
+
+END_SUB
+
+SUB 2
+"\n%s向%s报告最新情报：" 2 unit_name_transform(S2.D1) unit_name_transform(S2.D9)
+"于%s，" 1 GTIME(D1)
+"在%s海域舰艇" 1 LOCATION(S2.D4,S2.D5)
+"遭重创，正在下沉。" 0
+"经判定，为其他方%s。" 1 unit_name_transform(D2)
+"我部现位于%s海域。" 1 LOCATION(S2.D2,S2.D3)
+END_SUB
+
+END_MAIN
+

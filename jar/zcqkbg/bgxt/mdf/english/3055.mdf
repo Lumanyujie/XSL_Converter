@@ -1,0 +1,60 @@
+
+3055
+SUBJECT
+"机场租借命令（编号：%s）执行情况报告" 1 D2
+MAIN
+"<p class='title'>机场租借命令（编号：%s）执行情况报告</p>" 1 D2
+SUB 2
+"<p class='table_name'>获得跑道使用权部队列表</p>" 0
+"__start_table|部队名称|跑道|生效起始时间\n" 0
+   GROUP 1
+"|%s|%s|%s\n" 3 unit_name_transform(S2.D1) S2.G1.D2 GTIME(S2.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 3
+"<p class='table_name'>失去跑道使用权部队列表</p>" 0
+"__start_table|部队名称|跑道|生效起始时间\n" 0
+   GROUP 1
+"|%s|%s|%s\n" 3 unit_name_transform(S3.D1) S3.G1.D2 GTIME(S3.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 13
+"\n" 0
+   SUB 1
+"现允许%s租借%s使用。" 2 No_Force_Side[D3] unit_name_transform(D4)
+   END_SUB
+
+   SUB 2  
+"%s对%s的租借使用权发生变化。" 2 No_Force_Side[D3] unit_name_transform(D4)
+   END_SUB
+
+   SUB 3
+"可使用%s。" 1 unit_name_transform(S13.S3.D1)
+   END_SUB
+
+   SUB 4
+"不能使用%s。" 1 unit_name_transform(S13.S4.D1)
+"%s不拥有跑道。" 1 unit_name_transform(D4)
+   END_SUB
+
+   SUB 5
+"以下资源可租用：" 0
+"\n停机坪: %s，" 1 S13.S5.D1
+"跑道：%s。" 1 S13.S5.D2
+
+   GROUP 1
+"\n——%s：%s%s。" 3 SLP_Category_Name[D5,S13.S5.G1.D1]
+                    SLP_SC_AMT(D5, S13.S5.G1.D1, S13.S5.G1.D2)
+                    SLP_SC_UOM(D5, S13.S5.G1.D1)
+   END_GROUP
+
+   END_SUB
+
+END_SUB
+
+END_MAIN
+

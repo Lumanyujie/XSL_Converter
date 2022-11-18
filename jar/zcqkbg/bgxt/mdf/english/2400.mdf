@@ -1,0 +1,42 @@
+
+2400
+SUBJECT
+"%s当前行动受阻情况报告" 1 unit_name_transform(D2) 
+
+MAIN
+"<p class='title'>%s当前行动受阻情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+"\n按照计划，%s应现在抵达战场，" 1 unit_name_transform(D2)
+"并由%s提供物资补给。" 1 unit_name_transform(S1.D1)
+"但%s当前隶属%s，" 2 unit_name_transform(S1.D1) No_Force_Side[S1.D2]
+"将%s视为敌军，不会提供任何补给。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 2
+"\n按照计划，%s应现在抵达战场，" 1 unit_name_transform(D2)
+"首先通过%s（港口）。" 1 unit_name_transform(S2.D1)
+"但%s当前隶属%s，" 2 unit_name_transform(S2.D1) No_Force_Side[S2.D2]
+"将%s视为敌军，不会允许通过，任务取消。" 1 unit_name_transform(D2)
+END_SUB 
+
+SUB 3
+"\n由于%s没有可搭载的舰艇编队，" 1 unit_name_transform(D2)
+"该部无法进入当前面临的水域。" 0
+END_SUB
+
+SUB 4
+"\n由于%s附近没有海军部队，" 1 unit_name_transform(D2)
+"该部无法进入当前面临的水域。" 0
+END_SUB
+
+SUB 5
+"\n%s通过港口进入战场的计划提前中止。" 1 unit_name_transform(D2)
+"港口部队%s已转隶%s，" 2 unit_name_transform(S5.D1) No_Force_Side[S5.D2]
+"而该方视%s为敌方，" 1 No_Force_Side[S5.D3]
+"因此，%s扣留了%s的部分补给，" 2 unit_name_transform(S5.D1) unit_name_transform(D2)
+"使其战斗力降至%s%%。" 1 S5.D4
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,195 @@
+2120
+SUBJECT
+"%s无法执行射击任务情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s无法执行射击任务情况报告</p>" 1 unit_name_transform(D2)
+
+
+
+SUB 1
+"\n%s无法使用命令中指定的" 1 unit_name_transform(D2)
+"%s来完成火力运用任务。" 1 Targetable_Weapon[D3]
+   SUB 1
+"这是一项反炮兵行动。" 0
+   END_SUB 
+END_SUB
+
+SUB 2
+   SUB 1
+"\n%s无法使用命令中指定的" 1 unit_name_transform(D2)
+"%s来完成导弹突击任务。" 1 Targetable_Weapon[D3]
+   END_SUB
+   SUB 2
+"\n%s无法完成导弹突击任务。" 1 unit_name_transform(D2)
+   END_SUB
+END_SUB
+
+SUB 3
+"\n原因：%s不再具有地地导弹发射装置。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 4
+"\n原因：%s没有可用于该发射任务的地地导弹发射装置。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 5
+"\n原因：" 0
+   SUB 1
+"不能向%s实施火力突击。" 1 unit_name_transform(S5.S1.D1)
+   END_SUB
+
+   SUB 2
+"不能向%s实施火力突击。" 1 unit_name_transform(S5.S2.D1)
+   END_SUB
+
+   SUB 3
+"不能向%s地域实施火力突击。" 1 LOCATION(S5.S3.D1,S5.S3.D2)
+   END_SUB
+
+   SUB 4
+"不能向方位%s度，距离%s%s地（水）域实施火力突击。"
+                  3 S5.S4.D1 UOM_AMT(DISTANCE,S5.S4.D2) UOM(DISTANCE)
+   END_SUB
+
+   SUB 5
+"由于没有指定部队、目标、位置、方位/距离等有效射击参数，" 0
+"不能射击。" 0
+   END_SUB
+
+   SUB 6
+"当前无可用弹药，完成该任务需补给%s。" 1 SLP_Category_Name[S5.D1,S5.S6.D1]
+   END_SUB
+
+   SUB 7
+"已发射%s%s枚（发），弹药不足。" 2 SLP_Category_Name[S5.D1,S5.S7.D2] S5.S7.D1
+   END_SUB
+
+   SUB 8
+"目标点距离%s%s，%s的最大射程为%s%s。" 5
+          UOM_AMT(DISTANCE,S5.S8.D1) UOM(DISTANCE) Targetable_Weapon[S5.S8.D2]
+          UOM_AMT(DISTANCE,S5.S8.D3) UOM(DISTANCE)
+      SUB 1
+"总计发射%s枚（发）。" 1 S5.S8.S1.D1
+      END_SUB
+   END_SUB
+
+   SUB 9
+"当前无可用弹药。" 0
+   END_SUB
+
+   SUB 10
+"目标区为水域，%s不能向水域发射。" 1
+                                                Targetable_Weapon[S5.S10.D1]
+   END_SUB
+
+   SUB 11
+"目标区为陆地，%s不能向陆地发射。" 1
+                                                Targetable_Weapon[S5.S11.D1]
+   END_SUB
+
+   SUB 12
+"在检测火力打击任务时发现一个错误，" 0
+"可能是没有指定导弹类型，" 0
+"或没有指定位置、目标、部队或方位/距离等参数，" 0
+"应通知演习导调人员。" 0
+   END_SUB
+
+   SUB 13
+"射击部队不再拥有对" 0
+"%s%s范围内目标的自动开火权，%s突击任务取消。"
+    3 UOM_AMT(DISTANCE,S5.S13.D1) UOM(DISTANCE) Targetable_Weapon[S5.S13.D2]
+   END_SUB
+
+   SUB 14
+"按照%s突击任务中输入的方位和距离，" 1        Targetable_Weapon[S5.S14.D1]
+"该位置已在演习区外，" 0
+"火力任务取消。" 0
+   END_SUB
+
+   SUB 15
+"在检测火力打击任务时发现错误，" 0
+"错误原因不明，" 0
+"应通知演习导调人员。" 0
+   END_SUB
+
+   SUB 16
+"%s没有地地导弹发射装置。" 1 unit_name_transform(D2)
+   END_SUB
+
+   SUB 17
+"%s没有遂行该任务所需的发射装置及配套补给。" 1 unit_name_transform(D2)
+   END_SUB
+
+   SUB 18
+"任务执行时间（%s）已过。" 1 GTIME(S5.S18.D1)
+   END_SUB
+
+   SUB 19
+"%s每%s分钟发射一枚，" 2 
+    Targetable_Weapon[S5.S19.D1] DURATION(S5.S19.D2, ".2Tm")
+"要实施炮兵火力打击, 发射间隔时间必须小于" 0
+"战斗评估周期%s分钟，" 1 DURATION(S5.S19.D3, "%.2Tm")
+"任务取消。" 0
+   END_SUB
+
+   SUB 20
+      SUB 1
+"%s由外部程序控制，" 1 unit_name_transform(D2)
+"所以不能执行火力打击任务。" 0
+      END_SUB
+      SUB 2
+"该型号导弹发射后由外部程序控制，" 0
+"此次发射任务，外部控制程序出现错误，" 0
+"导弹发射失败。" 0
+      END_SUB
+   END_SUB
+
+   SUB 21
+"不能向目标定位点%s开火。" 1 S5.S21.D1
+   END_SUB
+
+   SUB 22
+"舰艇不能到达发射该型弹药的深度。" 0
+"该型弹药发射深度要求为：%s。" 1 Sub_Weap_Firing_Ability[S5.S22.D1] 
+   END_SUB
+
+END_SUB
+ 
+SUB 6
+"\n原因：" 0
+   SUB 1
+"不能打击%s。" 1 unit_name_transform(S6.S1.D1)
+   END_SUB
+
+   SUB 2
+"不能打击%s（目标）。" 1 unit_name_transform(S6.S2.D1)
+   END_SUB
+
+   SUB 3
+"不能向位置点（%s）开火。" 1 LOCATION(S6.S3.D1,S6.S3.D2)
+   END_SUB
+
+   SUB 4
+"该部队不再是炮兵火力单位。" 0
+   END_SUB
+
+   SUB 5
+"该部队不再具备发射%s的能力。" 1 Targetable_Weapon[S6.S5.D1]
+   END_SUB
+
+   SUB 6
+"该部队发射%s的战斗系统损坏。" 1 Targetable_Weapon[S6.S6.D1]
+      SUB 1
+"之前共发射%s%s枚（发）。" 2 Targetable_Weapon[S6.S6.D1] S6.S6.S1.D1
+      END_SUB
+   END_SUB
+
+   SUB 7
+"不能向目标定位点%s开火。" 1 S6.S7.D1
+   END_SUB
+
+END_SUB
+ 
+END_MAIN
+

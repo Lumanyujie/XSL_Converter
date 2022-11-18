@@ -1,0 +1,47 @@
+
+1829
+SUBJECT
+"舰船部队原型%s(编号%s)补给物资消耗量改变报告 " 
+                                          2 Ship_Unit_Prototype[D2] D2
+MAIN
+"<p class='title'>  使用此舰船部队原型%s(编号%s)部队消耗补给物资数量 </p>\n\n"
+                                          2 Ship_Unit_Prototype[D2] D2
+
+SUB 1
+   GROUP 1
+"  %15.15s (%5.5s) 正常日消耗:  %9.9s %s %s。\n" 5
+                      Supply_Category[S1.G1.D1] S1.G1.D1
+                         SLP_SC_AMT(0,S1.G1.D1,S1.G1.D2) SLP_SC_UOM(0,S1.G1.D1)
+                     Consumption_Type[S1.G1.D1] 
+   END_GROUP
+END_SUB
+
+SUB 2
+   GROUP 1
+"  %15.15s (%5.5s) 每机动1千米消耗: %9.9s %s %s。\n" 5
+                      Supply_Category[S2.G1.D1] S2.G1.D1
+                         SLP_SC_AMT(0,S2.G1.D1,S2.G1.D2) SLP_SC_UOM(0,S2.G1.D1)
+                     Consumption_Type[S2.G1.D1] 
+   END_GROUP
+END_SUB
+
+SUB 3
+   GROUP 1
+"  %15.15s (%5.5s) 空中行动消耗: %9.9s %s %s。\n" 5
+                      Supply_Category[S3.G1.D1] S3.G1.D1
+                         SLP_SC_AMT(0,S3.G1.D1,S3.G1.D2) SLP_SC_UOM(0,S3.G1.D1)
+                     Consumption_Type[S3.G1.D1] 
+   END_GROUP
+END_SUB
+
+SUB 4
+   GROUP 1
+"  %15.15s (%5.5s) 海军炮火支援消耗: %9.9s %s %s。\n" 5
+                      Supply_Category[S4.G1.D1] S4.G1.D1
+                         SLP_SC_AMT(0,S4.G1.D1,S4.G1.D2) SLP_SC_UOM(0,S4.G1.D1)
+                     Consumption_Type[S4.G1.D1] 
+   END_GROUP
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,43 @@
+
+9080
+SUBJECT
+"%s获取其他方空军基地情报%s报告" 2 No_Force_Side[D2] Periodic_or_Summary[D5] 
+MAIN
+
+"\n<p class='title'>%s获取其他方空军基地情报%s报告</p>" 2 No_Force_Side[D2] Periodic_or_Summary[D5]
+"\n报告时间段：%s至%s。" 2 GTIME(D3) GTIME(D1)
+
+SUB 1
+"\n此时段未发现其他方空军基地。" 0
+END_SUB
+SUB 2
+"<p class='table_name'>其他方空军基地情况明细</p>" 0
+"__start_table|名称|隶属方|战斗状态|跑道长度（米）|基地内飞机类型及可用数量\n" 0
+  GROUP 1
+      SUB 1
+"|%s|%s|战斗中|%s|" 3 unit_name_transform(S2.G1.S1.D1) No_Force_Side[S2.G1.S1.D2] UOM_AMT("AIRDISTANCE",S2.G1.S1.D3)
+
+      END_SUB
+      SUB 2
+"|%s|%s|非战斗|%s|" 3 unit_name_transform(S2.G1.S2.D1) No_Force_Side[S2.G1.S2.D2] UOM_AMT("AIRDISTANCE",S2.G1.S2.D3)
+  
+      END_SUB
+      SUB 3
+"" 0
+      END_SUB
+      SUB 4
+         GROUP 1
+"%s：%s架<br>" 2 Aircraft_Type[S2.G1.S4.G1.D1]
+                                                     S2.G1.S4.G1.D2
+         END_GROUP
+"\n" 0
+      END_SUB
+      SUB 5
+"基地内无飞机\n" 0
+      END_SUB
+   END_GROUP
+  "__stop_table" 0
+END_SUB
+
+END_MAIN
+

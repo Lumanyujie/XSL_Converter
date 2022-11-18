@@ -1,0 +1,37 @@
+
+1710
+SUBJECT
+"面杀伤武器杀伤能力%s" 1 AKL_Index[D2]
+MAIN
+"<p class='title'>  面杀伤武器杀伤能力%s报告 </p> \n" 1 AKL_Index[D2]
+SUB 1
+"  对于给定的面杀伤毁伤指标，期望目标类型至少有一个致命区域按要求被改变。\n" 0
+END_SUB
+
+SUB 2
+"  对作战武器目标，使用毁伤指标%s(%s), "     2 AKL_Index[S2.D1] S2.D1
+"实施一次单轮突击，其杀伤面积按子类划分如下：\n" 0
+
+   GROUP 1
+"  __start_table |目标子类| 杀伤面积: \n" 0
+" |%-26.26s |   %10.10s平方米 \n" 2 S2.G1.D1 S2.G1.D2
+
+  END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 3
+"  对补给目标，使用毁伤指标%s(%s),"   2 AKL_Index[S3.D1] S3.D1
+"实施一次单轮突击，其杀伤面积按子类划分如下：\n" 0
+
+   GROUP 1
+"  __start_table |目标子类| 杀伤面积: \n" 0
+" |%-26.26s |   %10.10s平方米 \n" 2 S3.G1.D1 S3.G1.D2
+
+  END_GROUP
+"__stop_table"0
+END_SUB
+
+
+END_MAIN
+

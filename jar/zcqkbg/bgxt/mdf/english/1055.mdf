@@ -1,0 +1,25 @@
+
+1055
+SUBJECT
+"调理员命令%s管理原型所属目标" 1 D2
+MAIN
+"<p class='title'>  调理员命令%s管理原型所属目标报告 </p> \n" 1 D2
+                                                                               
+SUB 1
+"  为%s创建一个名叫%s的特有目标（POT）命令%s已经被执行。"  3  S1.D2 S1.D3 S1.D1
+"下列是新POT的属性:\n\n" 0
+"POT 主体库名  %s\n" 1 S1.D4
+"POT 库名全称  %s\n" 1 S1.D5
+"POT 目标种类  %s\n" 1 S1.D6
+"POT 目标子类  %s\n" 1 S1.D7
+"POT 序号  %s\n" 1 S1.D8
+"POT 天线高度  %s%s\n" 2 UOM_AMT(DISTANCE,S1.D9)    UOM(AIRDISTANCE)
+"POT 飞机跑道长度 %s %s\n" 2 UOM_AMT(DISTANCE,S1.D10)    UOM(AIRDISTANCE)
+"POT 范围 %s %s\n" 2 UOM_AMT(DISTANCE,S1.D11)     UOM(DISTANCE)
+"POT 机动性 %s\n" 1 S1.D12
+"POT 战斗力百分比 %s%%\n" 1 S1.D13
+"POT 分类码 %s\n" 1 S1.D14
+END_SUB
+                                                                                
+END_MAIN
+

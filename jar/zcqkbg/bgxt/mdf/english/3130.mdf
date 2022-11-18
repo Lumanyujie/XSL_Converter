@@ -1,0 +1,20 @@
+
+3130
+SUBJECT
+"空中%s编队关于情报搜索区情况报告" 1 D2
+MAIN
+"<p class='title'>空中%s编队关于情报搜索区情况报告</p>" 1 D2
+
+"\n空中%s编队在执行任务时，发现以下情报搜索区不存在：" 1 D2
+
+GROUP 1
+"\n——%s。" 1 G1.D1
+
+   SUB 5
+"" 0
+   END_SUB
+
+END_GROUP
+
+END_MAIN
+

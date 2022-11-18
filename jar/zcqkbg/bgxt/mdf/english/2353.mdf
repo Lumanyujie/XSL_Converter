@@ -1,0 +1,17 @@
+
+2353
+SUBJECT
+"%s在机场被毁后转移情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s在机场被毁后转移情况报告</p>" 1 unit_name_transform(D2)
+
+
+SUB 1
+"\n%s在机场被毁后，" 1 unit_name_transform(D2)
+"%s架飞机正在飞往%s。" 2 S1.D1 LOCATION(S1.D3,S1.D4)
+"同时，试图同位于该地域的%s重新建立联系。" 1 unit_name_transform(S1.D2)
+END_SUB
+
+END_MAIN
+

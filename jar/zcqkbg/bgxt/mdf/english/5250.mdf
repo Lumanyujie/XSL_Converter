@@ -1,0 +1,39 @@
+
+5250
+SUBJECT
+"%s联合支援情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s联合支援情况报告</p> " 1 unit_name_transform(D2)
+SUB 1
+"\n%s已被" 1 unit_name_transform(D2)
+"%s从联合行动中排除，" 1 unit_name_transform(S1.D1)
+"正准备隐蔽撤退，等待指令。" 0
+END_SUB
+
+SUB 3
+"\n%s已经开始接受" 1 unit_name_transform(D2)
+"来自%s的联合支援。" 1 unit_name_transform(S3.D1)
+END_SUB
+
+SUB 5
+"\n%s报告：" 1 unit_name_transform(D2)
+"该部不再同%s联合。" 1 unit_name_transform(S5.D1)
+SUB 1
+"有迹象表明，%s已隐蔽撤离。" 1 unit_name_transform(S5.D1)
+END_SUB
+END_SUB
+
+SUB 6
+"\n%s已将" 1 unit_name_transform(D2)
+"%s从联合行动中排除。" 1 unit_name_transform(S6.D1)
+"有迹象表明，%s已隐蔽撤离该地域。" 1 unit_name_transform(S6.D1)
+END_SUB
+
+SUB 7
+"\n%s已经同" 1 unit_name_transform(D2)
+"%s解除联合行动。" 1 unit_name_transform(S7.D1)
+"%s已被歼灭并退出了战场。" 1 unit_name_transform(S7.D1)
+END_SUB
+
+END_MAIN
+

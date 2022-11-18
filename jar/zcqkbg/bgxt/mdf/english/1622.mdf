@@ -1,0 +1,36 @@
+
+1622
+SUBJECT
+"%s %s后勤补给原型的空运相关属性" 2 Sustainment_Log_Prototype[D2] D2 
+MAIN
+
+"<p class='title'>  %s后勤补给原型空运相关属性 </p>\n\n" 1 Sustainment_Log_Prototype[D2] 
+
+SUB 1
+"  修复一处受损跑道需要消耗的%s %8.8s %s。 \n" 3 Supply_Category[S1.D2]   SLP_SC_AMT(D2,S1.D2,S1.D1) SLP_SC_UOM(D2,S1.D2) 
+END_SUB
+
+SUB 2
+"  考虑维护时间，昨日飞机出动架次为今日的%s倍。\n"1 S2.D1
+END_SUB
+
+SUB 3
+"  考虑维护时间，两天前飞机出动架次为今天的%s倍。\n" 1 S3.D1
+END_SUB
+
+SUB 4
+"  考虑维护时间，三天前飞机出动架次为今天的%s倍。\n"1 S4.D1
+END_SUB
+
+SUB 5
+"  为防空炮兵阵地部队实施再补给的最大距离为%s%s。\n" 2
+                                          UOM_AMT(DISTANCE,S5.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 6
+"  传感器设施修理后平均测试时间修：%s\n" 1
+                               DURATION(S6.D1, "%d天%h时%Rm 分")
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,83 @@
+6700
+SUBJECT
+"%s编队两栖行动评估报告" 1 D4
+MAIN
+"<p class='title'>%s编队两栖行动评估报告</p>" 1 D4
+
+"\n编号为%s的命令要求对" 1 D2
+"%s编队完成两栖%s行动所需时间做出评估。" 2 D4 unit_name_transform(D5)
+"以下预测结果由%s提供：" 1 unit_name_transform(D3)
+"\n——进入时间：%s；" 1
+                              DURATION(D6, "%d天 %h时 %Rm分")
+"\n——%s行动时间：%s；" 2 D5
+                              DURATION(D7,  "%d天 %h时 %Rm分")
+"\n——撤出时间：%s；" 1
+                              DURATION(D8,  "%d天 %h时 %Rm分")
+"\n——总行动时间：%s；" 1
+                              DURATION(D9,  "%d天 %h时 %Rm分")
+"\n——指定行动点：%s。" 1 LOCATION(D10, D11)
+
+SUB 1 
+"\n下列地面部队也在评估范围内：" 0
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S1.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 2
+"\n该编队态势：%s。" 1 Formation_Posture[S2.D1]
+
+   SUB 1
+"\n以下地面部队配属该编队：" 0
+      GROUP 1
+         SUB 1
+"\n——%20.20s，已搭载" 1 S2.S1.G1.S1.D1
+         END_SUB
+         SUB 2
+"\n——%20.20s，输送中" 1 S2.S1.G1.S2.D1
+         END_SUB
+      END_GROUP
+   END_SUB
+   SUB 2
+"" 0
+   END_SUB
+END_SUB
+
+SUB 3
+"\n以下列出了命令中指定的行动方式，" 0
+"以及哪些方式可行，并被应用到评估中：" 0
+"<p class='table_name'>行动方式可行性评估</p>" 0
+"__start_table|行动方式|是否要求|是否允许\n" 0
+"|抵滩或港口|%s|%s\n" 2 Answer[S3.D1] Answer[S3.D2]
+"|直升机|%s|%s\n" 2 Answer[S3.D3] Answer[S3.D4]
+"|两栖船|%s|%s\n" 2 Answer[S3.D5] Answer[S3.D6]
+"__stop_table" 0
+END_SUB
+
+SUB 4
+"\n编队的离岸距离为%s%s。" 2 UOM_AMT(DISTANCE,S4.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 5
+"\n已指定进入航线。" 0
+END_SUB
+
+SUB 6
+"\n已指定撤出航线。" 0
+END_SUB
+
+SUB 7
+"\n未指定进入航线,编队已" 0
+"位于行动点。不需要规定进入时间。" 0
+END_SUB
+
+SUB 8 
+"\n下列舰艇已加入编队或正在前往编队机动途中：" 0
+
+   GROUP 1
+"\n——%-20.20s，是否已加入编队：%s" 2 unit_name_transform(S8.G1.D1) Answer[S8.G1.D2]
+   END_GROUP
+
+END_SUB
+
+END_MAIN

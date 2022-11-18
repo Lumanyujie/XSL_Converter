@@ -1,0 +1,40 @@
+
+2261
+SUBJECT
+"反炮兵行动情况报告" 0
+MAIN
+"<p class='title'>反炮兵行动情况报告</p>" 0
+
+
+GROUP 1
+"\n——%s雷达：" 1 G1.D1
+
+   SUB 1
+"没有可执行反炮兵任务的部队。" 0
+   END_SUB
+
+   SUB 2
+"可指派以下部队执行反炮兵任务：" 0
+"<p class='table_name'>可执行反炮兵任务部队列表</p>" 0
+"__start_table |部队名称|弹药|数量（枚）|反击最小发射数（枚）|发现后最迟反击时间\n" 0              
+     GROUP 1
+"|%s" 1 unit_name_transform(G1.S2.G1.D1)
+"|%s|%s" 2 Targetable_Weapon[G1.S2.G1.D3] G1.S2.G1.D2
+"|%s|%s分钟\n" 2 G1.S2.G1.D4 DURATION(G1.S2.G1.D5, "%.2Tm")
+     END_GROUP
+"__stop_table" 0
+  END_SUB
+
+  SUB 3
+"当前不能参与作战，" 0
+    SUB 1
+"预计恢复时间：%s。" 1 GTIME(G1.S3.S1.D1)
+    END_SUB
+    SUB 2
+"因为雷达未按计划修复。" 0
+    END_SUB
+  END_SUB
+END_GROUP
+
+END_MAIN
+

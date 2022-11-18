@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="8400"> <subject> <line><D2/>为无效命令类型</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;<D2/>为无效命令类型&lt;/p&gt;</line> <line><br/>在创建情报过程中，系统发现错误，</line> <line>指定的类型为<D2/>，</line> <line>请告知技术人员。</line> </main> </msg> </msgs>

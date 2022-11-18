@@ -1,0 +1,611 @@
+
+1050
+SUBJECT
+"命令执行情况报告" 0
+MAIN
+"<p class='title'>命令执行情况报告</p>" 0
+
+
+SUB 1
+"\n评估武器毁伤效果：%s对%s实施%s枚（发）齐射。" 3 Targetable_Weapon[S1.D2] LOCATION(S1.D3,S1.D4) S1.D1
+END_SUB	
+
+SUB 2
+"\n评估武器毁伤效果：%s对目标%s实施%s枚（发）齐射。" 3 
+ Targetable_Weapon[S2.D2] S2.D3 S2.D1
+END_SUB
+
+SUB 3
+"\n评估武器毁伤效果：%s对%s实施%s枚（发）齐射。" 3 
+ Targetable_Weapon[S3.D2] unit_name_transform(S3.D3) S3.D1
+END_SUB
+
+SUB 4
+"\n%s的作战能力已经发生变化，变化原因是" 1 unit_name_transform(S4.D1)
+"%s。" 1 S4.D4
+   SUB 1
+"其所属目标同时受到影响。" 0
+   END_SUB
+   SUB 2
+"其所属目标未受影响。" 0
+   END_SUB
+   SUB 3
+"命令要求的战斗力是%2.4f，" 1 S4.D2
+"报告得到的战斗力是%2.4f。" 1 S4.D3
+"两者之间如有不同，可能是以下两方面原因：" 0
+"\n1、对于舰船而言，报告得到的战斗力是基于舰船原型定义的舰船沉没所需受到的平均打击数，而非基于舰船沉没所受到的实际打击数。" 0
+"\n2、在部队已经毁伤的情况下，如果仍输入命令希望对其造成更大的毁伤，此前已经毁伤的武器装备或人员的战斗力已经低于期望水平，这将导致战斗力降幅低于预期水平。" 0
+   END_SUB
+END_SUB
+
+SUB 5
+ "" 0
+END_SUB
+
+SUB 6
+ "" 0
+END_SUB
+
+SUB 7
+ "" 0
+END_SUB
+
+SUB 8
+ "" 0
+END_SUB
+
+SUB 9
+ "" 0
+END_SUB
+
+SUB 10
+ "" 0
+END_SUB
+
+SUB 11
+ "" 0
+END_SUB
+
+SUB 12
+ "" 0
+END_SUB
+
+SUB 13
+"\n模型将%s重新部署于%s。" 2 unit_name_transform(S13.D1) LOCATION(S13.D2,S13.D3)
+   SUB 1
+"它加入%s编队，搭乘下列舰船：" 1 S13.S1.D1
+      GROUP 1
+"\n——%s" 1 unit_name_transform(S13.S1.G1.D1)
+      END_GROUP
+   END_SUB
+   
+   SUB 2
+"\n下列舰船除外，因为其不在任何编队内：" 0
+    GROUP 1
+"\n——%s，隶属于%s编队" 2 unit_name_transform(S13.S2.G1.D1) S13.S2.G1.D2
+    END_GROUP      
+   END_SUB
+
+   SUB 3
+"\n下列舰船除外，因为其仍在返回初始阵位途中：" 0
+    GROUP 1
+"\n——%s，隶属于%s编队" 2 unit_name_transform(S13.S3.G1.D1) S13.S3.G1.D2
+    END_GROUP     
+   END_SUB
+   
+END_SUB
+
+SUB 15
+ "" 0
+END_SUB
+
+SUB 16
+ "" 0
+END_SUB
+
+SUB 17
+ "" 0
+END_SUB
+
+SUB 18
+ "" 0
+END_SUB
+
+SUB 19
+ "" 0
+END_SUB
+
+SUB 20
+"\n于%s，外部事件%s——改变%s目标位置，按要求撤销。" 3  GTIME(S20.D2) S20.D1 unit_name_transform(S20.D3)
+END_SUB
+
+SUB 21
+"\n于%s，外部事件%s——改变目标位置，按要求撤销。" 2 GTIME(S21.D2) S21.D1
+END_SUB
+
+SUB 22
+"\n于%s，外部事件%s——创建目标%s，按要求撤销。" 3  GTIME(S22.D2) S22.D1 unit_name_transform(S22.D3)
+END_SUB
+
+SUB 23
+"\n于%s，外部事件%s——%s的区域报告，按要求撤销。" 3  GTIME(S23.D2) S23.D1  unit_name_transform(S23.D3)
+END_SUB
+
+SUB 24
+"\n于%s，外部事件%s——%s的部队报告，按要求撤销。" 3 GTIME(S24.D2) S24.D1 unit_name_transform(S24.D3)
+END_SUB
+
+SUB 25
+"\n于%s，外部事件%s——%s的目标报告，按要求撤销。" 3 GTIME(S25.D2) S25.D1 unit_name_transform(S25.D3)
+END_SUB
+
+SUB 26
+"\n外部事件%s——拟于%s导调改变%s的目标，按要求撤销。"  3 S26.D1 GTIME(S26.D2) unit_name_transform(S26.D3)
+END_SUB
+
+SUB 27
+"\n外部事件%s——拟于%s导调改变目标，按要求撤销。"   2 S27.D1 GTIME(S27.D2)
+END_SUB
+
+SUB 28
+"\n改变特定调试对象的指令已接收并执行，" 0
+"下面列出所有调试对象的当前状态：" 0
+"\n——空中编队：%s" 1 unit_name_transform(S28.D1)
+"\n——地面部队：%s" 1 unit_name_transform(S28.D2)
+"\n——舰艇：%s" 1 unit_name_transform(S28.D3)
+"\n——海上编队：%s" 1 unit_name_transform(S28.D4)
+"\n——特战分队：%s" 1 unit_name_transform(S28.D5)
+"\n——后勤运输部队：%s" 1 unit_name_transform(S28.D6)
+"\n——导弹部队：%s" 1 unit_name_transform(S28.D7)
+"\n——目标精确定位点（JDPI）：%s" 1 unit_name_transform(S28.D8)
+END_SUB
+
+SUB 29
+"\n评估武器毁伤效果：向目标精确定位点（JDPI）%s实施%s枚（发）%s齐射。" 3 S29.D3 S29.D1 Targetable_Weapon[S29.D2] 
+END_SUB
+
+SUB 30
+"\n于%s，外部事件%s——毁伤%s人员和装备，按要求撤销。"  3 GTIME(S30.D2)  S30.D1   unit_name_transform(S30.D3)
+
+END_SUB
+
+SUB 31
+"\n于%s，外部事件%s——毁伤%s后勤补给，按要求撤销。"  3 GTIME(S31.D2)  S31.D1   unit_name_transform(S31.D3)
+END_SUB
+
+SUB 32
+"\n于%s，外部事件%s——评估武器毁伤效果，按要求撤销。" 2 GTIME(S32.D2)  S32.D1
+END_SUB
+
+SUB 33
+"\n于%s，外部事件%s——为%s集团布设雷场，按要求撤销。"  3  GTIME(S33.D2) S33.D1   S33.D3
+END_SUB
+
+SUB 34
+"\n你方没有序号为%s的情报发送事件，取消该事件的命令撤销。" 1 S34.D1
+END_SUB
+
+SUB 35
+"\n于%s，外部事件%s——为%s传递情报，按要求撤销。"  3 GTIME(S35.D2) S35.D1  No_Force_Side[S35.D3]
+END_SUB
+
+SUB 36
+"\n参演人员%s取得下列部队的主指挥权：" 1 S36.D1
+GROUP 1
+"\n——%s" 1 unit_name_transform(S36.G1.D1)
+END_GROUP
+END_SUB
+
+SUB 37
+"\n%s命令，拟将%s集团" 2 trans_word("Order",D2) S37.D1
+"从%s划归到%s，已经执行。" 2 No_Force_Side[S37.D2]  No_Force_Side[S37.D3]
+"%s集团现隶属于%s，" 2  S37.D1  No_Force_Side[S37.D3]
+"可通过部队编成查询功能查阅新的指挥关系。" 0
+END_SUB
+
+SUB 38
+ "" 0
+END_SUB
+
+SUB 39
+"\n显示或改变%s集团属性的命令（%s）已经执行，该集团属性如下：" 2 S39.D1 trans_word("Order",D2)
+"\n——国家代码：%s" 1 S39.D2
+"\n——隶属关系：%s" 1 Faction_Affiliation[S39.D3]
+
+"<p class='table_name'>该集团原型属性列表</p>" 0
+"__start_table|原型类|名称|索引\n" 0
+ 
+"|空中管制|%s|%s\n" 2 Air_Control_Prototype[S39.D4] S39.D4
+"|指挥控制|%s|%s\n" 2 Command_Control_Prototype[S39.D5] S39.D5
+"|通信|%s|%s\n" 2 Communications_Prototype[S39.D6] S39.D6
+"|火力毁伤|%s|%s\n" 2 Fire_Lethality_Prototype[S39.D7] S39.D7
+"|情报信息|%s|%s\n" 2 Intel_Info_Prototype[S39.D8] S39.D8
+"|机动|%s|%s\n" 2 Maneuver_Prototype[S39.D9] S39.D9
+"|反机动|%s|%s\n" 2 Mobility_Cntr_Mob_Prototype[S39.D10] S39.D10
+"|生存|%s|%s\n" 2 Survivability_Prototype[S39.D11] S39.D11
+"|持续保障能力|%s|%s\n" 2 Sustainment_Log_Prototype[S39.D12] S39.D12
+
+"__stop_table" 0
+END_SUB
+
+SUB 40
+"\n%s到达时间已重新计划。" 1 S40.D1
+END_SUB
+
+SUB 41
+"\n%s重复的战场情况报告已经从客户端%s的报告列表中删除。" 
+                           2 No_Force_Side[S41.D2] S41.D1
+END_SUB
+
+SUB 42
+"\n%s已调整至%s，但仍在同一六角格内。" 2 unit_name_transform(S42.D1) LOCATION(S42.D2,S42.D3)
+END_SUB
+
+SUB 43
+"\n下面列出的空军中队已调整至同一位置：" 0
+
+GROUP 1
+"\n——%s" 1 unit_name_transform(S43.G1.D1)
+END_GROUP
+
+END_SUB
+
+SUB 44
+"\n%s的注册码%s已取消。" 2 unit_name_transform(S44.D2) S44.D1
+END_SUB
+
+
+SUB 45
+ "" 0
+END_SUB
+
+SUB 46
+"\n所有的地形变化数据已下载。" 0
+END_SUB
+
+SUB 47
+"\n抄送报告的命令（%s）已经执行，" 1 trans_word("Order",D2)
+"客户端%s将收到给%s的" 2 S47.D1 No_Force_Side[S47.D2]
+
+	SUB 1
+	"所有报告。" 0
+	END_SUB
+
+	SUB 2
+	"以下报告：" 0
+	   GROUP 1
+	"\n——%s：%s" 2 S47.S2.G1.D1 Message_Number[S47.S2.G1.D1]
+	   END_GROUP
+	END_SUB
+
+END_SUB
+
+SUB 48
+"\n读取命令文件的命令（%s）已执行。" 1 trans_word("Order",D2)
+END_SUB
+
+SUB 49
+"\n于%s，外部事件%s——导调人员调整%s的部队，按要求撤销。" 3 GTIME(S49.D2) S49.D1 S49.D3 
+END_SUB
+
+SUB 50
+"\n创建新部队的命令（%s）已执行。" 1 trans_word("Order",D2)
+"新部队简称为%s，" 1 S50.D1
+"全称为%s，" 1 S50.D2
+"%s，隶属%s，由%s集团指挥。" 3 Unit_Type[S50.D3]
+                                             No_Force_Side[S50.D4] S50.D5
+"该部队将在第99天进入战场。使用按时部署命令输入其到达时间" 0
+"及参数（上级指挥机构、位置等），可使部队按预想时间到达。" 0
+END_SUB
+
+SUB 51
+ "" 0
+END_SUB
+
+SUB 52
+"\n于%s，外部事件%s——卫星过境，按要求撤销。" 2 GTIME(S52.D2) S52.D1
+END_SUB
+
+
+SUB 53
+"\n已生成新的参考文档，原因：" 0
+
+   SUB 1
+"\n某武器类型改为了空对空，或将空对空改为了当前类型。" 0
+   END_SUB
+   
+   SUB 2
+"\n某武器作用类型改为了地雷，或将地雷改为了当前的作用类型。" 0
+   END_SUB
+   
+END_SUB
+
+SUB 54
+"\n消除气象锋面的命令（%s）已接收并执行。" 1 trans_word("Order",D2)
+END_SUB
+
+SUB 55
+"\n%s编队的%s架飞机失去联络。" 2 S55.D2 S55.D1
+"给出的原因为：%s。" 1 unit_name_transform(S55.D3)
+END_SUB
+
+SUB 56
+ " \n" 0
+END_SUB
+
+SUB 57
+
+   SUB 1
+"\n%s的%s和%s间的一体化防空链路已建立。" 3 No_Force_Side[S57.S1.D3] unit_name_transform(S57.S1.D1) unit_name_transform(S57.S1.D2) 
+   END_SUB
+   
+   SUB 2
+"\n%s的%s和%s间的一体化防空链路已删除。" 3 No_Force_Side[S57.S2.D3] unit_name_transform(S57.S2.D1) unit_name_transform(S57.S2.D2) 
+   END_SUB
+   
+END_SUB
+
+SUB 58
+"\n改变%s作战系统维修结束时间的命令已执行，" 1 unit_name_transform(S58.D1)
+"%s将于%s退出维修。" 2 unit_name_transform(S58.D2) GTIME(S58.D3)
+"请求%s此时出现，%s将实际退出维护保养。" 2 S58.D4 S58.D5
+
+   SUB 1
+"请求增加时间，" 0
+"维修的战斗系统数量将改变。" 0
+   END_SUB
+   
+   SUB 2
+"请求增加时间，" 0
+"改变战斗系统维修数量不同于需求量，" 0
+"只有%s可结束维修时间达到命令标准。" 1 unit_name_transform(S58.D5)
+   END_SUB
+   
+   SUB 3
+"请求增加时间，" 0
+"维修的战斗系统数量将改变。" 0
+   END_SUB
+   
+   SUB 4
+"请求增加时间，" 0
+"改变战斗系统维修数量不同于需求量，" 0
+"只有%s可结束维修时间达到命令标准。" 1 unit_name_transform(S58.D5)
+   END_SUB
+   
+   SUB 5
+"对于飞航空战斗系统，一次只能改变一个战斗系统的维修时间。" 0
+   END_SUB
+   
+END_SUB
+
+SUB 59
+"\n破坏%s的命令未造成任何损失。" 1 unit_name_transform(S59.D1)
+END_SUB 
+
+SUB 60
+"\n毁伤导弹命令（%s）使%s枚导弹被毁，%s枚导弹仍旧完好。" 3 S60.D1 S60.D2 S60.D3
+"原因是：%s。" 1 unit_name_transform(S60.D4)
+
+   SUB 1
+"\n注意：需关注开火部队%s的%s的补给清单。" 2 S60.S1.D2
+ Targetable_Weapon[S60.S1.D1] 
+   END_SUB
+   
+END_SUB
+
+SUB 61
+"\n对%s的%s的维修时间推迟到%s结束的命令已执行。"  3 S61.D3 S61.D2 GTIME(S61.D1)
+END_SUB
+
+SUB 62
+"\n当前不可用。" 0
+END_SUB
+
+SUB 63
+"\n当前不可用。" 0
+END_SUB
+
+SUB 64
+"\n目标范围：%s%s。" 2 UOM_AMT(DISTANCE,S64.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 65
+"\n当前条件下，%s（%s类）将于%s创建。" 3 S65.D2 Target_Category[S65.D1] GTIME(S65.D3) 
+END_SUB
+   
+SUB 66
+"\n所有HLA选项的当前设置：" 0
+"\n——HLA时间：%s；"  1   Yes_No_Flag[S66.D1]
+"\n——战区外弹道导弹：%s；"  1   Yes_No_Flag[S66.D2]
+"\n——武器影响：%s。"  1   Yes_No_Flag[S66.D3]
+END_SUB
+
+SUB 67
+"\n写出指定初始化文件的命令已执行，" 0
+"\n以下为初始化文件列表：" 0
+"\n——HLA 静态和动态：%s；"  1  Answer[S67.D1]
+"\n——ATO生成器：%s；"  1  Answer[S67.D2]
+"\n——ATO 转换器：%s；"  1  Answer[S67.D3]
+"\n——隶属方&调理员：%s；"  1  Answer[S67.D4]
+"\n——JCATS 初始化文件：%s；"  1  Answer[S67.D5]
+"\n——重新格式化总分析单：%s；"  1  Answer[S67.D6]
+"\n——程序的使用手册：%s；"  1  Answer[S67.D7]
+"\n——JQUAD 初始化文件：%s；"  1  Answer[S67.D8]
+"\n——TACSIM 初始化文件：%s；"  1  Answer[S67.D9]
+"\n——军事演习地图筛选文件：%s；"  1  Answer[S67.D10]
+"\n——JTOI初始化文件：%s；"  1  Answer[S67.D11]
+"\n注：除了选择的文件外，下列文件也被模型（CEP）自动记录下来：" 0
+"\n——ELS初始化文件；" 0
+"\n——JOI初始化文件；" 0
+"\n——KOI初始化文件。" 0
+END_SUB
+
+SUB 68
+"\n管理目标定位点（JDPI）%s的命令，已为其赋予下列属性：" 1 S68.D1
+"\n——描述：%s；" 1 S68.D2
+"\n——分类码：%s；" 1 S68.D3
+"\n——损毁类别：%s；" 1 Target_Category[S68.D4]
+"\n——损毁子类：%s；" 1 SUBCAT_NAME{S68.D4,S68.D5}
+"\n——位置：%s；" 1 LOCATION(S68.D6,S68.D7)
+"\n——当前受损情况：%s。" 1 Answer[S68.D8]
+"\n该目标定位点为以下属方所知：" 0
+   GROUP 1
+"\n——%s" 1 No_Force_Side[S68.G1.D1]
+   END_GROUP
+
+"<p class='table_name'>命中目标定位点（JPDI）可能造成损伤情况</p>" 0
+" __start_table|目标主体|要素|项目|毁伤|是否造成附带损伤\n" 0
+   GROUP 2
+"|%s|%s|%s|%s|%s\n" 5 S68.G2.D1  S68.G2.D2  S68.G2.D3  S68.G2.D4  Answer[S68.G2.D5] 
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 69
+"\n管理分类码%s的命令已经为该分类码指定下列属性：" 1 S69.D1
+"\n描述：%s" 1 S69.D2
+
+"<p class='table_name'>相关毁伤描述列表</p>" 0
+"__start_table|概率|持续时间|文本显示\n" 0
+   GROUP 1
+      SUB 1
+"|%2.2f|%s|%s\n" 3 S69.G1.S1.D1
+         DURATION(S69.G1.S1.D2, "%3dD%-2hH%-2.2RmM")
+         WRAP(S69.G1.S1.D3, "       ", 55)
+      END_SUB
+      
+      SUB 2
+"|——|——|未定义\n" 0
+      END_SUB    
+   END_GROUP
+"__stop_table" 0
+
+"\n最终毁伤描述：%s。" 1 WRAP(S69.D3, "                            ", 50)
+END_SUB
+
+SUB 70
+"\n评估武器毁伤效能：对目标定位点（JDPI）%s实施%s枚（发）%s齐射 。" 3 S70.D3 S70.D1 Targetable_Weapon[S70.D2] 
+END_SUB
+
+SUB 71
+"\n删除%s原型所属目标（%s的CFF名为%s）的命令%s已执行。" 4 S71.D1 S71.D3 S71.D2 S71.D4
+END_SUB
+
+SUB 72
+"\n改变或显示WDC（%s）属性的命令（%s）已执行。" 2 unit_name_transform(S72.D1) trans_word("Order",D2)
+"属性如下：" 0
+"\n——WDC名称：%s；" 1 unit_name_transform(S72.D1)
+"\n——WDC补给影响因子：%2.2f；"1 S72.D2
+"\n——WDC夜间影响因子：%2.2f；" 1 S72.D3
+"\n——气象条件：%s；" 1 unit_name_transform(S72.D4)
+"\n——WDC_WC影响因子：%2.2f。" 1 S72.D5
+END_SUB
+
+SUB 73
+"\n改变或显示WDC属性%s的命令（%s）已执行。" 2 S73.D1 trans_word("Order",D2)
+"属性如下：" 0
+"\n——WDC名称：%s；" 1 S73.D1
+"\n——WDC补给要素：%s；" 1 S73.D2
+"\n——WDC夜间要素：%s。" 1 S73.D3
+END_SUB
+
+SUB 74
+
+   SUB 1
+"\n导调人员将工作状态追踪从“%s”改为“%s”。" 2  Answer[S74.S1.D1] Answer[S74.S1.D2]
+   END_SUB
+ 
+   SUB 2
+"\n工作状态追踪被初始化为0。" 0
+   END_SUB
+ 
+   SUB 3
+"\n工作状态追踪已经设置为“%s”，改变命令取消。"
+    1 Answer[S74.S3.D1]
+   END_SUB
+END_SUB
+ 
+SUB 75
+"<p class='table_name'>写入文件%s的事件统计</p>" 1 S75.D1
+"__start_table|结果数量|周期计算|累计计算\n" 0
+
+   GROUP 1
+"|%s|%s|TBD\n" 2 S75.G1.D1 S75.G1.D2
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+SUB 76
+"\n部队拥有的下列非固定目标，被移动或重新部署到以下位置：" 0
+   GROUP 1
+"\n——%s：%s" 2 S76.G1.D1 LOCATION(S76.G1.D2,S76.G1.D3)
+   END_GROUP
+END_SUB
+
+SUB 77
+"\n部队拥有的下列固定目标，被保留在六角格原来位置：" 0
+   GROUP 1
+"\n——%s：%s" 2 S77.G1.D1 LOCATION(S77.G1.D2,S77.G1.D3)
+
+      SUB 1
+"（在该部队有效射程外）" 0
+      END_SUB
+      
+      SUB 2
+"（在该部队有效射程内）" 0
+      END_SUB
+      
+   END_GROUP
+   
+END_SUB
+
+SUB 78
+"\n按照命令，提供下列真实世界数据集信息：" 0
+
+   SUB 1
+"<p class='table_name'>信息列表</p>" 0
+"__start_table|RWD名称|USMTF名称|TADIL标识|MODEL\n" 0
+   END_SUB
+
+   SUB 2
+"\n目前尚未定义。" 0
+   END_SUB
+
+   GROUP 1
+"|%s|%s|%s|%s\n" 4 S78.G1.D1 S78.G1.D2 TADIL_AC_Index[S78.G1.D3] S78.G1.D4
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+SUB 79
+"\n外部事件——卫星过境侦察，具体参数：" 0
+"__start_table|分项|参数\n" 0
+"|隶属方|%s\n" 1 unit_name_transform(S79.D1)
+"|传感器|%s\n" 1 Sensor_Type[S79.D2]
+"|覆盖带起点|%s\n" 1 LOCATION(S79.D3, S79.D4)
+"|覆盖带终点|%s\n" 1 LOCATION(S79.D5, S79.D6)
+"|首次过境时间|%s\n" 1 GTIME(S79.D7)
+"|每次过境情报搜索区最大数量|%s\n" 1 S79.D8
+"|情报区创建与情报收集间最小时间间隔|%s\n" 1 DURATION(S79.D9, "%d天%h小时%Rm分")
+
+   SUB 1
+"|卫星过境时间间隔|卫星过境仅1次\n" 0
+   END_SUB
+   
+   SUB 2
+"|卫星过境时间间隔|%s\n" 1 DURATION(S79.S2.D1, "%d天%h小时%Rm分")
+   END_SUB
+"__stop_table" 0
+END_SUB
+
+SUB 80
+"\n为%s安排一定数量" 1 unit_name_transform(D3)
+"的%s%s进行维修保养的命令已执行，" 2 S80.D2 S80.D1
+"该作战系统将于%s结束维修。" 1 GTIME(S80.D3)
+END_SUB
+
+END_MAIN
+
+

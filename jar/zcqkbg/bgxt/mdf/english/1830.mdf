@@ -1,0 +1,28 @@
+1830
+SUBJECT
+"舰船部队原型%s (索引 %s), 基于态势的消耗  " 
+                                          2 Ship_Unit_Prototype[D2] D2
+MAIN
+
+"<p class='title'>使用此舰船部队原型 %s (索引 %s)的部队不同态势下消耗补给物资总数</p>\n" 2
+                                          Ship_Unit_Prototype[D2] D2
+
+"__start_table| 物资名称 | 物资编号 | 正常作战    |    机动 |      空中作战  |  提供舰炮火力 | 计算单位\n" 0
+GROUP 1
+"|%-15.15s| %5.5s  |  %9.9s |   %9.9s |%9.9s|  %9.9s   |      %4.4s %10.10s \n" 8
+                                                  Supply_Category[G1.D1] G1.D1
+                           SLP_SC_AMT(0,G1.D1,G1.D2) SLP_SC_AMT(0,G1.D1,G1.D3)
+                           SLP_SC_AMT(0,G1.D1,G1.D4) SLP_SC_AMT(0,G1.D1,G1.D5)
+                                   SLP_SC_UOM(0,G1.D1) Consumption_Type[G1.D1] 
+END_GROUP
+"__stop_table\n" 0
+                                                         
+"  该列表中不包含已使用的补给、\n" 0
+"  为没有基本携行量的舰船原型的补给和已运到战区的补给。\n" 0
+
+SUB 1
+"  舰船原型不允许基于态势的消耗量的补给。\n" 0
+END_SUB
+
+END_MAIN
+

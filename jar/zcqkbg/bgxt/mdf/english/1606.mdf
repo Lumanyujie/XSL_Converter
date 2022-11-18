@@ -1,0 +1,81 @@
+
+1606
+SUBJECT
+"情报信息原型精度--%s %s 特种部队属性" 
+                                                 2 Intel_Info_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  %s在侦察分队、人员及气象报告精度方面情报信息原型属性  </p>\n\n" 1
+Intel_Info_Prototype[D2]
+SUB 1
+"\n  最小的人力情报收集距离是%s%s。\n" 2
+                                         UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 2
+"\n  最大的人力情报收集距离是%s%s。\n" 2
+                                         UOM_AMT(DISTANCE,S2.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 3
+"\n  侦察分队在最小收集距离内活动时，发现目标的基本概率是%s。\n" 1 S3.D1
+END_SUB
+
+SUB 4
+"\n  侦察分队在最大收集距离内活动时，发现目标的基本概率是%s。\n" 1 S4.D1
+END_SUB
+ 
+SUB 5
+"\n  到达活动区域的侦察分队每%s给出位置报告一次。\n"  1 DURATION(S5.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 6
+"\n  情报数据达到2级的最小时间是%s。\n" 1 DURATION(S6.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 7
+"\n  情报数据达到3级的最小时间是%s。\n" 
+               1 DURATION(S7.D1, "%d天, %h 小时, %Rm 分")
+END_SUB
+
+SUB 8
+"\n  情报数据达到1级时，一个人能准确统计另一方部队的人数为%s。\n" 1 S8.D1
+END_SUB
+
+SUB 9
+"\n  情报数据达到2级时，一个人能准确统计另一方部队的人数为%s。\n" 1 S9.D1
+END_SUB
+
+SUB 10
+"\n  情报数据达到3级时，一个人能准确统计另一方部队的人数为%s。\n" 1 S10.D1
+END_SUB
+
+SUB 11
+"\n  情报数据达到1级时，人员数量报告误差评估是百分之%s。\n" 1 S11.D1
+END_SUB
+
+SUB 12
+"\n  报告2级数据时，人员数量报告误差评估是百分之%s。\n" 1 S12.D1
+END_SUB
+
+SUB 13
+"\n  报告3级数据时，人员数量报告误差评估是百分之%s。\n" 1 S13.D1
+END_SUB
+
+SUB 14
+"\n  在%s时间段内，能准确发布天气预报。\n" 
+         1 DURATION(S14.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 15
+"\n  获得水面舰船矢量数据（航向/速度）的平均时间: %s。 \n" 
+     1 DURATION(S15.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 16
+"\n  获得舰船矢量数据（航向/速度/深度）的平均时间: %s。 \n" 
+1 DURATION(S16.D1, "%d天%h时%Rm分")
+END_SUB
+
+END_MAIN
+

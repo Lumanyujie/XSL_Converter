@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="3010"> <subject> <line>取消空中任务（批号：<D2/>）命令执行情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;取消空中任务（批号：<D2/>）命令执行情况报告&lt;/p&gt;</line>  <sub n="1"> <line><br/>该空中编队仍有空运部队搭载，</line> <line>待空运部队下机后，即返回驻地。</line> </sub> <sub n="2"> <line><br/>该空中编队正在分发补给物资，</line> <line>待交付完毕，即返回驻地。</line> </sub></main> </msg> </msgs>

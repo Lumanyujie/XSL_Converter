@@ -1,0 +1,156 @@
+#!/bin/ksh
+################################################################################
+#
+# Purpose:  This script procedure calculates each order length from the
+#           order XML files to determine a max-entries number for
+#           utility order. 
+#           
+# Count options:
+# a.)  order total length = @total-length(MANDATORY, OPTIONAL)
+#
+# b.)  order total length = @total-length(MAN, OPT)     + 
+#                           utility's total-length(MAN + OPT + largest ALTMAN, ALTOPT)  +
+#                           order largest entry in group(ALTMAN, ALTOPT)
+#
+# c.)  order total length = @total-length(MAN, OPT)     +
+#                           utility's total-length(MAN + OPT + largest ALTMAN, ALTOPT)
+#
+# d.)  order total length = @total-length(MAN, OPT)     +
+#                           order largest entry in group(ALTMAN, ALTOPT)
+#
+# Programmer: Etsuko Lippi
+# Date:       6 February 2007
+# Modified:   Add to open the created order list from $JGAME/data/ directory
+#
+#
+################################################################################
+################################################################################
+#
+# Usage of list order length
+#
+################################################################################
+
+if [[ $# -eq 0 ]] 
+then
+   echo ""
+   echo "Usage: listorderlength [OPTION] | [FILE]..."
+   echo ""
+   echo "   FILE is one order filename."
+   echo "        The '.xml' can be omitted."
+   echo "   A order length list also will be created."
+   echo ""
+   echo "   OPTION"
+   echo "        The following option is supported:"
+   echo ""
+   echo "        -l    create list of all orders length"
+   echo ""
+   echo "   If '-l' is specified, any filename provided is ignored."
+   echo ""
+   return
+fi
+
+JLIBDIR=${JTLSHOME}/lib/java/lib
+################################################################################
+#
+# Combine all the individual order XML files into the ordersdef.xml file
+#
+################################################################################
+
+echo ""
+echo "Merging individual orders."
+
+#Where the jarfiles are found
+jarlibdir=$JTLSHOME/lib/java/lib
+
+#the list of jar file name to use
+libs="util"
+
+cpath=
+for name in $libs
+do
+   if [[ ${cpath} != "" ]]
+   then
+      cpath=${cpath}:
+   fi
+   cpath=${cpath}:${jarlibdir}/${name}.jar
+done
+
+java -cp $JJAVA/ordersmerger.jar:$cpath com.rolands.ordersmerger.OrdersMerger
+
+#move the order file into this directory
+mv $JGAME/data/ordersdef.xml .
+
+################################################################################
+#
+# Transform ordersdef.xml into order-utility.xml file
+#
+################################################################################
+
+xt ordersdef.xml order_utility_length_replace.xsl order-utility-temp.xml 
+
+xt order-utility-temp.xml order_utility_count.xsl order-utility.xml
+
+xt order-utility.xml utility_group_length.xsl utility-group.xml
+
+xt utility-group.xml order_group_length.xsl order-utility-final.xml
+
+################################################################################
+#
+# Clean order-length-list.txt file
+#
+################################################################################
+
+#remove existing order-length-list.txt, if exist
+#txt_file=$JGAME/data/order-length-list.txt
+
+#if [[ $txt_file != 0 ]]
+#then
+#  rm $JGAME/data/order-length-list.txt
+#fi
+
+################################################################################
+#
+# Count length of order file
+#
+################################################################################
+
+echo "Creating Order   Length List [order-length-list.txt]"
+echo "Creating Utility Length List [utility-length-list.txt]"
+
+#count order length
+if [[ $1 == -l ]]
+then
+  #create list
+  xt order-utility-final.xml check_order_length.xsl order-length-tmp.txt
+else
+  #single order process
+  xt order-utility-final.xml check_order_length.xsl one-order-length=$1
+fi
+
+################################################################################
+#
+# Sort order-length-tmp.txt file by length
+#
+################################################################################
+
+tmp_file=order-length-tmp.txt
+if [[ $tmp_file != 0 ]]&&[[ $1 == -l ]]
+then
+  sort --key=4 -n $JGAME/data/order-length-tmp.txt >> $JGAME/data/order-length-list.txt
+fi
+
+################################################################################
+#
+# Clean 
+#
+################################################################################
+
+#remove temp order-length list
+rm $JGAME/data/order-length-tmp.txt
+
+#remove all temporary xml files
+rm ordersdef.xml
+rm order-utility-temp.xml
+rm order-utility.xml
+rm utility-group.xml
+rm order-utility-final.xml

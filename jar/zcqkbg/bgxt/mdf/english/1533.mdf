@@ -1,0 +1,44 @@
+
+1533
+SUBJECT
+"%s飞行参数" 1 Aircraft_Type[D2]
+MAIN
+
+"<p class='title'>  %s（编号%s）飞机属性 </p>\n\n"  2 Aircraft_Type[D2] D2
+
+SUB 1
+"  起飞所需跑道长度: %s米\n" 1 UOM_AMT("AIRDISTANCE",S1.D1)
+END_SUB
+
+SUB 2
+"  安全降落所需跑道长度: %s米\n" 1 UOM_AMT("AIRDISTANCE",S2.D1)
+END_SUB
+
+SUB 3
+"  巡航高度: %s米\n" 1 UOM_AMT("AIRDISTANCE",S3.D1)
+END_SUB
+
+SUB 4
+"   最佳飞行高度: %s米\n"   1 UOM_AMT("AIRDISTANCE",S4.D1)
+END_SUB
+ 
+SUB 5
+"  最大飞行高度: %s米\n"    1 UOM_AMT("AIRDISTANCE",S5.D1)
+END_SUB
+
+SUB 6
+"  巡航速度: %s %s\n"     2 UOM_AMT(SPEED, S6.D1) UOM(SPEED)
+END_SUB
+ 
+SUB 7
+"  最大速度: %s %s\n"
+                 2 UOM_AMT(SPEED, S7.D1) UOM(SPEED)
+END_SUB
+
+SUB 8
+"  失速速度: %s %s\n"
+                 2 UOM_AMT(SPEED, S8.D1) UOM(SPEED)
+END_SUB
+
+END_MAIN
+

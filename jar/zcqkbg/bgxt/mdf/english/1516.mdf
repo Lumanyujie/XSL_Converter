@@ -1,0 +1,21 @@
+
+1516
+SUBJECT
+"%s交通要点目标属性" 1 Interdiction_Point_Type[D2]
+MAIN
+
+"<p class='title'> %s交通要点目标属性 </p>\n\n" 1 Interdiction_Point_Type[D2]
+SUB 1
+"  目标半径：%s%s\n" 2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+"  修复时间：%s\n"
+                            1 DURATION(S1.D2, "%d天%h时%Rm分")
+"  摧毁时间：%s\n"
+                            1 DURATION(S1.D3, "%d天%h时%Rm分")
+"  类型: %s\n" 1 Road_or_Rail[S1.D4]
+"  目标分类码: %s\n" 1 S1.D5
+"  目标图标符号: %s\n" 1 S1.D6
+"  DIS代码: %s\n" 1 S1.D7
+END_SUB
+
+END_MAIN
+

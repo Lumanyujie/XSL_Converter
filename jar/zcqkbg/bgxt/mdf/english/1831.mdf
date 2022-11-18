@@ -1,0 +1,32 @@
+
+1831
+SUBJECT
+"舰艇部队原型，潜艇参数 %s (索引 %s) "  2 Ship_Unit_Prototype[D2] D2
+MAIN
+
+"<p class='title'> 使用舰艇部队原型%s (索引 %s)的部队拥有如下潜艇参数</p>\n" 2 Ship_Unit_Prototype[D2] D2
+SUB 1
+     "&nbsp&nbsp水中静止的时间(最长电池使用时间)：%s\n"  1 DURATION(S1.D1, "%d天%h时%Rm分")      
+END_SUB
+
+SUB 2
+     "&nbsp&nbsp水中最大速度航行时间(最短电池使用时间)：%s\n" 1 DURATION(S2.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 3
+     "&nbsp&nbsp电池充满电所需时间：%s\n" 1 DURATION(S3.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 4
+     "&nbsp&nbsp充电所需的补给类型：%s  (索引 %s)\n" 2 Supply_Category[S4.D1] S4.D1
+END_SUB
+
+SUB 5
+     "&nbsp&nbsp电池充满电所需电量：%s %s\n" 2 SLP_SC_AMT(0,S5.D1,S5.D2) SLP_SC_UOM(0,S5.D1)
+END_SUB
+
+SUB 6
+     "&nbsp&nbsp通气管深度探测概率修正值：%s\n" 1 S6.D1
+END_SUB
+
+END_MAIN

@@ -1,0 +1,19 @@
+
+1804
+SUBJECT
+"%s(编号%s)战术部队原型参数--补给数量"   2 Tactical_Unit_Prototype[D2] D2
+MAIN
+"<p class='title'> %s(编号%s)战术部队原型参数 </p> \n\n"  2 Tactical_Unit_Prototype[D2] D2
+
+"<p class='paragraph'> 使用战术部队原型%s(编号%s)的部队非零补给分类和数量</p> \n\n"     2 Tactical_Unit_Prototype[D2] D2
+"__start_table|基本分类|UOM|送达战区的部队|新调配补给等级|存储目标|运载量 \n" 0
+GROUP 1
+" |%-15.15s | %-5.5s| %14.14s| %14.14s| %14.14s |%14.14s\n" 6
+                        Supply_Category[G1.D1] SLP_SC_UOM(0,G1.D1)
+                           SLP_SC_AMT(0,G1.D1,G1.D2) SLP_SC_AMT(0,G1.D1,G1.D3)
+                           SLP_SC_AMT(0,G1.D1,G1.D4) SLP_SC_AMT(0,G1.D1,G1.D5)
+END_GROUP
+"__stop_table"0
+
+END_MAIN                                                       
+

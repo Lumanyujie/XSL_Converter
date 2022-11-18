@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="9566"> <subject> <line>未知的(ULN) <D2/></line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt; 物资编码（ULN ID）<D2/>在想定数据中没有与其对应的物资&lt;/p&gt;<br/></line>  <sub n="1"> <line>  在下达的命令中，<D2/>被指定为货单物资编码（ULN ID）,</line> <line>命令名称<S1.D1/>, 但该物资不存在。拥有该ID的项目</line> <line>将被排除在要求的货单之外。<br/></line> </sub></main> </msg> </msgs>

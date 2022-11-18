@@ -1,0 +1,15 @@
+
+5210
+SUBJECT
+"%s发现敌特战分队报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s发现敌特战分队报告</p>" 1 unit_name_transform(D2)
+
+
+"\n%s向上级报告：于%s，" 2 unit_name_transform(D2) GTIME(D1)
+"发现%s一支特战分队，" 1 No_Force_Side[D4] 
+"代号%s，" 1 unit_name_transform(D5) 
+"位于%s。" 1 LOCATION(D6,D7)
+
+END_MAIN
+

@@ -1,0 +1,36 @@
+
+2901
+SUBJECT
+"指挥权限报告" 0
+MAIN
+
+"<p class='title'>指挥权限报告</p>" 0
+SUB 1
+"\n演习席位%s对以下部队具有主指挥权：" 1 unit_name_transform(D3)
+   GROUP 1
+"\n——%s，" 1 unit_name_transform(S1.G1.D1)
+"%s，" 1 unit_name_transform(S1.G1.D2)
+"%s。" 1 unit_name_transform(S1.G1.D3)
+   END_GROUP
+
+END_SUB
+
+SUB 2
+"\n演习席位%s对任何部队都没有主指挥权。" 1 unit_name_transform(D3)
+END_SUB
+
+SUB 3
+"\n对以下部队具有共享指挥权：" 0
+   GROUP 1
+"\n——%s，" 1 unit_name_transform(S3.G1.D1)
+"%s，" 1 unit_name_transform(S3.G1.D2)
+"%s。" 1 unit_name_transform(S3.G1.D3)
+   END_GROUP
+END_SUB
+
+SUB 4
+"\n对任何部队都没有共享指挥权。" 0
+END_SUB
+
+END_MAIN
+

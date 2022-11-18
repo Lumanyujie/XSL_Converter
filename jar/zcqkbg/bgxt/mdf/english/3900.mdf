@@ -1,0 +1,359 @@
+
+3900
+SUBJECT
+"空中%s编队侦察情况报告" 1 D8
+MAIN
+"<p class='title'>空中%s编队侦察情况报告</p>" 1 D8
+"\n侦察报告由%s编队（批号：%s）提供。" 2 Mission_Type[D6] D8
+"敏感目标区名称：%s，" 1 D10
+"敏感目标区描述：%s。" 1 D11
+
+   GROUP 1
+
+      SUB 1
+         "<p class='title2'>\n第%s项：部队</p>" 1 G1.D1
+"<p class='table_name'>部队基本信息</p>" 0
+"__start_table|分项|内容|分项|内容\n" 0
+         "|部队类型|%s" 1 Graphics_Symbol[G1.S1.D1]
+         "|部队规模|%s\n" 1 NATO_Command_Level[G1.S1.D2]
+         "|隶属集团|%s" 1 unit_name_transform(G1.S1.D3)
+         "|敏感目标区标识|%s\n" 1 G1.S1.D4
+         "|部队名称|%s" 1 unit_name_transform(G1.S1.D5)
+         "|坐标|%s\n" 1 LOCATION(G1.S1.D6,G1.S1.D7)
+         "|最后侦察时间|%s" 1 GTIME(G1.S1.D8)
+         "|态势|%s\n" 1 Unit_Posture[G1.S1.D9]
+         "|战斗力|%2.2f" 1 G1.S1.D10
+         "|——|——\n" 0
+"__stop_table" 0
+         SUB 1
+"<p class='table_name'>部队人员和装备状况</p>" 0
+"__start_table|名称|可用数|损坏数\n" 0
+            GROUP 1
+               SUB 1
+    "|%s|%s|%s\n" 3 Combat_System[G1.S1.S1.G1.D3] G1.S1.S1.G1.D1 G1.S1.S1.G1.D2 
+               END_SUB
+               SUB 2
+   "|%s|%s|%s\n" 3 CSP_System_Name[G1.S1.S1.G1.S2.D1,G1.S1.S1.G1.D3] G1.S1.S1.G1.D1 G1.S1.S1.G1.D2                 
+               END_SUB
+            END_GROUP
+"__stop_table" 0
+         END_SUB
+
+         SUB 2
+
+            SUB 1
+               "\n舰艇吃水较浅，%s。" 1
+                                   Riding_Low_State[G1.S1.S2.S1.D1]
+            END_SUB
+
+            SUB 2
+               "\n舰艇%s。" 1
+                                   Listing_Direction[G1.S1.S2.S2.D1]
+            END_SUB
+
+            SUB 3
+               "\n舰艇%s。" 1
+                                   Listing_Position[G1.S1.S2.S3.D1]
+            END_SUB
+
+            SUB 4
+               "\n舰艇%s。" 1
+                                   Fire_Type_State[G1.S1.S2.S4.D1]
+            END_SUB
+
+            SUB 5
+               "\n舰艇%s。" 1
+                                   Fire_Size_State[G1.S1.S2.S5.D1]
+            END_SUB
+
+            SUB 6
+               "\n舰艇周边%s。" 1
+                                   Oil_Slick_State[G1.S1.S2.S6.D1]
+            END_SUB
+
+            SUB 7
+               "\n浮油位于舰艇%s。" 1
+                                   Oil_Slick_Location[G1.S1.S2.S7.D1]
+            END_SUB
+
+         END_SUB
+
+         "\n" 0
+
+      END_SUB
+
+      SUB 2
+         "<p class='title2'>\n第%s项：目标</p>" 1 G1.D1
+"<p class='table_name'>目标基本信息</p>" 0
+"__start_table|分项|内容|分项|内容\n" 0
+         "|名称|%s" 1 unit_name_transform(G1.S2.D1)
+         "|索引号|%s\n" 1 G1.S2.D2
+         "|隶属集团|%s" 1 unit_name_transform(G1.S2.D3)
+         "|敏感目标区标识|%s\n" 1 G1.S2.D4
+         "|坐标|%s" 1 LOCATION(G1.S2.D5,G1.S2.D6)
+         "|最后侦察时间|%s\n" 1 GTIME(G1.S2.D7)
+"__stop_table" 0
+ 
+         SUB 1
+            "\n—%s，%s个发射单元，" 2 ADA_Class[G1.S2.S1.D1] G1.S2.S1.D3
+            "综合能力：%s，" 1 G1.S2.S1.D2 
+            "%s个发射架损毁，" 1 G1.S2.S1.D4
+            "%s个发射架正在装填，" 1 G1.S2.S1.D5
+            "主动火控传感器%s个。" 1 G1.S2.S1.D6
+         END_SUB
+
+         SUB 2
+            "\n—%s，具有%s条通路，" 2 Bridge_Class[G1.S2.S2.D1] G1.S2.S2.D3
+            "综合能力%2.2f。" 1 G1.S2.S2.D2
+         END_SUB
+
+         SUB 3
+            "\n—%s，具有%s条通路，" 2 Tunnel_Class[G1.S2.S3.D1] G1.S2.S3.D3
+            "综合能力%2.2f。" 1 G1.S2.S3.D2
+         END_SUB
+
+         SUB 4
+            "\n—%s，综合能力%2.2f。" 2 Sensor_Type[G1.S2.S4.D1] G1.S2.S4.D2
+         END_SUB
+
+         SUB 5
+            "\n—%s，可用长度%s，" 2 Runway_Type[G1.S2.S5.D1] G1.S2.S5.D3
+            "综合能力%2.2f，" 1 G1.S2.S5.D2
+            "损毁%s，正在修复%s，" 2 G1.S2.S5.D4 G1.S2.S5.D5
+            "预计完成时间：%s。" 1 GTIME(G1.S2.S5.D6)
+         END_SUB
+
+         SUB 6
+            "\n—%s，具有%s条通路，" 2 Interdiction_Point_Type[G1.S2.S6.D1] G1.S2.S6.D3
+            "综合能力%2.2f。" 1 G1.S2.S6.D2
+         END_SUB
+
+         SUB 7
+
+            "\n—%s，" 1 Supply_Storage_Area[G1.S2.S7.D1]
+            SUB 1
+               "废弃。" 0
+            END_SUB
+
+            SUB 2
+               "预计当前存储量：%s，%s%s。" 3
+              SLP_Category_Name[G1.S2.S7.S2.D3,G1.S2.S7.S2.D1]
+                     SLP_SC_AMT(G1.S2.S7.S2.D3,G1.S2.S7.S2.D1,G1.S2.S7.S2.D2)
+                     SLP_SC_UOM(G1.S2.S7.S2.D3,G1.S2.S7.S2.D1)
+            END_SUB
+
+         END_SUB
+
+         SUB 8
+            "\n—%s，%s个发射架，综合能力：%2.2f，" 3
+                            Surface_Surface_Missile[G1.S2.S8.D1] G1.S2.S8.D3
+                                                    G1.S2.S8.D2 
+            "损毁%s个，正在维修%s个，装填中：%s个，" 
+                                        3 G1.S2.S8.D4 G1.S2.S8.D5 G1.S2.S8.D6 
+            "可用：%s个。" 1 G1.S2.S8.D7
+         END_SUB
+
+         SUB 9
+            "\n—%s，综合能力%2.2f。" 
+                           2 Facility_Type[G1.S2.S9.D1] G1.S2.S9.D2
+         END_SUB
+
+         SUB 10
+            "\n—%s，%s个，" 2 Aircraft_Shelter_Type[G1.S2.S10.D1] G1.S2.S10.D3
+            "%s个损毁，综合能力：%2.2f。" 2 G1.S2.S10.D4 G1.S2.S10.D2
+         END_SUB
+
+         SUB 11
+            "\n—%s，具有同时实施%s项装卸任务的能力，" 
+                           2 MHE_Facility[G1.S2.S11.D1] G1.S2.S11.D3
+            "综合能力%2.2f，损毁%s，正在维修%s，"
+                             3 G1.S2.S11.D2 G1.S2.S11.D4 G1.S2.S11.D5
+            "%s项装卸任务正在进行。" 1 G1.S2.S11.D6
+         END_SUB
+
+         SUB 12
+            "\n—雷场。" 0
+         END_SUB
+
+         SUB 13
+            "\n—%s，综合能力%2.2f。" 2
+                           Pumping_Station_Class[G1.S2.S13.D1] G1.S2.S13.D2
+
+            SUB 1
+            "处于休眠状态。" 0
+            END_SUB
+
+            SUB 2
+            "处于工作状态。" 0
+            END_SUB
+         END_SUB
+
+         SUB 14
+            "\n—%s，综合能力%2.2f。" 
+                                       2 Jammer_Type[G1.S2.S14.D1] G1.S2.S14.D2
+         END_SUB
+
+         SUB 15
+            "\n—%s，综合能力%2.2f。" 
+                                    2 Comm_Site_Type[G1.S2.S15.D1] G1.S2.S15.D2
+         END_SUB
+
+         SUB 16
+            "\n—%s，综合能力%2.2f。"
+                             2 Ship_Unit_Prototype[G1.S2.S16.D1] G1.S2.S16.D2
+         END_SUB
+
+         SUB 17
+            "\n—%s，综合能力%2.2f。"
+                                  2 Combat_Arms_Type[G1.S2.S17.D1] G1.S2.S17.D2
+         END_SUB
+
+         SUB 18
+            "\n—%s，综合能力%2.2f。"
+                           2 Transportation_Class[G1.S2.S18.D1] G1.S2.S18.D2
+         END_SUB
+
+         SUB 19
+            "\n—%s，综合能力%2.2f。"
+                           2 Aircraft_Type[G1.S2.S19.D1] G1.S2.S19.D2
+         END_SUB
+
+         SUB 20
+            "\n—%s，综合能力%2.2f。"
+                           2 Small_Boat[G1.S2.S20.D1] G1.S2.S20.D2
+         END_SUB
+
+         SUB 21
+            "\n—%s，综合能力%2.2f。"
+                           2 Supply_Type[G1.S2.S21.D1] G1.S2.S21.D2
+         END_SUB
+
+         SUB 34
+
+            GROUP 1
+
+               SUB 1
+         "\n—对目标定位点%s射击导致" 1 G1.S2.S34.G1.D1
+         "目标%s损毁。" 1 unit_name_transform(G1.S2.S34.G1.D2)
+               END_SUB
+
+               SUB 2
+         "\n—对目标定位点%s射击导致其行动受限。" 1 G1.S2.S34.G1.D1
+               END_SUB
+
+            END_GROUP
+
+         END_SUB
+
+      END_SUB
+
+      SUB 3
+         "<p class='title2'>\n第%s项：运输分队</p>" 1 G1.D1
+"<p class='table_name'>运输分队基本信息</p>" 0
+"__start_table|分项|内容|分项|内容\n" 0
+         "|隶属集团|%s" 1 unit_name_transform(G1.S3.D1)
+         "|坐标|%s\n" 1 LOCATION(G1.S3.D2,G1.S3.D3)
+         "|侦察时间|%s" 1 GTIME(G1.S3.D4)
+         "|当前状态|%s\n" 1 Convoy_Status[G1.S3.D5]
+         "|拥有资源|" 0
+            GROUP 1   
+         "%s：%s<br>" 2 Transportation_Class[G1.S3.G1.D1] G1.S3.G1.D2
+            END_GROUP
+         "|——|——\n" 0
+"__stop_table" 0      
+      END_SUB
+
+      SUB 4
+         "<p class='title2'>\n第%s项：编队</p>" 1 G1.D1
+"<p class='table_name'>编队基本信息</p>" 0
+"__start_table|分项|内容|分项|内容\n" 0
+         "|机型|%s" 1 Aircraft_Type[G1.S4.D1]
+         "|数量|%s\n" 1 G1.S4.D2
+         "|隶属集团|%s" 1 unit_name_transform(G1.S4.D3)
+         "|坐标|%s\n" 1 LOCATION(G1.S4.D4,G1.S4.D5)
+         "|侦察时间|%s" 1 GTIME(G1.S4.D6)
+         "|当前状态|%s\n" 1 Air_Mission_Posture[G1.S4.D7]
+"__stop_table" 0
+      END_SUB
+
+      SUB 5
+         "<p class='title2'>\n第%s项：部队</p>" 1 G1.D1
+         "\n无部队报告。" 0
+         "敏感目标区标识：%s，" 1 G1.S5.D7
+         "位置：%s，" 1 LOCATION(G1.S5.D2,G1.S5.D3) 
+         "侦察时间：%s，" 1 GTIME(G1.S5.D1) 
+ 
+         SUB 1
+
+         "" 0
+            SUB 2
+         "" 0
+            END_SUB
+
+         END_SUB
+
+      END_SUB
+
+      SUB 6
+         "<p class='title2'>\n第%s项：战果评估</p>" 1 G1.D1
+         "\n%s，" 1 CSP_System_Name[G1.S6.D5,G1.S6.D4]
+         "坐标：%s，" 1 LOCATION(G1.S6.D2,G1.S6.D3)
+         "侦察时间：%s，" 1 GTIME(G1.S6.D1)
+         "%s受损并废弃。" 1 unit_name_transform(G1.S6.D6)
+      END_SUB
+ 
+      SUB 7
+          "<p class='title2'>\n第%s项：战果评估</p>" 1 G1.D1
+         "\n%s，" 1 Combat_System[G1.S7.D4]
+         "坐标：%s，" 1 LOCATION(G1.S7.D2,G1.S7.D3)
+         "侦察时间：%s，" 1 GTIME(G1.S7.D1)
+         "%s受损并废弃。" 1 unit_name_transform(G1.S7.D5)
+      END_SUB
+
+      SUB 8
+         "<p class='title2'>\n第%s项：目标</p>" 1 G1.D1
+         "\n无目标报告。" 0
+         "敏感目标区标识：%s，" 1 G1.S8.D7
+         "位置：%s，" 1 LOCATION(G1.S8.D2,G1.S8.D3) 
+         "侦察时间：%s，" 1 GTIME(G1.S8.D1)
+
+         SUB 1
+
+         "" 0
+
+         END_SUB
+
+      END_SUB
+
+      SUB 9
+         "<p class='title2'>\n第%s项：未知实体类型%s。</p>" 2 G1.D1 unit_name_transform(G1.S9.D1)
+      END_SUB
+
+      SUB 10
+         "<p class='title2'>\n第%s项：战果评估</p>" 1 G1.D1
+         "\n%s，" 1 Aircraft_Type[G1.S10.D5]
+         "坐标：%s，" 1 LOCATION(G1.S10.D2,G1.S10.D3)
+         "侦察时间：%s，" 1 GTIME(G1.S10.D1)
+         "%s受损并废弃。" 1 unit_name_transform(G1.S10.D6)
+      END_SUB
+
+      SUB 11
+          "<p class='title2'>\n第%s项：浮油</p>" 1 G1.D1
+         "\n发现浮油及其它漂浮物，" 0
+         "坐标：%s，" 1 LOCATION(G1.S11.D2,G1.S11.D3)
+         "时间：%s。" 1 GTIME(G1.S11.D1)
+
+      END_SUB
+
+      SUB 12
+         "<p class='title2'>\n第%s项：特战分队</p>" 1 G1.D1
+         "\n坐标：%s，" 1 LOCATION(G1.S12.D2,G1.S12.D3)
+         "时间：%s，" 1 GTIME(G1.S12.D4)
+         "状态：%s，" 1 HRU_Status[G1.S12.D5]
+         "隶属集团：%s。" 1 unit_name_transform(G1.S12.D1)
+      END_SUB
+
+   END_GROUP
+
+END_MAIN
+

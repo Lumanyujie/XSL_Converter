@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="5330"> <subject> <line><f n="unit_name_transform"><D2/></f>面面导弹发射准备情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;<f n="unit_name_transform"><D2/></f>面面导弹发射准备情况报告&lt;/p&gt;</line> <line><br/><D2/>当前位于<f n="LOCATION"><D3/><D4/></f>，</line> <line>已开始组织面面导弹发射准备。</line>  <sub n="1"> <line>分别有以下导弹：</line>  <group n="1"> <line><br/>——<f n="unit_name_transform"><S1.G1.D1/></f></line> </group></sub></main> </msg> </msgs>

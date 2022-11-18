@@ -1,0 +1,25 @@
+
+6401
+SUBJECT
+"%s编队情况报告" 1 D2
+MAIN
+"<p class='title'>%s编队情况报告</p>" 1 D2
+SUB 2
+"\n%s编队现位于%s，" 2 D2 LOCATION(S2.D1,S2.D2)
+"没有抵达%s的通行航线，" 1 LOCATION(S2.D3,S2.D4)
+"该编队当前机动行动中止。" 0
+END_SUB
+
+SUB 6
+"\n%s编队已经离开演习区，" 1 D2
+"该编队内所有外方舰艇已经脱离编队，" 0
+"所有搭乘编队的外方部队按阶段撤出，" 0
+"相关特战分队全部归建。" 0
+END_SUB
+
+SUB 7
+"\n最后一艘%s舰艇已离开%s编队，" 2 No_Force_Side[S7.D1] D2
+"该编队指挥权已转隶给%s。" 1 No_Force_Side[S7.D2]
+END_SUB
+
+END_MAIN

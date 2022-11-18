@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="9561"> <subject> <line>对高层体系结构对象<D2/>的控制报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt; 被传递对象执行报告&lt;/p&gt;<br/></line>  <sub n="1"> <line>  <f n="HLA_Object_Type"><S1.D1/></f><D2/>被成功传递给外部模型<f n="External_Model_Only"><S1.D2/></f>。<br/></line> </sub> <sub n="2"> <line>  外部模型<f n="External_Model_Only"><S2.D2/></f>未执行<f n="HLA_Object_Type"><S2.D1/></f><D2/>所传递对象。<br/></line> </sub></main> </msg> </msgs>

@@ -1,0 +1,38 @@
+1825
+SUBJECT
+"舰艇部队原型参数, 武器装备系统，%s（索引%s）" 
+                                           2 Ship_Unit_Prototype[D2] D2
+MAIN
+"<p class='title'>舰艇部队原型属性</p>\n\n" 0
+"  使用舰艇部队原型的部队：%s(索引%s)\n"
+                                           2 Ship_Unit_Prototype[D2] D2
+"<p class='paragraph'>武器装备系统特征</p>\n"  0
+SUB 1
+"  系统原型:%s(索引%s)\n" 
+                           2 Combat_System_Prototype[S1.D1] S1.D1
+END_SUB
+
+SUB 2
+"__start_table  |战斗系统         |索引     |编制与装备表\n" 0
+   GROUP 1
+"|%-15.15s  |%3.3s     |%12.12s    \n" 
+              3 Combat_System[S2.G1.D1] S2.G1.D1 S2.G1.D2
+   END_GROUP
+"__stop_table" 0
+"\n" 0
+END_SUB
+
+SUB 3
+"__start_table|小艇    |索引        |数量\n" 0
+   GROUP 1
+"|%-15.15s |%5.5s      |%s\n" 
+              3 Small_Boat[S3.G1.D1] S3.G1.D1 S3.G1.D2
+   END_GROUP
+  "__stop_table" 0 
+END_SUB
+
+SUB 4
+"  无分配小艇. \n " 0
+END_SUB
+
+END_MAIN

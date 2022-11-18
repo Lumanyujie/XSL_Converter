@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="3560"> <subject> <line>空中<D2/>编队引导舰艇未到位情况报告</line> </subject> <main> <line> &lt;p class=&apos;title&apos;&gt;空中<D2/>编队引导舰艇未到位情况报告&lt;/p&gt;</line> <line><br/>空中<D2/>编队已按时到达指定航线点<f n="LOCATION"><D4/><D5/></f>，</line> <line>但引导舰艇<f n="unit_name_transform"><D3/></f>尚未抵达。</line> </main> </msg> </msgs>

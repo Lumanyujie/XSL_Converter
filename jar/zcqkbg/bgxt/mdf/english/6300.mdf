@@ -1,0 +1,100 @@
+
+6300
+SUBJECT
+"%s编队两栖行动情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s编队两栖行动情况报告</p>" 1 unit_name_transform(D2)
+SUB 2
+"\n%s最后波次的两栖攻击行动已开始，" 1  unit_name_transform(S2.D1)
+"该部队现在可离开该区域并执行相关机动命令。" 0
+END_SUB
+
+SUB 3
+"\n%s最后波次两栖搭载行动已开始，" 1 unit_name_transform(S3.D1)
+"该部队现已全部搭载在%s编队的舰船上。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 4
+"\n%s的两栖装载已全部完成。" 1  unit_name_transform(S4.D1)
+"尽管该部队已被标识到新的位置，但尚未完成航渡。" 0
+"当两栖行动全部完成后，您将会得到通知。" 0
+END_SUB
+
+SUB 5
+"\n%s编队当前正位于海上补给卸载点，" 1 unit_name_transform(D2)
+   SUB 1
+"等待%s给予补给。等待截止时间：%s。" 2 unit_name_transform(S5.S1.D1) GTIME(S5.S1.D2)
+   END_SUB
+   SUB 2
+"等待下一个部队给予补给，等待截止时间：%s。" 1 GTIME(S5.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 6
+"\n%s编队当前正位于海上补给装载点，等待" 1 unit_name_transform(D2)
+"被输送部队或补给物资到达后，继续尔后的海上补给行动。" 0
+"等待截止时间：%s。" 1 GTIME(S6.D1) 
+END_SUB
+
+SUB 7
+
+   SUB 1
+"%s编队遭敌方攻击造成所有补给物资损失，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 2
+"从装载点到卸载点出现航线问题，%s编队的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 3
+"%s编队所有具有输送能力的舰船被毁，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 4
+"%s编队最后一艘舰船被毁，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 5
+"没有适于装卸补给物资的港口设施，%s编队的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 6
+"%s编队接到取消海上任务命令，海上补给行动中止" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 7
+"由于没有通行航线，%s编队的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 8
+"%s编队两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 9
+"由于%s编队在两栖行动初始阶段的航线问题，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 10
+"由于缺乏两栖行动必需的装备设施，%s编队的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 11
+"在装载点没有被输送部队和装载物资，%s编队的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 12
+"接到命令，%s编队的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 13
+"%s编队的舰艇不具备扫雷能力，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 14
+"该区域没有敌方雷场，%s编队的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 15
+"%s编队的舰船不具备布雷能力，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 16
+"%s编队没有水雷，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+END_SUB
+
+SUB 8 
+"\n%s编队当前正位于两栖行动装载点，" 1 unit_name_transform(D2)
+"但该编队没有装载所有指定部队的能力，" 0
+"无法装载以下部队：" 0
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S8.G1.D1)
+   END_GROUP
+END_SUB
+
+END_MAIN

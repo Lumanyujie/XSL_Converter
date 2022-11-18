@@ -1,0 +1,28 @@
+
+6200
+SUBJECT
+"%s作战情况报告" 1 unit_name_transform(D2)
+MAIN
+" <p class='title'>%s作战情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n%s对以下敌海上部队发起自动攻击：" 1 unit_name_transform(D2)
+   GROUP 1
+"\n——%s，使用%s\n" 2 unit_name_transform(S1.G1.D1) Targetable_Weapon[S1.G1.D2]
+   END_GROUP
+END_SUB
+
+SUB 2
+"\n%s使用%s对%s发起自动攻击。" 3 unit_name_transform(D2) Targetable_Weapon[S2.D2] unit_name_transform(S2.D1)
+END_SUB
+
+SUB 3
+"\n%s对%s的自动交火终止， " 2 unit_name_transform(D2) unit_name_transform(S3.D1)
+"因为其地面交战规则已撤销。" 0
+END_SUB
+
+SUB 5
+"\n%s正遭到某海军舰载武器的自动攻击。"  1 unit_name_transform(S5.D1)
+END_SUB
+
+END_MAIN
+

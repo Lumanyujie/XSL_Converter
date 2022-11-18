@@ -1,0 +1,91 @@
+
+1605
+SUBJECT
+"%s%s的情报信息原型基本属性" 2 Intel_Info_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  %s情报信息原型基本属性 </p>\n\n" 1 Intel_Info_Prototype[D2]
+
+SUB 1
+"  该情报信息原型使用%s作为它的可见光传感器。\n" 1 Sensor_Type[S1.D1]
+END_SUB
+
+SUB 2
+"  %s被用作情报信息原型的电子情报侦察传感器。\n" 1 Sensor_Type[S2.D1]
+END_SUB
+
+SUB 3
+"  情报信息原型未指定电子情报侦察传感器。\n" 0
+END_SUB
+
+SUB 4
+"  电子情报侦察资源目标数据平均融合时间是：%s。\n" 
+               1 DURATION(S4.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 5
+"  自动情况报告平均延迟时间：%s。\n" 
+               1 DURATION(S5.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 6
+"  获取敌方命令内容的概率：%s。\n" 1 S6.D1
+END_SUB
+
+SUB 7
+"  传感器或干扰机信号的被探测距离%s倍于其最大有效距离。\n" 1 S7.D1
+END_SUB
+
+SUB 8
+"  本该SUB可获取。\n" 0
+END_SUB
+
+SUB 9
+"  当部队主动搜索隐蔽部队时，每搜索%s小时可使敌方部队的隐蔽时间减小1小时。\n" 1 S9.D1
+END_SUB
+
+SUB 10
+"  舰队（车队）探测时间常量为%s。\n"  1 S10.D1
+END_SUB
+
+SUB 11
+"  定向最大搜索区域是%s平方千米。\n" 1 S11.D1
+END_SUB
+
+SUB 12
+"  在每个作战评估周期结束时，使用该情报信息原型的部队可恢复%s战斗力，" 1 S12.D1
+"该战斗力损失由心理战导致。\n" 0
+END_SUB
+
+SUB 13
+"  使用该情报信息原型的部队战斗力必须至少改变（增加或降低）%s，"  1 S13.D1
+"才能在下一个周期总结报告中反映出来。1.0表示为百分之百战斗力。\n" 0
+END_SUB
+
+SUB 14
+"  对于使用该情报信息原型的部队，隶属于或关联于它的目标效能必须至少改变（增加或降低）%s，" 1 S14.D1
+"才能在下一个周期总结报告中反映出来。1.0表示为百分之百战斗力。 \n" 0
+
+END_SUB
+
+SUB 15
+"  使用该情报信息原型侦察报告实时率为%s。\n"
+                                                     1 Answer[S15.D1]
+END_SUB
+
+SUB 16
+"  使用该情报信息原型侦察报告等级被设置为%s。\n"
+                                                     1 Relationship[S16.D1]
+END_SUB
+
+SUB 17
+"  使用该情报原型的声音传感器在进行水下潜艇探测时，将屏蔽掉百分之%s的环境噪音。\n"  1 S17.D1
+END_SUB
+
+SUB 18
+"  当在雷场进行地（水）雷可视探测时，它使用%s作为视觉的地（水）雷搜寻能力。\n"  
+ 1 Mine_Search_Capability[S18.D1]
+END_SUB
+
+END_MAIN
+

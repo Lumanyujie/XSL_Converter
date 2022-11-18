@@ -1,0 +1,116 @@
+
+1820
+SUBJECT
+"%s（编号%s)一组舰艇部队原型参数" 
+                                               2 Ship_Unit_Prototype[D2] D2
+MAIN
+
+"<p class='title'> 部队原型为%s(编号%s)，特征如下： </p>\n\n"
+                                               2 Ship_Unit_Prototype[D2] D2
+
+SUB 1
+"  最大航速：%s %s\n\n" 2 UOM_AMT(SPEED,S1.D1) UOM(SPEED) 
+END_SUB
+
+SUB 2
+"  正常巡航速度：%s %s\n\n" 2 UOM_AMT(SPEED,S2.D1) UOM(SPEED) 
+   SUB 1
+"  你试图改变的航速值超过了该类舰艇最大航速，不执行此操作!\n\n" 0
+   END_SUB
+   SUB 2
+"  按照你的指令，此种改变也将改变目前参加演习的所有该类舰艇现在的正常巡航速度。\n\n" 0
+   END_SUB
+END_SUB
+
+SUB 3
+   SUB 1
+"  他们能够使用%s口径的武器实施火力打击\n\n"  1 
+                                                       Caliber_Index[S3.S1.D1]
+   END_SUB
+   SUB 2
+"  没有指定口径，他们不能使用任何炮兵武器实施火力打击\n\n" 0
+   END_SUB
+END_SUB
+
+SUB 4
+"  他们有一个%s %s的单位半径\n\n" 2 UOM_AMT(DISTANCE,S4.D1) UOM(DISTANCE)
+END_SUB 
+
+SUB 5
+"  船体命中概率韦伯分布的第一个参数：%s\n" 1 S5.D1
+END_SUB
+
+SUB 6
+"  船体命中概率韦伯分布的第二个参数：%s\n\n" 1 S6.D1
+END_SUB
+
+SUB 7
+"  在最大噪音背景下，探测到一艘潜艇的最短时间：%s\n" 1 DURATION(S7.D1, "%d天%h小时%Rm分")
+END_SUB
+
+SUB 8
+"  在最小噪音背景下，探测到一艘潜艇的最长时间：%s\n\n" 1 DURATION(S8.D1, "%d天%h小时%Rm分")
+END_SUB
+
+SUB 9
+"  一旦一艘使用该原型的潜艇被声纳探测到，探测方失去跟踪目标的平均时间：%s\n\n" 1 DURATION(S9.D1, "%d天%h小时%Rm分")
+END_SUB
+
+"  每艘使用该原型的舰艇具有:\n" 0
+
+SUB 10
+"  舰体伽马参数:%s\n" 1 S10.D1
+END_SUB
+
+SUB 11
+"  最大速度噪声:%s分贝\n" 1 S11.D1
+END_SUB
+
+SUB 12
+"  气穴速度:%s %s\n" 2 
+              UOM_AMT(SPEED,S12.D1) UOM(SPEED)
+END_SUB
+
+SUB 13
+"  涡空噪声:%s分贝\n\n" 1 S13.D1
+END_SUB
+
+SUB 14
+"  如类别为航空母舰，则该类舰船上飞机弹射器数量：%s个\n\n" 1 S14.D1
+END_SUB
+
+SUB 15
+"  每一艘使用该原型的舰艇上独立的隔舱数量：%s个\n\n" 1 S15.D1
+END_SUB
+
+SUB 16
+"  舰艇有一套特殊类别的%s(编号%s)系统\n\n"
+                                               2 Ship_C3I_Types[S16.D1] S16.D1
+END_SUB
+
+SUB 17
+"  舰艇的反辐射系数：%s\n\n" 1 S17.D1
+END_SUB
+
+SUB 18
+"  一旦使用该原型的一艘舰艇船体被击中，裂隙超过许可限度，则沉没的平均时间: %s\n\n" 1 DURATION(S18.D1, "%d天%h小时%Rm分")
+END_SUB
+
+SUB 19
+"  舰艇部队原型舰艇类别名称：%s\n\n" 1 S19.D1
+END_SUB
+
+SUB 20
+"  自动报告位置的异频雷达收发机数量：%s部\n\n" 1 S20.D1
+END_SUB
+
+SUB 21
+"  该舰艇类名称的DIS码：%s\n\n" 1 S21.D1
+END_SUB
+
+SUB 22
+"  对于舰艇部队原型舰艇，其推进类型：%s(编号%s)\n\n"
+                                     2 Ship_Propulsion_Type[S22.D1] S22.D1    
+END_SUB
+
+END_MAIN

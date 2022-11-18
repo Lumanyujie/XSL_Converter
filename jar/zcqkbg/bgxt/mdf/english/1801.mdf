@@ -1,0 +1,89 @@
+
+1801
+SUBJECT
+"%s(编号%s)战术部队原型参数，集2 "   2 Tactical_Unit_Prototype[D2] D2
+MAIN
+"<p class='title'> %s(编号%s)战术部队原型参数  </p> \n\n"  2 Tactical_Unit_Prototype[D2] D2
+
+
+"  使用战术部队原型%s(编号%s)的部队特性: \n\n" 2 Tactical_Unit_Prototype[D2] D2
+                                              
+SUB 1
+"  驻止时他们可以储存%s%s干的补给物资。\n\n" 2
+                                     UOM_AMT(DRY_WEIGHT,S1.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 2
+"  驻止时他们可以输送%s%s液态补给物资。\n\n" 2
+                                     UOM_AMT(WET_WEIGHT,S2.D1) UOM(WET_WEIGHT)
+END_SUB
+
+SUB 3
+"  机动时他们可以输送%s%s干补给物资。\n\n" 2
+                                     UOM_AMT(DRY_WEIGHT,S3.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 4
+"  机动时他们可以输送%s%s液态补给物资。\n\n" 2
+                                     UOM_AMT(WET_WEIGHT,S4.D1) UOM(WET_WEIGHT)
+END_SUB
+
+SUB 5
+"  空军基地能够同时修复%s个跑道损毁点。\n\n" 1 S5.D1
+END_SUB
+
+SUB 6
+"  空军基地修复一个跑道损毁点平均耗时%s小时。\n\n" 1 DURATION(S6.D1, "%.2Th")
+END_SUB
+
+SUB 7
+"  空中力量可以收集距离%s%s内的战术情报。\n\n" 2
+                                         UOM_AMT(DISTANCE,S7.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 8
+"  不使用空中力量收集战术情报。\n\n" 0
+END_SUB
+
+SUB 9
+"  地面/力量可以收集距离%s%s内的战术情报。\n\n" 2
+                                         UOM_AMT(DISTANCE,S9.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 10
+"  不使用地面/水上力量收集战术情报。\n\n" 0
+END_SUB
+
+SUB 11
+"  如果汇总空中战术情报，每%s小时上报一次。\n\n" 1 DURATION(S11.D1, "%.2Th")
+END_SUB
+
+SUB 12
+"  如果汇总地面/水上战术情报，每%s小时上报一次。\n\n" 1 DURATION(S12.D1, "%.2Th")
+END_SUB
+
+SUB 13
+"  当被探测时，敌方会以自述方式报告作战系统:" 0
+"第一位的: %s, 第二位的 %s, 第三位的: %s\n\n" 3 No_Combat_System[S13.D1]
+                   No_Combat_System[S13.D2] No_Combat_System[S13.D3]
+END_SUB
+
+SUB 14
+"  桥梁作业能力标识被设置为%s。\n\n" 1 Answer[S14.D1]
+END_SUB
+
+SUB 15
+"  该战术部队原型的装载设备数量:%s。\n\n" 1 S15.D1
+END_SUB
+
+SUB 16
+"  该战术部队原型的能力类别被设置为:%s。\n\n" 
+                                           1 TUP_Capabilities_Type[S16.D1]
+END_SUB
+
+SUB 17
+"  该战术部队原型自动报告位置无线发射机应答器的数量被设置为： %s。\n" 1 S17.D1
+END_SUB
+
+END_MAIN
+

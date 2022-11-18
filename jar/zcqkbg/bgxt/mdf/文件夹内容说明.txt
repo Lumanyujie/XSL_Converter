@@ -1,0 +1,6 @@
+20150203
+mdf翻译成xlst文件使用的目录。
+english是二号服务器上下载的最新的模版
+其中gen_mes_xsl.xsl做了如下修改：
+<xsl:import href="file:/D:/bgxt-wxy/xsl/utm.xsl"/>
+<xsl:param name="gdata" select="'file:/D:/bgxt-wxy/mdf--xlst/home/jtlsdev/game/data'"/>

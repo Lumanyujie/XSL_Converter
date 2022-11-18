@@ -1,0 +1,39 @@
+
+2130
+SUBJECT
+"巡航导弹%s不能重新锁定目标情况报告" 1 unit_name_transform(D2)
+
+MAIN
+
+"<p class='title'>巡航导弹%s不能重新锁定目标情况报告</p>"  1 unit_name_transform(D2)
+"\n%s不能按命令使巡航导弹%s重新锁定目标，" 2 unit_name_transform(D3) unit_name_transform(D2)
+
+SUB 1
+"%s不具有此项功能。" 1 Targetable_Weapon[S1.D1]
+END_SUB
+
+SUB 2
+"打击目标%s目前尚未进入演习区。" 1 unit_name_transform(S2.D1)
+END_SUB
+
+SUB 3
+"打击目标%s目前尚未进入演习区。" 1 unit_name_transform(S3.D1)
+END_SUB
+
+SUB 4
+"到达目标飞行距离%s%s，" 2  
+                                        UOM_AMT(DISTANCE,S4.D1) UOM(DISTANCE)
+"已超出该装备当前剩余航程%s%s。" 2  
+                                        UOM_AMT(DISTANCE,S4.D2) UOM(DISTANCE)
+END_SUB
+
+SUB 5
+"%s已不再受控。" 1 unit_name_transform(S5.D1)
+END_SUB
+
+SUB 6
+"目标定位点%s，不在演习区。" 1 S6.D1
+END_SUB
+ 
+END_MAIN
+

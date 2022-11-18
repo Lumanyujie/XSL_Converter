@@ -1,0 +1,101 @@
+
+1603
+SUBJECT
+"%s%s通信原型属性" 
+     2 Communications_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  %s通信原型属性 </p> \n\n" 
+1 Communications_Prototype[D2]
+
+SUB 1
+"  具有存活力原型%s。\n" 1 Survivability_Prototype[S1.D1]
+END_SUB
+
+SUB 2
+"  此存活力原型有下列属性:\n" 0
+END_SUB
+
+SUB 3 
+"  目前尚未使用。\n" 0
+END_SUB
+
+SUB 4
+"  目前尚未使用。\n" 0
+END_SUB
+
+SUB 5
+"  目前尚未使用。\n" 0
+END_SUB
+
+SUB 6 
+"  当干扰信号强度达到%s分贝或者更大时，外部干扰才会产生影响。\n" 1 S6.D1
+END_SUB
+
+SUB  7
+"  如果两个部队距离小于%s %s时，外部干扰无效。\n" 2 UOM_AMT(DISTANCE,S7.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 8
+"  来自其他集团的消息转发时延为%s。\n" 1 S8.D1
+END_SUB
+
+SUB 9
+"  不是通常用法。\n" 0
+END_SUB
+
+SUB 10
+"  对目标广播的影响效果为%s。\n" 1 S10.D1
+END_SUB
+
+SUB 11
+"  对敌方广播的影响效果为%s。\n" 1 S11.D1
+END_SUB
+
+SUB 12
+"  对集团广播的影响效果为%s。\n" 1 S12.D1
+END_SUB
+
+SUB 13
+"  对目标传单影响效果为%s。\n" 1 S13.D1
+END_SUB
+
+SUB 14
+"  对对敌方的传单影响效果为%s。\n" 1 S14.D1
+END_SUB
+
+SUB 15
+"  对集团传单影响效果为%s。\n" 1 S15.D1
+END_SUB
+
+SUB 16
+"  无线电通信影响效果为%s。\n" 1 S16.D1
+END_SUB
+
+SUB 17
+"  通信干扰报告间隔时间为%s小时。\n" 1 DURATION(S17.D1, "%.2Th")
+END_SUB
+
+SUB 18
+"  干扰已方的概率是%s。\n" 1 S18.D1
+END_SUB
+
+SUB 19
+"  干扰非目标方的概率是%s。\n" 1 S19.D1
+END_SUB
+
+SUB 20
+"  %s通信质量等级\n"  1 C3_Quality_Rating[S20.D1] 
+"  下列通信质量等级相关属性:\n\n" 0
+"  每天恢复百分比: %s\n" 1 S20.D2
+"  消息延迟概率: %s\n" 1 S20.D3
+"  干扰机ADA数据自动化系统结合系数: %s\n" 1 S20.D4
+"  干扰机修正系数: %s\n" 1 S20.D5
+"  干扰机通信位置修正系数: %s\n" 1 S20.D6
+"  干扰机火力延迟系数: %s\n" 1 S20.D7
+"  内部通信干扰机修正系数: %s\n" 1 S20.D8
+"  干扰机机动延迟系数: %s\n" 1 S20.D9
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,28 @@
+
+5200
+SUBJECT
+"特战分队%s被敌发现情况报告" 1 unit_name_transform(D3)
+MAIN
+"<p class='title'>特战分队%s被敌发现情况报告 </p>" 1 unit_name_transform(D3)
+
+SUB 1
+"\n%s向%s报告：" 2 unit_name_transform(D3) unit_name_transform(D2)
+"我部于%s，" 1 GTIME(D1)
+"在%s地域，" 1 LOCATION(D4,D5)
+"对敌实施隐蔽侦察时，被敌发现。" 0
+END_SUB
+
+SUB 2
+"\n我部正在撤出。" 0
+END_SUB
+
+SUB 3
+"\n我部当前无法撤出。" 0
+END_SUB
+
+SUB 4
+"\n我部已从该地域撤出。" 0
+END_SUB
+
+END_MAIN
+

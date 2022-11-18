@@ -1,0 +1,49 @@
+
+1720
+SUBJECT
+"地对空毁伤能力%s" 1 SAL_Index[D2]
+MAIN
+"<p class='title'>  地对空毁伤能力%s报告 </p> \n" 1 SAL_Index[D2]
+SUB 1
+"\n  防空武器的一个或多个概率值已改变。"0
+"使用毁伤指标%s，对目标类型%s(类型%s)飞机，对应不同高度。\n"                        3 D2 Aircraft_Target_Class[S1.D1] S1.D1
+"杀伤概率如下：\n" 0
+                 
+   GROUP 1
+"高度区%2.2s  %8.8s到 %8.8s 米    %s\n" 4 S1.G1.D1 S1.G1.D2 S1.G1.D3 S1.G1.D4
+   END_GROUP
+
+END_SUB
+
+SUB 2
+"  防空阵地发射毁伤指标%s的武器，对类型%s(类型%s)飞机的命中或杀伤概率如下（按高度区间列表）。" 3 
+ D2  Aircraft_Target_Class[S2.D1] S2.D1
+"杀伤率如下：\n" 0
+   GROUP 1
+"高度区 %2.2s  %8.8s 到%8.8s 米     %s\n" 4 S2.G1.D1 S2.G1.D2 S2.G1.D3 S2.G1.D4
+   END_GROUP
+END_SUB
+
+SUB 3
+"  最大射程的命中概率如下：\n" 0
+   GROUP 1
+"  高度区 %2.2s  %8.8s 到 %8.8s米     %s\n" 4 S3.G1.D1 S3.G1.D2 S3.G1.D3 S3.G1.D4
+   END_GROUP
+END_SUB
+
+SUB 4
+"  最优打击概率如下：\n" 0
+   GROUP 1
+"  高地区 %2.2s  %8.8s到 %8.8s米     %s\n" 4 S4.G1.D1 S4.G1.D2 S4.G1.D3 S4.G1.D4
+   END_GROUP
+END_SUB
+
+SUB 5
+"  最优火力射击段是： \n" 0
+   GROUP 1
+"  高度区%2.2s  %8.8s 到 %8.8s米     %s\n" 4 S5.G1.D1 S5.G1.D2 S5.G1.D3 S5.G1.D4
+   END_GROUP
+END_SUB
+
+END_MAIN
+

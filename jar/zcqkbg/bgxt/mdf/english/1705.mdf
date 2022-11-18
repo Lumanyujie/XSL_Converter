@@ -1,0 +1,58 @@
+
+1705
+SUBJECT
+"空对空毁伤能力%s" 1 AAL_Index[D2]
+MAIN
+"<p class='title'>  空对空毁伤能力%s报告 </p> \n" 1 AAL_Index[D2]
+SUB 1
+"\n  使用%s(类型%s)发生毁伤指标%s的空射投武器的一个或多个杀伤概率已经改变为:"3    Aircraft_Type[S1.D1] S1.D1 D2
+   GROUP 1
+"打击空中目标类  %3.3s %15.15s  %8.8s\n"  3 S1.G1.D1
+                                     Aircraft_Target_Class[S1.G1.D1] S1.G1.D2
+   END_GROUP
+END_SUB
+
+SUB 2
+"\n  使用%s(类型%s)发生毁伤指标%s的空射投武器，杀伤概率如下："  3  Aircraft_Type[S2.D1] S2.D1 D2 
+   GROUP 1
+"打击空中目标类 %3.3s %15.15s  %8.8s\n" 3 S2.G1.D1
+                                     Aircraft_Target_Class[S2.G1.D1] S2.G1.D2
+   END_GROUP
+END_SUB
+
+SUB 3
+"  使用%s(类型%s)发生毁伤指标%s的空射投武器，最小射程的杀伤率如下：" 3 
+Aircraft_Type[S3.D1] S3.D1 D2 
+  GROUP 1
+"打击空中目标类  %3.3s %15.15s     %8.8s\n" 3 S3.G1.D1
+                                     Aircraft_Target_Class[S3.G1.D1] S3.G1.D2
+   END_GROUP
+END_SUB
+
+SUB 4
+"  使用%s(类型%s)发生毁伤指标%s的空射投武器，最大射程命中概率如下：" 3 
+    Aircraft_Type[S4.D1] S4.D1 D2 
+GROUP 1
+"打击空中目标类  %3.3s %15.15s   %8.8s\n" 3 S4.G1.D1
+                                     Aircraft_Target_Class[S4.G1.D1] S4.G1.D2
+   END_GROUP
+END_SUB
+
+SUB 5
+"  使用%s(类型%s)发生毁伤指标%s的空射投武器，最佳命中率如下:" 3  Aircraft_Type[S5.D1] S5.D1 D2
+   GROUP 1
+"打击的空中目标类 %3.3s %15.15s  %8.8s\n" 3 S5.G1.D1
+                                     Aircraft_Target_Class[S5.G1.D1] S5.G1.D2
+   END_GROUP
+END_SUB
+
+SUB 6
+"  使用%s(类型%s)发生毁伤指标%s的空射投武器，最佳火力分配如下:" 3   Aircraft_Type[S6.D1] S6.D1  D2
+GROUP 1
+"  打击的空中目标类  %3.3s %15.15s  %8.8s\n" 3 S6.G1.D1
+                                     Aircraft_Target_Class[S6.G1.D1] S6.G1.D2
+   END_GROUP
+END_SUB
+
+END_MAIN
+

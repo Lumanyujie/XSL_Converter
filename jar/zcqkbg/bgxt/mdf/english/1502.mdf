@@ -1,0 +1,46 @@
+
+1502
+SUBJECT
+"环境值" 0
+MAIN
+"<p class='title'> 环境值报告 </p> \n" 0
+SUB 1
+"  当前气象条件是%s(索引%s)。\n\n" 2 Weather_Condition[S1.D1]     S1.D1
+END_SUB
+
+SUB 2
+"  战略投送除外: %s。\n" 1 Answer[S2.D1]
+END_SUB
+
+SUB 3
+"  日出：在午夜后%s。\n" 1
+      DURATION(S3.D1, "%h时和%Rm分")
+END_SUB
+
+SUB 4
+"  日落：在正午后%s。\n\n" 1
+      DURATION(S4.D1, "%h时和%Rm分")
+END_SUB
+
+SUB 5
+"  其他因素噪音失真: %sDB。\n" 1 S5.D1
+END_SUB
+
+SUB 6
+"  P(D)参考距离: %s%s。\n"  2 UOM_AMT(DISTANCE,S6.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 7
+"\n<p class='paragraph'>  随机数种子:   </p>\n\n" 0 
+"     __start_table  | 随机数据流   | 种子值\n" 0
+
+   GROUP 1
+"  | %-20.20s (%5.5s)  |   %-10.10s \n" 
+            3 Random_Number_Type[S7.G1.D1] S7.G1.D1 S7.G1.D2
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+END_MAIN
+

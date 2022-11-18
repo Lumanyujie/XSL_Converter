@@ -1,0 +1,23 @@
+
+1541
+SUBJECT
+"%s通信中心属性" 1 Comm_Site_Type[D2]
+MAIN
+
+"<p class='title'>  %s类通信中心属性  </p>\n\n" 1 Comm_Site_Type[D2]
+
+SUB 1
+"   通信类型: %s\n" 1 Communication_Type[S1.D1]
+"   修复时间 %s\n" 1 DURATION(S1.D2, "%d天%h时%Rm分") 
+"   摧毁时间: %s\n" 1 DURATION(S1.D3, "%d天%h时%Rm分") 
+"   占地半径: %s%s\n" 2 UOM_AMT(DISTANCE,S1.D4) UOM(DISTANCE)
+"   目标分类码: %s\n" 1 S1.D5
+"   最大数据链范围: %s%s\n" 2 UOM_AMT(DISTANCE,S1.D6) UOM(DISTANCE)
+"   干扰距离系数: %s\n" 1 S1.D7
+"   目标图标符号: %s\n" 1 S1.D8
+"   地下标识: %s\n" 1 S1.D9
+"   DIS码: %s\n" 1 S1.D10
+END_SUB
+
+END_MAIN
+

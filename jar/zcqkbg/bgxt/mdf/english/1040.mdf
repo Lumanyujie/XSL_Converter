@@ -1,0 +1,63 @@
+
+1040
+SUBJECT
+"%s命令执行情况报告" 1 trans_word("Order",D2)
+
+MAIN
+"<p class='title'>%s命令执行情况报告</p>" 1 trans_word("Order",D2)
+SUB 1
+"\n%s命令已执行，" 1 trans_word("Order",D2)
+END_SUB
+
+SUB 2
+"战术部队原型%s的定义已经被改变, "  1 Tactical_Unit_Prototype[S2.D1]
+"但当应用作战系统原型%s时，"  1 Combat_System_Prototype[S2.D2]
+"战术部队原型的作战系统和补给系统之间存在冲突。"  0
+"如果补给太高，战术部队原型可由备用系统直接获得。" 0
+"如果补给太低，当部队到达战区时，部队的作战系统不能被分派。" 0
+"这些冲突是：" 0
+
+   GROUP 1
+      SUB 1
+"\n补给%s(%s)低于%s，设置为：%s%s。" 
+           5  Supply_Category[S2.G1.D1] S2.G1.D1
+              UOM_AMT(DRY_WEIGHT, S2.G1.D2) 
+              UOM_AMT(DRY_WEIGHT, S2.G1.D3) UOM(DRY_WEIGHT)
+      END_SUB
+      SUB 2
+"\n补给%s(%s)高于%s，设置为：%s%s。"
+            5  Supply_Category[S2.G1.D1] S2.G1.D1
+               UOM_AMT(DRY_WEIGHT, S2.G1.D2)
+               UOM_AMT(DRY_WEIGHT, S2.G1.D3) UOM(DRY_WEIGHT)
+      END_SUB
+   END_GROUP
+"\n" 0
+END_SUB
+
+SUB 3
+"舰艇部队原型%s的定义已经被改变，"           1 Ship_Unit_Prototype[S3.D1]
+"但当应用作战系统原型%s时，"       1 Combat_System_Prototype[S3.D2]
+"舰艇部队原型的作战系统和补给系统之间存在冲突。" 0
+"如果补给太高，舰艇部队可由备用系统直接获得。" 0
+"如果补给太低，当部队到达战区时，舰艇的作战系统不能被分派。" 0
+"这些冲突是：" 0
+
+   GROUP 1
+      SUB 1
+"\n补给%s(%s)低于%s，设置为：%s%s。" 
+           5  Supply_Category[S3.G1.D1] S3.G1.D1
+              UOM_AMT(DRY_WEIGHT, S3.G1.D2) 
+              UOM_AMT(DRY_WEIGHT, S3.G1.D3) UOM(DRY_WEIGHT)
+      END_SUB
+      SUB 2
+"\n补给%s(%s)高于%s，设置为：%s%s。"
+            5  Supply_Category[S3.G1.D1] S3.G1.D1
+               UOM_AMT(DRY_WEIGHT, S3.G1.D2)
+               UOM_AMT(DRY_WEIGHT, S3.G1.D3) UOM(DRY_WEIGHT)
+      END_SUB
+   END_GROUP
+"\n" 0
+END_SUB
+
+END_MAIN
+

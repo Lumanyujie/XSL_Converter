@@ -1,0 +1,870 @@
+
+3100
+SUBJECT
+"空中命令（批号：%s）无法执行情况报告" 1 D2
+
+MAIN
+"<p class='title'>空中命令（批号：%s）无法执行情况报告</p>" 1 D2
+
+SUB 1
+"\n下达给%s的机场跑道使用权命令无法执行，" 1 unit_name_transform(D3)
+"因为以下跑道不能使用：" 0
+   GROUP 1
+      SUB 1
+"\n——%s，没有该跑道所有权。" 1 unit_name_transform(S1.G1.D1)
+      END_SUB
+      SUB 2
+"\n——%s，不在%s半径范围内。" 2 unit_name_transform(S1.G1.D1) unit_name_transform(D3)
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 2
+"\n无法判明空中%s编队的位置" 1 S2.D1
+"（可能原因：" 0
+"1、已着陆，" 0
+"2、已被敌方击落，" 0
+"3、之前下达命令取消）。因此" 0
+
+      SUB 1
+"改变交战规则命令没有执行。" 0
+   END_SUB
+   SUB 2
+"攻击目标命令没有执行。" 0
+   END_SUB
+   SUB 3
+"取消空中任务的命令没有执行。" 0
+   END_SUB
+   SUB 4
+"改变空中任务参数的命令没有执行。" 0
+   END_SUB
+   SUB 5
+"关于空运/空投的请求无法满足。" 0
+   END_SUB
+   SUB 6
+"人工分配拦截目标的命令没有执行。" 0
+   END_SUB
+   SUB 7
+"停止拦截的命令没有执行。" 0
+   END_SUB
+
+   SUB 8
+"该编队作战情况报告无法生成。" 0
+   END_SUB
+
+   SUB 9
+"编队分批命令没有执行。" 0
+   END_SUB
+
+END_SUB
+
+SUB 3
+"\n空中%s编队当前尚未起飞，" 1 unit_name_transform(D2)
+"因此设置交战规则的命令无法执行。" 0
+"起飞后，该编队交战规则将与其上级部队一致。" 0
+
+END_SUB
+
+SUB 4
+"\n给空中待战%s编队的命令没有执行，" 1 unit_name_transform(D2) 
+"%s不能执行引导任务。" 1 unit_name_transform(S4.D1) 
+   SUB 1
+"该部不在作战区，" 0
+"命令取消。" 0
+   END_SUB
+   SUB 2
+"该部不存在，命令取消。" 0
+   END_SUB
+   SUB 3
+"该部尚未到达战区，计划到达时间" 0
+"晚于指定的到达引导阵位时间，" 0
+"命令取消。" 0
+   END_SUB
+   SUB 4
+"该部尚未到达战区，" 0
+"命令将在引导舰艇计划到达时间之后执行。" 0
+   END_SUB
+END_SUB
+
+SUB 5
+"\n空中命令（批号：%s）" 1 D2
+"要求编队从%s起飞，" 1 unit_name_transform(D3)  
+"但指定的作战区%s不存在，命令取消。" 1 D4
+END_SUB
+
+SUB 6
+"\n空中命令（批号：%s）" 1 D2
+"要求编队从%s起飞，" 1 unit_name_transform(D3)  
+"但指定的作战区%s，不允许该对阵方进入，命令取消。" 1 D4
+END_SUB
+
+SUB 7
+"\n给空中待战%s编队的命令没有执行，" 1 unit_name_transform(D2) 
+"海上%s编队不能执行编队引导任务，" 1 S7.D1 
+"因为该编队在适于引导的位置没有舰艇。" 0
+END_SUB
+
+SUB 8
+"\n空中命令（批号：%s）" 1 D2
+"要求编队从%s起飞，" 1 unit_name_transform(D3)  
+"但指定的作战区%s没有水上感知点，命令取消。" 1 D4
+END_SUB
+
+SUB 9
+"\n创建%s编队（批号：%s）的命令" 2 Mission_Type[S9.D1] D2
+"要求该编队对%s实施支援，" 1 unit_name_transform(S9.D2)
+"但该部队隶属%s，" 1 No_Force_Side[S9.D3]
+"双方当前为%s关系，命令无法执行。" 1 Relationship[S9.D4]
+END_SUB
+
+SUB 10
+"\n执行近距空中支援任务的%s编队不能按命令取消当前行动，" 1 D2
+"该编队已发起攻击，" 0
+"现位于%s。" 1 LOCATION(S10.D1,S10.D2)
+END_SUB
+
+SUB 11
+"\n空中%s编队没有按命令取消当前行动，" 1 D2
+"其情况不明。" 0
+END_SUB
+
+SUB 12
+"\n空中民事运输任务（批号：%s）无法执行，" 1 D2
+   SUB 1
+"命令中指定的%s点%s不在本想定中。" 2 CIVAIR_status[S12.S1.D1] S12.S1.D2
+   END_SUB
+   SUB 2
+"因为%s没有%s飞行部队。" 2 No_Force_Side[S12.S2.D1] Aircraft_Type[S12.S2.D2]
+   END_SUB
+END_SUB
+
+SUB 15
+"\n空运空投命令（批号：%s）无法执行，" 1 D2
+"因为被空运部队%s隶属%s，" 2 unit_name_transform(S15.D1) No_Force_Side[S15.D2]
+"该方既非友方也非中立方，不能实施空运。" 0 
+END_SUB
+
+SUB 16
+"\n空中命令（批号：%s）" 1 D2
+"要求编队从%s起飞，" 1 unit_name_transform(D3)  
+"命令中给出的多边形区域没有感知点，命令取消。" 0
+END_SUB
+
+SUB 17
+"\n空运命令（批号：%s）取消，" 1 D2
+"因为%s是%s的常驻基地，" 2 unit_name_transform(D3) unit_name_transform(S17.D1)
+"只有将所有飞行部队转场到其他机场后，" 0
+"才能空运空军基地的其他物资。" 0
+END_SUB
+
+SUB 18
+"\n空运命令（批号：%s）取消，" 1 D2
+"因为该命令要求%s在当前位置实施装载，" 1 unit_name_transform(D3)
+"又在同一位置卸载，" 0
+"是一项无效任务。" 0
+   SUB 1
+"" 0
+   END_SUB
+   SUB 2
+"" 0
+   END_SUB
+END_SUB
+
+SUB 19
+"\n空中%s编队不能受领攻击目标命令，" 1 D2
+"因为该编队不能执行空对地突击任务。" 0
+END_SUB
+
+SUB 20
+"\n空中%s编队不能受领攻击目标命令，" 1 D2
+"因为该编队飞机已被击落。" 0
+END_SUB
+
+SUB 21
+"\n空中%s编队现处于%s状态，" 2 S21.D1 Air_Mission_Posture[S21.D2]
+"不能执行导调人员指令。" 0
+END_SUB
+
+SUB 22
+"\n空中%s编队不能受领攻击目标命令，" 1 D2
+"因为机上已无对地突击弹药。" 0
+END_SUB
+
+SUB 23
+"\n取消空中任务（批号：%s）的命令无法执行，" 1 D2
+   SUB 1
+"目前该编队正在返航。" 0
+   END_SUB
+   SUB 2
+"目前该编队飞机已被击落。" 0
+   END_SUB
+   SUB 3
+"目前该编队已转场。" 0
+   END_SUB
+END_SUB
+
+SUB 24
+"\n该命令指定%s为心理战对象，" 1 unit_name_transform(S24.D1)
+"但目前没有该集团，该命令取消。现有集团如下：" 0
+  SUB 1
+    GROUP 1
+"\n——%s。" 1 unit_name_transform(S24.S1.G1.D1)
+      END_GROUP
+   END_SUB
+END_SUB
+
+SUB 25
+"\n该命令指定%s为心理战对象，" 1 unit_name_transform(S25.D1)
+"但该集团与%s隶属于同一方，" 1 unit_name_transform(D3)
+"不能通过向同一方部队实施心理战广播来降低其战斗力。" 0
+END_SUB
+
+SUB 26
+"\n空中%s编队已完成部队空运任务，" 1 unit_name_transform(D2)
+"因此不能生成空运状态报告，命令取消。" 0
+END_SUB
+
+SUB 27
+"\n由于%s没有探雷和排雷能力，" 1 Aircraft_Type[S27.D1]
+"因此空中%s编队不能受领" 1 D2
+"利用该型飞机扫雷的任务，命令取消。" 0
+END_SUB 
+
+SUB 28
+"\n给%s下达的%s命令" 2 unit_name_transform(D3) trans_word("Order",S28.D2)
+"（批号：%s），" 1 D2
+"要求由%s实施引导，" 1 S28.D1
+"但该部已退出演习，" 0
+"命令取消。" 0
+END_SUB
+
+SUB 29
+"\n给%s下达的反潜巡逻命令" 1 unit_name_transform(D3)
+"（批号：%s），" 1 D2
+"指定区域不是水域，或位于演习区外，" 0
+"命令取消。" 0
+END_SUB
+
+SUB 30
+"\n在空中编队命令（批号：%s）中，" 1 D2
+"主要突击编队名称和机群名称（%s）重名，需要重新提交。" 1 S30.D1
+"同时，检查其他支援编队是否配属给了其他机群，" 0
+"也需要纠正。" 0
+END_SUB
+
+SUB 31
+"\n人工分配拦截目标命令（批号：%s）不能执行。" 1 D2
+   SUB 1
+"对%s编队没有指挥权。" 1 S31.S1.D1
+   END_SUB
+   SUB 2
+"航迹%s已消失。" 1 S31.S2.D1
+   END_SUB
+   SUB 3
+"%s编队正处于拦截、加油或返航状态，" 1 S31.S3.D1 
+"不能实施拦截。" 0 
+   END_SUB
+   SUB 4
+"该方没有%s的航迹。" 1 S31.S4.D1
+   END_SUB
+   SUB 5
+"\n%s编队因燃油不足，不能执行拦截目标%s的任务。" 2 S31.S5.D1 S31.S5.D2
+   END_SUB
+   SUB 6
+"\n%s编队因挂载弹药不能击毁目标，不能执行拦截目标%s的任务。" 2 S31.S6.D1 S31.S6.D2
+   END_SUB
+   SUB 7
+"\n%s编队不是环形区域掩护类型的空中巡逻编队，" 1 S31.S7.D1
+"而只有此类型巡逻编队用于拦截人工分配的目标，" 0
+"因此不能执行拦截目标%s的任务。" 1 S31.S7.D2
+   END_SUB
+   SUB 8
+"\n%s编队正在支援某空中机群，不能执行拦截目标%s的任务。" 2 S31.S8.D1 unit_name_transform(S31.S8.D2)
+ END_SUB
+   SUB 9
+"\n%s编队当前处于" 1 S31.S9.D1
+"%s状态，" 1 Air_Mission_Posture[S31.S9.D3]
+"不能执行拦截目标%s的任务。" 1 unit_name_transform(S31.S9.D2)
+   END_SUB
+
+END_SUB
+
+SUB 32
+"\n机场外借权收回命令（批号：%s）不能执行，" 1 D2
+"因为%s当前没有对外租借。" 1 unit_name_transform(D3)
+END_SUB
+
+SUB 33
+"\n批号为%s的命令，" 1 D2
+"指定%s为心理战广播对象，" 1 unit_name_transform(S33.D1)
+"由某飞行部队%s架飞机执行，" 1 S33.D2
+"但飞机没有预先挂载广播发射机，无法实施心战广播行动。" 0
+END_SUB
+
+SUB 34
+"\n%s当前不存在。不能建立实时数据链。" 1 unit_name_transform(S34.D1)
+END_SUB
+
+SUB 35
+"\n不能受领近距空中支援任务（批号：%s），" 1 D2
+"因为对%s既没有主指挥权，" 1 unit_name_transform(S35.D1)
+"也没有共享指挥权。" 0
+END_SUB
+
+SUB 36
+"\n由于攻击目标%s当前不存在，" 1 unit_name_transform(S36.D1)
+"空对地突击命令（批号：%s）不能执行。" 1 D2
+END_SUB
+
+SUB 37
+"\n空中防空压制命令（批号：%s）不能执行，" 1 D2 
+"因为在给出的目标类型清单中，" 0
+"没有地空导弹和防空高炮等目标类型，命令无效。" 0
+END_SUB
+
+SUB 38
+"\n空中反潜/舰巡逻命令（批号：%s）不能执行，" 1 D2 
+"因为在给出的目标类型清单中，" 0
+"没有舰艇目标类型，命令无效。" 0
+END_SUB
+
+SUB 39
+"\n下达给%s的" 1 unit_name_transform(D3)
+"%s命令（批号：%s），" 2 trans_word("Order",S39.D2) D2
+"指定%s作为待命机场，" 1 unit_name_transform(S39.D1)
+   SUB 1
+"但固定翼飞机的待命机场必须是航空母舰，" 0
+   END_SUB
+   SUB 2
+"但直升机的待命机场必须是直升机母舰，" 0
+   END_SUB
+   SUB 3
+"但该待命机场不在演习区内，" 0
+   END_SUB
+"命令取消。" 0
+END_SUB
+
+SUB 40
+"\n为目标%s设置特殊标志的命令无法执行，" 1 S40.D2
+"%s没有设置权限，因此命令无效。" 1 No_Force_Side[S40.D1]
+END_SUB
+
+SUB 41
+"\n%s机群已经存在，" 1 S41.D1
+"因此再次创建该空中机群的命令无法执行。" 0
+END_SUB
+
+SUB 42
+"\n空中%s机群不能组建，" 1 D2 
+"出发时间%s已过。" 1 GTIME(S42.D1)
+END_SUB
+
+SUB 43
+"\n空中%s机群不能取消，" 1 D2 
+"该机群不存在。" 0
+END_SUB
+
+SUB 44
+"\n空中%s机群不能取消或调整，" 1 D2 
+"该机群隶属%s。" 1 No_Force_Side[S44.D1]
+END_SUB
+
+SUB 45
+"\n空中%s机群不能调整，" 1 D2 
+"该机群不存在。" 0
+END_SUB
+
+SUB 46
+"\n已不能对空中%s机群做出调整，" 1 D2 
+"该机群飞机已起飞。" 0
+END_SUB
+
+SUB 47
+"\n已不能对空中%s机群做出调整，" 1 D2 
+"会合时间%s已过。" 1 GTIME(S47.D1)
+END_SUB
+
+SUB 48
+"\n不能创建空中%s编队，" 1 D2 
+"命令要求该编队加入空中%s机群，" 1 S48.D1
+"但该机群不存在，" 0
+"命令取消。" 0 
+END_SUB
+
+SUB 49
+"\n不能创建空中%s编队，" 1 D2 
+"命令要求该编队加入空中%s机群，" 1 S49.D1
+"但该机群不隶属友方，" 0
+"命令取消。" 0 
+END_SUB
+
+SUB 50
+"\n不能创建空中%s编队，" 1 D2 
+"命令要求该编队加入空中%s机群，" 1 S50.D1
+"但该机群已飞离会合点，" 0
+"不能再有新编队加入，" 0 
+"命令取消。" 0
+END_SUB
+
+SUB 52
+"\n不能受领特战分队" 0
+"空投或撤收命令（批号：%s），" 1 D2
+"在行动清单中存在以下错误：" 0
+
+   SUB 1
+"\n下列特战分队不存在：" 0
+
+      GROUP 1
+"\n——%s。" 1 unit_name_transform(S52.S1.G1.D1)
+      END_GROUP
+ 
+   END_SUB
+
+   SUB 2
+"\n以下特战分队尚未装载，因此不能空投：" 0
+     GROUP 1
+"\n——%s。" 1 unit_name_transform(S52.S2.G1.D1)
+     END_GROUP
+   END_SUB
+
+   SUB 3
+"\n编队飞机没有足够空间输送所有特种部队，" 0
+"需输送部队情况列表如下：" 0
+"<p class='table_name'>需输送部队情况列表</p>" 0
+"__start_table|分队名称|类型|重量|携行重量|最大重量|是否存在问题\n " 0
+     GROUP 1
+
+        SUB 1
+"|%s|" 1 unit_name_transform(S52.S3.G1.D1)
+"%s|%s|" 2 Insert_Types[S52.S3.G1.D2] S52.S3.G1.D3
+"%s|%s|否\n" 2 S52.S3.G1.D4 S52.S3.G1.D5
+        END_SUB
+
+        SUB 2
+"|%s|" 1 unit_name_transform(S52.S3.G1.D1)
+"%s|%s|" 2 Insert_Types[S52.S3.G1.D2] S52.S3.G1.D3
+"%s|%s|是\n" 2 S52.S3.G1.D4 S52.S3.G1.D5
+        END_SUB
+
+     END_GROUP
+"__stop_table" 0
+
+   END_SUB
+
+END_SUB
+
+SUB 54
+"\n空中%s编队剩余飞机数量不足，已无力完成该命令任务。" 1 S54.D1
+END_SUB
+
+SUB 55
+"\n变更国境线命令（编号：%s）" 1 D2
+   SUB 1
+"要求为对象%s改变国界重叠情况，命令中以下国界名无效：" 1 unit_name_transform(S55.S1.D1) 
+   END_SUB
+
+   GROUP 1
+"\n——%s，不存在。" 1 unit_name_transform(S55.G1.D1)
+   END_GROUP
+
+   SUB 3
+"\n以下国界有效，并已处理：" 0
+      GROUP 1
+"\n——%s" 1 unit_name_transform(S55.S3.G1.D1)
+      END_GROUP
+ 
+   END_SUB
+"\n通过国界报告命令可以查阅" 0
+"国界的对阵方配置及重叠情况。" 0
+END_SUB
+
+SUB 56
+"\n空中电子干扰命令（批号：%s）" 1 D2
+"要求%s出动%s，" 2 unit_name_transform(D3) Aircraft_Type[S56.D1]
+"执行%s类型的电子战行动，" 1 Jammer_Function[S56.D2]
+
+   SUB 1
+"对%s实施干扰。" 1 No_Force_Side[S56.S1.D1]
+   END_SUB
+
+   SUB 2
+"对%s实施干扰。" 1 unit_name_transform(S56.S2.D1)
+   END_SUB
+
+   SUB 3
+"干扰方式：对%s实施通信干扰。" 1 Type_Comm_Jamming[S56.S3.D1]
+   END_SUB
+
+   SUB 4
+"对%s编队实施干扰。" 1 S56.S4.D1
+   END_SUB
+
+   SUB 5
+"对%s及其直属部队实施干扰。" 1 unit_name_transform(S56.S5.D1)
+   END_SUB
+
+"但由于飞机没有挂载所需的干扰机，" 0
+"无法完成任务，命令取消。" 0
+
+END_SUB
+
+SUB 57 
+"\n创建空中编队命令（批号：%s）无法执行，" 1 D2
+"编队名称已被使用。" 0
+END_SUB
+
+SUB 58
+
+   SUB 1
+"\n更改空中任务（批号：%s）" 1 S58.D1
+"的%s号命令收到，但无法执行，" 1 D2
+      SUB 1
+         "该批号任务不存在。" 0
+      END_SUB
+      SUB 2
+"变更内容与现状不符，我部希望调整%s，" 1 unit_name_transform(S58.S1.S2.D2)
+"但命令试图对%s做出调整。" 1 unit_name_transform(S58.S1.S2.D1)
+      END_SUB
+   END_SUB
+
+   SUB 2
+"\n执行空中任务（批号：%s）" 1 S58.D1
+"的%s号命令收到，但无法执行，" 1 D2
+      SUB 1                     
+          "该批号任务已存在。" 0
+      END_SUB
+      SUB 2
+         "任务开始时间冲突。" 0
+      END_SUB
+   END_SUB
+END_SUB
+
+SUB 59
+"\n空中任务调整命令要求变更空中%s编队的心理战对象，" 1 S59.D1
+"但由于未挂载广播干扰机，命令无法执行。" 0
+END_SUB
+
+SUB 60
+"\n空中任务调整命令要求变更空中%s编队的心理战对象，" 1 S60.D1
+"但由于未挂载无线电干扰机，命令无法执行。" 0
+END_SUB
+
+SUB 61
+"\n空中任务调整命令要求变更空中%s编队的心理战对象，" 1 S61.D1
+"但由于未挂载广播设备，命令无法执行。" 0
+END_SUB
+
+SUB 62
+"\n%s下达的空中编队命令" 1 unit_name_transform(D3)
+"（批号：%s），" 1 D2 
+"要求使用通信干扰机，但没有明确干扰目标，命令不能执行。" 0
+END_SUB
+
+SUB 63
+"\n%s下达的空中编队命令" 1 unit_name_transform(D3)
+"（批号：%s），" 1 D2 
+"要求使用广播干扰机，但没有明确干扰目标，命令不能执行。" 0
+END_SUB
+
+SUB 64
+"\n要求%s将敌我识别模式设置为1的命令，"  1 unit_name_transform(S64.D1)
+"因输入格式不符（需输入两位八进制数），无法执行。" 0
+END_SUB
+
+SUB 65
+"\n执行空中巡逻任务的%s编队当前没有拦截目标。" 1 S65.D1
+END_SUB
+
+SUB 66
+"\n执行空中巡逻任务的%s编队当前没有跟踪目标。" 1 S66.D1
+END_SUB
+
+SUB 67
+"\n空中%s编队不能受领分配目标命令，" 1 D2
+"因为该编队属于某空中机群。" 0
+END_SUB
+
+SUB 68
+"\n%s当前不在演习区，不能受领租借任务。" 1 unit_name_transform(D3)
+END_SUB 
+
+SUB 69
+"\n下达给%s的" 1 unit_name_transform(D2)
+"%s命令（批号：%s），" 2 trans_word("Order",S69.D1) S69.D2
+"要求按%s方案挂载，" 1 S69.D3
+"但该挂载方案不存在，命令没有取消，" 0
+"如有可能，该部将选择另一挂载。" 0
+END_SUB
+
+SUB 70
+"\n下达给%s" 1 unit_name_transform(D2)
+"%s命令（批号：%s），" 2 trans_word("Order",S70.D1) S70.D2
+"要求按%s方案挂载，" 1 S70.D3
+"但该挂载方案不适于执行任务，" 0
+   SUB 1
+"主要问题是挂载中没有干扰机。" 0
+   END_SUB
+   SUB 2
+"主要问题是挂载中没有空对空武器。" 0
+   END_SUB
+   SUB 3
+"主要问题是挂载中的空对空武器实际对抗能力不足。" 0
+   END_SUB
+   SUB 4
+"主要问题是挂载中没有对地侦察雷达。" 0
+   END_SUB
+   SUB 5
+"主要问题是挂载中没有对空侦察雷达。" 0
+   END_SUB
+   SUB 6
+"主要问题是挂载中没有给加油机的燃油。" 0
+   END_SUB
+   SUB 7
+"主要问题是挂载武器全部为空对空武器。" 0
+   END_SUB
+   SUB 8
+"主要问题是挂载中没有任务中要求布的雷弹。" 0
+   END_SUB
+   SUB 9
+"主要问题是挂载中没有对抗防空火力的武器。" 0
+   END_SUB
+
+"命令没有取消，" 0
+"如有可能，该部将选择另一挂载。" 0
+END_SUB
+
+SUB 71
+"\n%s没有使用%s型飞机，" 2 No_Force_Side[S71.D1] S71.D2
+   SUB 1
+"距离任务区域最近的飞行部队是%s，" 1 unit_name_transform(S71.S1.D1)
+"装备%s。" 1 Aircraft_Type[S71.S1.D2]
+   END_SUB
+   SUB 2
+"%s没有飞行中队。" 1 No_Force_Side[S71.D1]
+   END_SUB
+   SUB 3
+"以下机型使用美军文电传输格式名称“%s”：" 1 S71.D2
+      GROUP 1
+"\n——%s（编号：%s）。 " 2 Aircraft_Type[S71.S3.G1.D1] S71.S3.G1.D1
+      END_GROUP
+   END_SUB
+   SUB 4
+"在数据库中没有使用军文电传输格式名称“%s”的机型。" 1 S71.D2
+   END_SUB
+END_SUB
+
+SUB 72
+"\n对%s下达的强制空中行动命令无法执行。" 1 unit_name_transform(S72.D1)
+   SUB 1
+"该编队不存在。" 0
+   END_SUB
+
+   SUB 2
+"编队没有行动需要的挂载，" 0
+"油料或武器挂载不能随意增减。" 0
+   END_SUB
+
+   SUB 3
+"弹药不足，" 0
+"需要补充如下：" 0
+      GROUP 1
+"\n——%s，%s枚（发）。 " 2 Targetable_Weapon[S72.S3.G1.D1] S72.S3.G1.D2  
+      END_GROUP
+   END_SUB
+
+   SUB 5
+"%s不存在，命令取消。" 1 unit_name_transform(S72.S5.D1)
+   END_SUB
+
+END_SUB
+
+SUB 73
+"\n由%s编组的空中%s编队" 2 unit_name_transform(D3) D2
+"受命在%s降落，" 1 unit_name_transform(S73.D1)
+
+   SUB 1
+       "但%s不属于海军序列，" 1 unit_name_transform(D3)
+       "不能在%s降落。" 1 unit_name_transform(S73.D1)
+   END_SUB
+
+   SUB 2
+      "%s的飞机跑道长度" 1 unit_name_transform(S73.D1)
+      "不能满足%s飞机起降。" 1 unit_name_transform(D3)
+   END_SUB
+
+   SUB 3
+      "%s上没有跑道" 1 unit_name_transform(S73.D1)
+      "%s不能降落。" 1 unit_name_transform(D3)
+   END_SUB
+
+   SUB 9
+       "两支部队机型不同。" 0
+   END_SUB
+
+   SUB 10
+      "%s不属于海军序列。" 1 unit_name_transform(D3)
+   END_SUB
+
+   SUB 12
+      "%s不支持直升机起降。" 1 unit_name_transform(S73.D1)
+   END_SUB
+
+   SUB 13
+      "%s当前没有弹射器。" 1 unit_name_transform(D3)
+   END_SUB
+
+   SUB 14
+      "%s不是航空母舰，不支持固定翼飞机起降。" 1 unit_name_transform(S73.D1)
+   END_SUB
+
+   SUB 15
+      "对运输机的命令取消。" 0
+   END_SUB
+
+   SUB 16
+"如果不取消命令，编队仍将出动，" 0
+"但飞机将返回原基地而不是%s。" 1 unit_name_transform(S73.D1)
+   END_SUB
+
+END_SUB
+
+SUB 74
+"\n编队分批命令，要求从%s编队中" 1 S74.D2
+"抽组%s架飞机创建一个新编队，" 1 S74.D1
+
+   SUB 1
+      "但空中%s编队现在由其他模型控制。" 1 S74.D2
+      "不能分批。" 0
+   END_SUB
+
+   SUB 2
+      "空中%s编队现在%s状态，" 2 S74.D2 Air_Mission_Posture[S74.S2.D1]
+      "不能分批。" 0
+   END_SUB
+
+   SUB 3
+      "空中%s编队仅有%s架飞机。" 2 S74.D2 S74.S3.D1
+      "不能分批。" 0
+   END_SUB
+
+   SUB 4
+      "不能将新编队命名为“%s”。" 1 S74.S4.D1
+   END_SUB
+
+   SUB 5
+      "空中%s编队正在输送%s（特战分队），" 2 S74.D2 unit_name_transform(S74.S5.D1)
+      "如果从编队中抽组出%s架飞机，特战分队将无法完成任务。" 1 S74.D1
+   END_SUB
+
+END_SUB
+
+SUB 75
+
+"\n管理空中走廊命令（批号：%s）不能执行。" 1 D2
+
+   SUB 1
+"原因是：命令要求创建一个新空中走廊（代号：%s），" 1 S75.S1.D1
+
+      SUB 1
+   "但该空中走廊已经存在。" 0
+      END_SUB
+
+      SUB 2
+   "但命令规定的最小飞行高度，大于规定的最大飞行高度。" 0
+      END_SUB
+
+      SUB 3
+   "但当前不可用。" 0  
+      END_SUB
+
+      SUB 4
+   "但空中走廊起点“%s”不存在。" 1 S75.S1.S4.D1
+      END_SUB
+
+      SUB 5
+   "但空中走廊终点“%s”不存在。" 1 S75.S1.S5.D1
+      END_SUB
+
+      SUB 6
+   "创建新节点需要输入位置点坐标。" 0
+      END_SUB
+
+      SUB 7
+   "但命令规定的最小和最大飞行高度间隔小于600米。" 0
+      END_SUB
+
+   END_SUB
+
+   SUB 2
+"原因是：命令要求对空中走廊%s做出变更，" 1 S75.S2.D1
+
+      SUB 1
+   "但该走廊不存在。" 0
+      END_SUB
+
+      SUB 2
+   "但变更的最小飞行高度大于规定的最大飞行高度。" 0
+      END_SUB
+
+      SUB 3
+   "但变更后起点与终点相同。" 0
+      END_SUB
+
+      SUB 4
+   "将“%s”作为起点，但该节点不存在。" 1 S75.S2.S4.D1
+      END_SUB
+
+      SUB 5
+   "将“%s”作为终点，但该节点不存在。" 1 S75.S2.S5.D1
+      END_SUB
+
+      SUB 6
+   "创建新节点需要输入位置点坐标。" 0
+      END_SUB
+
+      SUB 7
+   "但命令规定的最小和最大飞行高度间隔小于600米。" 0
+      END_SUB
+
+   END_SUB
+
+   SUB 3
+"原因是：命令要求删除空中走廊%s，" 1 S75.S3.D1
+"但该走廊不存在。" 0
+   END_SUB
+
+   SUB 4
+"原因是：命令要求创建空中走廊%s，" 1 S75.S4.D1
+"但该走廊已存在。" 0
+   END_SUB
+
+   SUB 5
+"原因是：命令要求修改空中走廊节点%s，" 1 S75.S5.D1
+
+      SUB 1
+   "但该节点不存在。" 0
+      END_SUB
+
+      SUB 2
+   "但修改后起点和终点相同。" 0
+      END_SUB
+
+   END_SUB
+
+   SUB 6
+"原因是：命令要求删除空中走廊节点%s，" 1 S75.S6.D1
+
+      SUB 1
+"但该走廊节点不存在。" 0
+      END_SUB
+
+      SUB 2
+"但该走廊节点当前是空中走廊%s" 1 S75.S6.S2.D1
+"的终点，不能删除。" 0
+      END_SUB
+
+   END_SUB
+
+END_SUB
+
+END_MAIN

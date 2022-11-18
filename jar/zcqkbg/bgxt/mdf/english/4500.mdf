@@ -1,0 +1,324 @@
+4500
+SUBJECT
+"%s补给运输情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s补给运输情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+   "\n%s当前没有运输分队。" 1 unit_name_transform(D2)
+ END_SUB
+
+SUB 2
+   "\n%s当前没有前往" 1 unit_name_transform(D2)
+   "%s的运输分队。" 1 unit_name_transform(S2.D1)
+ END_SUB
+
+SUB 3
+   "\n当前没有部队派运输分队前往%s。" 1 unit_name_transform(D2)
+ END_SUB
+
+SUB 4
+   "\n%s所属以下运输分队" 1 unit_name_transform(S4.D1)
+   "正前往%s：" 1 unit_name_transform(S4.D2)
+ 
+   GROUP 1
+      SUB 1
+         "\n——%s" 1 unit_name_transform(S4.G1.S1.D9)
+         "\n运输方式：%s，" 1 Type_Convoy[S4.G1.S1.D1]
+         "当前位置：%s，" 1 LOCATION(S4.G1.S1.D4,S4.G1.S1.D5)
+         "当前状态：%s，" 1 Convoy_Status[S4.G1.S1.D6]
+         "到达下一阶段时间：%s，" 1 GTIME(S4.G1.S1.D7)
+         "预计完成任务时间：%s。" 1 GTIME(S4.G1.S1.D8)
+      END_SUB
+
+      SUB 2
+         "\n——%s" 1 unit_name_transform(S4.G1.S2.D8)
+         "\n运输方式：%s，" 1 Type_Convoy[S4.G1.S2.D1]
+         "当前位置：%s，" 1 LOCATION(S4.G1.S2.D4,S4.G1.S2.D5)
+         "当前状态：%s，" 1 Convoy_Status[S4.G1.S2.D6]
+         SUB 1 
+            "现正在装载，" 0
+            "将于%s出发。"  1 GTIME(S4.G1.S2.D7)
+         END_SUB 
+         SUB 2 
+            "现正在等待装载设施，" 0
+            "预计于%s出发。"  1 GTIME(S4.G1.S2.D7)
+         END_SUB 
+         SUB 3
+            "现正在集结%s运输工具，" 1 Type_Convoy[S4.G1.S2.D1]
+            "计划于%s集结完毕，"  1 GTIME(S4.G1.S2.D7)
+            "之后立即组织装载，但出发时间不确定。" 0 
+         END_SUB 
+         SUB 4
+            "预计于%s完成卸载。"  1 GTIME(S4.G1.S2.D7) 
+         END_SUB 
+      END_SUB
+
+      SUB 3
+         "\n——%s" 1 unit_name_transform(S4.G1.S3.D7)
+         "\n运输方式：%s，" 1 Type_Convoy[S4.G1.S3.D1]
+         "当前位置：%s，" 1 LOCATION(S4.G1.S3.D4,S4.G1.S3.D5)
+         "当前状态：%s，" 1 Convoy_Status[S4.G1.S3.D6]
+         "现正在实施装卸，出发时间无法确定。" 0
+      END_SUB
+
+      SUB 4
+         "<p class='table_name'>该运输分队运输补给情况</p>" 0
+         "__start_table|补给|数量|单位\n" 0         
+         GROUP 1
+            "|%s|%s|%s|\n" 3 
+                 SLP_Category_Name[S4.G1.S4.D1,S4.G1.S4.G1.D1]  
+                 SLP_SC_AMT(S4.G1.S4.D1,S4.G1.S4.G1.D1,S4.G1.S4.G1.D2)
+                 SLP_SC_UOM(S4.G1.S4.D1,S4.G1.S4.G1.D1)
+         END_GROUP
+	 "__stop_table" 0
+      END_SUB
+
+      SUB 5
+         "\n该运输分队未运输任何补给物资。" 0
+      END_SUB
+
+      SUB 6
+         "<p class='table_name'>该运输分队运输工具情况</p>" 0
+         "__start_table|名称|初始数量|现有数量\n" 0         
+         GROUP 1
+            "|%s|%s|%s\n" 3 
+                 Transportation_Class[S4.G1.S6.G1.D1]
+                 S4.G1.S6.G1.D2
+                 S4.G1.S6.G1.D3
+         END_GROUP
+	 "__stop_table" 0
+      END_SUB
+
+      SUB 7
+         "\n注：允许该运输分队在返程时后送伤员和遗体。" 0
+      END_SUB
+
+      SUB 8
+         "\n注：不允许该运输分队后送伤员和遗体。" 0
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 5
+   "\n%s所属以下运输分队：" 1 unit_name_transform(S5.D1)
+   GROUP 1
+      SUB 1
+         "\n——%s" 1 unit_name_transform(S5.G1.S1.D9)
+         "\n运输方式：%s，" 1 Type_Convoy[S5.G1.S1.D1]
+         "当前位置：%s，" 1 LOCATION(S5.G1.S1.D4,S5.G1.S1.D5)
+         "前往部队：%s，" 1 unit_name_transform(S5.G1.S1.D3)
+         "当前状态：%s，" 1 Convoy_Status[S5.G1.S1.D6]
+         "到达下一阶段时间：%s，" 1 GTIME(S5.G1.S1.D7)
+         "预计完成任务时间：%s。" 1 GTIME(S5.G1.S1.D8)
+      END_SUB      
+
+      SUB 2
+         "\n——%s" 1 unit_name_transform(S5.G1.S2.D8)
+         "\n运输方式：%s，" 1 Type_Convoy[S5.G1.S2.D1]
+         "当前位置：%s，" 1 LOCATION(S5.G1.S2.D4,S5.G1.S2.D5)
+         "前往部队：%s，" 1 unit_name_transform(S5.G1.S2.D3)
+         "当前状态：%s，" 1 Convoy_Status[S5.G1.S2.D6]
+         SUB 1 
+            "现正在装载，" 0
+            "将于%s出发。"  1 GTIME(S5.G1.S2.D7)
+         END_SUB 
+         SUB 2 
+            "现正在等待装载设施，" 0
+            "预计于%s出发。"  1 GTIME(S5.G1.S2.D7)
+         END_SUB 
+         SUB 3
+            "现正在集结%s运输工具，" 1 Type_Convoy[S5.G1.S2.D1]
+            "计划于%s集结完毕，"  1 GTIME(S5.G1.S2.D7)
+            "之后立即组织装载，但出发时间不确定。" 0 
+         END_SUB 
+         SUB 4
+            "预计于%s完成卸载。"  1 GTIME(S5.G1.S2.D7)
+         END_SUB 
+  
+     END_SUB
+
+      SUB 3
+         "\n——%s" 1 unit_name_transform(S5.G1.S3.D7)
+         "\n运输方式：%s，" 1 Type_Convoy[S5.G1.S3.D1]
+         "当前位置：%s，" 1 LOCATION(S5.G1.S3.D4,S5.G1.S3.D5)
+         "前往部队：%s，" 1 unit_name_transform(S5.G1.S3.D3)
+         "当前状态：%s，" 1 Convoy_Status[S5.G1.S3.D6]
+         "现正在实施装卸，出发时间无法确定。" 0
+      END_SUB
+
+      SUB 4
+         "<p class='table_name'>该运输分队运输补给情况</p>" 0
+         "__start_table|补给|数量|单位\n" 0         
+         GROUP 1
+            "|%s|%s|%s|\n" 3 
+                 SLP_Category_Name[S5.G1.S4.D1,S5.G1.S4.G1.D1]  
+                 SLP_SC_AMT(S5.G1.S4.D1,S5.G1.S4.G1.D1,S5.G1.S4.G1.D2)
+                 SLP_SC_UOM(S5.G1.S4.D1,S5.G1.S4.G1.D1)
+         END_GROUP
+	 "__stop_table" 0
+      END_SUB
+
+      SUB 5
+         "\n该运输分队未运输任何补给物资。" 0
+       END_SUB
+
+      SUB 6
+         "<p class='table_name'>该运输分队运输工具情况</p>" 0
+         "__start_table|名称|初始数量|现有数量\n" 0         
+         GROUP 1
+            "|%s|%s|%s\n" 3 
+                 Transportation_Class[S5.G1.S6.G1.D1] 
+                 S5.G1.S6.G1.D2 
+                 S5.G1.S6.G1.D3
+         END_GROUP
+         "__stop_table" 0
+      END_SUB
+
+      SUB 7
+         "\n注：允许该运输分队在返程时后送伤员和遗体。" 0
+      END_SUB
+
+      SUB 8
+         "\n注：不允许该运输分队后送伤员和遗体。" 0
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 6
+   "\n以下运输分队正前往%s：" 1 unit_name_transform(S6.D1)
+   GROUP 1
+      SUB 1
+         "\n——%s" 1 unit_name_transform(S6.G1.S1.D9)
+         "\n运输方式：%s，" 1 Type_Convoy[S6.G1.S1.D1]
+         "当前位置：%s，" 1 LOCATION(S6.G1.S1.D4,S6.G1.S1.D5)
+         "隶属部队：%s，" 1 unit_name_transform(S6.G1.S1.D2)
+         "当前状态：%s，" 1 Convoy_Status[S6.G1.S1.D6]
+         "到达下一阶段时间：%s，" 1 GTIME(S6.G1.S1.D7)
+         "预计完成任务时间：%s。" 1 GTIME(S6.G1.S1.D8)
+      END_SUB
+
+      SUB 2
+         "\n——%s" 1 unit_name_transform(S6.G1.S2.D9)
+         "\n运输方式：%s，" 1 Type_Convoy[S6.G1.S2.D1]
+         "当前位置：%s，" 1 LOCATION(S6.G1.S2.D4,S6.G1.S2.D5)
+         "隶属部队：%s，" 1 unit_name_transform(S6.G1.S2.D2)
+         "当前状态：%s，" 1 Convoy_Status[S6.G1.S2.D6]
+         SUB 1 
+            "现正在装载，" 0
+            "将于%s出发。"  1 GTIME(S6.G1.S2.D7)
+         END_SUB 
+         SUB 2 
+            "现正在等待装载设施，" 0
+            "预计于%s出发。"  1 GTIME(S6.G1.S2.D7)
+         END_SUB 
+         SUB 3
+            "现正在集结%s运输工具，" 1 Type_Convoy[S6.G1.S2.D1]
+            "计划于%s集结完毕，"  1 GTIME(S6.G1.S2.D7)
+            "之后立即组织装载，但出发时间不确定。" 0 
+         END_SUB 
+         SUB 4
+            "预计于%s完成卸载。"  1 GTIME(S6.G1.S2.D7)
+         END_SUB
+      END_SUB
+
+      SUB 3
+         "\n——%s" 1 unit_name_transform(S6.G1.S3.D9)
+         "\n运输方式：%s，" 1 Type_Convoy[S6.G1.S3.D1]
+         "当前位置：%s，" 1 LOCATION(S6.G1.S3.D4,S6.G1.S3.D5)
+         "隶属部队：%s，" 1 unit_name_transform(S6.G1.S3.D2)
+         "当前状态：%s，" 1 Convoy_Status[S6.G1.S3.D6]
+         "现正在实施装卸，出发时间无法确定。" 0
+       END_SUB
+
+      SUB 4
+         "<p class='table_name'>该运输分队运输补给情况</p>" 0
+         "__start_table|补给|数量|单位\n" 0         
+         GROUP 1
+            "|%s|%s|%s|\n" 3 
+                 SLP_Category_Name[S6.G1.S4.D1,S6.G1.S4.G1.D1]  
+                 SLP_SC_AMT(S6.G1.S4.D1,S6.G1.S4.G1.D1,S6.G1.S4.G1.D2)
+                 SLP_SC_UOM(S6.G1.S4.D1,S6.G1.S4.G1.D1)
+
+         END_GROUP
+         "__stop_table" 0
+      END_SUB
+
+      SUB 5
+         "\n该运输分队未运输任何补给物资。" 0
+       END_SUB
+
+      SUB 6
+         "<p class='table_name'>该运输分队运输工具情况</p>" 0
+         "__start_table|名称|初始数量|现有数量\n" 0         
+         GROUP 1
+            "|%s|%s|%s\n" 3 
+                 Transportation_Class[S6.G1.S6.G1.D1] 
+                 S6.G1.S6.G1.D2 
+                 S6.G1.S6.G1.D3
+         END_GROUP
+         "__stop_table" 0
+      END_SUB
+
+
+      SUB 7
+         "\n注：允许该运输分队在返程时后送伤员和遗体。" 0
+      END_SUB
+
+      SUB 8
+         "\n注：不允许该运输分队后送伤员和遗体。" 0
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 7
+   "\n当前没有运输%s。" 1 unit_name_transform(D2)
+ END_SUB
+
+SUB 8
+   SUB 1
+      "\n%s位于" 1 unit_name_transform(S8.S1.D1)
+      "%s地域，" 1 LOCATION(S8.S1.D4,S8.S1.D5)
+      "执行%s运输%s的任务，" 2 Type_Convoy[S8.S1.D7] unit_name_transform(D2)
+      "目前正在%s。" 1 Transport_Convoy_Status[S8.S1.D6]
+      "该运输队隶属于%s。" 1 unit_name_transform(S8.S1.D8)
+    END_SUB
+   SUB 2
+      "\n装卸载任务预计于%s完成。" 1 GTIME(S8.S2.D1)
+    END_SUB
+   SUB 3
+      "\n目前无法确定装卸载任务完成时间。" 0
+    END_SUB
+   SUB 4
+      "\n大约在%s抵达目的地。" 1 GTIME(S8.S4.D1)
+   END_SUB
+
+   SUB 5
+      "\n当前无行动计划。" 0
+    END_SUB
+    SUB 6
+       "<p class='table_name'>该运输分队运输工具情况</p>" 0
+       "__start_table|名称|初始数量|现有数量\n" 0         
+       GROUP 1
+          "|%s|%s|%s\n" 3  
+               Transportation_Class[S8.S6.G1.D1] 
+               S8.S6.G1.D2 
+               S8.S6.G1.D3                                           
+       END_GROUP
+       "__stop_table" 0
+    END_SUB
+    SUB 7
+       "\n在该地域正遭敌地面部队攻击。" 0
+    END_SUB
+    SUB 8
+       "\n在该地域正遭敌炮兵火力突击。" 0
+    END_SUB
+    SUB 9
+       "\n在该地域正遭敌空中火力突击。" 0
+    END_SUB
+   SUB 10
+       "\n在该地域正遭敌导弹火力突击。" 0
+    END_SUB
+END_SUB
+END_MAIN

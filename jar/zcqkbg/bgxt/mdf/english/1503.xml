@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="1503"> <subject> <line>模型运行时间情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;  模型运行时间情况报告 &lt;/p&gt; <br/></line>  <sub n="1"> <line>  接口程序的运行时间至少每<f n="DURATION"><S1.D1/><d>%.2Tm</d></f>分更新一次。<br/><br/></line> </sub> <sub n="2"> <line>  自动保存的时间间隔是：<f n="DURATION"><S2.D1/><d>%.2Td天</d></f>(<f n="DURATION"><S2.D1/><d>%.2Th小时</d></f>)。</line> <line>下一次自动保存是在模拟时间：<f n="GTIME"><S2.D2/></f><f n="GTIME"><S2.D2/><d>%f</d></f>。<br/><br/> </line> </sub></main> </msg> </msgs>

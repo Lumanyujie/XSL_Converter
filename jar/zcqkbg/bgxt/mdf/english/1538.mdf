@@ -1,0 +1,49 @@
+
+1538
+SUBJECT
+"%s(%s方)部队属性"    2 No_Force_Side[D2] D2
+MAIN
+ 
+"<p class='title'>  %s(%s方)部队属性 </p>\n\n"
+                                   2 No_Force_Side[D2] D2
+SUB  1
+"  调理员改变报告周期。\n" 0
+END_SUB
+ 
+SUB  2
+"  报告周期。\n" 0
+END_SUB
+ 
+SUB 3
+"  每%s个周期报告后生成一个总结报告。\n" 1 S3.D1
+END_SUB
+ 
+SUB 4
+"  每隔%s生成一个周期报告。\n" 1
+    DURATION(S4.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 5
+"  %s的下一个周期报告将于%s进行。\n" 2 No_Force_Side[D2] GTIME(S5.D1) 
+END_SUB
+
+SUB 6
+"  下一个周期报告将是总结报告。\n" 0
+END_SUB
+
+SUB 7
+"  下一个周期报告将不会是总结报告。\n" 0
+END_SUB
+
+SUB 8
+"  该部队属方任务模式3的故障范围：\n" 0
+"  模式3故障（8进制）开始: %s \n" 1 S8.D1
+"  模式3故障（8进制）结束: %s \n" 1 S8.D2
+END_SUB
+
+SUB 9
+"  该参演方没有为模式3故障值被指派。\n" 0
+END_SUB
+
+END_MAIN
+

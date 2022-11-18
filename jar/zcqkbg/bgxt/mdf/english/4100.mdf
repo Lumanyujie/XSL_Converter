@@ -1,0 +1,438 @@
+
+4100
+SUBJECT
+"后勤命令（编号：%s）无法执行" 1 D2
+MAIN
+
+"<p class='title'>后勤命令（编号：%s）无法执行</p>" 1 D2
+
+SUB 1
+"\n由于%s正在搭乘海上编队，此时不能" 1 unit_name_transform(S1.D1)
+"执行定期补给，编号" 0
+"为%s的定期补给命令取消。" 1 D2
+END_SUB
+
+SUB 2
+"\n%s收到定期补给命令，" 1 unit_name_transform(S2.D1)
+"但接收补给的%s为敌方部队，" 1 unit_name_transform(S2.D2)
+"不能实施定期补给，" 0
+"定期补给命令（编号%s）取消。" 1 D2
+END_SUB
+
+SUB 3
+"\n%s收到为" 1 unit_name_transform(S3.D1)
+"%s实施第二次定期补给命令，" 1 unit_name_transform(S3.D1)
+"但按照规定，两个单位之间只能实施一次定期补给，因此命令取消。" 0
+END_SUB
+
+SUB 4
+"\n%s未按要求调整其保障部队。" 1 unit_name_transform(S4.D1)
+"因为它是%s目标，本方只能更改" 1 No_Force_Side[S4.D2] 
+"%s目标的保障部队。" 1 No_Force_Side[S4.D3]
+END_SUB
+
+SUB 5
+"\n收到编号为%s的调整防空阵地保障关系命令，" 1 D2
+"但没有发现由%s负责保障的防空导弹和高炮阵地，" 1 unit_name_transform(S5.D1)
+"因此没有部队调整为由%s负责保障。" 1 unit_name_transform(S5.D2)
+END_SUB
+
+SUB 6
+"\n由于%s正在搭乘海上编队，此时不能" 1 S6.D1
+"执行临机补给，编号" 0
+"为%s的临机补给命令取消。" 1 D2
+END_SUB
+
+SUB 7
+"\n%s收到定期补给命令，" 1 unit_name_transform(S7.D1)
+"但接收补给的%s为敌方部队，" 1 unit_name_transform(S7.D2)
+"不能实施临机补给，" 0
+"临机补给命令（编号%s）取消。" 1 D2
+END_SUB
+
+SUB 8
+"\n%s收到部队间支援命令，" 1 unit_name_transform(S8.D1)
+"但接收补给的%s为敌方部队，" 1 unit_name_transform(S8.D2)
+"不能实施部队间支援，" 0
+"部队间支援命令（编号%s）取消。" 1 D2
+END_SUB
+
+SUB 9
+"\n%s收到部队间支援命令，" 1 unit_name_transform(S9.D1)
+"但该部队与接收补给的%s之间" 1 unit_name_transform(S9.D2)
+"距离为%s%s，" 2 UOM_AMT(DISTANCE,S9.D3) UOM(DISTANCE)
+"超过了部队间支援的最大距离限制，" 0
+"命令取消。" 0
+END_SUB
+
+SUB 10
+"\n收到编号为%s的港口命令，" 1 D2 
+"%s没有等待处理的装卸任务，" 1 unit_name_transform(S10.D1)
+"命令取消。" 0
+END_SUB
+
+SUB 11
+"\n收到编号为%s的港口命令，" 1 D2
+"战略补给%s没有等待处理，" 1 unit_name_transform(S11.D1)
+"命令取消。" 0
+END_SUB
+
+SUB 12
+"\n收到编号为%s的港口命令，" 1 D2
+"战略补给%s正在处理中，不能改变港口，" 1 unit_name_transform(S12.D1)
+"命令取消。" 0
+END_SUB
+
+SUB 13
+"\n收到编号为%s的港口命令，" 1 D2
+   SUB 1
+"%s已经得到命令来处理%s进入战区。" 2 unit_name_transform(S13.D1) unit_name_transform(S13.S1.D1)
+   END_SUB
+   SUB 2
+"%s已经得到命令来处理战略补给%s进入战区。" 2 unit_name_transform(S13.D1) unit_name_transform(S13.S2.D1)
+   END_SUB
+   SUB 3
+"%s没有物资装卸设施，不能按要求执行，" 1 unit_name_transform(S13.D1)
+"命令取消。" 0
+   END_SUB
+END_SUB
+
+SUB 14
+"\n%s不能按命令要求，" 1 unit_name_transform(S14.D1)
+"成为管线%s新的保障部队。" 1 unit_name_transform(S14.D2)
+
+   SUB 1
+"因为该部队正与敌在%s地域交战，" 1 LOCATION(S14.D4,S14.D5) 
+"处于%s状态，必须与敌方脱离接触才能执行该任务。" 1 Unit_Posture[S14.D3]
+   END_SUB
+
+   SUB 2
+"因为该部队为驻扎飞行中队的空军基地，不能从当前位置转移，" 0
+"命令取消。" 0
+   END_SUB
+
+   SUB 3
+"因为该部队为港口部队，正在使用装卸设施进行港口作业，" 0
+"不能从当前位置转移，命令取消。" 0
+   END_SUB
+
+   SUB 4
+"不允许该部队转移至管线源节点位置，" 0
+"命令取消。" 0
+   END_SUB
+
+   SUB 5
+"%s正位于管线源节点实施管线作业，" 1 unit_name_transform(S14.S5.D1)
+"命令取消。" 0
+   END_SUB
+
+END_SUB
+
+SUB 15
+"\n收到设置港口装卸优先顺序命令（编号%s），" 1 D2
+"%s尚未抵达战场，" 1 unit_name_transform(S15.D1)
+"而作为装卸优先部队首先需要抵达战区并处于待处理队列中，" 0
+"因此命令取消。" 0
+END_SUB
+
+SUB 16
+"\n收到设置港口装卸优先顺序命令（编号%s），" 1 D2
+"指定的%s已装卸完毕，" 1 unit_name_transform(S16.D1)
+"命令取消。" 0
+END_SUB
+
+SUB 17
+"\n收到设置港口装卸优先顺序命令（编号%s），" 1 D2
+"要求%s优先装卸%s，" 2 unit_name_transform(S17.D2) unit_name_transform(S17.D1)
+"但其不在港口部队%s的待装卸列表中，" 1 unit_name_transform(S17.D2)
+"命令取消。" 0
+END_SUB
+
+SUB 18
+"\n收到设置港口装卸优先顺序命令（编号%s），" 1 D2
+"要求%s优先装卸登录号为%s的单位，" 2 unit_name_transform(S18.D2) S18.D1
+"但其不在港口部队%s的待装卸列表中，" 1 unit_name_transform(S18.D2)
+"命令取消。" 0
+END_SUB
+
+SUB 19
+"\n收到港口查询报告命令，%s没有" 1 unit_name_transform(S19.D1)
+"物资装卸设施，因此不具备港口作业能力，" 0
+"命令取消。" 0
+END_SUB
+
+SUB 20
+"\n收到物资预先储备命令（编号%s），" 1 D2
+"%s当前在编队中，" 1 unit_name_transform(S20.D1)
+"不能执行该任务，命令取消。" 0
+END_SUB
+
+SUB 21
+"\n%s奉命对" 1 unit_name_transform(S21.D1)
+"%s实施管线作业，但其必须在管线源节点" 1 unit_name_transform(S21.D2)
+"位置%s，才能执行该任务。" 1 LOCATION(S21.D3,S21.D4)
+   SUB 1
+"如果在%s之前未到达该点，命令将取消。" 1 GTIME(S21.S1.D2)
+   END_SUB
+   SUB 2
+"命令取消。" 0
+   END_SUB
+END_SUB
+
+SUB 22
+"\n按照命令要求，管线%s将停止运行，但没有指定" 1 unit_name_transform(S22.D1)
+"执行部队，因此无法停止运行，" 0 
+"命令取消。" 0
+END_SUB
+
+SUB 24
+"\n%s按照编号为" 1 unit_name_transform(D2)
+"%s的命令，调整保障关系。" 1 S24.D1
+   SUB 1
+"将%s指定为其建制保障部队。" 1 unit_name_transform(S24.S1.D1)
+"但%s已经在" 1 unit_name_transform(D2)
+"%s的保障链中，" 1 unit_name_transform(S24.S1.D1)
+"此命令将导致物资循环请求，因此保障关系无法调整。" 0
+   END_SUB
+   SUB 2
+"\n以下调整无法执行（因为" 0
+"将导致指定补给物资的循环申请）：" 0
+"<p class='table_name'>无法调整的保障关系列表</p>" 0
+"__start_table|补给类型|保障部队\n" 0
+      GROUP 1 
+"|%s|%s\n" 2 Supply_Category[S24.S2.G1.D1] unit_name_transform(S24.S2.G1.D2)
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+   SUB 3
+"\n该命令无法执行。" 0
+   END_SUB
+END_SUB
+
+SUB 27
+"\n编号为%s的命令要求%s" 2 S27.D1 unit_name_transform(D2)
+"预先储备%s个伤员量，" 1 S27.D2
+"但按照规定你部不允许放弃，" 0
+"在命令的补给列表中没有其他项目，命令取消。" 0
+END_SUB
+
+SUB 28
+"\n编号为%s命令要求%s" 2 S28.D1 unit_name_transform(D2)
+"预先储备%s个伤员量，" 1 S28.D2
+"但按照规定你部不允许放弃，" 0
+"在命令的补给列表中的其他项目，正常执行。" 0
+END_SUB
+
+SUB 29
+"\n编号为%s的对多个目的地的临机补给命令，" 1 D2
+"由于%s存在以下问题：" 1 unit_name_transform(S29.D1)
+   SUB 1
+"\n该部队正与敌激战，不能抽组运输部队。" 0
+   END_SUB
+   SUB 2
+"\n该部队没有用于运输的卡车。" 0
+   END_SUB
+   SUB 3
+"\n某些被保障部队已分批。" 0
+   END_SUB
+   SUB 4
+"\n某些被保障部队已搭乘编队。" 0
+   END_SUB
+   SUB 5
+"\n某些被保障部队自行输送。" 0
+   END_SUB
+   SUB 6
+"\n指定保障行动由于没有可通行道路，不能由卡车完成。" 0
+   END_SUB
+   SUB 7
+"\n运输艇正在航渡途中，无法派遣运输队。" 0
+   END_SUB
+   SUB 8
+"\n运输艇上没有指定的补给。" 0
+   END_SUB
+   SUB 9
+"\n部分保障部队已退出演习。" 0
+   END_SUB
+   SUB 10
+"\n需要物资装卸设备，且不能装卸卡车。" 0
+   END_SUB
+   SUB 11
+"\n指定补给不适合用该类卡车输送。" 0
+   END_SUB
+   SUB 12
+"\n卡车数量不能满足输送要求。" 0
+   END_SUB
+   SUB 13
+"\n装载点和卸载点在同一位置，不适合使用卡车。" 0
+   END_SUB
+   SUB 14
+"\n需至少派遣一辆卡车。" 0
+   END_SUB
+   SUB 15
+"\n需至少指定一个装载点或卸载点。" 0
+   END_SUB
+
+"\n命令无法执行。" 0
+END_SUB
+
+SUB 30
+   SUB 1
+"\n命令要求%s" 1 unit_name_transform(D4)
+"通过%s方式，" 1 Supply_Shipment_Method[S30.S1.D1]
+"对%s实施运输保障。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 2
+"\n命令要求评估采取%s方式" 1 Supply_Shipment_Method[S30.S2.D1]
+"对%s实施运输保障的时间。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 3
+"\n命令要求%s中止" 1 unit_name_transform(D4)
+"对%s实施的运输保障。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 4
+"但%s当前未对该部队实施运输保障。" 1 unit_name_transform(D4)
+       SUB 1
+"运输任务由%s执行。" 1 unit_name_transform(S30.S4.S1.D1)
+      END_SUB
+      SUB 2
+"运输尚未实施。" 0
+      END_SUB
+   END_SUB
+   SUB 5
+"该部队已抵达其目的地。" 0
+   END_SUB
+   SUB 6
+"该部队已收到中止运输的命令。" 0
+   END_SUB
+   SUB 7
+"铁路输送队即将到达卸载点。" 0
+   END_SUB
+   SUB 8
+"装载地域没有铁路，不能进行评估。" 0
+   END_SUB
+   SUB 9
+"利用当前运输资源，每一次运输只能输送该部队的%s%%，"  1 S30.S9.D1
+"不能完成所有任务。" 0
+   END_SUB
+   SUB 10
+"该部队当前正在交战。" 0
+   END_SUB
+   SUB 11
+"该部队当前处于%s状态。" 1 Unit_Posture[S30.S11.D1]
+   END_SUB
+   SUB 12
+"该部队当前正在执行%s任务。" 1 Unit_Posture[S30.S12.D1]
+   END_SUB
+   SUB 13
+"该部队当前处于分组状态。" 0
+   END_SUB
+   SUB 14
+"该部队当前已搭载%s编队。" 1 S30.S14.D1
+   END_SUB
+   SUB 15
+"该部队正在参加%s两栖行动。" 1 unit_name_transform(S30.S15.D1)
+   END_SUB
+   SUB 16
+"该部队拥有装卸设施，正在使用。" 0
+   END_SUB
+   SUB 17
+"该部队为空军基地，现驻扎有飞行中队。" 0
+   END_SUB
+   SUB 18
+"该部队为空军基地，且拥有跑道。" 0
+   END_SUB
+   SUB 19
+"该部队小于最小运输规模限制。" 0
+   END_SUB
+   SUB 20
+"可用运输资源不足。" 0
+   END_SUB
+   SUB 21
+"运输队小于最小运输规模限制。" 0
+   END_SUB
+   SUB 22
+"装载地域没有装载必需的物资装卸设施，" 0
+"该部队不能利用自己的设备自行装载。" 0
+   END_SUB
+   SUB 23
+"卸载地域没有卸载必需的物资装卸设施，" 0
+"该部队不能利用自己的设备自行卸载。" 0
+   END_SUB
+   SUB 24
+"从指定装载点到卸载点之间没有可通行道路。" 0
+   END_SUB
+   SUB 25
+"指定的装载点和目的地位置相同。" 0
+   END_SUB
+   SUB 26
+"该部队已在输送中，在接受其他运输指令前必须完成当前行动。" 0
+   END_SUB
+   SUB 27
+"输送队找不到从当前点至装载点的路线。" 0
+   END_SUB
+   SUB 28
+"利用所有卡车，也无法一次性完成" 0
+"运输%s全部携行物资的任务。"  1 unit_name_transform(D2)
+   END_SUB
+   SUB 29
+"从输送队当前点到装载点没有可通行道路。" 0
+   END_SUB
+"因此，命令取消。" 0
+END_SUB
+
+SUB 31
+   SUB 1
+"\n没有名称为%s的运输队，命令取消。" 1 unit_name_transform(S31.D1)
+   END_SUB
+   SUB 2
+"\n名称为%s的运输队" 1 unit_name_transform(S31.D1)
+"正在执行输送部队任务，命令取消。" 0
+   END_SUB
+END_SUB
+
+SUB 32
+   SUB 1
+"\n该命令拟创建新的通用航线，但指定的ID号%s" 1 S32.S1.D1
+"已经存在，命令取消。" 0
+   END_SUB
+
+   SUB 2
+"\n该命令拟创建新的通用航线，指定ID号为%s，" 1 S32.S2.D1
+"但没有设置乘客数量和载重量，命令取消。" 0
+   END_SUB
+
+   SUB 3
+"\n该命令拟创建新的通用航线，指定ID号为%s，" 1 S32.S3.D1
+"但对于%s，指定的登机点%s不存在，" 2 No_Force_Side[S32.S3.D3] S32.S3.D2
+"命令取消。" 0
+   END_SUB
+   
+   SUB 4
+"\n该命令拟创建新的通用航线，指定ID号为%s，" 1 S32.S4.D1
+"但对于%s，指定的下机点%s不存在，" 2 No_Force_Side[S32.S4.D3] S32.S4.D2
+"命令取消。" 0
+   END_SUB
+
+   SUB 5
+"\n该命令拟取消ID号为%s的通用航线，" 1 S32.S5.D1
+"但对于%s，该ID号不存在，" 1 No_Force_Side[S32.S5.D2]
+"命令取消。" 0
+   END_SUB
+
+   SUB 6
+"\n该命令拟取消ID号为%s的通用航线，" 1 S32.S6.D1
+"但该航线正与某部队相关联，" 0
+"命令取消。" 0
+   END_SUB
+
+   SUB 7
+"\n该命令拟调整ID号为%s的通用航线，" 1 S32.S7.D1
+"但属于%s的使用该ID号的航线不存在，" 1 No_Force_Side[S32.S7.D2]
+"命令取消。" 0
+   END_SUB
+
+END_SUB
+
+END_MAIN
+
+

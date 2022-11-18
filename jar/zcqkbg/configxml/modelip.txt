@@ -1,0 +1,5 @@
+#
+#Wed Nov 25 11:31:29 CST 2015
+server.ip=1.25.17.26
+login.name=CHINA01_WHIP
+data.clear=0

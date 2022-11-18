@@ -1,0 +1,27 @@
+
+9150
+SUBJECT
+"%s战果评估区（导演部）%s报告" 2 No_Force_Side[D2] Type_BDA_Report[D5]
+MAIN
+
+"<p class='title'>%s战果评估区（导演部）%s报告</p>" 2  No_Force_Side[D2] Type_BDA_Report[D5]
+"\n报告时间段：%s至%s。"  2 GTIME(D3) GTIME(D1)
+
+SUB 1
+"\n本时段%s没有人员装备损失。" 1 No_Force_Side[D2]
+END_SUB
+
+SUB 2
+
+   GROUP 1
+"<p class='table_name'>%s人员装备损失明细</p>" 1 unit_name_transform(S2.G1.D1)  
+"__start_table|人员装备类型|数量\n" 0
+        GROUP 1
+"|%s|%s\n" 2 CSP_System_Name[S2.G1.D2,S2.G1.G1.D1] S2.G1.G1.D2
+        END_GROUP
+"__stop_table" 0
+   END_GROUP
+END_SUB
+ 
+END_MAIN
+

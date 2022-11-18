@@ -1,0 +1,18 @@
+
+2055
+SUBJECT
+"改变对阵方命令执行情况报告" 0
+
+MAIN
+"<p class='title'>改变对阵方命令执行情况报告</p>" 0
+
+SUB 19
+"\n%s向%s下达了" 2 unit_name_transform(S19.D1) No_Force_Side[S19.D2]
+"变更对阵方关系命令（编号：%s），" 1 D2
+"要求将其与%s的关系"  1 No_Force_Side[S19.D3]
+"由%s调整为%s，" 2 Relationship[S19.D4] Relationship[S19.D5]
+"命令已经执行。" 0
+END_SUB
+
+END_MAIN
+

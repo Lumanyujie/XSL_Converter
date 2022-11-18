@@ -1,0 +1,24 @@
+
+5255
+SUBJECT
+"%s联合支援情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s联合支援情况报告</p>" 1 unit_name_transform(D2)
+SUB 2
+"\n%s已经开始对" 1 unit_name_transform(D2)
+"%s实施联合支援。" 1 unit_name_transform(S2.D1)
+END_SUB
+
+SUB 4
+"\n%s已经同" 1 unit_name_transform(D2)
+"%s解除联合行动。" 1 unit_name_transform(S4.D1)
+   SUB 1
+"该部队正在撤离。" 0
+   END_SUB
+   SUB 2
+"该部队当前尚未撤离。" 0
+   END_SUB
+END_SUB
+
+END_MAIN
+

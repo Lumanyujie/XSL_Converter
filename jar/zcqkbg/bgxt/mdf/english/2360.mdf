@@ -1,0 +1,52 @@
+
+2360
+SUBJECT
+"%s（特战分队）撤编情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s（特战分队）撤编情况报告</p>" 1 unit_name_transform(D2)
+
+
+SUB 1
+"\n%s向%s报告，" 2 unit_name_transform(D3) unit_name_transform(S1.D3)
+"%s，" 1 GTIME(D1)
+"由该部抽组的特战分队%s" 1 unit_name_transform(D2)
+"于%s处遭重创，" 1 LOCATION(S1.D1,S1.D2)
+"所有人员阵亡，其他细节未知。" 0
+END_SUB
+
+SUB 2
+"\n%s（特战分队）已按照指示归建，" 1 unit_name_transform(D2)
+"现隶属于%s，部署在%s。" 2 unit_name_transform(D3) LOCATION(S2.D1,S2.D2)
+END_SUB
+
+SUB 3
+"\n%s（特战分队）已按照指示归建，" 1 unit_name_transform(D2)
+"现隶属于%s，部署在%s。" 2 unit_name_transform(D3) LOCATION(S3.D1,S3.D2)
+"与其相关联的所有部队或目标退出演习。" 0
+END_SUB
+
+SUB 5
+"<p class='table_name'>所属目标当前情况</p>" 0
+"__start_table|名称|具体情况\n" 0
+   GROUP 1
+      SUB 1
+"|%s|现与%s关联\n" 2 unit_name_transform(S5.G1.S1.D1) unit_name_transform(S5.G1.S1.D2)
+      END_SUB
+      SUB 2
+"|%s|没有与之关联的部队，退出演习\n" 1 unit_name_transform(S5.G1.S2.D1)
+      END_SUB
+      SUB 3
+"|%s|归建，隶属%s\n" 2 unit_name_transform(S5.G1.S3.D1) unit_name_transform(D3)
+      END_SUB
+      SUB 4
+"|%s|被摧毁\n" 1 unit_name_transform(S5.G1.S4.D1)
+      END_SUB
+      SUB 5
+"|%s|转隶%s\n" 2 unit_name_transform(S5.G1.S5.D1) unit_name_transform(S5.G1.S5.D2)
+      END_SUB
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+END_MAIN
+

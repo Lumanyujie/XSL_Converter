@@ -1,0 +1,8 @@
+单位翻译的需要三个配置文件，sdbkor40.sc、sdbkor40.uc、order_input.uc
+需要在研习换数据的时候一起更换。
+其中来源分别是
+sdbkor40.sc
+sdbkor40.uc
+/home/jtls/data/scenario/sdbkor40
+order_input.uc
+/home/jtls/game/data

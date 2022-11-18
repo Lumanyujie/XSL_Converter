@@ -1,0 +1,28 @@
+
+1856
+SUBJECT
+"%s的疾病/故障%s的比率和状态报告" 2 unit_name_transform(D2)
+ Disease_Failure[D3]
+MAIN
+
+"<p class='title'>  %s的疾病/故障%s的比率和状态报告</p>\n\n"  2 unit_name_transform(D2)
+ Disease_Failure[D3]
+ 
+GROUP 1
+"  作战系统:  %-15.15s\n" 1 Combat_System[G1.D1]
+"  发生率：%7.7s/ 百分比%7.7s \n" 2 G1.D2 G1.D5
+"  治愈率: %12.12s\n" 1 G1.D3
+"  杀伤率：%12.12s\n" 1 G1.D4
+"  本阶段新增人数: %8.8s； 自上次总结报告之后: %8.8s\n" 2 G1.D6 G1.D7
+"  本阶段报告中死亡人数: %8.8s； 死亡总数: %8.8s\n" 2 G1.D8 G1.D9
+"  本阶段报告中被治愈人数: %8.8s；  治愈总数: %8.8s\n" 2 G1.D10 G1.D11
+"  本阶段报告中其他情况人数: %8.8s；  其他情况总人数: %8.8s\n\n" 2 G1.D12 G1.D13
+
+END_GROUP
+
+SUB 1
+"  所有人员或系统都没有受疾病或故障影响，或没有任何相关比率数据。 \n" 0
+END_SUB
+
+END_MAIN
+

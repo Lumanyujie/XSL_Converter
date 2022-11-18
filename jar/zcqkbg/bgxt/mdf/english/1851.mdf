@@ -1,0 +1,62 @@
+
+1851
+SUBJECT
+"%s部队时间参数" 1 D2
+MAIN
+
+"<p class='title'>  %s部队时间参数 </p>\n\n" 1 D2
+
+
+
+SUB 1
+"  %s (%-8.8s) 向直接上级指挥机构发送一条消息。\n\n" 2 GTIME(S1.D1) GTIME(S1.D1, "%f")
+END_SUB
+
+SUB 2
+"  %s (%-8.8s) 向本方最高指挥机构发送一条消息。\n\n"
+                                                         2 GTIME(S2.D1) GTIME(S2.D1, "%f")
+END_SUB
+
+SUB 3
+"  %s (%-8.8s) 向支援部队提出请求。\n\n"
+                                                      2 GTIME(S3.D1) GTIME(S3.D1, "%f")
+END_SUB
+
+SUB 4
+"  %s (%-8.8s) 收到直接上级指挥机构一条命令。\n\n"
+                                                  2 GTIME(S4.D1) GTIME(S4.D1, "%f")
+END_SUB
+
+SUB 5
+"  %s (%-8.8s) 收到本方最高指挥机构一条命令。\n\n"
+                                                            2 GTIME(S5.D1) GTIME(S5.D1, "%f")
+END_SUB
+
+SUB 13
+"\n  该部队应每%s小时调整一次补给，但没有规划相关的补给调整事件。"
+                                                    1 DURATION(S13.D1, "%.2Th")
+"  为部队设置补给调整时间可以为该部队产生一个补给调整事件。\n"  0
+END_SUB
+
+SUB 14
+"  该部队每%s小时调整一次补给，"
+                                                    1 DURATION(S14.D1, "%.2Th")
+"  下次补给调整时间是%s，演习持续时间是%s。\n\n" 2 GTIME(S14.D2) GTIME(S14.D2, "%f")
+END_SUB
+
+SUB 15
+"  C3有关参数%s的质量评估如下:\n" 1 D2
+"  C3效能: %s\n" 1 S15.D1
+"  C3质量评估: %s\n" 1 C3_Quality_Rating_Allow_None[S15.D2]
+"  C3最高质量评估: %s\n" 1 C3_Quality_Rating_Allow_None[S15.D3]
+END_SUB
+
+SUB 16
+"\n 潜水艇电池信息。\n" 0
+"  还存有电池能量百分数: %s\n" 1 S16.D1
+"  电池还能使用的时间: %s (%-8.8s)\n"
+                                   2 GTIME(S16.D2) GTIME(S16.D2, "%f")
+END_SUB
+
+END_MAIN
+

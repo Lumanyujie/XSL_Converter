@@ -1,0 +1,33 @@
+
+7050
+SUBJECT
+"空中%s编队拦截战区弹道导弹情况报告" 1 D2
+MAIN
+"<p class='title'>空中%s编队拦截战区弹道导弹情况报告</p>" 1 D2
+
+
+"\n空中%s编队向敌%s（弹道导弹）" 2 D2 Targetable_Weapon[D3]
+"发射%s（空对空导弹）%s枚，"  2 Targetable_Weapon[D4] D5 
+"具体战果如下：" 0
+GROUP 1
+   SUB 1
+   "\n——发射，未命中。" 0
+   END_SUB
+
+   SUB 2
+   "\n——发射，命中击毁。" 0
+   END_SUB
+
+   SUB 3
+   "\n——发射，命中毁伤。" 0
+   END_SUB
+
+END_GROUP
+
+SUB 1
+"\n对弹道导弹新的拦截点确定为%s" 1 LOCATION(S1.D1, S1.D2)
+"（该型导弹助推阶段%s%处）。"  1 S1.D3
+END_SUB
+
+END_MAIN
+

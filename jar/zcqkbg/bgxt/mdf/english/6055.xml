@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="6055"> <subject> <line>舰艇收到命令（编号：<D2/>）后脱离编队</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;舰艇收到命令（编号：<D2/>）后脱离编队&lt;/p&gt;</line>  <sub n="17"> <line><br/>由于海上<S17.D2/>编队已退出演习，</line> <line><f n="unit_name_transform"><S17.D1/></f>脱离该编队，</line> <line>正独自向<f n="LOCATION"><S17.D3/><S17.D4/></f>机动。</line> </sub></main> </msg> </msgs>

@@ -1,0 +1,53 @@
+
+6400
+SUBJECT
+"%s海上机动情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s海上机动情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n因无法找到抵达编队阵位的通行航线，%s已离开%s编队。" 2 unit_name_transform(D2) S1.D1
+END_SUB
+
+SUB 3
+"\n%s现位于%s，" 2 unit_name_transform(D2) LOCATION(S3.D1,S3.D2)
+"没有到达%s的通行航线，" 1 LOCATION(S3.D3,S3.D4)
+"海上机动行动中止。" 0 
+END_SUB
+
+SUB 4
+"\n%s正在海上巡逻，现在位于" 1 unit_name_transform(D2)
+"%s，" 1 LOCATION(S4.D1,S4.D2)
+"没有到达%s的可通行航线，" 1 LOCATION(S4.D3,S4.D4)
+"海上巡逻任务终止。" 0
+END_SUB
+
+SUB 5
+"\n%s现在位于%s，" 2 unit_name_transform(D2) LOCATION(S5.D1,S5.D2)
+"由于燃料即将耗尽，海上机动行暂停。" 0
+END_SUB
+
+SUB 8
+"\n%s现在位于%s，" 2 unit_name_transform(D2) LOCATION(S8.D1,S8.D2)
+"潜艇的电池电力为%s%，" 1 S8.D3
+"现在开始充电。"0
+END_SUB
+
+SUB 9
+"\n%s现在位于%s，" 2 unit_name_transform(D2) LOCATION(S9.D1,S9.D2)
+"电池已充电至%s%，" 1 S9.D3
+"停止充电。" 0
+END_SUB
+
+SUB 10
+"\n%s现在位于%s，" 2 unit_name_transform(D2) LOCATION(S10.D1,S10.D2)
+"由于缺乏充电必需的%s，电池尚未充电。" 1 Supply_Category[S10.D3]
+END_SUB
+
+SUB 11
+"\n%s现在位于%s，" 2 unit_name_transform(D2) LOCATION(S11.D1,S11.D2)
+"电池电力为%s%，尚未开始充电。" 1 S11.D3
+END_SUB
+
+END_MAIN
+

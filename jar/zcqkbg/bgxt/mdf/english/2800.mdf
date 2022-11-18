@@ -1,0 +1,58 @@
+
+2800
+SUBJECT
+"%s遭遇突发情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s遭遇突发情况报告</p>" 1 unit_name_transform(D2)
+
+"\n当%s机动至%s地域时，" 2 unit_name_transform(D2) LOCATION(D3,D4)
+SUB 1
+"遭遇核化沾染。" 0
+END_SUB
+
+SUB 2
+"遭遇化学沾染。" 0
+END_SUB
+
+SUB 3
+"遭遇核沾染。" 0
+END_SUB
+
+SUB 4
+"遭遇敌雷场总计%s个。" 1 S4.D1
+END_SUB
+
+SUB 5
+"未发现敌雷场。" 0
+END_SUB
+
+SUB 6
+"发现该地域散落有心理战传单。" 0
+
+   GROUP 1
+
+      SUB 1
+          "其中，部分为我方传单，散布对象：%s。" 
+                                        1 S6.G1.S1.D1
+      END_SUB
+
+      SUB 2
+          "全部为我方传单，散布对象：%s。" 
+                                        1 S6.G1.S2.D1
+      END_SUB
+
+      SUB 3
+          "部分传单散布对象：%s。" 1 S6.G1.S3.D1
+      END_SUB
+
+      SUB 4
+          "散布对象：%s。" 1 S6.G1.S4.D1
+      END_SUB
+
+   END_GROUP
+
+END_SUB
+
+END_MAIN
+

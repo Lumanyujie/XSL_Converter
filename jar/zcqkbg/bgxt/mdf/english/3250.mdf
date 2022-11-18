@@ -1,0 +1,60 @@
+
+3250
+SUBJECT
+"空中%s编队先期抵达情况报告" 1 D2
+MAIN
+"<p class='title'>空中%s编队先期抵达情况报告</p>" 1 D2
+
+SUB 1
+"\n空中%s编队首批空运先遣队已抵达%s，" 2 D2 LOCATION(S1.D1,S1.D2)
+"现编入%s编队。" 1 S1.D3
+END_SUB
+
+SUB 2
+"\n尚未指定其支援部队。" 0
+END_SUB
+
+SUB 3
+"\n空中%s编队首批先遣队已抵达%s，" 2 D2 LOCATION(S3.D1,S3.D2)
+   SUB 1
+"该部队被空运至该地。" 0
+   END_SUB
+   SUB 2
+"该部队为两栖攻击部队一部。" 0
+   END_SUB
+   SUB 3
+"输送的装卸设施主要用于保障两栖作战行动。" 0
+   END_SUB
+   SUB 4 
+"行动结束后将立即通报。" 0
+   END_SUB
+END_SUB
+
+SUB 4
+"\n尚未指定其支援部队。" 0
+END_SUB
+
+SUB 5
+"\n抵达该地域后遭遇如下情况：" 0
+   SUB 1
+"\n遭核化沾染。" 0
+   END_SUB
+   SUB 2
+"\n遭化学沾染。" 0
+   END_SUB
+   SUB 3
+"\n遭核沾染。" 0
+   END_SUB
+   SUB 4
+"\n探测到敌方共计%s个雷场。" 1 S5.S4.D1
+   END_SUB
+   SUB 5
+"\n未发现敌方雷场。" 0
+   END_SUB
+   SUB 6
+"\n发现该地域散布有心理战传单。" 0
+   END_SUB
+END_SUB
+
+END_MAIN
+

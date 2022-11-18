@@ -1,0 +1,24 @@
+
+2710
+SUBJECT
+"%s工程进展情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s工程进展情况报告</p>" 1 unit_name_transform(D2)
+
+
+SUB 1
+"\n%s已经展开对%s的摧毁行动，" 2 unit_name_transform(D2) unit_name_transform(D2)
+"该目标当前效能剩余%s%。" 1 S1.D1
+END_SUB
+
+SUB 2
+"\n%s已经完成对%s的摧毁任务，" 2 unit_name_transform(D2) unit_name_transform(D2)
+"该目标当前效能仅剩%s%。" 1 S2.D1
+END_SUB
+
+SUB 3
+"\n当前，已销毁指定存储区内所有补给物资。" 0
+END_SUB
+
+END_MAIN
+

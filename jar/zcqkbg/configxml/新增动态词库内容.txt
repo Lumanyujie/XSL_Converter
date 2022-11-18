@@ -1,0 +1,5 @@
+<entry name="KN" ch_name="橙方"/>
+<entry name="KS" ch_name="蓝方"/>
+<entry name="AD-ARTY" ch_name="防空火力"/>
+<entry name="NKM" ch_name="橙方"/>
+<entry name="CHI" ch_name="红方"/>

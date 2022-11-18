@@ -1,0 +1,14 @@
+<html class="defaultcss"><style type='text/css'>
+		.title{ text-indent:0px;font-size:28pt;font-family:方正大标宋简体; color:black; text-align:center; line-height:50px; 
+	   }.table_td{ text-indent:0px;font-size:18pt;font-family:黑体;font-weight: bold;border-color:#000000;border-style:solid;border-width:1px; line-height:35px; 
+       }.playcode{text-indent:0px;font-size:18pt;font-family:微软雅黑; color: black; text-align:left;line-height:30px; 
+       }.table_th{ text-indent:0px;font-size:18pt;text-align:center;font-family:黑体;font-weight: bold; color:black; border-width:1px;border-color:#000000;border-style:solid; line-height:35px; 
+       }.title1{ text-indent:0px;font-size:22pt;font-family:黑体; font-weight: bold; color: black; text-align:left; line-height:40px; 
+       }.title2{ text-indent:0px;font-size:22pt;font-family:黑体; font-weight: bold; color: black; text-align:left; line-height:30px; 
+       }.table_name{text-indent:0px;font-size:22pt;font-family:方正大标宋简体; font-weight: bold; color:black; text-align:center; line-height:30px; 
+       }.table_all{ border-color:#666666;border-style:solid;border-width:2px;margin-left:15px; align:center;line-height:20px; 
+       }.secl{text-indent:0px;font-size:18pt;font-family:微软雅黑; color:black; text-align:left;line-height:30px; float:right; 
+       }.defaultcss{ text-indent:35px;font-size:20pt;font-family:黑体;font-weight: bold;text-align:left;line-height:45px; 
+       }.task{text-indent:0px;font-size:18pt;font-family:微软雅黑; color: black; text-align:left; line-height:30px; 
+       }.headDiv{text-indent:0px;font-size:18pt;font-family:微软雅黑; color: black; text-align:left;line-height:30px; 
+       }</style>

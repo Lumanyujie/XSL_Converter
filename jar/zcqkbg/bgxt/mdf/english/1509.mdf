@@ -1,0 +1,171 @@
+
+1509
+SUBJECT
+"%s的防空类别属性" 1 ADA_Class[D2]
+MAIN
+
+"<p class='title'>  防空炮兵类别%s(编号%s)属性 </p>\n" 2 ADA_Class[D2] D2
+
+SUB 1
+
+"  火力属性\n" 0
+
+END_SUB
+
+SUB 2
+"  同时交战:%s。\n" 1 S2.D1
+END_SUB
+
+SUB 3
+"  空中监视传感器:%s(指标%s)。\n"  2 Sensor_Type[S3.D1] S3.D1
+END_SUB
+
+SUB 4
+"  可命中目标的武器:%s(指标 %s)。\n"     2 Targetable_Weapon[S4.D1] S4.D1
+END_SUB
+
+SUB 5
+"  重新装弹前发射:%s。\n" 1 S5.D1
+END_SUB
+
+SUB 6
+"  每个发射架预先装订诸元数据的目标:%s。\n" 1 S6.D1
+END_SUB
+
+SUB 7
+"  最大装填可发射炮弹数量炮弹:%s。\n" 1 S7.D1
+END_SUB
+
+SUB 8
+"  每一次交战可发射炮弹数量:%s。\n" 1 S8.D1
+END_SUB
+
+SUB 9
+"  重新装弹药时间:%s。\n"   1 DURATION(S9.D1, "%d天%h小时%Rm分钟")
+END_SUB
+
+SUB 10
+"  一次交战中两次发射之间时间间隔:%s。\n"  1 DURATION(S10.D1, "%d天%h小时%Rm分钟")
+END_SUB
+
+SUB 11
+"  准许对港口打击:%s。\n" 1 Answer[S11.D1]
+END_SUB
+
+SUB 12
+"  准许防空炮兵外部模型开火：%s。\n" 1 Answer[S12.D1]
+END_SUB
+
+SUB 13
+"  高级可命中目标武器：%s(编号 %s)。\n"  2 Targetable_Weapon[S13.D1] S13.D1
+END_SUB
+
+SUB 14
+"  高级武器装订诸元参数的目标: %s。\n" 1 S14.D1
+END_SUB
+
+SUB 15
+
+"  目标特性:\n" 0
+
+END_SUB
+
+SUB 16
+"  目标半径：%s%s。 \n"   2 UOM_AMT(DISTANCE,S16.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 17
+"  修复时间：%s。  \n"  1 DURATION(S17.D1, "%d天%h小时%Rm分钟")
+END_SUB
+
+SUB 18
+"  摧毁时间：%s。\n"  1 DURATION(S18.D1, "%d天%h小时%Rm分钟")
+END_SUB
+
+SUB 19
+"  对防空炮兵类目标的压制时间：%s。\n"
+            1 DURATION(S19.D1, "%d天%h小时%Rm分钟")
+END_SUB
+
+SUB 20
+"  %s导弹的最大射程：%s。\n"  2 UOM(DISTANCE) UOM_AMT(DISTANCE,S20.D1) 
+END_SUB
+
+SUB 21
+"  每个作战单元有%s个发射架。\n" 1 S21.D1
+END_SUB
+
+SUB 22
+"  目标分类码：%s。 \n" 1 S22.D1
+END_SUB
+
+SUB 29
+"  目标图标符号:%s (索引 %s)。\n"      2 Graphics_Symbol[S29.D1] S29.D1
+END_SUB
+
+SUB 30
+"  目标美国报文格式名称：%s。\n" 1 S30.D1
+END_SUB
+
+SUB 31
+"  更新对DSS供应：%s。\n" 1 Answer[S31.D1]
+END_SUB
+
+SUB 32
+"\n  数据输入监控代码: %s。\n" 1 S32.D1
+END_SUB
+
+SUB 23
+"\n<p class='paragraph'>   射程数据: </p>\n" 0
+
+"\n __start_table  |高程  |     最大射程  \n" 0
+
+   GROUP 1
+"      |%-15.15s (索引 %5.5s) |     %s %s.\n" 4
+               Altitude_Zone[S23.G1.D1] S23.G1.D1 UOM_AMT(DISTANCE,S23.G1.D2)
+               UOM(DISTANCE)
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 24
+
+"\n  杀伤特性:\n" 0
+
+END_SUB
+
+SUB 25
+"  非制导武器杀伤概率Pk修正因子：%s。\n" 1 S25.D1
+END_SUB
+
+SUB 26
+"  夜间，杀伤概率Pk修正因子：%s。\n" 1 S26.D1
+END_SUB
+
+SUB 27
+
+"\n<p class='tablename'>  交战概率数据: </p>\n" 0
+" __start_table|飞行器目标类型|交战概率\n" 0
+
+   GROUP 1
+"    |    %-15.15s (指标%5.5s)   |       %s\n" 
+            3 Aircraft_Target_Class[S27.G1.D1] S27.G1.D1 S27.G1.D2
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+SUB 28
+"\n<p class='tablename'>     气象修正系数数据: </p>\n" 0
+" __start_table|  气象条件 |    气象系数数据\n" 0
+
+   GROUP 1
+"   |   %-15.15s |(编号%5.5s)    |       %7.7s\n" 3
+            Weather_Condition[S28.G1.D1] S28.G1.D1 S28.G1.D2
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+END_MAIN
+

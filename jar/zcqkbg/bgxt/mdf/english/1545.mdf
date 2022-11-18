@@ -1,0 +1,24 @@
+
+1545
+SUBJECT
+"%s参数" 1 Ship_Speed_Level[D2]
+MAIN
+"<p class='title'>%s参数</p>" 1 Ship_Speed_Level[D2]
+
+SUB 1
+"<p class='table_name'>最小航速修正概率</p>" 0
+"__start_table｜编号｜最小航速（节）｜水雷探测修正系数｜水雷触发修正系数｜被击中修正系数\n" 0
+   GROUP 1
+"｜%s｜%s｜%s｜%s｜%s\n"
+         5 S1.G1.D1 UOM_AMT(NAVAL_SPEED, S1.G1.D2)
+           S1.G1.D3 S1.G1.D4 S1.G1.D5
+   END_GROUP
+  "__stop_table" 0
+END_SUB
+
+SUB 2
+"  无定义\n" 0
+END_SUB
+
+END_MAIN
+

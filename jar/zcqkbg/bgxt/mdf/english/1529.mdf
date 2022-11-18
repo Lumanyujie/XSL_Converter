@@ -1,0 +1,126 @@
+
+1529
+SUBJECT
+"飞机类型%s的属性" 1 Aircraft_Type[D2]
+MAIN
+
+"<p class='title'>飞机类型%s(索引 %s)属性</p>\n" 2 Aircraft_Type[D2] D2
+
+SUB 2
+"  基本类型: %s\n" 1 Fixed_Wing_Flag[S2.D1]
+END_SUB
+
+SUB 3
+"  若受到攻击是否丢掉非程序制导面杀伤武器: %s\n" 1 Answer[S3.D1]
+END_SUB
+
+SUB 4
+"  可否空中加油: %s\n" 1 Answer[S4.D1]
+END_SUB
+
+SUB 5
+"  作为被攻击方，其目标类型为:%s\n" 1
+                                      Aircraft_Target_Class[S5.D1]
+END_SUB
+
+SUB 6
+"  拥有基地所属飞机掩体的优先级:%s\n" 1 S6.D1
+END_SUB
+
+SUB 7
+"  维护前的平均出动架次:%s\n" 1 S7.D1
+END_SUB
+
+SUB 8
+"  液货载重量：%s %s\n" 2
+                                   UOM_AMT(DRY_WEIGHT,S8.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 9
+"  干货或自行装备物资的载重量: %s %s\n" 2
+                                   UOM_AMT(DRY_WEIGHT,S9.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 10
+"  机组最长工作时间: %s \n" 1
+                 DURATION(S10.D1, "%d 天 %h 小时 and %Rm 分种")
+END_SUB
+
+SUB 11
+"  无物资装卸设备时飞机装载时间: %s\n" 1
+                 DURATION(S11.D1, "%d 天 %h 小时 and %Rm 分钟")
+END_SUB
+
+SUB 12
+"  搜索雷场能力: %s\n"
+                                        1 No_Mine_Search_Capability[S12.D1]
+END_SUB
+
+SUB 13
+"  清除雷场能力: %s\n"
+                                        1 No_Mine_Clear_Capability[S13.D1]
+END_SUB
+
+SUB 14
+"  飞机每天可探测雷区：%s(平方公里/天)\n" 1 S14.D1
+END_SUB
+
+SUB 15
+"  飞机每天可识别雷区：%s(平方公里/天)\n" 1 S15.D1
+END_SUB
+
+SUB 16
+"  平均损伤修复时间: %s \n" 1
+                 DURATION(S16.D1, "%d 天 %h 小时  and %Rm 分钟")
+END_SUB
+
+SUB 17
+"  最大下行通信距离: %s %s\n" 2
+                                     UOM_AMT(DISTANCE,S17.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 18
+"  允许港口发射：%s\n" 1 Answer[S18.D1]
+END_SUB
+
+SUB 19
+"  武器投放能力名称: %s\n" 1 S19.D1
+END_SUB
+
+SUB 20
+"  平均故障修复时间: %s \n" 1
+               DURATION(S20.D1, "%d 天 %h 小时 and %Rm 分钟")
+END_SUB
+
+SUB 21
+"\n <p class='paragraph'>信息传输模块指示器列表</p>\n\n" 0
+
+"__start_table｜信息传输模块名称 ｜信息传输模块指示器\n" 0
+   GROUP 1
+"｜%-20.20s  ｜%-30.30s \n" 2 IFF_Transponder_Mode[S21.G1.D1] Answer[S21.G1.D2]
+
+   END_GROUP
+  "__stop_table" 0 
+END_SUB
+
+SUB 22
+"\n  Link-16能力：%s\n" 1 Link16_Report_Type[S22.D1]
+END_SUB
+
+SUB 23
+"\n  蓝方追踪能力: %s\n" 1 Answer[S23.D1]
+END_SUB
+
+SUB 24
+"  真实飞机数据设置: %s\n" 1 S24.D1
+"  名称: %s\n" 1 S24.D2
+"  战术数据链模型ID: %s\n" 1 TADIL_AC_Index[S24.D3]
+"  战术数据链模型数量: %s\n" 1 S24.D4
+END_SUB
+
+SUB 25
+"\n  数据代码:%s\n" 1 S25.D1
+END_SUB
+
+END_MAIN
+

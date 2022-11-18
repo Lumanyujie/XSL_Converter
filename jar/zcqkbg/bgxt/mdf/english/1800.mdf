@@ -1,0 +1,97 @@
+
+1800
+SUBJECT
+"对%s(编号%s)战术部队原型参数"   2 Tactical_Unit_Prototype[D2] D2
+
+MAIN
+"<p class='title'>  战术部队原型%s(编号%s)的部队特性 </p>\n\n"                                               2 Tactical_Unit_Prototype[D2] D2
+
+SUB 1
+   SUB 1
+"  使用%s(%s)类小艇作为两栖作战系统。\n"    2 Small_Boat[S1.S1.D1] S1.S1.D1    
+   END_SUB   
+
+   SUB 2
+"  没有小艇(两栖作战系统)。\n" 0   
+   END_SUB
+END_SUB
+
+
+SUB 2
+"  通过开阔地的速度为%s%s。\n"   2 UOM_AMT(SPEED,S2.D1) UOM(SPEED) 
+END_SUB
+
+SUB 3
+   SUB 1
+"  可以发射%s口径武器。\n"  1 Caliber_Index[S3.S1.D1]   
+   END_SUB   
+
+   SUB 2
+"  不能发射炮弹，没有火炮。\n" 0   
+   END_SUB
+END_SUB
+
+ SUB 4
+"  每次战斗评估后重新调整战斗力%s。\n"  1 S4.D1
+END_SUB
+
+ SUB 5
+"  部队半径是%s%s。\n" 2 UOM_AMT(DISTANCE,S5.D1) UOM(DISTANCE)
+END_SUB
+
+ SUB 6
+"  如果战斗力低于编制装备表（TOE）全战斗力的%s，则被迫由进攻转为防御。\n" 1 S6.D1
+END_SUB
+ 
+ SUB 7
+"  如果战斗力低于编制装备表（TOE）全战斗力的%s，则被迫由防御转为阻击。\n" 1 S7.D1
+END_SUB
+
+ SUB 8
+"  如果战斗力低于编制装备表（TOE）全战斗力的%s，则被迫由阻击转为撤出。\n" 1 S8.D1
+END_SUB
+
+ SUB 9
+ "  如果战斗力低于编制装备表（TOE）全战斗力的%s，则被迫由撤退转为失去作战能力。\n" 1 S9.D1
+END_SUB
+
+ SUB 10
+"  如果战斗力低于编制装备表（TOE）全战斗力的%s，则视为被歼。\n" 1 S10.D1	
+END_SUB
+
+SUB 11
+"  24小时内部队可实施机动的最长时间是%s。\n" 1 S11.D1
+END_SUB
+
+SUB 12
+"  使用该战术部队原型的部队的图标是%s。\n" 1 Graphics_Symbol[S12.D1]
+END_SUB
+
+SUB 13
+"  使用该战术部队原型的部队被指派的指挥层次是%s。\n" 1    Command_Level[S13.D1]
+END_SUB
+
+
+END_MAIN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

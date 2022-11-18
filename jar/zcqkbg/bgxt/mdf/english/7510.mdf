@@ -1,0 +1,12 @@
+
+7510
+SUBJECT
+"%s两栖作战情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s两栖作战情况报告</p>"  1 unit_name_transform(D2) 
+
+"\n%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(D4,D5)
+"在两栖作战中，共发射%s%s枚（发）。"  2 Targetable_Weapon[D7] D3
+
+END_MAIN
+

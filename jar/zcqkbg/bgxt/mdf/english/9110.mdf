@@ -1,0 +1,19 @@
+
+9110
+SUBJECT
+"%s运输工具损失情况%s报告" 2 No_Force_Side[D2] Periodic_or_Summary[D5] 
+
+MAIN
+
+"<p class='title'>%s运输工具损失情况%s报告</p>" 2 No_Force_Side[D2] Periodic_or_Summary[D5] 
+"\n报告时间段：%s至%s。" 2 GTIME(D3) GTIME(D1)
+
+"<p class='table_name'>本时段运输工具损失明细</p>" 0
+"__start_table|运输工具类型|遭敌地面攻击|遭敌空袭|遭敌炮击|合计\n" 0
+
+GROUP 1
+"|%s|%s|%s|%s|%s\n" 5 Transportation_Class[G1.D1] G1.D2 G1.D3 G1.D4 G1.D5
+END_GROUP
+"__stop_table" 0
+END_MAIN
+

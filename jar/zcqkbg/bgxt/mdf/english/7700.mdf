@@ -1,0 +1,115 @@
+
+7700
+SUBJECT
+"%s（特战分队）毁伤情况报告"  1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s（特战分队）毁伤情况报告</p>" 1 unit_name_transform(D2)
+"\n%s是%s派遣的特战分队，" 2 unit_name_transform(D2) unit_name_transform(D3)
+"当前位于%s。" 1 LOCATION(D4,D5)
+
+SUB 1
+   SUB 1
+      "遭%s部队火力突袭。" 1 unit_name_transform(S1.S1.D1)
+   END_SUB
+
+   SUB 2
+      "遭%s导弹突击。" 1 unit_name_transform(S1.S2.D1)
+   END_SUB
+
+   SUB 3
+      "遭%s鱼雷攻击。" 1 unit_name_transform(S1.S3.D1)
+   END_SUB
+END_SUB
+
+SUB 2
+   SUB 1
+      "与另一支特战分队%s交火。" 1 unit_name_transform(S2.S1.D1)
+   END_SUB
+   SUB 2
+      "与%s交火。" 1 unit_name_transform(S2.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 3
+   "遭%s编队空中突击。" 1 unit_name_transform(S3.D1)
+END_SUB
+
+SUB 4
+   "遭遇雷场。" 0
+END_SUB
+
+SUB 5
+   "在执行两栖行动时遭敌炮火突击。" 0
+END_SUB
+
+SUB 6
+   "造成部分损伤。" 0
+END_SUB
+
+SUB 7
+   "没有造成人员、装备和物资毁伤。" 0
+END_SUB
+
+SUB 10
+   "<p class='table_name'>人员、装备毁伤情况列表</p>" 0
+   "__start_table|类别|数量\n" 0   
+   GROUP 1
+      "|%s|%s\n" 2 CSP_System_Name[D6,S10.G1.D1] S10.G1.D2
+   END_GROUP
+   "__stop_table" 0
+   "\n" 0
+END_SUB
+
+SUB 11
+   "没有造成人员、装备重大毁伤。" 0
+END_SUB
+
+SUB 12
+   "<p class='table_name'>物资损失情况列表</p>" 0
+   "__start_table|类别|数量\n" 0   
+   GROUP 1
+      "|%s|%s%s\n" 3 SLP_Category_Name[D7,S12.G1.D1]
+                                      SLP_SC_AMT(D7,S12.G1.D1,S12.G1.D2)
+                                      SLP_SC_UOM(D7,S12.G1.D1)
+   END_GROUP
+   "__stop_table" 0
+   "\n" 0
+END_SUB
+
+SUB 13
+   "没有造成物资重大损失。" 0
+END_SUB
+
+SUB 15
+   "\n该部下列目标被击中：" 0
+   GROUP 1
+      "\n——%s：%s台套（个）。" 2 Target_Category[S15.G1.D1] S15.G1.D2
+      SUB 1
+         "%s个发射装置被毁，%s个被压制。" 2 S15.G1.S1.D1 S15.G1.S1.D2
+      END_SUB
+      SUB 2
+         "%s个闲置机堡被毁。" 1 S15.G1.S2.D1
+      END_SUB
+      SUB 3
+         "%s架%s与机堡一同被毁" 2 S15.G1.S3.D1  Aircraft_Type[S15.G1.S3.D2]
+         "（注：此毁伤将由其隶属部队按人员、装备损失统计上报）。" 0
+      END_SUB
+      SUB 4
+         "%s个发射装置被毁（含之前已毁伤的%s个），" 2 S15.G1.S4.D1 S15.G1.S4.D2
+         "无法自行修复。" 0
+      END_SUB
+      SUB 5
+         "传感器毁伤，已无法使用。" 0
+      END_SUB
+      SUB 6
+         "干扰机毁伤，已无法发射干扰信号。" 0
+      END_SUB
+      SUB 12
+         "其效能已降至%s%。" 1 S15.G1.S12.D1
+      END_SUB
+   END_GROUP
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,89 @@
+
+4315
+SUBJECT
+"%s（特战分队）后勤情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s（特战分队）后勤情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n由%s抽组的%s，" 2  unit_name_transform(D3) unit_name_transform(D2)
+"当前位于%s，" 1 LOCATION(D4,D5)
+"正在执行%s任务，处于%s状态，" 2 HRU_Status[D6] HRU_Status[D7]
+"战斗力为%s%%。" 1 D8
+END_SUB
+
+SUB 2
+"<p class='table_name'>武器装备情况</p>" 0
+"__start_table|类型|可用数|编制数\n" 0
+END_SUB
+
+SUB 3
+   GROUP 1
+"|%s|%s|%s\n" 3 CSP_System_Name[D9,S3.G1.D1] S3.G1.D2 S3.G1.D3
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 4
+"<p class='table_name'>人员情况</p>" 0
+"__start_table|类型|现有量|初始量|单位\n" 0
+   GROUP 1
+      SUB 1
+"|%s|%s|%s|%s\n" 4 SLP_Category_Name[D10,S4.G1.S1.D1] SLP_SC_AMT(D10,S4.G1.S1.D1,S4.G1.S1.D2) SLP_SC_AMT(D10,S4.G1.S1.D1,S4.G1.S1.D3) SLP_SC_UOM(D10,S4.G1.S1.D1)
+      END_SUB
+      SUB 2
+"|%s|%s|%s|%s\n" 4 SLP_Category_Name[D10,S4.G1.S2.D1] SLP_SC_AMT(D10,S4.G1.S2.D1,S4.G1.S2.D2) SLP_SC_AMT(D10,S4.G1.S2.D1,S4.G1.S2.D3) SLP_SC_UOM(D10,S4.G1.S2.D1)
+      END_SUB
+   END_GROUP
+"__stop_table" 0
+END_SUB
+ 
+SUB 5
+"<p class='table_name'>弹药补给情况</p>" 0
+"__start_table|类型|现有量|初始量|单位\n" 0
+   GROUP 1
+"|%s|%s|%s|%s\n" 4 SLP_Category_Name[D10,S5.G1.D1] SLP_SC_AMT(D10,S5.G1.D1,S5.G1.D2) SLP_SC_AMT(D10,S5.G1.D1,S5.G1.D3) SLP_SC_UOM(D10,S5.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+ 
+SUB 6
+"\n注：“>”表示该类型短缺。" 0
+END_SUB
+ 
+SUB 7
+"<p class='table_name'>油料补给情况</p>" 0
+"__start_table|类型|现有量|初始量|单位\n" 0
+END_SUB
+ 
+SUB 8
+   GROUP 1
+"|%s|%s|%s|%s\n" 4 SLP_Category_Name[D10,S8.G1.D1] SLP_SC_AMT(D10,S8.G1.D1,S8.G1.D2) SLP_SC_AMT(D10,S8.G1.D1,S8.G1.D3) SLP_SC_UOM(D10,S8.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+ 
+SUB 9
+"\n注：“>”表示该类型短缺。" 0
+END_SUB
+ 
+SUB 10
+"<p class='table_name'>其他补给情况</p>" 0
+"__start_table|类型|现有量|初始量|单位\n" 0
+END_SUB
+ 
+SUB 11
+   GROUP 1
+"|%s|%s|%s|%s\n" 4 SLP_Category_Name[D10,S11.G1.D1] SLP_SC_AMT(D10,S11.G1.D1,S11.G1.D2) SLP_SC_AMT(D10,S11.G1.D1,S11.G1.D3) SLP_SC_UOM(D10,S11.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 12
+"\n注：“>”表示该类型短缺。" 0
+END_SUB
+
+SUB 13
+"\n%s当前不在演习区。" 1 unit_name_transform(D2)
+END_SUB
+
+END_MAIN

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="1057"> <subject> <line>关于作战系统进行维护的调理员命令<D2/>报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;  关于作战系统进行维护的调理员命令<D3/>报告 &lt;/p&gt;<br/><br/></line> <line>  安排部队<D3/>作战系统进行维护的命令。<br/></line>  <sub n="1"> <line>  部队没有足够数量可利用的<S1.D1/>系统来对<S1.D2/>进行维护，因此<S1.D3/>将减少人工战斗系统。</line> <line>结果将导致有些装备将无人操作。<br/></line> </sub> <sub n="2"> <line>  部队没有足够数量可利用的<S2.D1/>系统去增添一定数量的<S2.D2/>进行维护。</line> <line>所有可利用系统将被安排投入维护，保留的力量也已经投入维护。<br/></line> </sub></main> </msg> </msgs>

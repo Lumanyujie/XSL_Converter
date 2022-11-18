@@ -1,0 +1,236 @@
+# This is the English language text message definition file for the
+# Joint Theater Level Simulation's (JTLS) Message Browser program.
+# This file specifies the format for displaying data token messages from JTLS.
+# The CEP writes all data to disk as text tokens. This message definition
+# file specifies the format to display these text tokens. The message definition
+# file can modify the text tokens through the use of message modifiers,
+# vocabulary functions, and conversion functions.
+#
+#
+# Arguments are used to specify the data that are passed to modifiers and
+# conversions. The default argument is a REFERENCE argument, which specifies
+# a CEP data token that is to be used. The format for these arguments is
+# S3.G2.D4 (sub 3, group 2, data item 4) to specify a specific data item
+# within the current format hierarchy. Named variables may also be used
+# instead of reference strings. Other conversion/modifier argument types are:
+#
+# LITERAL - Literal arguments are a specific unquoted text string. As an
+#     example, the .CHARACTER_CASE modifier takes one argument, either the
+#     word UPPER or the word LOWER.
+#
+# QUOTED - The argument is taken as a literal between the opening and
+#     closing quote. the two characters \n are treated as a single '\n'
+#     character. Likewise, \t is treated as a '\t' character. Any other
+#     character following a \ is treated as a single character. Thus, \A
+#     will be converted to A, \\ to \, and \" to ".
+#
+# QUOTEDTIME - Quoted time arguments are time format specifications that
+#     appear between double quotes. The same rules that apply to QUOTED
+#     arguments apply to QUOTEDTIME arguments. In addition, QUOTEDTIME
+#     arguments may contain specifications for output. Output specifications
+#     are of the form %c, where c represents a valid character. The following
+#     specifications are available:
+#     %f - This format specification, if used, must appear as the only two
+#          characters of the QUOTEDTIME argument, and directs the the final
+#          output be converted to decimal game time (i.e. 1.567). This is
+#          a new formatting feature implemented for the Web Enabled Interface.
+#          It must be used for all decimal game time output.
+#     strftime - This is a C function that the QUOTEDTIME argument (minus any
+#          preceding %u or %U specifications) is passed to. The function
+#          has a number of permitted specifications that can be viewed on
+#          its manual page - "man strftime"
+#
+# QUOTEDLOCATION - Quoted location arguments are location format specifications
+#     that appear between double quotes. The same rules that apply to QUOTED
+#     arguments apply to QUOTEDLOCATION arguments. In addition, QUOTEDLOCATION
+#     arguments may contain specifications for output. Output specifications
+#     are of the form %s, where s represents a valid string. The following
+#     specifications are available:
+#     %D - The degrees latitude of the location.
+#     %d - The degrees longitude of the location.
+#     %M - The minutes latitude of the location.
+#     %m - The minutes longitude of the location.
+#     %S - The seconds latitude of the location.
+#     %s - The seconds longitude of the location.
+#     %N - The latitude hemisphere character (N or S)
+#     %n - The latitude hemisphere character (n or s)
+#     %E - The longitude hemisphere character (W or E)
+#     %e - The longitude hemisphere character (w or e)
+#     The previous format specifications are by default treated as C string
+#     specifications, where integers are truncated. Thus, %-3.3d will
+#     print the whole degrees latitude padding the front with zeros if necessary.
+#     The specifications may be modified with the following values:
+#     F - Treat the format specification as a C float specification.
+#         i.e. %5.2FD will print the latitude to two decimal places.
+#     As an example:
+#     "%-2.2D%-2.2M%04.1FS%N %-3.3d%-2.2m%04.1Fs%E"
+#     will print the location 50.5,9.25 as 503000.0N 0901500.0E
+#
+# QUOTEDDURATION - Quoted duration arguments are duration format specifications
+#     that appear between double quotes. The same rules that apply to QUOTED
+#     arguments apply to QUOTEDDURATION arguments. In additional, QUOTEDDURATION
+#     arguments may contain specifications for output. Output specifications
+#     are of the form %s, where s represents a valid string. The following
+#     specifications are available:
+#     %d - The day portion of the duration.
+#     %h - The hour portion of the duration.
+#     %m - The minute portion of the duration.
+#     %s - The second portion of the duration.
+#     The previous format specifications are by default treated as C integer
+#     specifications, where the integer is truncated. Thus, %-3.3d will
+#     print the whole days portion of the duration, padding the front with
+#     zeros if necessary. This default behavior may be overridden with the
+#     following modifiers:
+#     F - Treat the format specification as a C float specification.
+#         i.e. %5.2Fd will print the duration to two decimal places.
+#     R - Treat the format specification as a C integer specification,
+#         and round the value to the nearest integer before displaying.
+#         i.e. %-3.3Rd will print the rounded day duration padding with
+#         zeros if necessary.
+#     T - Treat the format specification as a C float specification and
+#         print the total of the desired specification. i.e. %8.2Tm
+#         will print the duration in minutes to 2 significant digits.
+#
+# QUOTEDINT - Quoted integer arguments are C integer format specifications
+#     that appear between double quotes. The same rules that apply to QUOTED
+#     arguments apply to QUOTEDINT arguments. In additional, QUOTEDINT
+#     arguments may contain C integer output specifications.
+#
+# Message Modifiers are designated by a "." character in the first column
+# immediately followed by the modifier name and its arguments. All data on
+# that line is considered part of the message modifier. The modifiers have
+# scope over the entire file. Most modifiers will override previous definitions
+# of a modifier of the same type. The following modifiers exist:
+#
+# .CHARACTER_CASE(UPPER|LOWER) - This modifier instructs the Browser to modify
+#     all text tokens to upper or lower case before displaying.
+# .REPLACE(QUOTED, QUOTED) - For all reference, vocabulary, and function output
+#     replace any occurences of the first quoted string with the second.
+# .LOCATION_FORMAT(QUOTEDLOCATION) - Specifies a default output format for
+#     latitude/longitude type locations
+# .TIME_FORMAT(QUOTEDTIME) - Specifies a default output format for game a clock
+#     times
+# .DURATION_FORMAT(QUOTEDDURATION) - Specifies a default output format for
+#     durations
+# .NUMBER_STREAM(LITERAL, INT, INT, QUOTEDINT) - Creates a named sequential
+#     number stream where the first argument is the name, the second argument is
+#     the initial value, the third argument is the maximum values, and the
+#     final argument is the output specification when the stream is used.
+#
+# Vocabulary items are specified in the $JGAME/data/static.voc and $JGAME/
+# scenario_name/scenario_name.nni file, where nn represents the side number
+# of the Browser. These files specify vocabulary categories with integer to
+# text translations. Text integers can be converted to their vocabulary text
+# by specifying the vocabulary category followed by the text integer argument,
+# as in Targetable_Weapon[S1.D2]. Some vocabulary items expect two arguments,
+# such as CSP_System_Name[S3.D1,S3.D2]. Arguments can be replaced with the
+# integer 1, in which case the first vocabulary name for that category is
+# returned.
+#
+# Conversions serve as functions to take text data items and convert them
+# into a different format. The following conversions are available:
+#
+# CLASSIFICATION() - Returns the classification of the scenario. No arguments
+#      are expected.
+#
+# CLOCK([QUOTEDTIME]) - This conversion will retrieve the current time from
+#      the system and format it as specified by the optional QUOTEDTIME
+#      argument. In the absence of a QUOTEDTIME argument, the format set
+#      with a .TIME_FORMAT modifier is used. In the absence of both, the
+#      default date/time/group format is used.
+#
+# DURATION(REFERENCE, [QUOTEDDURATION]) - The first argument of a duration
+#      conversion is a decimal number of days (text format). The second
+#      argument (which is optional) is the format to display the days in.
+#      If a format is not specified, the format will first try to use the
+#      .DURATION_FORMAT modifier, or if it is not specified, will use the
+#      default duration format.
+#
+# GTIME(REFERENCE, [QUOTEDTIME]) - This conversion will translate the decimal
+#      days since start of game reference into a time according to the specified
+#      QUOTEDTIME format. In the absence of the second argument, the format
+#      set with a .TIME_FORMAT modifier is used. In the absence of a
+#      .TIME_FORMAT modifier the default date/time group format is used.
+#
+# LOCATION(REFERENCE, REFERENCE, [QUOTEDLOCATION]) - The first and second
+#      arguments are the decimal latitude and longitude. The third argument
+#      specifies the format to output these values (If the user is in lat/long
+#      versus UTM mode). The third argument is optional, and if missing a
+#      .LOCATION_FORMAT modifier will be used. If the .LOCATION_FORMAT
+#      modifier is not specified, the default format will be used.
+#
+# LOWER(REFERENCE) - Convert the reference argument to lower case. This assumes
+#      ASCII characters for the reference.
+#
+# NUMBER([STREAM], [NEW|CURRENT], [QUOTEDINT]) - This conversion will get an
+#      integer from the specified named stream (defined with .NUMBER_STREAM).
+#      If the named stream is not specified, the default stream is used. The
+#      number will either be a new number from the stream or the current
+#      number based on argument 2. If argument 2 is absent, the function
+#      defaults to NEW. Argument three specifies the format that the integer
+#      is to be written. If absent, the default format associated with the
+#      number stream is used. If a named stream (argument 1) is specified,
+#      it must already have been defined with a .NUMBER_STREAM modifier within
+#      the message definition file before this function is used.
+#
+# REPLACE(REFERENCE|VOCAB|CONVERSION, QUOTED, QUOTED, ...) - This conversion
+#      will replace, within the first argument, any instances of the second
+#      argument with the third argument. Instances of the fourth argument
+#      will be replaced with the fifth argument, etc. There is a maximum
+#      number of total arguments that a function may have; currently it is
+#      set to 9, so only four replacement pairs are permitted by this function.
+#      In addition to references, the first argument of this function may be
+#      another function or a vocabulary entry (with their appropriate
+#      argument lists). Conversion/vocabularies within a conversion are
+#      resolved from the innermost outwards.
+#
+# SCENARIO() - Returns the name of the scenario. No arguments are expected.
+#
+# SLP_SC_AMT(REFERENCE|INTEGER, REFERENCE, REFERENCE) - This function converts
+#      an SLP index, Supply Category index, and quantity of the supply category
+#      into a quantity of supply category in the proper unit of measure that
+#      the user has set for that SLP/SC combination.
+#
+# SLP_SC_UOM(REFERENCE|INTEGER, REFERENCE) - This function converts an
+#      SLP index and Supply Category index to the Units Of Measure text
+#      that the user has set for that SLP/SC combination.
+#
+# STRIP_AFTER(REFERENCE|VOCAB|CONVERSION, QUOTED) - This conversion will
+#      truncate the first argument at the begining of the first occurrence of
+#      the QUOTED string. If the first argument does not contain any instances
+#      of the QUOTED string, then no truncation occurs. In addition to
+#      references, the first argument of this function may be another function
+#      or a vocabulary entry (with their appropriate argument lists).
+#      Conversion/vocabularies within a conversion are resolved from the
+#      innermost outwards.
+#
+# SUBCAT_NAME{REFERENCE|INTEGER, REFERENCE} - Transform to an appropriate
+#      vocabulary item depending on the Target_Category index passed in as
+#      the first argument.  The transformed vocabulary item then takes the
+#      text integer passed in as the second argument and converts it to the
+#      corresponding target subcategory name.
+#
+# UOM(AREA|DISTANCE|SPEED|TEMPERATURE|VOLUME|WET_WEIGHT|DRY_WEIGHT) - This
+#      function takes one of the specified literals and produces the default
+#      Unit Of Measure that the user has set for that category.
+#
+# UOM_AMT(AREA|DISTANCE|SPEED|TEMPERATURE|VOLUME|WET_WEIGHT|DRY_WEIGHT, REFERENCE)
+#      - This function takes one of the specified literals and a quantity
+#      of the literal type. It converts the quantity into the Unit Of Measure
+#      that the user has set for the specified literal.  For example, if the
+#      specified literal is SPEED, it converts km/hr to knots.
+#
+# UPPER(REFERENCE) - Convert the reference argument to upper case. This assumes
+#      ASCII characters for the reference.
+#
+# VARIABLE(SIDE|MPP|ROUTING|RHOME|RSIZE) - Returns the specified variable
+#      name.
+#
+# WRAP(REFERENCE|VOCAB|CONVERSION, QUOTED, INTEGER) - This conversion will
+#      place newline characters into the first argument in order to hold the
+#      number of characters/line to the amount specified in the integer. After
+#      each newline, the QUOTED text will also be inserted, though it does
+#      not count towards the maximum number of characters/line. The conversion
+#      will attempt to break the lines on whitespace if possible.
+#
+

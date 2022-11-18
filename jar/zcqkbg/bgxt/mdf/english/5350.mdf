@@ -1,0 +1,1286 @@
+
+5350
+SUBJECT
+"敌情通报" 0
+MAIN
+"<p class='title'>敌情通报</p>" 0
+
+"\n据截获情报：" 0
+SUB 1
+"\n%s奉命向%s机动。" 2 unit_name_transform(S1.D1) LOCATION(S1.D2,S1.D3)
+END_SUB
+
+SUB 2
+"\n%s奉命向%s发起攻击。" 2 unit_name_transform(S2.D1) unit_name_transform(S2.D2)
+END_SUB
+
+SUB 3
+"\n%s奉命向%s地域发起攻击。" 2 unit_name_transform(S3.D1) LOCATION(S3.D2,S3.D3)
+END_SUB
+
+SUB 4
+"\n%s奉命组织防御。" 1 unit_name_transform(S4.D1) 
+END_SUB
+
+SUB 5
+"\n%s奉命实施阻击。" 1 unit_name_transform(S5.D1)
+END_SUB
+
+SUB 6
+"\n%s奉命撤退。" 1 unit_name_transform(S6.D1) 
+END_SUB
+
+SUB 7
+"\n%s奉命立即对%s实施支援。" 2 unit_name_transform(S7.D1) unit_name_transform(S7.D2)
+END_SUB
+
+SUB 8
+"\n%s奉命于%s，对%s实施支援。" 3 unit_name_transform(S8.D1) GTIME(S8.D3) unit_name_transform(S8.D2)
+END_SUB
+
+SUB 9
+"\n%s奉命立即发射%s%s枚（发）。" 3 unit_name_transform(S9.D1) Targetable_Weapon[S9.D3] S9.D2
+   
+   SUB 1
+"<p class='table_name'>打击目标清单</p>" 0 
+"__start_table|目标名称\n" 0
+      GROUP 1
+"|%s\n" 1 unit_name_transform(S9.S1.G1.D1)
+      END_GROUP
+"__stop_table" 0      
+   END_SUB
+
+   SUB 2
+"<p class='table_name'>打击部队清单</p>" 0 
+"__start_table|部队名称\n" 0
+      GROUP 1
+"|%s\n" 1 unit_name_transform(S9.S2.G1.D1)
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 3
+"<p class='table_name'>打击地域清单</p>" 0 
+"__start_table|坐标点\n" 0
+      GROUP 1
+"|%s\n" 1 LOCATION(S9.S3.G1.D1,S9.S3.G1.D2)
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 4
+"<p class='table_name'>目标精确定位点清单</p>" 0 
+"__start_table|定位点\n" 0
+      GROUP 1
+"|%s\n" 1 S9.S4.G1.D1
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+END_SUB
+
+SUB 10
+"\n%s奉命于%s" 2 unit_name_transform(S10.D1) GTIME(S10.D4)
+"发射%s%s枚（发）。" 2 Targetable_Weapon[S10.D3] S10.D2
+
+      SUB 1
+"<p class='table_name'>打击目标清单</p>" 0 
+"__start_table|目标名称\n" 0
+      GROUP 1
+"|%s\n" 1 unit_name_transform(S10.S1.G1.D1)
+      END_GROUP
+"__stop_table" 0      
+   END_SUB
+
+   SUB 2
+"<p class='table_name'>打击部队清单</p>" 0 
+"__start_table|部队名称\n" 0
+      GROUP 1
+"|%s\n" 1 unit_name_transform(S10.S2.G1.D1)
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 3
+"<p class='table_name'>打击地域清单</p>" 0 
+"__start_table|坐标点\n" 0
+      GROUP 1
+"|%s\n" 1 LOCATION(S10.S3.G1.D1,S10.S3.G1.D2)
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 4
+"<p class='table_name'>目标精确定位点清单</p>" 0 
+"__start_table|定位点\n" 0
+      GROUP 1
+"|%s\n" 1 S10.S4.G1.D1
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+END_SUB
+
+SUB 11
+   SUB 1
+"\n%s奉命发射导弹%s枚，" 2 unit_name_transform(S11.D1) S11.D2
+   END_SUB
+   SUB 2
+"\n%s奉命发射%s%s枚（发），" 3 unit_name_transform(S11.D1) Targetable_Weapon[S11.S2.D1] S11.D2
+   END_SUB
+   SUB 3
+"目标：%s。" 1 unit_name_transform(S11.S3.D1)
+   END_SUB
+   SUB 4
+"目标：%s。" 1 unit_name_transform(S11.S4.D1)
+   END_SUB
+   SUB 5
+"打击地域：%s。" 1 LOCATION(S11.S5.D1,S11.S5.D2)
+   END_SUB
+   SUB 6
+"方位：%s度，距离：%s海里。" 2 S11.S6.D1 S11.S6.D2
+   END_SUB
+   SUB 7
+"目标定位点：%s。" 1 S11.S7.D1
+   END_SUB
+END_SUB
+
+SUB 12
+"\n%s奉命取消所有火力任务。" 1 unit_name_transform(S12.D1)
+END_SUB
+
+SUB 13
+"\n%s奉命停止对%s实施支援。" 2 unit_name_transform(S13.D1) unit_name_transform(S13.D2)
+END_SUB
+
+SUB 14
+"\n%s收到电磁设备管制命令，" 1 unit_name_transform(S14.D1)
+   SUB 1
+"要求改变对海搜索雷达状态。" 0
+   END_SUB
+   SUB 2
+"要求改变主动声纳状态。" 0 
+   END_SUB
+   SUB 3
+"要求改变被动声纳状态。" 0 
+   END_SUB
+   SUB 4
+"要求改变对空搜索雷达状态。" 0 
+   END_SUB
+   SUB 5
+"要求改变雷达干扰机状态。" 0 
+   END_SUB
+   SUB 6
+"要求改变通信干扰机状态。" 0 
+   END_SUB
+   SUB 7
+"要求改变广播干扰机状态。" 0 
+   END_SUB
+   SUB 8
+"" 0 
+   END_SUB
+   SUB 10
+"开始时间：收到命令立即执行。" 0
+   END_SUB
+   SUB 11
+"开始时间：%s。" 1 GTIME(S14.S11.D1)
+   END_SUB
+END_SUB
+
+SUB 15
+   SUB 1
+"%s奉命改变雷声探测设备状态。" 1 unit_name_transform(S15.S1.D1)
+   END_SUB
+   SUB 2
+"%s奉命改变雷声探测设备状态。" 1 unit_name_transform(S15.S2.D1)
+   END_SUB
+   SUB 10
+"开始时间：收到命令立即执行。" 0
+   END_SUB
+   SUB 11
+"开始时间：%s。" 1 GTIME(S15.S11.D1)
+   END_SUB
+END_SUB
+
+SUB 16
+"\n%s奉命" 1 unit_name_transform(S16.D1)
+"在%s地域实施布雷。" 1 LOCATION(S16.D2,S16.D3)
+END_SUB
+
+SUB 17
+"\n%s编队奉命" 1 unit_name_transform(S17.D1)
+"在%s地域实施布雷。" 1 LOCATION(S17.D2,S17.D3)
+END_SUB
+
+SUB 18
+"\n%s奉命" 1 unit_name_transform(S18.D1)
+"在%s地域实施扫雷行动。" 1 LOCATION(S18.D2,S18.D3)
+END_SUB
+
+SUB 19
+"\n%s编队奉命" 1 unit_name_transform(S19.D1)
+"在%s地域实施扫雷行动。" 1 LOCATION(S19.D2,S19.D3)
+END_SUB
+
+SUB 20
+"\n%s奉命修复%s。" 2 unit_name_transform(S20.D1) unit_name_transform(S20.D2)
+END_SUB
+
+SUB 21
+"\n%s奉命立即摧毁%s。" 2 unit_name_transform(S21.D1) unit_name_transform(S21.D2)
+END_SUB
+
+SUB 22
+"\n%s奉命于%s前，完成对%s的摧毁任务。" 3 unit_name_transform(S22.D1) GTIME(S22.D3) unit_name_transform(S22.D2)
+END_SUB
+
+SUB 23
+"\n%s奉命归%s指挥。" 2 unit_name_transform(S23.D1) unit_name_transform(S23.D2)
+END_SUB
+
+SUB 24
+"\n%s奉命立即抽组一支部队。" 1 unit_name_transform(S24.D1)
+END_SUB
+
+SUB 25
+"\n%s奉命于%s，抽组一支部队。\n" 2 unit_name_transform(S25.D1) GTIME(S25.D2)
+END_SUB
+
+SUB 26
+"\n%s奉命立即配属%s。" 2 unit_name_transform(S26.D1) unit_name_transform(S26.D2)
+END_SUB
+
+SUB 27
+"\n%s奉命于%s，配属%s。" 3 unit_name_transform(S27.D1) GTIME(S27.D3) unit_name_transform(S27.D2)
+END_SUB
+
+SUB 28
+"\n%s空中编队已受命改变交战规则。" 1 S28.D1
+END_SUB
+
+SUB 29
+"\n%s已受命改变交战规则。" 1 unit_name_transform(S29.D1)
+   SUB 1
+"其所属部队交战规则也随之改变。" 0
+   END_SUB
+   SUB 2
+"但其所属部队交战规则不变。" 0
+   END_SUB
+END_SUB
+
+SUB 30
+"\n%s没有机动式地地导弹。" 1 unit_name_transform(S30.D1)
+END_SUB
+
+SUB 32
+   SUB 1
+"\n%s地面交战规则：%s。" 2 No_Force_Side[S32.S1.D1] Side_ROE[S32.S1.D2]
+   END_SUB
+   SUB 2
+"\n%s地面交战规则：%s，开火距离：%s。" 3 No_Force_Side[S32.S2.D1]
+                                                   Side_ROE[S32.S2.D2] S32.S2.D3
+   END_SUB
+   SUB 3
+"\n%s空中交战规则：%s。" 2 No_Force_Side[S32.S3.D1] Side_ROE[S32.S3.D2]
+   END_SUB
+   SUB 4
+"\n%s空中交战规则：%s，开火距离：%s。" 3 No_Force_Side[S32.S4.D1]
+                                                   Side_ROE[S32.S4.D2] S32.S4.D3
+   END_SUB
+   SUB 5
+"\n%s地空交战规则：%s。" 2 No_Force_Side[S32.S5.D1] Side_ROE[S32.S5.D2]
+   END_SUB
+   SUB 6
+"\n%s地空交战规则：%s，开火距离：%s。" 3 No_Force_Side[S32.S6.D1]
+                                                   Side_ROE[S32.S6.D2] S32.S6.D3
+   END_SUB
+   SUB 7
+      SUB 1
+"\n%s收到交战规则指令，同时其边界限制已改变。" 1 unit_name_transform(S32.S7.D1)
+      END_SUB
+      SUB 2
+"\n%s收到交战规则指令。" 1 unit_name_transform(S32.S7.D1)
+      END_SUB
+      SUB 3
+"\n%s的边界限制已改变。" 1  unit_name_transform(S32.S7.D1)
+      END_SUB
+   END_SUB
+END_SUB
+
+SUB 33
+   SUB 1
+"\n%s已受领防敌渗透警戒值班任务。" 1 unit_name_transform(S33.D1)
+   END_SUB
+   SUB 2
+"\n%s已结束防敌渗透警戒值班任务。" 1 unit_name_transform(S33.D1)
+   END_SUB
+   SUB 3
+"立即执行。" 0
+   END_SUB
+   SUB 4
+"将于%s开始执行。" 1 GTIME(S33.S4.D1)
+   END_SUB
+   SUB 5
+"命令将会影响所属部队。" 0
+   END_SUB
+END_SUB
+
+SUB 34
+"\n%s奉命运输补给物资，" 1 unit_name_transform(S34.D1)
+"将前往下列位置：" 0
+"<p class='table_name'>运输任务清单</p>" 0 
+"__start_table|节点|坐标\n" 0
+   GROUP 1
+"|%s|%s\n" 2 All_Transport_Types[S34.G1.D3] LOCATION(S34.G1.D1,S34.G1.D2)
+   END_GROUP
+"__stop_table" 0
+
+   SUB 1
+"\n该行动将立刻开始。" 0
+   END_SUB
+
+   SUB 2
+"\n该编队将于%s，抵达第一个指定位置。" 
+                                     1 GTIME(S34.S2.D1, "%U%d%H%MZ %b %y")
+   END_SUB
+END_SUB
+
+SUB 35
+"\n%s奉命转移人员，" 1 unit_name_transform(S35.D1)
+"将前往下列位置：" 0
+"<p class='table_name'>运输任务清单</p>" 0 
+"__start_table|节点|坐标\n" 0
+   GROUP 1
+"|%s|%s\n" 2 Insert_Types[S35.G1.D3] LOCATION(S35.G1.D1,S35.G1.D2)
+   END_GROUP
+"__stop_table" 0
+
+   SUB 1
+"\n该行动将立刻开始。" 0
+   END_SUB
+
+   SUB 2
+"\n该编队将于%s，抵达第一个指定位置。" 
+                                     1 GTIME(S35.S2.D1, "%U%d%H%MZ %b %y")
+   END_SUB
+END_SUB
+
+SUB 36
+"\n%s奉命取消所有待执行命令。" 1 unit_name_transform(S36.D1)
+END_SUB
+
+SUB 37
+"\n%s奉命取消一个待执行的" 1 unit_name_transform(S37.D1)
+"%s命令。" 1 S37.D2
+END_SUB
+
+SUB 38
+"\n%s奉命取消所有待执行的" 1 unit_name_transform(S38.D1)
+"%s命令。" 1 S38.D2
+END_SUB
+
+SUB 39
+"\n地空导弹/防空火炮阵地%s的支援部队" 1 unit_name_transform(S39.D1)
+   SUB 1
+"由%s" 1 unit_name_transform(S39.S1.D1)
+   END_SUB
+   SUB 2
+"调整为%s。" 1 unit_name_transform(S39.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 40
+"\n由%s负责支援的地空导弹/防空火炮阵地，其支援部队" 1 unit_name_transform(S40.D1)
+   SUB 1
+"由%s" 1 unit_name_transform(S40.S1.D1)
+   END_SUB
+   SUB 2
+"调整为%s。" 1 unit_name_transform(S40.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 41
+"\n%s视%s为%s。" 3 No_Force_Side[S41.D1] No_Force_Side[S41.D2] Relationship[S41.D3]
+END_SUB
+
+SUB 42
+"\n%s的空中%s机群奉命取消。" 2 No_Force_Side[S42.D1] S42.D2
+END_SUB
+
+SUB 43
+"\n%s受命出动飞机%s架，组建%s编队，" 
+          3 unit_name_transform(S43.D1) S43.D2 Mission_Type[S43.D3]
+
+   SUB 1   
+       "前往%s，执行警戒任务。 " 1 S43.S1.D1
+   END_SUB
+
+   SUB 2
+       "为%s导航。" 1 unit_name_transform(S43.S2.D1)
+   END_SUB
+
+   SUB 3
+       "为%s编队导航。" 1 S43.S3.D1
+   END_SUB
+
+   SUB 4
+       "在作战区域%s巡逻。" 1 S43.S4.D1
+   END_SUB
+
+   SUB 5
+       "在%s附近区域巡逻。" 
+                          1 LOCATION(S43.S5.D1,S43.S5.D2)
+   END_SUB
+
+   SUB 6
+      "开始时间：收到命令立即执行。" 0
+   END_SUB
+
+   SUB 7
+      "开始时间：%s。" 1 GTIME(S43.S7.D1)
+   END_SUB
+
+   SUB 8
+       "结束时间：%s。" 
+                1 DURATION(S43.S8.D1, "%.2Th时") 
+   END_SUB
+
+   SUB 9
+       "持续时间：将很快结束。" 0
+   END_SUB
+
+END_SUB
+
+SUB 46
+   SUB 1
+"\n%s奉命抽组%s架飞机实施机群突击任务，会合点位于%s。" 3 unit_name_transform(S46.D1) S46.D2 LOCATION(S46.D3,S46.D4)
+   END_SUB
+   SUB 2 
+"\n%s奉命抽组%s架飞机实施机群突击任务，会合点位于%s，" 3 unit_name_transform(S46.D1) S46.D2 LOCATION(S46.D3,S46.D4)
+"该编队挂载巡航导弹。" 0
+   END_SUB
+   SUB 3
+"\n%s奉命抽组%s架飞机实施机群支援侦察任务，会合点位于%s。" 3 unit_name_transform(S46.D1) S46.D2 LOCATION(S46.D3,S46.D4)
+   END_SUB
+   SUB 4
+"\n%s奉命抽组%s架飞机实施机群支援空中防空压制任务，会合点位于%s。" 3 unit_name_transform(S46.D1) S46.D2 LOCATION(S46.D3,S46.D4)
+   END_SUB
+   SUB 5
+"\n%s奉命抽组%s架飞机实施机群护航任务，会合点位于%s。" 3 unit_name_transform(S46.D1) S46.D2 LOCATION(S46.D3,S46.D4)
+   END_SUB
+END_SUB
+
+SUB 53
+"\n%s奉命%s机动式地地导弹目标。" 2 unit_name_transform(S53.D1) S53.D2
+   SUB 1
+"开始时间：收到命令立刻执行。" 0
+   END_SUB
+   SUB 2
+"开始时间：%s。" 1 GTIME(S53.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 54
+"\n%s下令创建空中编队，" 1 No_Force_Side[S54.D1]
+   SUB 1
+"飞机将在最短时间内，于%s处会合。" 1 LOCATION(S54.D2,S54.D3)
+   END_SUB
+   SUB 2
+"  飞机将于%s，在%s处会合。" 2 LOCATION(S54.D2,S54.D3) GTIME(S54.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 55
+"\n准备起飞%s架飞机对%s实施近距离空中支援，" 2 S55.D1 unit_name_transform(S55.D2)
+   SUB 1
+"临空时间：在最短时间内。" 0
+   END_SUB
+   SUB 2
+"临空时间：%s。" 1 GTIME(S55.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 56
+"\n%s下令调整空中%s机群行动，" 2 
+                                      No_Force_Side[S56.D1] S56.D2
+   SUB 1
+"飞机于%s会合。" 1 GTIME(S56.S1.D1)
+   END_SUB
+   SUB 2
+"会合点调整为%s。" 1 LOCATION(S56.S2.D1,S56.S2.D2)
+   END_SUB
+   SUB 3
+"出航航线已更改。" 0
+   END_SUB
+   SUB 4
+"返航航线已更改。" 0
+   END_SUB
+   SUB 5
+"压制敌防空力量调整为%s%。" 1 S56.S5.D1
+   END_SUB
+   SUB 6
+"护航力量调整为%s%。" 1 S56.S6.D1
+   END_SUB
+END_SUB
+
+SUB 58
+"\n%s下令%s编队加入%s编队。" 3 
+                         No_Force_Side[S58.D1] S58.D2 S58.D3
+END_SUB
+
+SUB 62
+"\n%s已改变" 1 No_Force_Side[S62.D1]
+   SUB 1
+"空中编队" 0
+   END_SUB
+   SUB 2
+"地面部队" 0
+   END_SUB
+   SUB 3
+"舰船" 0
+   END_SUB
+   SUB 4
+"特种部队" 0
+   END_SUB
+   SUB 5
+"驳船运输分队" 0
+   END_SUB
+   SUB 6
+"铁路运输分队" 0
+   END_SUB
+"的穿越国界限制。" 0
+
+END_SUB
+
+SUB 63
+"\n%s已调整了%s作战区的" 2 No_Force_Side[S63.D1] S63.D2
+   SUB 1
+"面面交战规则。" 0
+   END_SUB
+   SUB 2
+"空空交战规则。" 0
+   END_SUB
+   SUB 3
+"面空交战规则。" 0
+   END_SUB
+END_SUB
+
+SUB 65
+"\n%s受命实施空对地突击，" 1 unit_name_transform(S65.D1)
+   SUB 1
+"突击目标：%s。" 1 unit_name_transform(S65.S1.D1)
+   END_SUB
+   SUB 2
+"突击地域：%s。" 1 LOCATION(S65.S2.D1,S65.S2.D2)
+   END_SUB
+   SUB 3
+"第二突击目标：%s。" 1 unit_name_transform(S65.S3.D1)
+   END_SUB
+   SUB 4
+"第二突击地域：%s。" 1 LOCATION(S65.S4.D1,S65.S4.D2)
+   END_SUB
+   SUB 5
+"该编队总计%s架飞机。" 1 S65.S5.D1
+   END_SUB
+   SUB 6
+"进入阵位时间：立即执行。" 0
+   END_SUB
+   SUB 7
+"进入阵位时间：%s。" 1 GTIME(S65.S7.D1)
+   END_SUB
+END_SUB
+
+SUB 66
+"\n%s奉命执行反炮兵行动。" 1 unit_name_transform(S66.D1)
+END_SUB
+
+SUB 68
+"\n%s架飞机正从%s向%s转场，" 3 S68.D1 unit_name_transform(S68.D2) unit_name_transform(S68.D3)
+   SUB 1
+"预计到达时间：最短时间内。" 0
+   END_SUB
+   SUB 2
+"预计到达时间：%s。" 1 GTIME(S68.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 69
+"\n%s受命" 1 unit_name_transform(S69.D1)
+   SUB 1
+"搭载、空运%s。" 1 unit_name_transform(S69.S1.D1)
+   END_SUB
+   SUB 2
+"搭载、空投%s。" 1 unit_name_transform(S69.S2.D1)
+   END_SUB
+   SUB 3
+"搭载点：%s，" 1 LOCATION(S69.S3.D1,S69.S3.D2)
+   END_SUB
+   SUB 4
+"搭载点：主基地，" 0
+   END_SUB
+   SUB 5
+"目的地：%s。" 1 LOCATION(S69.S5.D1,S69.S5.D2)
+   END_SUB
+   SUB 6
+"搭载时间：尽早执行。" 0
+   END_SUB
+   SUB 7
+"预定搭载时间：%s。" 1 GTIME(S69.S7.D1)
+   END_SUB
+END_SUB
+
+SUB 73
+   SUB 1
+"\n%s奉命运送特战分队。" 1 unit_name_transform(S73.D1)
+   END_SUB
+   SUB 2
+"\n%s奉命" 1 unit_name_transform(S73.D1)
+"评估运送特战分队的时间。" 0
+   END_SUB
+   SUB 3
+"将使用卡车作为运输工具。" 0
+   END_SUB
+   SUB 4
+"将使用小型艇作为运输工具。" 0
+   END_SUB
+END_SUB
+
+SUB 74
+"\n已取消总计%s项对%s实施近距离空中支援的命令。" 2 S74.D1 unit_name_transform(S74.D2)
+END_SUB
+
+SUB 75
+"\n%s编队奉命抽组出一个新编队，命名为%s。" 2 unit_name_transform(S75.D1) S75.D2
+"该编队由下列舰船组成：" 0
+   GROUP 1
+"\n——%s。" 1 unit_name_transform(S75.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 76
+"" 0
+END_SUB
+
+SUB 81
+"\n%s获授权使用下列跑道：" 1 unit_name_transform(S81.D1)
+   GROUP 1
+"\n——%s。" 1 unit_name_transform(S81.G1.D1)
+   END_GROUP
+   SUB 1
+"\n从现在开始生效。" 0
+   END_SUB
+   SUB 2
+"\n从%s起生效。" 1 GTIME(S81.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 82
+"\n禁止%s使用下列跑道：" 1 unit_name_transform(S82.D1)
+   GROUP 1
+"\n——%s。" 1 unit_name_transform(S82.G1.D1)
+   END_GROUP
+   SUB 1
+"\n从现在开始生效。" 0
+   END_SUB
+   SUB 2
+"\n从%s起生效。" 1 GTIME(S82.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 83
+"\n%s奉命出动%s架飞机执行预定航线侦察任务，" 2 unit_name_transform(S83.D1) S83.D2
+   SUB 1
+"编队将在%s上方盘旋。" 1 unit_name_transform(S83.S1.D1)
+   END_SUB
+   SUB 2
+"编队将在%s上方盘旋。" 1 unit_name_transform(S83.S2.D1)
+   END_SUB
+   SUB 3
+"编队将在%s地域上方盘旋。" 1 LOCATION(S83.S3.D1,S83.S3.D2)
+   END_SUB
+   SUB 4
+"进入阵位时间：收到命令立即执行。" 0
+   END_SUB
+   SUB 5
+   END_SUB
+END_SUB
+
+SUB 84
+"\n%s编队收到命令，" 1 S84.D1
+
+   SUB 1
+"只为本方飞机加油。" 0
+   END_SUB
+
+   SUB 2
+"可以为该地区的友方飞机加油。" 0
+   END_SUB
+
+   SUB 3
+"转移至：%s。" 1 LOCATION(S84.S3.D1,S84.S3.D2)
+   END_SUB
+
+   SUB 4
+"转移至：距%s%s海里，方位%s度。" 3 S84.S4.D3 S84.S4.D2 S84.S4.D1
+   END_SUB
+
+   SUB 5
+"防护半径改为%s海里。" 1 S84.S5.D1
+   END_SUB
+
+   SUB 6
+"退出阵地时间变更为：%s。" 1 GTIME(S84.S6.D1)
+   END_SUB
+
+   SUB 7
+"将人工配对标志变更为：%s。" 1 Answer[S84.S7.D1]
+   END_SUB
+
+   SUB 8
+"将卸货方式变更为：%s。" 1 Lift_Land_Type[S84.S8.D1]
+   END_SUB
+
+   SUB 9
+"担负%s作战区的防护任务。" 1 S84.S9.D1
+   END_SUB
+
+   SUB 10
+"担负%s作战区的巡逻任务。" 1 S84.S10.D1
+   END_SUB
+
+   SUB 11
+"对%s实施支援。" 1 unit_name_transform(S84.S11.D1)
+   END_SUB
+
+   SUB 12
+"任务完成后返回%s。" 1 unit_name_transform(S84.S12.D1)
+   END_SUB
+
+   SUB 13
+"修改燃油预留表。" 0   
+   END_SUB
+
+   SUB 14
+"禁止自动攻击新发现的目标。" 0
+   END_SUB
+
+   SUB 15
+"自动攻击新发现的目标。" 0
+   END_SUB
+
+   SUB 16
+"拒绝近距空中支援请求。" 0
+   END_SUB
+
+   SUB 17
+"接受近距离空中支援请求。" 0
+   END_SUB
+
+   SUB 18
+"在新的区域巡逻。" 0
+   END_SUB
+
+   SUB 19
+"修改定向搜索区。" 0
+   END_SUB
+
+   SUB 20
+"创建新搜索区。" 0
+   END_SUB
+
+   SUB 21
+"改变搜索路线。" 0
+   END_SUB
+
+   SUB 22
+"以%s编队为电子战广播对象。" 1 S84.S22.D1
+   END_SUB
+
+   SUB 23
+"以%s为电子战广播对象。" 1 unit_name_transform(S84.S23.D1)
+   END_SUB
+
+   SUB 24
+"更改任务指令。" 0
+   END_SUB
+
+   SUB 25
+"装载地域变更为%s。" 1 LOCATION(S84.S25.D1,S84.S25.D2)
+   END_SUB
+
+   SUB 26
+"改变运输航线。" 0
+   END_SUB
+
+   SUB 27
+"目的地：%s。" 1 LOCATION(S84.S27.D1,S84.S27.D2)
+   END_SUB
+
+   SUB 28
+"搭载部队：%s。" 1 unit_name_transform(S84.S28.D1)
+   END_SUB
+
+   SUB 29
+"更改任务指令。" 0
+   END_SUB
+
+   SUB 30
+"改变武器挂载。" 0
+   END_SUB
+
+   SUB 31
+"改变常规任务的命令。" 0
+"无其他信息。" 0
+   END_SUB
+
+   SUB 32
+"航速变更为%s%s。" 2 UOM_AMT(SPEED, S84.S32.D1) UOM(SPEED)
+   END_SUB
+
+END_SUB
+
+SUB 85
+"\n%s某空中编队奉命立即" 1 
+                                               No_Force_Side[S85.D1]
+   SUB 1
+"对%s实施突击。" 1 unit_name_transform(S85.S1.D1)
+   END_SUB
+
+   SUB 2
+"对%s实施突击。" 1 unit_name_transform(S85.S2.D1)
+   END_SUB
+
+   SUB 3
+"向%s处实施突击。" 1 LOCATION(S85.S3.D1,S85.S3.D2)
+   END_SUB
+
+END_SUB
+
+SUB 86
+"\n%s编队受命拦截%s。" 2 S86.D1 unit_name_transform(S86.D2)
+END_SUB
+
+SUB 87
+"" 0
+END_SUB
+
+SUB 88
+"\n在%s和%s之间，已开始建立部队间支援保障关系。" 2 unit_name_transform(S88.D1) unit_name_transform(S88.D2)
+END_SUB
+
+SUB 89
+"\n在%s和%s之间，已开始实施临机补给。" 2 unit_name_transform(S89.D2) unit_name_transform(S89.D1)
+END_SUB
+
+SUB 90
+"\n在%s和%s之间，已开始自动补给。" 2 unit_name_transform(S90.D1) unit_name_transform(S90.D2)
+END_SUB
+
+SUB 91
+"\n%s已停止向%s的自动运输补给。" 2 unit_name_transform(S91.D1) unit_name_transform(S91.D2)
+END_SUB
+
+SUB 92
+"\n%s已取消所有自动补给运输。" 1 unit_name_transform(S92.D1)
+END_SUB
+
+SUB 93
+"\n%s的支援部队已变更为%s。" 2 unit_name_transform(S93.D1) unit_name_transform(S93.D2)
+END_SUB
+
+SUB 94
+"\n%s当前无支援部队。" 1 unit_name_transform(S94.D1)
+END_SUB
+
+SUB 95
+"\n%s受命" 1 unit_name_transform(S95.D1)
+"在%s地域" 1 LOCATION(S95.D2,S95.D3)
+"储备补给物资。" 0
+   SUB 1
+"开始时间：收到命令立刻执行。" 0
+   END_SUB
+   SUB 2
+"开始时间：%s。" 1 GTIME(S95.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 96
+"\n%s奉命承担%s管线的保障任务。" 2 unit_name_transform(S96.D1) S96.D2
+   SUB 1
+"开始时间：收到命令立刻执行。" 0
+   END_SUB
+   SUB 2
+"开始时间：%s。" 1 GTIME(S96.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 97
+"\n中止对%s管线的保障任务，" 1 S97.D1
+   SUB 1
+"开始时间：收到命令立刻执行。" 0
+   END_SUB
+   SUB 2
+"开始时间：%s。" 1 GTIME(S97.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 98
+"\n%s奉命机动至%s管线所在地，并承担管线保障任务。" 2  unit_name_transform(S98.D1) S98.D2
+END_SUB
+
+SUB 99
+"\n%s港口收到命令，增加以下优先项：" 1 unit_name_transform(S99.D1)
+   SUB 1
+"\n——部队：%s。" 1 unit_name_transform(S99.S1.D1)
+   END_SUB
+   SUB 2
+"\n——战略补给物资：%s。" 1 unit_name_transform(S99.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 100
+"\n%s港口收到命令，从优先项中删除以下内容：" 1 unit_name_transform(S100.D1)
+   SUB 1
+"\n——部队：%s。" 1 unit_name_transform(S100.S1.D1)
+   END_SUB
+   SUB 2
+"\n——战略补给物资：%s。" 1 unit_name_transform(S100.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 101
+"\n%s已被调整到港口%s装载，" 2 unit_name_transform(S101.D1) unit_name_transform(S101.D2)
+   SUB 1
+"要求尽快抵达新港口。" 0
+   END_SUB
+   SUB 2
+"要求抵达新港口时间：%s。" 1 GTIME(S101.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 102
+"\n%s（战略补给）已被改到港口%s装载。" 2 unit_name_transform(S102.D1) unit_name_transform(S102.D2)
+   SUB 1
+"要求尽快抵达新港口。" 0
+   END_SUB
+   SUB 2
+"要求抵达新港口时间：%s。" 1 GTIME(S102.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 103
+"" 0
+END_SUB
+
+SUB 104
+"" 0
+END_SUB
+
+SUB 105
+"\n%s奉命掩护%s。" 2 unit_name_transform(S105.D1) unit_name_transform(S105.D2)
+END_SUB
+
+SUB 106
+"\n%s编队奉命执行海上补给任务。" 1 S106.D1
+"装载点：%s。" 1  LOCATION(S106.D2,S106.D3)
+"交付点：%s。" 1  LOCATION(S106.D4,S106.D5)
+   SUB 1
+"装载时间：尽快。" 0
+   END_SUB
+   SUB 2
+"装载时间：%s。" 1 GTIME(S106.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 107
+"\n%s奉命机动至%s，" 2 unit_name_transform(S107.D1) LOCATION(S107.D2,S107.D3)
+"机动速度：%s%s。" 2 UOM_AMT(NAVAL_SPEED, S107.D4) UOM(NAVAL_SPEED)
+END_SUB
+
+SUB 108
+"\n%s编队奉命" 1 S108.D1
+"在%s会合，由以下舰艇组成：" 1 LOCATION(S108.D2,S108.D3)
+"<p class='table_name'>编队舰艇列表</p>" 0
+"__start_table｜名称｜方位｜与基准舰距离\n" 0
+   GROUP 1
+"｜%s｜%s｜%s%s\n" 4 unit_name_transform(S108.G1.D1) S108.G1.D2 UOM_AMT(DISTANCE,S108.G1.D3) UOM(DISTANCE)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 109
+"\n%s奉命编入%s编队。" 2 unit_name_transform(S109.D1) S109.D2
+END_SUB
+
+SUB 110
+"\n海军%s编队已取消。" 1 S110.D1
+END_SUB
+
+SUB 111
+"\n海军%s编队奉命执行两栖搭载任务，" 1 S111.D1
+"搭载部队如下：" 0
+   GROUP 1
+"\n——%s。" 1 unit_name_transform(S111.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 112
+"\n海军%s编队奉命执行两栖攻击任务，" 1 S112.D1
+"由以下部队组成：" 0
+   GROUP 1
+"\n——%s。" 1 unit_name_transform(S112.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 113
+"\n%s奉命巡逻，" 1 unit_name_transform(S113.D1)
+   SUB 1
+"巡逻区名称：%s（消息尚未证实）。" 1 S113.S1.D1
+   END_SUB
+   SUB 2
+"巡逻区为由以下坐标点围成的多边形区域：" 0
+       GROUP 1
+"\n——%s。" 1 LOCATION(S113.S2.G1.D1,S113.S2.G1.D2) 
+       END_GROUP
+   END_SUB
+END_SUB
+
+SUB 114
+"" 0
+END_SUB
+ 
+SUB 115
+"\n%s编队奉命停止所有的" 1 unit_name_transform(S115.D1)
+
+   SUB 127
+"按航线机动。" 0
+   END_SUB
+   SUB 126
+"海上补给行动。" 0
+   END_SUB
+   SUB 131
+"两栖装载行动。" 0
+   END_SUB
+   SUB 132
+"两栖攻击行动。" 0
+   END_SUB
+   SUB 133
+"巡逻行动。" 0
+   END_SUB
+   SUB 138
+"伪装行动。" 0
+   END_SUB
+   SUB 161
+"布雷行动。" 0
+   END_SUB
+   SUB 162
+"扫雷行动。" 0
+   END_SUB
+END_SUB
+
+SUB 116
+
+   SUB 1
+   "\n%s奉命将%s作为" 2 unit_name_transform(S116.S1.D1) unit_name_transform(S116.S1.D2)
+   "空中编队新的主要备降场。" 0
+   END_SUB
+
+   SUB 2
+   "\n%s已将敌我识别器由模式1转换为%s。" 2 unit_name_transform(S116.S2.D1) S116.S2.D2
+   END_SUB
+
+END_SUB
+
+SUB 117
+"\n%s当前和%s共享部队信息。" 2 No_Force_Side[D3] 
+                                              No_Force_Side[S117.D1]
+"提供当前情报信息的标准程序已经确立，信息每%s传递一次。" 
+          1 DURATION(S117.D2, "%d days %h hours %Rm minutes")
+END_SUB
+
+SUB 118
+"\n%s当前和%s共享目标信息。" 2 No_Force_Side[D3] 
+                                              No_Force_Side[S118.D1]
+"提供当前情报信息的标准程序已经确立，信息每%s传递一次。"
+          1 DURATION(S118.D2, "%d days %h hours %Rm minutes")
+END_SUB
+
+SUB 119
+"\n%s取消向" 
+                                                1 No_Force_Side[S119.D1]
+"%s传递情报信息的计划。" 1 No_Force_Side[S119.D2]
+END_SUB
+
+SUB 120
+"<p class='table_name'> 编队舰艇阵位变换情况</p>" 0
+"__start_table｜名称｜方位｜与基准舰距离\n" 0
+   GROUP 1
+"｜%s｜%s｜%s%s\n" 4 unit_name_transform(S120.G1.D1) S120.G1.D2
+                         UOM_AMT(DISTANCE,S120.G1.D3) UOM(DISTANCE)
+   END_GROUP
+ "__stop_table" 0  
+END_SUB
+
+SUB 121
+"\n%s奉命于%s，编组特种部队%s。" 3 unit_name_transform(S121.D1) GTIME(S121.D3) S121.D2  
+END_SUB
+
+SUB 122
+"\n%s奉命在%s，" 2 unit_name_transform(S122.D1) LOCATION(S122.D2,S122.D3)
+   SUB 1
+"抢修%s。" 1 unit_name_transform(S122.S1.D1)
+   END_SUB
+   SUB 2
+"架设由%s条车道组成的%s。" 2 S122.S2.D1 Bridge_Class[S122.S2.D2]
+   END_SUB
+END_SUB
+
+SUB 123
+"\n%s奉命修改作战命令，内容如下：" 1 unit_name_transform(S123.D1)
+   SUB 1
+"当前速度改为%s%s。" 2 UOM_AMT(SPEED, S123.S1.D1) UOM(SPEED)
+   END_SUB
+   SUB 2
+"沿着新的海上航线继续航行。" 0
+   END_SUB
+   SUB 3
+"两栖作战行动完成后，" 0
+"沿新航线驶离该区域。" 0
+   END_SUB
+   SUB 4
+"在当前装载点和卸载点之间" 0
+"使用新的海上航线。" 0
+   END_SUB
+   SUB 5
+"海上输送命令" 0
+"新的卸载点为%s，" 1 LOCATION(S123.S5.D1,S123.S5.D2)
+"新的接收部队为%s。" 1 unit_name_transform(S123.S5.D3)
+   END_SUB
+END_SUB
+
+SUB 124
+"\n作战区%s已定义并公布。" 1 S124.D1
+END_SUB
+
+SUB 125
+   SUB 1
+"\n%s%s奉命采用%s方式，" 3 No_Force_Side[D3] unit_name_transform(S125.D1)
+                                         Unit_Transport_Method[S125.D2]
+"由当前位置运输至%s。" 1 LOCATION(S125.S1.D1,S125.S1.D2)
+   END_SUB
+   SUB 2
+"\n%s%s奉命" 2 No_Force_Side[D3] unit_name_transform(S125.D1)
+"估算，采用%s方式，" 1 Unit_Transport_Method[S125.D2]
+"由%s至%s实施运输所需时间。" 2 LOCATION(S125.S2.D1,S125.S2.D2)
+                     LOCATION(S125.S2.D3,S125.S2.D4)
+   END_SUB
+   SUB 3 
+"\n%s%s奉命取消%s运输命令。" 3 No_Force_Side[D3] unit_name_transform(S125.D1) Unit_Transport_Method[S125.D2]
+   END_SUB
+END_SUB
+
+SUB 126
+"\n%s奉命派出由%s架飞机组成的多目标空对地突击编队，" 2 unit_name_transform(S126.D1) S126.D2
+"攻击以下目标：" 0
+
+   GROUP 1
+      SUB 1
+"\n——目标：%s" 1 unit_name_transform(S126.G1.S1.D1)
+      END_SUB
+      SUB 2
+"\n——部队：%s" 1 unit_name_transform(S126.G1.S2.D1)
+      END_SUB
+      SUB 3
+"\n——目标定位点：%s" 1 S126.G1.S3.D1     
+      END_SUB
+   END_GROUP
+
+   SUB 1
+"\n首次突击时间：尽快。" 0
+   END_SUB
+
+   SUB 2
+"\n首次突击时间：%s。" 1 GTIME(S126.S2.D1)
+   END_SUB
+
+END_SUB
+
+SUB 127
+"\n%s编队收到多目标攻击的新指令，" 1 S127.D1
+   SUB 1
+"不能攻击以下目标，" 0
+"或减少弹药量：" 0
+
+      GROUP 1
+         SUB 1
+"\n——目标：%s" 1 unit_name_transform(S127.S1.G1.S1.D1)
+         END_SUB
+         SUB 2
+"\n——部队：%s" 1 unit_name_transform(S127.S1.G1.S2.D1)
+         END_SUB
+         SUB 3
+"\n——目标定位点：%s" 1 S127.S1.G1.S3.D1     
+         END_SUB
+      END_GROUP
+   END_SUB
+
+   SUB 2
+"增加以下攻击目标：" 0
+
+      GROUP 1
+         SUB 1
+"\n——目标：%s" 1 unit_name_transform(S127.S2.G1.S1.D1)
+         END_SUB
+         SUB 2
+"\n——部队：%s" 1 unit_name_transform(S127.S2.G1.S2.D1)
+         END_SUB
+         SUB 3
+"\n——目标定位点：%s" 1 S127.S2.G1.S3.D1     
+         END_SUB
+      END_GROUP
+   END_SUB
+END_SUB
+
+SUB 128
+"\n%s%s正在准备海上战略补给，" 
+         2 No_Force_Side[S128.D2] unit_name_transform(S128.D1)
+"在战区不同地点实施装载和卸载。" 0
+END_SUB
+
+SUB 129
+"\n%s%s飞行中队，已起飞%s架飞机，执行战略空运任务。"
+              3 No_Force_Side[S129.D2] S129.D1 S129.D3
+END_SUB
+
+SUB 130
+"\n%s%s在%s，已发出船货清单。"
+              3 No_Force_Side[S130.D2] unit_name_transform(S130.D1) LOCATION(S130.D3,S130.D4)
+END_SUB
+
+SUB 131
+"\n%s%s收到命令，" 
+                  2 No_Force_Side[S131.D2] unit_name_transform(S131.D1)
+"准备从%s乘船进行战略机动。" 1 unit_name_transform(S131.D3)
+END_SUB
+
+SUB 132
+"\n%s已向%s下达命令弃舰（艇）。"
+              2 No_Force_Side[S132.D2] unit_name_transform(S132.D1) 
+END_SUB
+
+SUB 133
+"\n%s已下令调整" 1 No_Force_Side[S133.D1]
+   SUB 1
+"%s的作战计划。" 1 unit_name_transform(S133.S1.D1)
+   END_SUB
+   SUB 2
+"%s编队的作战计划。" 1 S133.S2.D1
+   END_SUB
+END_SUB
+
+SUB 134
+"\n%s%s编队收到编队分批命令，准备派出%s架飞机组成新的空中编队。" 3 No_Force_Side[S134.D2] S134.D1 S134.D3
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,42 @@
+
+6450
+SUBJECT
+"%s电子侦察情况报告" 1 unit_name_transform(D5)
+
+MAIN
+
+"<p class='title'>%s电子侦察情况报告</p>" 1 unit_name_transform(D5)
+
+"\n%s报告：" 1 unit_name_transform(D5)
+
+SUB 1
+"%s信号来自%s，信号强，方位：%s；" 3 Sensor_Function[S1.D1] Sensor_Type[S1.D2] S1.D13
+"电子情报标识：%s；" 1 S1.D10
+"频率：%s MHz；" 1 S1.D11
+"脉冲周期：%s ms。" 1 S1.D12
+END_SUB
+
+SUB 2
+"%s信号来自%s，信号弱，方位：%s；" 3 Sensor_Function[S2.D1] Sensor_Type[S2.D2] S2.D13
+"电子情报标识：%s；" 1 S2.D10
+"频率：%s MHz；" 1 S2.D11
+"脉冲周期：%s ms。" 1 S2.D12
+END_SUB
+
+SUB 3
+"干扰机选通脉冲来自%s，方位：%s；" 2 Jammer_Type[S3.D1] S3.D13
+"电子情报标识：%s；" 1 S3.D10
+"干扰机频率：%s MHz；" 1 S3.D11
+"脉冲周期：%s ms。" 1 S3.D12
+END_SUB
+
+SUB 4
+"遭到通信干扰。" 0
+END_SUB
+
+SUB 5
+"主动式传感器性能下降。" 0
+END_SUB
+
+END_MAIN
+

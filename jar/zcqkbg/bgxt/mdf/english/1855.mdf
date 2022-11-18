@@ -1,0 +1,26 @@
+
+1855
+SUBJECT
+"属于%s的小艇" 1 unit_name_transform(D2)
+
+MAIN
+
+"<p class='title'>  属于%s的小艇报告</p>\n\n" 1 unit_name_transform(D2)
+
+
+SUB 1
+"  部队现有%s %s小艇。\n" 2 S1.D1 Small_Boat[S1.D2] 
+END_SUB
+
+SUB 2
+   GROUP 1
+"  部队有：%6.6s %-12.12s小艇。\n" 2 S2.G1.D1 Small_Boat[S2.G1.D2] 
+   END_GROUP
+END_SUB
+
+SUB 3
+"  部队没有任何小艇。\n" 0
+END_SUB
+
+END_MAIN
+

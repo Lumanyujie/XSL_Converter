@@ -1,0 +1,195 @@
+
+5700
+SUBJECT
+"%s（特战分队）侦察情报" 1 unit_name_transform(D3)
+MAIN
+"<p class='title'>%s（特战分队）侦察情报</p>" 1 unit_name_transform(D3)
+"\n%s当前位于%s，" 2 unit_name_transform(D3) LOCATION(D4,D5)
+"现将获取情报报告如下：" 0
+
+SUB 1
+"\n未发现外方部队。" 0
+END_SUB
+
+SUB 2
+"\n发现下列外方部队及其目标：" 0
+   GROUP 1
+"\n\n—%s" 1 unit_name_transform(S2.G1.D1)
+
+      GROUP 1
+
+         SUB 1
+"\n隶属方：%s；" 1 No_Force_Side[S2.G1.G1.S1.D6]
+"%s，抵达%s；" 2 GTIME(S2.G1.G1.S1.D1) LOCATION(S2.G1.G1.S1.D2,S2.G1.G1.S1.D3)
+"态势：%s；" 1 Unit_Posture[S2.G1.G1.S1.D4]
+"战斗力：%2.2f。" 1 S2.G1.G1.S1.D5
+         END_SUB
+
+         SUB 2
+"\n隶属方：%s；" 1 No_Force_Side[S2.G1.G1.S2.D6]
+"%s，位于%s；" 2 GTIME(S2.G1.G1.S2.D1) LOCATION(S2.G1.G1.S2.D2,S2.G1.G1.S2.D3)
+"态势：%s；" 1 Unit_Posture[S2.G1.G1.S2.D4]
+"战斗力：%2.2f。" 1 S2.G1.G1.S2.D5
+         END_SUB
+
+         SUB 3
+"\n隶属方：%s；" 1 No_Force_Side[S2.G1.G1.S3.D6]
+"%s，从%s" 2 GTIME(S2.G1.G1.S3.D1) LOCATION(S2.G1.G1.S3.D2,S2.G1.G1.S3.D3)
+"地域向%s方机动；" 1 Hex_Edge[S2.G1.G1.S3.D7]
+"态势：%s；" 1 Unit_Posture[S2.G1.G1.S3.D4]
+"战斗力：%2.2f。" 1 S2.G1.G1.S3.D5
+         END_SUB
+
+         SUB 4
+"\n隶属方：%s；" 1 No_Force_Side[S2.G1.G1.S4.D6]
+"%s，在%s被歼；" 2 GTIME(S2.G1.G1.S4.D1) LOCATION(S2.G1.G1.S4.D2,S2.G1.G1.S4.D3)
+"态势：%s；" 1 Unit_Posture[S2.G1.G1.S4.D4]
+"战斗力：%2.2f。" 1 S2.G1.G1.S4.D5
+         END_SUB
+
+         SUB 5
+"\n——%s" 1 unit_name_transform(S2.G1.G1.S5.D2)
+"（%s），" 1 Target_Category[S2.G1.G1.S5.D1]
+"坐标：%s，能力：%2.2f。" 2 LOCATION(S2.G1.G1.S5.D3,S2.G1.G1.S5.D4) S2.G1.G1.S5.D5
+            SUB 34
+
+               GROUP 1
+
+                  SUB 1
+"\n对目标定位点%s的攻击" 1 S2.G1.G1.S5.S34.G1.D1
+"致%s损毁。" 1 unit_name_transform(S2.G1.G1.S5.S34.G1.D2)
+                  END_SUB
+
+                  SUB 2
+"\n对目标定位点%s的攻击已影响其作战效能。" 1 S2.G1.G1.S5.S34.G1.D1
+                  END_SUB
+
+               END_GROUP
+
+            END_SUB
+
+         END_SUB
+
+      END_GROUP
+
+   END_GROUP
+
+END_SUB
+
+SUB 3
+"\n未发现无属方目标。" 0
+END_SUB
+
+SUB 4
+"\n发现以下目标：" 0
+   GROUP 1
+
+      SUB 1
+"\n\n—%s" 1 unit_name_transform(S4.G1.S1.D2)
+"\n类型：%s，属方：%s，" 2 Target_Category[S4.G1.S1.D1] No_Force_Side[S4.G1.S1.D3] 
+"坐标：%s，能力：%2.2f，" 2 LOCATION(S4.G1.S1.D4,S4.G1.S1.D5) S4.G1.S1.D6
+"备注：该目标没有隶属部队。" 0 
+      END_SUB
+
+      SUB 2
+"\n\n—%s" 1 unit_name_transform(S4.G1.S2.D2)
+"\n类型：%s，属方：%s，" 2 Target_Category[S4.G1.S2.D1] No_Force_Side[S4.G1.S2.D3] 
+"坐标：%s，能力：%2.2f，" 2 LOCATION(S4.G1.S2.D4,S4.G1.S2.D5) S4.G1.S2.D7
+"备注：该目标隶属%s，但未发现部队。" 1 unit_name_transform(S4.G1.S2.D6)
+      END_SUB
+
+      SUB 34
+
+         GROUP 1
+
+            SUB 1
+"\n对目标定位点%s的攻击" 1 S4.G1.S34.G1.D1
+"致%s损毁。" 1 unit_name_transform(S4.G1.S34.G1.D2)
+            END_SUB
+
+            SUB 2
+"\n对目标定位点%s的攻击已影响其作战效能。" 1 S4.G1.S34.G1.D1
+            END_SUB            
+
+         END_GROUP
+
+      END_SUB
+
+   END_GROUP
+
+END_SUB
+
+SUB 5
+"\n未发现运输队。" 0
+END_SUB
+
+SUB 6
+"\n侦察到以下运输队情况：" 0
+   GROUP 1
+
+      SUB 8
+"\n\n—%s" 1 GTIME(S6.G1.S8.D7)
+"\n%s的运输队，" 1 unit_name_transform(S6.G1.S8.D5)
+"属方：%s，" 1 No_Force_Side[S6.G1.S8.D3]
+"现正在%s地域实施装载。" 1 LOCATION(S6.G1.S8.D1,S6.G1.S8.D2)
+      END_SUB
+
+      SUB 9
+"\n\n—%s" 1 GTIME(S6.G1.S9.D7)
+"\n%s的运输队，" 1 unit_name_transform(S6.G1.S9.D5)
+"属方：%s，" 1 No_Force_Side[S6.G1.S9.D3]
+"现位于%s地域" 1 LOCATION(S6.G1.S9.D1,S6.G1.S9.D2)
+
+         SUB 1
+"，向%s方行进" 1 Orientation[S6.G1.S9.S1.D1]
+         END_SUB
+         SUB 2
+"，向%s方行进" 1 Orientation[S6.G1.S9.S2.D1]
+         END_SUB
+         SUB 3
+"，向%s方行进" 1 Orientation[S6.G1.S9.S3.D1]
+         END_SUB
+         SUB 4
+"。迹象表明，该运输队满载" 0
+         END_SUB
+         SUB 5
+"。迹象表明，该运输队空载" 0
+         END_SUB
+"。" 0
+      END_SUB
+
+      SUB 10
+"\n\n—%s" 1 GTIME(S6.G1.S10.D7)
+"\n%s的运输队，" 1 unit_name_transform(S6.G1.S10.D5)
+"属方：%s，" 1 No_Force_Side[S6.G1.S10.D3]
+"现正在%s地域实施卸载。" 1 LOCATION(S6.G1.S10.D1,S6.G1.S10.D2)
+      END_SUB
+
+      SUB 11
+"\n输送部队为%s，" 1 unit_name_transform(S6.G1.S11.D1)
+         SUB 1
+"现正在实施装载。" 0
+         END_SUB
+         SUB 2
+"现正在实施卸载。" 0
+         END_SUB
+         SUB 3
+"现正在运输途中。" 0
+         END_SUB
+      END_SUB
+
+      SUB 12
+"<p class='table_name'>运输队运输工具列表</p>" 0
+ "__start_table|类型|数量\n" 0    
+         GROUP 1
+"|%s|%s\n" 2 Transportation_Class[S6.G1.S12.G1.D1] S6.G1.S12.G1.D2         
+         END_GROUP  
+"__stop_table" 0
+      END_SUB
+
+   END_GROUP
+
+END_SUB
+
+END_MAIN
+

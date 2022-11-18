@@ -1,0 +1,32 @@
+
+4370
+SUBJECT
+"%s定期补给情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s定期补给情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+   "\n%s接收以下定期补给物资：" 1 unit_name_transform(D2)
+   "<p class='table_name'>该单位定期补给情况列表</p>" 0
+   "__start_table|保障部队|补给周期|补给类型|数量|单位\n" 0
+   GROUP 1
+      "|%s|%s|——|——|——\n" 2 
+              unit_name_transform(S1.G1.D1)
+              DURATION(S1.G1.D2, "%.2Th")  
+      SUB 1
+         GROUP 1
+            "|——|——|%s|%s|%s\n" 3
+                    SLP_Category_Name[S1.D1,S1.G1.S1.G1.D1]
+                    SLP_SC_AMT(S1.D1,S1.G1.S1.G1.D1,S1.G1.S1.G1.D2)
+                    SLP_SC_UOM(S1.D1,S1.G1.S1.G1.D1)
+         END_GROUP
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 2
+   "\n当前无定期补给。" 0
+END_SUB
+
+END_MAIN
+

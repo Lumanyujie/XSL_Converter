@@ -1,0 +1,23 @@
+
+4200
+SUBJECT
+"%s补给物资处置情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s补给物资处置情况报告</p>" 1 unit_name_transform(D2)
+
+
+SUB 1
+"\n编号为%s的命令要求在%s" 2  S1.D1 LOCATION(S1.D2,S1.D3)
+"地域建立一个补给储藏点，" 0
+"但该地域有敌军活动，该任务无法完成，" 0
+"补给物资已返还运输部队%s。" 1 unit_name_transform(S1.D4)
+END_SUB
+
+SUB 3
+"\n位于%s的%s，" 2 unit_name_transform(D2) LOCATION(S3.D1, S3.D2)
+"按照预先储备命令接收一批补给物资，" 0
+"可下达后勤报告命令获取该处补给物资清单。" 0
+END_SUB
+
+END_MAIN
+

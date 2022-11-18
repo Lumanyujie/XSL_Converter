@@ -1,0 +1,10 @@
+
+1000
+SUBJECT
+"%s收到%s命令情况报告" 2 unit_name_transform(D2) trans_word("Order",D3)
+MAIN
+"<p class='title'>%s收到%s命令情况报告</p>" 2 unit_name_transform(D2) trans_word("Order",D3)
+"\n%s收到%s命令，" 2 unit_name_transform(D2) trans_word("Order",D3)
+"命令编号为%s。" 1 D4
+END_MAIN
+

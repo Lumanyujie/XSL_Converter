@@ -1,0 +1,16 @@
+
+2271
+SUBJECT
+"%s（特战分队）实施掩护行动情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s（特战分队）实施掩护行动情况报告</p>" 1 unit_name_transform(D2)
+"\n%s当前位于%s，" 2  unit_name_transform(D2) LOCATION(D3,D4)
+
+
+SUB 5
+"按照命令，开始实施对%s的掩护行动。" 1 unit_name_transform(S5.D1)
+END_SUB
+
+END_MAIN
+

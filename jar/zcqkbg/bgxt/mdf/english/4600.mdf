@@ -1,0 +1,36 @@
+
+4600
+SUBJECT
+"输送%s时间评估报告" 1 unit_name_transform(D3)
+MAIN
+"<p class='title'>输送%s时间评估报告</p>" 1 unit_name_transform(D3)
+"\n按指令（编号：%s），" 1 D2
+"%s完成了部队输送时间评估任务。" 1 unit_name_transform(D3)
+"具体要求：采取%s方式，" 1 Supply_Shipment_Method[D4]
+"将%s" 1 unit_name_transform(D3)
+"从%s（装载地域）" 1 LOCATION(D5, D6)
+"输送至%s（卸载地域）。" 1 LOCATION(D7, D8)
+
+SUB 1
+   "<p class='table_name'>评估结果</p>" 0
+   "__start_table|流程|时间\n" 0           
+   "|调配运力|%s\n" 1 DURATION(D9, "%d天%h小时%Rm分钟")
+   "|装载|%s\n" 1 DURATION(D10, "%d天%h小时%Rm分钟")
+   "|运输|%s\n" 1 DURATION(D11, "%d天%h小时%Rm分钟")
+   "|卸载|%s\n" 1 DURATION(D12, "%d天%h小时%Rm分钟")
+   "|总时间|%s\n" 1 DURATION(D13, "%d天%h小时%Rm分钟")
+   "__stop_table" 0
+END_SUB
+
+SUB 2  
+   "<p class='table_name'>评估结果</p>" 0
+   "__start_table|流程|时间\n" 0           
+   "|抵达装载点|%s\n" 1 DURATION(D9, "%d天%h小时%Rm分钟")
+   "|装载|%s\n" 1 DURATION(D10, "%d天%h小时%Rm分钟")
+   "|运输|%s\n" 1 DURATION(D11, "%d天%h小时%Rm分钟")
+   "|卸载|%s\n" 1 DURATION(D12, "%d天%h小时%Rm分钟")
+   "|总时间|%s\n" 1 DURATION(D13, "%d天%h小时%Rm分钟")
+   "__stop_table" 0
+END_SUB
+END_MAIN
+

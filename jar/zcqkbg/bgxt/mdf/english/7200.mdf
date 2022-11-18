@@ -1,0 +1,41 @@
+7200
+SUBJECT
+"%s防空作战情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s防空作战情况报告</p>" 1  unit_name_transform(D2)
+"\n%s向" 1  unit_name_transform(D2)
+"%s报告：" 1 unit_name_transform(D5)
+"%s，" 1 GTIME(D1) 
+"在%s地域，" 1 LOCATION(D3,D4)
+SUB 1
+"%s拦截来袭的%s%s枚。" 3 unit_name_transform(S1.D1) Targetable_Weapon[S1.D3] S1.D2
+
+   SUB 1
+"防空区内仍有导弹%s枚。" 1 S1.S1.D1
+   END_SUB
+
+END_SUB
+
+SUB 2
+"%s抗击敌机%s架次，" 2 unit_name_transform(S2.D1) S2.D2
+"共发射%s%s枚，" 2 Targetable_Weapon[S2.D4] S2.D3
+"击落敌机%s架。" 1 S2.D5
+
+   SUB 1
+"据侦测，为%s%s。" 2 
+                      No_Force_Side[S2.S1.D2] Aircraft_Type[S2.S1.D1]
+   END_SUB
+
+   SUB 3
+"据判别，为%s%s。" 2 
+　　　　　　　　　　　No_Force_Side[S2.S3.D2]  Aircraft_Type[S2.S3.D1]
+   END_SUB
+
+   SUB 4
+"据判别，为%s，属方仍不明。" 1    Aircraft_Target_Class[S2.S4.D1]
+   END_SUB
+
+END_SUB
+
+END_MAIN
+

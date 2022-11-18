@@ -1,0 +1,39 @@
+
+7250
+SUBJECT
+"外部模型中%s防空作战攻击错误" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>外部模型中%s防空作战攻击错误</p>" 1 unit_name_transform(D2)
+
+GROUP 1
+
+"\n击中：%s，杀伤：%s，损坏：%s，杀伤：%s。" 4 G1.D1 G1.D2 Answer[G1.D3]
+                                                      Answer[G1.D4]
+END_GROUP
+
+SUB 1
+"\n%s不存在，或者不是有效的地空导弹/空空导弹部队。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 2
+"\n%s不能使用%s。" 
+                                   2 unit_name_transform(D2) Targetable_Weapon[S2.D1]
+END_SUB
+
+SUB 3
+"\n命令%s发射%s发%s。" 3 unit_name_transform(D2) S3.D2 
+                                      Targetable_Weapon[S3.D1]
+"部队没有足够弹药。" 0
+END_SUB
+
+SUB 4
+"\n%s的发射装置数量不足，或准备的导弹数量不足。" 
+                                      1 unit_name_transform(D2)
+END_SUB
+
+SUB 5
+"\n%s意外开火，无损伤。" 1 unit_name_transform(D2)
+END_SUB
+
+END_MAIN
+

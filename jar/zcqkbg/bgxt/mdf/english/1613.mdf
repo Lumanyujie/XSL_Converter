@@ -1,0 +1,44 @@
+
+1613
+SUBJECT
+"%s %s的生存能力原型运输延迟属性" 2 Survivability_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  %s生存能力原型运输延迟属性  </p>\n\n" 1 Survivability_Prototype[D2]
+
+SUB 1 
+"  %s运输分队由炮击和空中打击引起的最小延迟:\n" 1 Supply_Shipment_Method[S1.D1]
+"   __start_table | 延迟原因   |            最小延迟\n" 0
+   GROUP 1
+"| %11.11s    |    %s\n\n" 
+               2 Type_Strike[S1.G1.D1]
+                 DURATION(S1.G1.D2, "%d 天 %h 时 %Rm 分")
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+SUB 2 
+"  %s运输分队因炮击和空中打击引起的最大延迟:\n" 1 Supply_Shipment_Method[S2.D1]
+   GROUP 1
+"   __start_table | 延迟原因   |       最大延迟\n" 0
+"| %11.11s    |    %s\n\n" 
+
+                        2 Type_Strike[S2.G1.D1]
+                        DURATION(S2.G1.D2, "%d 天 %h 时 %Rm 分")
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 3 
+"  使遭炮击或空中打击运输分队产生最大延迟，%s运输分队战损至少为:\n" 1 Supply_Shipment_Method[S3.D1]
+   GROUP 1
+" __start_table |战损原因  |  战损率\n" 0
+"| %11.11s    |    %8.8s\n\n" 2 Type_Strike[S3.G1.D1] S3.G1.D2
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+END_MAIN
+

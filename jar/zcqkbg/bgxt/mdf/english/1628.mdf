@@ -1,0 +1,31 @@
+
+1628
+SUBJECT
+"光照/气象条件下火力毁伤原型%s %s作战系统情况报告" 
+                                   2 Fire_Lethality_Prototype[D2] D2
+MAIN
+
+"<p class='title'> 光照/气象条件下火力毁伤原型%s %s作战系统情况报告</p> \n\n"  2 Fire_Lethality_Prototype[D2] D2
+
+
+
+"  隶属于%s火力毁伤原型的作战系统%s %s，"  3 Fire_Lethality_Prototype[D2]
+ Combat_System[D3] D3 
+"在下列光照/气象条件下的兰彻斯特方程毁伤系数:\n\n" 0
+SUB  1
+"  在光照条件%5.5s，气象条件%s下，兰彻斯特方程毁伤系数被改变为%s。 \n" 3 Day_Night[S1.D1]  Weather_Condition[S1.D2] S1.D3
+END_SUB
+
+SUB  2 
+"  作战系统%s有下列效能值:\n\n" 1 Combat_System[D3]
+"  __start_table | 光照   |  气象 |  效能\n" 0
+   GROUP 1
+" | %5.5s  |    %15.15s   | %s \n" 3 Day_Night[S2.G1.D1] 
+                                  Weather_Condition[S2.G1.D2]
+                                  S2.G1.D3
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+END_MAIN
+

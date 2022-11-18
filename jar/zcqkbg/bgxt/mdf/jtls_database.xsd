@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+
+  <xs:element name="JTLS-Database">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="JTLS-Data-Tables" use="required"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="JTLS-Data-Tables">
+    <xs:complexType>
+      <xs:element ref="table"/>
+      <xs:element ref="alter"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="table">
+    <xs:complexType>
+      <xs:element ref="column" use="required"/>
+      <xs:element ref="constraint" use="optional"/>
+      <xs:element ref="insert" use="optional"/>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="alter">
+    <xs:complexType>
+      <xs:element ref="constraint" use="required"/>
+      <xs:attribute name="table" type="xs:string" use="required"/>
+      <xs:attribute name="action" type="xs:string" use="required">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="add-constraint"/>
+        </xs:restriction>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="column">
+    <xs:complexType>
+      <xs:element ref="datatype" use="optional"/>
+      <xs:element ref="constraint" use="optional"/>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="primary" type="xs:string" use="optional">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="yes|no"/>
+        </xs:restriction>
+      </xs:attribute>
+      <xs:attribute name="null" type="xs:string" use="required">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="yes|no"/>
+        </xs:restriction>
+      </xs:attribute>
+      <xs:attribute name="default" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="datatype">
+    <xs:complexType>
+      <xs:attribute name="typename" type="xs:string" use="required"/>
+      <xs:attribute name="size" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="constraint">
+    <xs:complexType>
+      <xs:element ref="reference" use="optional"/>
+      <xs:element ref="columnref" use="optional"/>
+      <xs:element ref="translate" use="optional"/>
+      <xs:element ref="between" use="optional"/>
+      <xs:element ref="greater-than" use="optional"/>
+      <xs:element ref="greater-than-or-equal" use="optional"/>
+      <xs:element ref="less-than" use="optional"/>
+      <xs:element ref="less-than-or-equal" use="optional"/>
+      <xs:element ref="not-equal" use="optional"/>
+      <xs:element ref="equal" use="optional"/>
+      <xs:element ref="not-null" use="optional"/>
+      <xs:element ref="member-of" use="optional"/>
+      <xs:element ref="all" use="optional"/>
+      <xs:element name="and" use="optional">
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="or" use="optional">
+        </xs:simpleType>
+      </xs:element>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="type" type="xs:string" use="required">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="reference"/>
+          <xs:enumeration value="fk"/>
+          <xs:enumeration value="unique"/>
+          <xs:enumeration value="check"/>
+        </xs:restriction>
+      </xs:attribute>
+      <xs:attribute name="cascade" type="xs:string" use="optional">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="yes|no"/>
+        </xs:restriction>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="reference">
+    <xs:complexType>
+      <xs:element ref="columnref" use="optional"/>
+      <xs:attribute name="table" type="xs:string" use="required"/>
+      <xs:attribute name="column" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="columnref">
+    <xs:attribute name="name" type="xs:string" use="required"/>
+  </xs:element>
+
+  <xs:element name="translate">
+    <xs:complexType>
+      <xs:attribute name="columnref" type="xs:string" use="required"/>
+      <xs:attribute name="old" type="xs:string" use="required"/>
+      <xs:attribute name="new" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="between">
+    <xs:complexType>
+      <xs:attribute name="columnref" type="xs:string" use="required"/>
+      <xs:attribute name="min" type="xs:string" use="required"/>
+      <xs:attribute name="max" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="greater-than">
+    <xs:complexType>
+      <xs:attribute name="columnref" type="xs:string" use="required"/>
+      <xs:attribute name="min" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="greater-than-or-equal">
+    <xs:complexType>
+      <xs:attribute name="columnref" type="xs:string" use="required"/>
+      <xs:attribute name="min" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="less-than">
+    <xs:complexType>
+      <xs:attribute name="columnref" type="xs:string" use="required"/>
+      <xs:attribute name="max" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="less-than-or-equal">
+    <xs:complexType>
+      <xs:attribute name="columnref" type="xs:string" use="required"/>
+      <xs:attribute name="max" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="not-equal">
+    <xs:complexType>
+      <xs:attribute name="columnref" type="xs:string" use="required"/>
+      <xs:attribute name="value" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="equal">
+    <xs:complexType>
+      <xs:attribute name="columnref" type="xs:string" use="required"/>
+      <xs:attribute name="value" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="not-null">
+    <xs:attribute name="columnref" type="xs:string" use="required"/>
+  </xs:element>
+
+  <xs:element name="member-of">
+    <xs:complexType>
+      <xs:element ref="option"/>
+      <xs:attribute name="columnref" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="option">
+    <xs:attribute name="value" type="xs:string" use="required"/>
+  </xs:element>
+
+  <xs:element name="all">
+    <xs:complexType>
+      <xs:element ref="translate" use="optional"/>
+      <xs:element ref="between" use="optional"/>
+      <xs:element ref="greater-than" use="optional"/>
+      <xs:element ref="greater-than-or-equal" use="optional"/>
+      <xs:element ref="less-than" use="optional"/>
+      <xs:element ref="less-than-or-equal" use="optional"/>
+      <xs:element ref="not-equal" use="optional"/>
+      <xs:element ref="equal" use="optional"/>
+      <xs:element ref="not-null" use="optional"/>
+      <xs:element ref="member-of" use="optional"/>
+      <xs:element ref="all" use="optional"/>
+      <xs:element name="and" use="optional">
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="or" use="optional">
+        </xs:simpleType>
+      </xs:element>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

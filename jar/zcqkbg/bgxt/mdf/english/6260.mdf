@@ -1,0 +1,50 @@
+
+6260
+SUBJECT
+"%s雷场目标情况报告" 1 D2
+MAIN
+"<p class='title'>%s雷场目标情况报告</p>" 1 D2
+
+SUB 1
+"\n%s按照%s命令，已完成在" 2 unit_name_transform(S1.D1) trans_word("Order",S1.D2)
+"%s附近布设%s类型雷场的任务。" 2 LOCATION(S1.D3,S1.D4) Minefield_Type[S1.D5]
+END_SUB
+
+SUB 2
+"\n关于%s，%s于%s获知" 3 D2 No_Force_Side[S2.D1] GTIME(S2.D2)
+"其位于%s，" 1 LOCATION(S2.D3,S2.D4)
+"确信为%s的%s类型雷场。" 2 No_Force_Side[S2.D5] Minefield_Type[S2.D6]
+END_SUB
+
+SUB 3
+"\n感知到以下数量水雷：" 0
+"\n——第1通路：%4.4s；\n" 1 S3.D1
+"\n——第2通路：%4.4s；\n" 1 S3.D2
+"\n——第3通路：%4.4s；\n" 1 S3.D3
+"\n——第4通路：%4.4s；\n" 1 S3.D4
+"\n——第5通路：%4.4s；\n" 1 S3.D5
+"\n——第6通路：%4.4s；\n" 1 S3.D6
+"\n——不在通路上：%4.4s。\n" 1 S3.D7
+END_SUB
+
+SUB 4
+"\n不能通过客户端显示功能清除雷场目标，" 0
+"因为雷场仍然有效，可使用客户端过滤功能清除。" 0
+END_SUB
+
+SUB 5
+"\n海上扫雷行动终止。" 0
+
+   SUB 1
+"在%s雷场内没有发现水雷。" 1 D2
+   END_SUB
+   
+   SUB 2
+"舰艇不能清除陆上地雷。" 0
+   END_SUB
+
+END_SUB
+
+
+END_MAIN
+

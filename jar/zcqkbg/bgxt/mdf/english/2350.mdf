@@ -1,0 +1,76 @@
+
+2350
+SUBJECT
+"%s%s情况报告" 2 unit_name_transform(D2) Unit_Removal_Type[D8] 
+MAIN
+" <p class='title'>%s%s情况报告</p> " 2 unit_name_transform(D2) Unit_Removal_Type[D8]
+
+SUB 1
+   SUB 1
+"\n%s损失惨重，无法继续成建制存在，因此撤消该部队番号，" 1 unit_name_transform(D2)
+"同时取消对该部队的所有后勤补给。" 0
+   END_SUB
+   SUB 2
+"\n按照导演方指令，%s已分阶段撤出战场。" 1 unit_name_transform(D2)
+   END_SUB
+END_SUB
+
+SUB 2
+"\n对以下部队的日常后勤补给任务已转交给%s， " 1  unit_name_transform(S2.D1)
+"但对于转交前所欠补给该部队不再补充。" 0
+"同时，按指令重新分配对目标的支援保障任务。" 0
+
+END_SUB
+
+SUB 3
+"\n%s没有针对部队的日常支援保障任务，" 1 unit_name_transform(D2)
+"所属部队当前也没有，" 0
+"对目标的支援保障任务按指令重新分配。" 0
+END_SUB
+
+SUB 4
+"<p class='table_name'>调整后的日常保障机制<p>" 0
+"__start_table|部队番号|新保障部队\n" 0
+
+   GROUP 1
+"|%s|%s\n" 2 unit_name_transform(S4.G1.D1) unit_name_transform(S4.G1.D2)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 5
+"\n重新分配目标：" 0
+   GROUP 1
+      SUB 1
+"\n——%s，现在与%s关联。" 2 unit_name_transform(S5.G1.S1.D1)
+                                   unit_name_transform(S5.G1.S1.D2)
+      END_SUB
+      SUB 2
+"\n——%s，没有与之关联的部队，已退出演习。" 1 unit_name_transform(S5.G1.S2.D1)
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 6
+"\n不涉及相关后勤保障的调整问题。" 0
+END_SUB
+
+SUB 7
+"" 0         
+END_SUB
+
+SUB 8
+"\n所有正在利用该部队物资装卸设备进行的部队输送和补给运输行动同时取消：" 0
+   GROUP 1
+      SUB 1
+"\n——%s，和其分阶段部署的先遣队%s，已同时被消灭。" 2 unit_name_transform(S8.G1.S1.D1)
+  unit_name_transform(S8.G1.S1.D2)
+      END_SUB
+      SUB 2
+"\n——%s，刚刚开始分阶段部署，就已被消灭。" 1 unit_name_transform(S8.G1.S2.D1)
+      END_SUB
+   END_GROUP
+END_SUB
+
+END_MAIN
+

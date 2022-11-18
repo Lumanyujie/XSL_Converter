@@ -1,0 +1,37 @@
+
+5851
+SUBJECT
+"删除情报搜索区命令（编号：%s）执行情况报告" 1 D2
+MAIN
+" <p class='title'>删除情报搜索区命令（编号：%s）执行情况报告</p> " 1 D2
+GROUP 1
+
+   SUB 1
+"\n按照命令，已删除编号为%s的" 1 G1.S1.D1
+"%s情报搜索区。" 1 DSA_Area_Type[G1.S1.D2]
+   END_SUB
+
+   SUB 2
+"\n以下空中编队使用该情报搜索区：" 0
+     GROUP 1
+"\n——%s编队" 1 G1.S2.G1.D1
+     END_GROUP
+   END_SUB
+
+   SUB 3
+"\n没有空中编队使用该情报搜索区。" 0
+   END_SUB
+
+   SUB 4
+"\n编号为%s的情报搜索区不存在，因此删除命令无法执行。" 1 G1.S4.D1
+   END_SUB
+
+   SUB 5
+"\n你方没有情报搜索区可删除，" 0
+"因此删除命令无法执行。" 0
+   END_SUB
+
+END_GROUP
+
+END_MAIN
+

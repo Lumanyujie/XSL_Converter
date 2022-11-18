@@ -1,0 +1,34 @@
+
+1735
+SUBJECT
+"目标类型群内容%s报告" 1 Target_Type_Group[D2]
+MAIN
+"<p class='title'> 目标类型群内容%s报告</p>\n\n" 1  Target_Type_Group[D2]
+
+
+SUB 1
+"  将目标类%s(%s)、子类%s添加到目标类型群%s的命令。\n" 4
+                                               Target_Category[S1.D1] S1.D1 
+                            SUBCAT_NAME{S1.D1,S1.D2}  Target_Type_Group[D2]
+END_SUB
+SUB 2
+"  从目标类型群%s中删除目标类%s(%s)、子类%s的命令。\n" 4 
+                                               Target_Category[S2.D1] S2.D1 
+                            SUBCAT_NAME{S2.D1,S2.D2}  Target_Type_Group[D2]
+END_SUB
+
+SUB 3
+"  目标类型群%s具有下列内容:\n" 1 Target_Type_Group[D2]
+   GROUP 1
+
+" __start_table | 目标类 |编号    |  子类  |  优先级 \n\n" 0
+     
+"|%-20.20s|   %s | %15.15s|  %s\n" 4 Target_Category[S3.G1.D1] S3.G1.D1 SUBCAT_NAME{S3.G1.D1,S3.G1.D2}
+              S3.G1.D3
+      END_GROUP
+"__stop_table"0
+
+END_SUB
+
+END_MAIN
+

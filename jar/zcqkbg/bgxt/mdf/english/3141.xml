@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="3141"> <subject> <line>空中机群（代字：<D2/>）取消情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;空中机群（代字：<D2/>）取消情况报告&lt;/p&gt;</line>  <sub n="1"> <line><br/>在该空中机群中，没有指派编队在会合时间</line> <line>（<f n="GTIME"><S1.D1/><d>%U%d%H%MZ %b %y</d></f>）时抵达，空中机群取消。</line> </sub></main> </msg> </msgs>

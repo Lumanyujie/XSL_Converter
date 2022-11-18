@@ -1,0 +1,44 @@
+
+5510
+SUBJECT
+"情报融合报告" 0
+MAIN
+"<p class='title'>情报融合报告</p> " 0
+
+SUB 1
+"\n国家情报源显示：" 0
+END_SUB
+
+SUB 2
+"\n联合情报源显示：" 0
+END_SUB
+
+SUB 3
+"\n空中情报源显示：" 0
+END_SUB
+
+SUB 4
+"\n据非常可靠情报来源显示：" 0
+END_SUB
+
+SUB 5
+"\n据可靠情报来源显示：" 0
+END_SUB
+
+SUB 6
+"\n据可靠情报来源显示：" 0
+END_SUB  
+
+SUB 9
+"未识别目标“%s”确认为" 1 unit_name_transform(D3)
+"%s，测算位置：%s，" 2 unit_name_transform(D3) Location(D5,D6)
+"当前战斗力：%2.2f" 1 D7
+"（情报融合时间：%s）。 " 1 GTIME(D1)
+END_SUB
+
+SUB 10
+"\n该部现处于%s态势。" 1 Unit_Posture[S10.D1]
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,74 @@
+
+9140
+SUBJECT
+"%s地面战果评估区%s报告" 2  No_Force_Side[D2] Periodic_or_Summary[D5]
+MAIN
+
+"<p class='title'>%s地面战果评估区%s报告</p>" 2 No_Force_Side[D2] Periodic_or_Summary[D5]
+"\n报告时间段：%s至%s。" 2 GTIME(D3) GTIME(D1)
+GROUP 1
+   SUB 1
+"<p class='title1'>战果评估区%s</p>" 1 G1.S1.D1
+      GROUP 1
+         SUB 1
+"<p class='table_name'>%s战果清单</p>" 1 G1.S1.G1.S1.D1
+"__start_table|人员装备类型|数量\n" 0
+            GROUP 1
+"|%s|%s\n" 2 CSP_System_Name[G1.S1.G1.S1.G1.D1,G1.S1.G1.S1.G1.D2] G1.S1.G1.S1.G1.D3
+            END_GROUP
+"__stop_table" 0
+         END_SUB
+
+         SUB 2
+            GROUP 1
+               SUB 1
+"<p class='table_name'>%s突击战果清单</p>" 1 Aircraft_Type[G1.S1.G1.S2.G1.S1.D1]
+"__start_table|人员装备类型|数量\n" 0
+                  GROUP 1    
+"|%s|%s\n" 2 CSP_System_Name[G1.S1.G1.S2.G1.S1.G1.D1,G1.S1.G1.S2.G1.S1.G1.D2] G1.S1.G1.S2.G1.S1.G1.D3
+                  END_GROUP
+"__stop_table" 0
+               END_SUB
+            END_GROUP
+         END_SUB
+
+         SUB 3
+"<p class='table_name'>炮火突击战果清单</p>" 0
+"__start_table|人员装备类型|数量\n" 0
+            GROUP 1
+"|%s|%s\n" 2 CSP_System_Name[G1.S1.G1.S3.G1.D1,G1.S1.G1.S3.G1.D2] G1.S1.G1.S3.G1.D3
+            END_GROUP
+"__stop_table" 0
+         END_SUB
+         
+         SUB 4
+"<p class='table_name'>导弹突击战果清单</p>" 0
+"__start_table|人员装备类型|数量\n" 0
+            GROUP 1
+"|%s|%s\n" 2 CSP_System_Name[G1.S1.G1.S4.G1.D1,G1.S1.G1.S4.G1.D2] G1.S1.G1.S4.G1.D3
+            END_GROUP
+"__stop_table" 0
+         END_SUB
+
+         SUB 5
+"<p class='table_name'>综合战果清单</p>" 0
+"__start_table|人员装备类型|数量\n" 0
+            GROUP 1
+"|%s|%s\n" 2 CSP_System_Name[G1.S1.G1.S5.G1.D1,G1.S1.G1.S5.G1.D2] G1.S1.G1.S5.G1.D3
+            END_GROUP
+"__stop_table" 0
+         END_SUB
+
+      END_GROUP
+      SUB 6
+"——此战果评估区本时段无战果。" 0
+      END_SUB
+   END_SUB
+END_GROUP
+ 
+SUB 2
+"\n此方无战果评估区。" 0
+END_SUB
+ 
+END_MAIN
+

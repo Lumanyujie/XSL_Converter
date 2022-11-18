@@ -1,0 +1,29 @@
+
+3110
+SUBJECT
+"取消空运空投命令（批号：%s）情况报告" 1 D2
+MAIN
+"<p class='title'>取消空运空投命令（批号：%s）情况报告</p>" 1 D2
+SUB 1
+"\n空投命令（批号：%s）" 1 D2
+"要求将部队空投至%s，" 1 LOCATION(S1.D1,S1.D2)
+"但该处为水域，不能实施空投，命令取消。" 0
+
+END_SUB
+
+SUB 2
+"\n空运空投命令（批号：%s）" 1 D2
+"指定由来自%s的飞机执行，" 1 unit_name_transform(S2.D1)
+   SUB 1
+"装载点（%s）" 1 LOCATION(S2.S1.D1,S2.S1.D2)
+"为水域，要求飞机在舰艇上起降，" 0
+   END_SUB
+   SUB 2
+"卸载点（%s）" 1 LOCATION(S2.S2.D1,S2.S2.D2)
+"为水域，要求飞机在舰艇上起降，" 0
+   END_SUB
+"但该型飞机不能在舰艇上起降，命令取消。" 0
+END_SUB
+
+END_MAIN
+

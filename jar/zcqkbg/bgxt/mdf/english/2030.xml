@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="2030"> <subject> <line>巡航导弹<D2/>重新锁定目标情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;巡航导弹<D2/>重新锁定目标情况报告&lt;/p&gt;</line> <line><br/><D2/>的控制程序已按命令调整，预定攻击目标时间：<f n="GTIME"><D4/></f>。</line>  <sub n="1"> <line>锁定目标：<S1.D1/>。</line> </sub> <sub n="2"> <line>目标点坐标：<f n="LOCATION"><S2.D1/><S2.D2/></f>。</line> </sub> <sub n="3"> <line>导弹轨道状态：<f n="Orbit_Status"><S3.D1/></f>。</line> </sub> <sub n="4"> <line>轨道位置：<f n="LOCATION"><S4.D1/><S4.D2/></f>。</line> </sub></main> </msg> </msgs>

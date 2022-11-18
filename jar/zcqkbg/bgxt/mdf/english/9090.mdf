@@ -1,0 +1,41 @@
+
+9090
+SUBJECT
+"%s物资补给情况%s报告" 2 No_Force_Side[D2] Periodic_or_Summary[D6] 
+MAIN
+"<p class='title'>%s物资补给情况%s报告</p>" 2 No_Force_Side[D2] Periodic_or_Summary[D6] 
+"\n报告时间段：%s至%s。" 2 GTIME(D3) GTIME(D1)
+
+SUB 1
+"<p class='table_name'>%s物资补给明细</p>" 1 Service_Names[S1.D1]
+ 
+"__start_table|补给类型|单位|周期使用|周期需求|周期损失|单位\n" 0
+ GROUP 1
+"|%s|%s|%s|%s|%s\n" 5 SLP_Category_Name[D4,S1.G1.D1]
+                               SLP_SC_UOM(D4,S1.G1.D1)
+                                SLP_SC_AMT(D4,S1.G1.D1,S1.G1.D2)
+                                SLP_SC_AMT(D4,S1.G1.D1,S1.G1.D3)
+                                SLP_SC_AMT(D4,S1.G1.D1,S1.G1.D4)
+
+   END_GROUP
+"__stop_table\n" 0
+
+END_SUB
+
+SUB 2
+"<p class='table_name'>物资补给情况汇总</p>" 0
+"__start_table|补给类型|单位|周期使用|周期需求|周期损失|单位\n" 0
+
+ GROUP 1
+"|%s|%s|%s|%s|%s\n" 5 SLP_Category_Name[D4,S2.G1.D1]
+                               SLP_SC_UOM(D4,S2.G1.D1)
+                                SLP_SC_AMT(D4,S2.G1.D1,S2.G1.D2)
+                                SLP_SC_AMT(D4,S2.G1.D1,S2.G1.D3)
+                                SLP_SC_AMT(D4,S2.G1.D1,S2.G1.D4)
+   END_GROUP
+"__stop_table\n" 0
+
+END_SUB
+
+END_MAIN
+

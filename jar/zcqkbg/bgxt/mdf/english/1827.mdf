@@ -1,0 +1,43 @@
+
+1827
+SUBJECT
+"舰船部队原型%s(编号%s)补给物资总量已经改变" 
+                                          2 Ship_Unit_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  使用舰船部队原型%s(编号%s)部队的补给类总量 </p>\n"
+                                          2 Ship_Unit_Prototype[D2] D2
+SUB 1
+   GROUP 1
+"  %15.15s (%5.5s)送达战区:  %14.14s %s\n" 4
+                     Supply_Category[S1.G1.D1] S1.G1.D1
+                        SLP_SC_AMT(0,S1.G1.D1,S1.G1.D2) SLP_SC_UOM(0,S1.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 2
+   GROUP 1
+"  %15.15s (%5.5s)重新调整的补给等级:  %14.14s %s\n" 4
+                     Supply_Category[S2.G1.D1] S2.G1.D1
+                        SLP_SC_AMT(0,S2.G1.D1,S2.G1.D2) SLP_SC_UOM(0,S2.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 3
+   GROUP 1
+"  %15.15s   (%5.5s)储存目标:  %14.14s %s\n" 4
+                     Supply_Category[S3.G1.D1] S3.G1.D1
+                        SLP_SC_AMT(0,S3.G1.D1,S3.G1.D2) SLP_SC_UOM(0,S3.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 4
+   GROUP 1
+"  %15.15s   (%5.5s)装载量等级:  %14.14s %s\n" 4
+                     Supply_Category[S4.G1.D1] S4.G1.D1
+                        SLP_SC_AMT(0,S4.G1.D1,S4.G1.D2) SLP_SC_UOM(0,S4.G1.D1)
+   END_GROUP
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,56 @@
+
+3320
+SUBJECT
+"对%s完成%s空运任务的评估报告" 2 unit_name_transform(D3) unit_name_transform(D4)
+MAIN
+"<p class='title'>对%s完成%s空运任务的评估报告</p>" 2 unit_name_transform(D3) unit_name_transform(D4)
+
+"\n按照编号为%s的命令，" 1 D2
+"对%s完成%s" 2 unit_name_transform(D3) unit_name_transform(D4)
+"空运任务所需时间进行评估。" 0
+"以下评估内容由%s提供：" 1 unit_name_transform(D3)
+"<p class='table_name'>空运任务评估报告</p>" 0
+"__start_table|分项|数值\n" 0
+"|机型|%s\n" 1 Aircraft_Type[D5]
+"|指定飞机数量|%s\n" 1 D6
+"|拥有飞机数量|%s\n" 1 D7
+"|抵达装载点所需时间|%s\n" 1 DURATION(D8, "%d天%h时%Rm分")
+"|部队干货重量|%s%s\n" 2 UOM_AMT(DRY_WEIGHT,D9) UOM(DRY_WEIGHT)
+"|飞机干货运输能力|%s%s\n" 2 UOM_AMT(DRY_WEIGHT,D10) UOM(DRY_WEIGHT)
+"|部队液货重量|%s%s\n" 2 UOM_AMT(DRY_WEIGHT,D11) UOM(DRY_WEIGHT)
+"|飞机液货运输能力|%s%s\n" 2 UOM_AMT(DRY_WEIGHT,D12) UOM(DRY_WEIGHT)
+"|装载时间|%s\n" 1        DURATION(D13, "%d天%h时%Rm分")
+"|抵达卸载点所需时间|%s\n" 1 DURATION(D14, "%d天%h时%Rm分")
+"|卸载时间|%s" 1 DURATION(D15, "%d天%h时%Rm分")
+"<br>（如果指定为空投，卸载时间为零）\n" 0
+"|飞机往返总时间|%s\n" 1 DURATION(D16, "%d天%h时%Rm分")
+"|单架飞机运输时间|%s\n" 1 DURATION(D17, "%d天%h时%Rm分")
+"|任务要求运输时间|%s\n" 1 DURATION(D18, "%d天%h时%Rm分")
+"|指定装载点|%s\n" 1 LOCATION(D19, D20)
+"|指定卸载点|%s\n" 1 LOCATION(D21, D22)
+"__stop_table" 0
+"\n" 0
+SUB 1 
+"注：此评估基于%s" 1 unit_name_transform(D3)
+"对%s实施空运。" 1 unit_name_transform(D4)
+END_SUB
+
+SUB 2 
+"注：此评估基于%s" 1 unit_name_transform(D3)
+"对%s实施空投。" 1 unit_name_transform(D4)
+END_SUB
+
+SUB 3
+"已指定出航航线。" 0
+END_SUB
+
+SUB 4
+"已指定从装载点到卸载点的运输航线。" 0
+END_SUB
+
+SUB 5
+"已指定返航航线，但在评估中未包括在内。" 0
+END_SUB
+
+END_MAIN
+

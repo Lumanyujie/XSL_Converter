@@ -1,0 +1,123 @@
+
+1626
+SUBJECT
+"显示可命中目标武器参数%s" 1 Targetable_Weapon[D2]
+MAIN
+"<p class='title'>  显示可命中目标武器参数%s报告 </p> \n" 1 Targetable_Weapon[D2]
+SUB 1
+"  下列可命中目标武器特性已被调理员经由可命中目标武器%s(序号%s)命令修改：\n" 2
+                                           Targetable_Weapon[D2] D2
+END_SUB
+
+SUB 2
+"  下列可命中目标武器特性当前被指定为可命中目标武器%s(序号%s)：\n\n" 2 Targetable_Weapon[D2] D2
+END_SUB
+
+SUB 3
+"  自动开火标识:%s%s。\n" 2 S3.D1 Answer[S3.D1]
+END_SUB
+
+SUB 4
+"  弹药序号:%s。\n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  昼夜修正系数:%s。\n" 1 S5.D1
+END_SUB
+
+SUB 6
+"  推进阶段时间:%s分。\n" 1 DURATION(S6.D1, "%.2Tm")
+END_SUB
+
+SUB 7
+"  有效距离:%s %s。\n" 2 UOM_AMT(DISTANCE,S7.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 8
+"  射程:%s %s。\n" 2 UOM_AMT(DISTANCE,S8.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 9
+"  每轮次时间:%s分。\n" 1 DURATION(S9.D1, "%.2Tm")
+END_SUB
+
+SUB 10
+"  准备时间:%s。\n"
+        1 DURATION(S10.D1, "%d天%h时3%Rm分")
+END_SUB
+
+SUB 11
+"  武器速度:%s%s。\n" 2 UOM_AMT(SPEED,S11.D1) UOM(SPEED) 
+END_SUB
+
+SUB 12
+"  雷场类型:%s。\n" 1 Minefield_Type[S12.D1]
+END_SUB
+
+SUB 13
+"飞行区:%s。\n" 1 Altitude_Zone[S13.D1]
+END_SUB
+
+SUB 14
+"  飞行中段被发现概率:%s。\n" 1 S14.D1
+END_SUB
+
+SUB 15
+"  潜航:%s。\n" 1 Answer[S15.D1]
+END_SUB
+
+SUB 16
+"  建立通信链接能力:%s。\n" 1 ADV_Capability_Flag[S16.D1]
+END_SUB
+
+SUB 17
+"  最小投弹高度:%s 米。\n" 1 S17.D1
+END_SUB
+
+SUB 18
+"  最大投弹高度:%s 米。\n" 1 S18.D1
+END_SUB
+
+SUB 19
+"  飞机控制要求:%s。\n" 1 Answer[S19.D1]
+END_SUB
+
+SUB 20
+"  船体最多可承受直接命令次数:%s。\n" 1 S20.D1
+END_SUB
+
+SUB 21
+"  搜索距离:%s %s。\n" 2 UOM_AMT(DISTANCE,S21.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 22
+"  射击噪音级别:%s d分贝。\n" 1 S22.D1
+END_SUB
+
+SUB 23
+"  射击噪音时间:%s天（十进制小数）。\n" 1 S23.D1
+END_SUB
+
+SUB 24
+"潜水艇深水打击能力:%s\n" 1 Sub_Weap_Firing_Ability[S24.D1]
+END_SUB
+
+SUB 25
+"\n深水区设置修正系数:\n" 0
+   GROUP 1
+"    %3.3s   %15.15s             %7.7s\n" 3
+            S25.G1.D1 Depth_Zone[S25.G1.D1] S25.G1.D2
+   END_GROUP
+"\n" 0
+END_SUB
+
+SUB 26
+"圆概率偏差:%s %s\n" 2 UOM_AMT(DISTANCE,S26.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 27
+"DIS码:%s\n" 1 S27.D1
+END_SUB
+   
+END_MAIN
+

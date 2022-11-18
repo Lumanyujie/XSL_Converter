@@ -1,0 +1,22 @@
+2922
+SUBJECT
+"北约军情报告, %s" 1 unit_name_transform(D2)
+MAIN
+
+"<p cless='title'>%s报告敌方情报信息</p>" 1 unit_name_transform(D2)
+" __start_table | 敌方作战单位	|上级指挥级别	|所属国家|	部队类型|军种|	部队位置\n" 0
+ 
+   GROUP 1
+"  | %-20.20s| %-4.4s| %-4.4s| %-4.4s| %-10.10s| %s\n" 
+      6 unit_name_transform(G1.D1) NATO_Command_Level[G1.D2] G1.D3 unit_name_transform(G1.D4)
+        Service_Names[G1.D6] LOCATION(G1.D7, G1.D8)
+      GROUP 1
+"    |  %-20.20s| %-4.4s| %-4.4s| %-4.4s| %-10.10s|%s\n"
+      6 G1.G1.D1 NATO_Command_Level[G1.G1.D2] G1.G1.D3 G1.G1.D4 
+        Service_Names[G1.G1.D6] LOCATION(G1.G1.D7, G1.G1.D8)
+      END_GROUP
+   END_GROUP
+   "__stop_table\n" 0
+
+END_MAIN
+

@@ -1,0 +1,196 @@
+
+6350
+SUBJECT
+"%s海运行动情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s海运行动情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n%s无法在卸载地点使用装卸设施，" 1 unit_name_transform(D2)
+"此设施是海运和" 0
+"所有海上补给行动必需的设备。该海运行动已取消。" 0
+END_SUB
+
+SUB 2
+"\n%s正运用隶属于%s的物资装卸设备，" 2 unit_name_transform(D2) unit_name_transform(S2.D2)
+"将补给物资卸载给%s。" 1 unit_name_transform(S2.D1) 
+"预计完成时间： %s。" 1 GTIME(S2.D3)
+END_SUB
+
+SUB 3
+"\n%s正在卸载补给给%s，" 2 unit_name_transform(D2) unit_name_transform(S3.D1)
+"预计完成时间：%s。" 1 GTIME(S3.D2) 
+END_SUB
+
+SUB 4
+   SUB 1
+"\n%s正处于海运装载点。" 1 unit_name_transform(D2) 
+      SUB 1
+"由于该编队现在没有液货补给物资装载能力，" 0 
+"海运不能完成，因此海运行动中止。" 0
+      END_SUB
+      SUB 2
+"由于该编队现在没有干货补给物资装载能力，" 0 
+"海运不能完成，因此海运行动中止。" 0
+      END_SUB
+   END_SUB
+   SUB 2
+"\n%s正处于海运卸载点。" 1 unit_name_transform(D2)
+      SUB 1
+"由于该编队现在没有液货补给物资卸载能力，" 0 
+"海运不能完成，因此海运行动中止。" 0
+      END_SUB
+      SUB 2
+"由于该编队现在没有干货补给物资卸载能力，" 0 
+"海运不能完成，因此海运行动中止。" 0
+      END_SUB
+   END_SUB
+END_SUB
+
+SUB 5
+"\n%s正在海运装载点等待%s，" 2 unit_name_transform(D2) unit_name_transform(S5.D1)
+"该部队未到达此地且尚未机动，" 0 
+"海运命令取消。" 0
+END_SUB
+
+SUB 6
+"\n%s正在海运装载点等待%s，" 2 unit_name_transform(D2) unit_name_transform(S6.D1)
+"该部队未到达此地且尚未机动，" 0 
+"海运命令取消。" 0
+END_SUB
+
+SUB 7
+"\n%s在装载地域，" 1 unit_name_transform(D2)
+"无物资装卸设备可用，而这种设备是海运和" 0
+"所有补给行动所必需的，因此海运行动中止。" 0
+END_SUB
+
+SUB 8
+"\n%s没有足够的输送能力来输送命令所要求的补给物资，" 1 unit_name_transform(D2)
+"编队的输送能力仅为所要求输送能力的%s%%。" 1 S8.D1 
+"因此海运行动中止。" 0
+END_SUB
+
+SUB 9
+"%s没有足够补给物资来满足海运申请，" 1 unit_name_transform(S9.D1)
+"该部仅有需求补给量的%s%%。" 1 S9.D2 
+"而且既没有待收补给物资，也无法从其保障部队处得到足够补给物资，" 0
+"因此，海运行动中止。具体情况：" 0
+"<p class='table_name'>补给物资需求明细</p>" 0
+"__start_table｜部队｜补给类型｜可用量｜需求量\n" 0
+
+   GROUP 1
+"｜%s｜%s｜%s｜%s%s\n" 5 unit_name_transform(S9.G1.D1)
+                         SLP_Category_Name[S9.D3,S9.G1.D2]
+                                SLP_SC_AMT(S9.D3,S9.G1.D2,S9.G1.D3)
+                                SLP_SC_AMT(S9.D3,S9.G1.D2,S9.G1.D4)
+                                SLP_SC_UOM(S9.D3,S9.G1.D2)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 10
+"\n%s已开始装载指定的海运补给。具体情况：" 1 unit_name_transform(D2)
+"<p class='table_name'>装载补给物资明细</p>" 0
+"__start_table｜补给类型｜装载量｜订货量\n" 0
+   GROUP 1
+"｜%s｜%s｜%s%s\n" 4
+                        SLP_Category_Name[S10.D1,S10.G1.D1]
+                               SLP_SC_AMT(S10.D1,S10.G1.D1,S10.G1.D2)
+                               SLP_SC_AMT(S10.D1,S10.G1.D1,S10.G1.D3)
+                               SLP_SC_UOM(S10.D1,S10.G1.D1)
+   END_GROUP
+   "__stop_table" 0
+   SUB 1
+"\n装载将耗时%s。" 1 DURATION(S10.S1.D1, "%.2Th")
+   END_SUB
+END_SUB
+
+SUB 11
+"\n%s在两栖行动地域无物资装卸设备可用，" 1 unit_name_transform(D2)
+"而这些设备是两栖行动和所有海运补给行动所必需的，" 0
+"因此该两栖行动中止。" 0
+END_SUB
+
+SUB 12
+"\n" 0
+   SUB 1
+"%s遭敌方攻击造成补给物资损失殆尽，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 2
+"从装载点到卸载点出现航线问题，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 3
+"%s所有具有输送能力的舰船被毁，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 4
+"%s最后一艘舰船被毁，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 5
+"没有适于装卸补给物资的港口设施，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 6
+"%s接到取消海上任务命令，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 7
+"由于没有通行航线，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 8
+"%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 9
+"由于%s在两栖行动初始阶段的航线问题，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 10
+"由于缺乏两栖行动必需的装备设施，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 11
+"在装载点没有被输送部队和装载物资，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 12
+"接到命令，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 13
+"%s的舰艇不具备扫雷能力，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 14
+"该区域没有敌方雷场，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 15
+"%s的舰船不具备布雷能力，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 16
+"%s没有水雷，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+
+END_SUB
+
+SUB 15
+"\n%s于%s完成卸载，" 2 unit_name_transform(D2) S15.D1
+"主要运输了以下补给物资：" 0
+   GROUP 1
+"\n——%s：%s%s" 3 SLP_Category_Name[S15.D2,S15.G1.D1] 
+                                     SLP_SC_AMT(S15.D2,S15.G1.D1,S15.G1.D2)
+                                     SLP_SC_UOM(S15.D2,S15.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 16
+"\n%s已从%s处接收指定的海运补给物资，" 2 unit_name_transform(D2) S16.D1
+"正向卸载地域航渡。补给物资分别有：" 0
+"<p class='tablename'>补给物资明细</p>" 0
+"__start_table｜补给类型｜已分配｜已预定\n" 0
+   GROUP 1
+"｜%s｜%s｜%s%s\n" 4
+                        SLP_Category_Name[S16.D2,S16.G1.D1]
+                               SLP_SC_AMT(S16.D2,S16.G1.D1,S16.G1.D2)
+                               SLP_SC_AMT(S16.D2,S16.G1.D1,S16.G1.D3)
+                               SLP_SC_UOM(S16.D2,S16.G1.D1)
+   END_GROUP
+   "__stop_table" 0
+   SUB 1
+"\n没有涉及装载时间，因为这由编队内部完成。" 0
+   END_SUB
+END_SUB
+
+END_MAIN
+

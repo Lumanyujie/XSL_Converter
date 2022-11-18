@@ -1,0 +1,64 @@
+
+1807
+SUBJECT
+"战术部队原型%s(编号%s)基于已变化态势的消耗"
+                                          2 Tactical_Unit_Prototype[D2] D2
+MAIN
+"<p class='title'>  战术部队原型%s(编号%s)基于他们不同的战术态势消耗的补给物资数量</p> \n\n" 2
+                                          Tactical_Unit_Prototype[D2] D2
+SUB 1
+"  在遂行空中攻击作战任务时消耗:\n" 0
+"   __start_table |种类|    编号|      作战时消耗\n" 0
+   GROUP 1
+" | %15.15s  | (%5.5s)  |    %s %s %s\n" 5 Supply_Category[S1.G1.D1] S1.G1.D1
+                                        SLP_SC_AMT(0, S1.G1.D1, S1.G1.D2)
+                                        SLP_SC_UOM(0,S1.G1.D1)
+                                        Consumption_Type[S1.G1.D1]
+   END_GROUP
+"__stop_table"0
+
+"\n" 0
+END_SUB
+
+SUB 2
+"  在防御作战时消耗：\n" 0
+"   __start_table |种类|    编号|      作战时消耗\n" 0
+   GROUP 1
+" | %15.15s |  (%5.5s)  |    %s %s %s\n"  5 Supply_Category[S2.G1.D1] S2.G1.D1 
+                                         SLP_SC_AMT(0,S2.G1.D1,S2.G1.D2)
+                                         SLP_SC_UOM(0,S2.G1.D1) 
+                                         Consumption_Type[S2.G1.D1] 
+   END_GROUP
+"__stop_table"0
+
+"\n" 0
+END_SUB
+
+SUB 3
+"  在阻击作战时消耗：\n" 0
+"   __start_table |种类|    编号|      作战时消耗\n" 0
+   GROUP 1
+" | %15.15s |  (%5.5s)|   %s  %s %s\n" 5 Supply_Category[S3.G1.D1] S3.G1.D1
+                                        SLP_SC_AMT(0,S3.G1.D1,S3.G1.D2)
+                                        SLP_SC_UOM(0,S3.G1.D1) Consumption_Type[S3.G1.D1] 
+   END_GROUP
+"__stop_table"0
+
+"\n" 0
+END_SUB
+
+SUB 4
+"  在撤退时消耗：\n" 0
+"   __start_table |种类|    编号|      作战时消耗\n" 0
+   GROUP 1
+" | %15.15s |  (%5.5s)  |    %s %s %s\n" 5 Supply_Category[S4.G1.D1] S4.G1.D1
+                                        SLP_SC_AMT(0,S4.G1.D1,S4.G1.D2)
+                                        SLP_SC_UOM(0,S4.G1.D1) Consumption_Type[S4.G1.D1] 
+   END_GROUP
+"__stop_table"0
+
+"\n" 0
+END_SUB
+
+END_MAIN
+

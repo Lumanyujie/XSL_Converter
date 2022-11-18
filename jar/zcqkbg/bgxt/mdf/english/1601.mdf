@@ -1,0 +1,161 @@
+
+1601
+SUBJECT
+"武器装备系统原型%s(%s)的属性:" 2
+                                                Combat_System_Prototype[D2] D2
+MAIN
+"<p class='title'>武器装备系统原型属性</p>\n" 0
+SUB 1
+"  %s(%s)中%s武器装备系统原型具有如下属性：\n\n" 3 Combat_System_Prototype[D2] S1.D1 Combat_System[S1.D1] 
+                                              
+END_SUB
+
+SUB 2
+"  平均发生故障时间: %s 天。\n" 1 S2.D1
+END_SUB
+
+SUB 32
+"  平均修复时间: %s 天。\n" 1 S32.D1
+END_SUB
+
+SUB 3 
+"  战斗周期修复率: %s。 \n" 1 S3.D1
+END_SUB
+
+SUB 4 
+"  列装损坏率: %s。 \n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  配备一个新的武器装备系统单元需有%s %s的补给物资，而不再需要其他的补给物资。 \n"
+                         2 UOM_AMT(DRY_WEIGHT,S5.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 6
+"  部队必须有%s %s的%s补给物资才能配备一个新的武器装备系统单元。  \n" 3
+           SLP_SC_AMT(0,S6.D2,S6.D1) SLP_SC_UOM(0,S6.D2) Supply_Category[S6.D2]
+END_SUB
+
+SUB 33
+"  评估值: %s。\n" 1 S33.D1
+END_SUB      
+
+SUB 7 
+"  最大的有效范围为: %s %s。\n" 2 UOM_AMT(DISTANCE,S7.D1)
+                                                       UOM(DISTANCE)
+END_SUB
+
+SUB 8
+"  油料耗尽后，武器系统效能下降到: %s % 。\n" 1 S8.D1
+END_SUB
+
+SUB 9
+"  每次战斗评估消耗补给物资数量为：%s %s 。\n" 
+                                     2 UOM_AMT(DRY_WEIGHT,S9.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 10
+"  此战斗系统没有配备和再配备的补给物资。\n" 0
+END_SUB
+
+SUB 11
+"  此类武器装备系统利用%s %s补给物资进行配备和再配备。\n" 
+                                    2 Supply_Category[S11.D1] S11.D1
+END_SUB
+
+SUB 12
+"  武器装备系统使用%s算法计算兰彻斯特损耗。\n" 1 Combat_System_Type[S12.D1]
+END_SUB
+
+SUB 13  
+"  武器装备系统不需要任何弹药即可摧毁其他武器装备系统。\n" 0
+END_SUB
+
+SUB 14
+"  此类武器装备系统需要拥有%s才能确保部队能够进行作战。\n" 1 Supply_Category[S14.D1]
+END_SUB
+
+SUB 15
+"  对于武器的评估，此类武器装备系统和%s目标类型相当。" 1 Target_Category[S15.D1] 
+"此类武器装备系统与该目标类的子类%s也是一致的。\n" 1 SUBCAT_NAME{S15.D1,S15.D2}
+END_SUB
+
+SUB 16
+"  %s阵亡人员遗体将被回收。 \n" 1 S16.D1
+END_SUB
+
+SUB 17
+"  显式的武器目标为：%s\n" 1 No_Targetable_Weapon[S17.D1]
+END_SUB
+
+SUB 18
+"每一回合的显式时间为：%s\n" 1 DURATION(S18.D1, "%.2Tm Mins")
+END_SUB
+
+SUB 19
+"  每一回合的埋伏时间为：%s。        \n" 1 DURATION(S19.D1, "%.2Tm Mins")
+END_SUB
+
+SUB 20
+"  每一回合撤离阵地的时间为：%s。 \n" 1 DURATION(S20.D1, "%.2Tm Mins")
+END_SUB
+
+SUB 21
+"  埋伏的修正系数为：%s。 \n" 1 S21.D1
+END_SUB
+
+SUB 22
+"  操作人数为：%s。  \n" 1 S22.D1
+END_SUB
+
+SUB 23
+"如果系统被损坏，操作人员死亡概率为：%s。 \n" 1 S23.D1
+END_SUB
+
+SUB 24
+"  如果人员未被杀死，操作人员受伤的概率为：%s。\n" 1 S24.D1
+END_SUB
+
+SUB 25
+"  由于没有选中武器装备系统，" 0
+"则发送显示武器装备系统原型所有属性的指令。\n" 0
+END_SUB
+
+SUB 26
+"  死亡修正系数: %s\n" 1 S26.D1
+END_SUB
+
+SUB 27
+"  受伤修正系数: %s\n" 1 S27.D1
+END_SUB
+
+SUB 28
+"  非作战日耗油量: %s %s\n" 2 UOM_AMT(WET_WEIGHT,S28.D1)
+                                                       UOM(WET_WEIGHT)
+END_SUB
+
+SUB 29
+"  作战时日耗油量: %s %s\n" 2 UOM_AMT(WET_WEIGHT,S29.D1)
+                                                       UOM(WET_WEIGHT)
+END_SUB
+
+SUB 30
+"  每公里耗油量: %s %s\n" 2 UOM_AMT(WET_WEIGHT,S30.D1)
+                                                       UOM(WET_WEIGHT)
+END_SUB
+
+SUB 34
+"  数据代码: %s\n" 1 S34.D1
+END_SUB
+
+SUB 31
+"\n <p class='paragraph'>部队状态引起的弹药修正</p>\n\n" 0
+"__start_table   ｜部队状态         ｜弹药修正系数\n" 0
+   GROUP 1
+"   ｜%-15.15s ｜%9.9s\n" 2 Active_Unit_Posture[S31.G1.D1] S31.G1.D2
+   END_GROUP
+   "__stop_table" 0
+END_SUB
+   
+END_MAIN
+

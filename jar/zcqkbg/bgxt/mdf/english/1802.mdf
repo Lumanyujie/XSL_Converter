@@ -1,0 +1,27 @@
+
+1802
+SUBJECT
+"%s(编号%s)作战系统战术部队原型参数" 
+                                           2 Tactical_Unit_Prototype[D2] D2
+MAIN
+
+"<p class='title'> %s(编号%s)作战系统战术部队原型参数</p> \n\n"   2 Tactical_Unit_Prototype[D2] D2
+"  使用战术部队原型%s(编号%s)的部队有下列系统特性:\n\n"     2 Tactical_Unit_Prototype[D2] D2
+
+SUB 1
+
+"<p class='paragraph'>作战系统原型%s (编号%s)</p> \n\n"     2 Combat_System_Prototype[S1.D1] S1.D1
+END_SUB
+
+SUB 2
+" __start_table | 作战系统|编号|   编制装备表系统\n" 0
+   GROUP 1
+"|%-15.15s | (%3.3s)  |   %12.12s    \n" 
+              3 Combat_System[S2.G1.D1] S2.G1.D1 S2.G1.D2
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+END_MAIN
+

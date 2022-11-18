@@ -1,0 +1,56 @@
+
+2921
+SUBJECT
+"北约己方军情报告, %s" 1 D2
+MAIN
+
+"<p class='title'>来自%s的己方情况报告</p>\n" 1 unit_name_transform(D2)
+"  指挥层级: %s\n" 1 NATO_Command_Level[D3]
+"  国家代码: %s\n" 1 trans_word("Side_Name_Tran",D4)
+"  组织类型: %s\n" 1 trans_word("Orga_Type",D5)
+"  上级指挥机构: %s\n" 1 unit_name_transform(D6)
+"  保障机构: %s\n\n" 1 NATO_Service[D7]
+
+SUB 1
+"<p class='paragraph'>任务编成</p>\n" 0
+"__start_table    |部队      |指挥层级|国家 |类型      |上级指挥机构        |保障部队\n" 0
+   GROUP 1
+"|%-20.20s     |%-3.3s |%-4.4s |%-4.4s |%-20.20s |%-10.10s\n" 
+            6 unit_name_transform(S1.G1.D1) NATO_Command_Level[S1.G1.D2] trans_word("Side_Name_Tran",S1.G1.D3) trans_word("Orga_Type",S1.G1.D4) unit_name_transform(S1.G1.D5)
+              Service_Names[S1.G1.D6]
+
+      GROUP 1
+"   |%-20.20s  |%-3.3s |%-4.4s |%-4.4s |%-20.20s |%-10.10s\n"
+        6 S1.G1.G1.D1
+        NATO_Command_Level[S1.G1.G1.D2] S1.G1.G1.D3 S1.G1.G1.D4 S1.G1.G1.D5
+        Service_Names[S1.G1.G1.D6]
+      END_GROUP
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 2
+"\n<p class='tablename'>我参演方位置列表</p>\n" 0
+"__start_table     |部队            |位置                     |态势    \n" 0
+   GROUP 1
+"|%-20.20s |%-24.24s |%-10.10s " 3 unit_name_transform(S2.G1.D1) LOCATION(S2.G1.D8, S2.G1.D9) 
+                  NATO_C2_Unit_Posture[S2.G1.D10]
+      SUB 1
+"航向/速度:%s  %s %s\n" 3 S2.G1.S1.D1 UOM_AMT(SPEED,S2.G1.S1.D2) UOM(SPEED)
+      END_SUB
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 3
+"\n<p class='tablename'>我参演方情况列表</p>\n" 0
+"__start_table      |部队     |总人数      |在编人员    |非编人员      |装备       |弹药       |燃料\n" 0
+   GROUP 1
+"|%-20.20s  |%s         |%s          |%s          |%s          |%s          |%s\n"
+      7 unit_name_transform(S3.G1.D1) S3.G1.D8 S3.G1.D9 S3.G1.D10 S3.G1.D11 S3.G1.D12 S3.G1.D13
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,22 @@
+ 
+3150
+SUBJECT
+"%s编队遭敌%s攻击情况报告" 2 unit_name_transform(D2) Type_Impact[D3]
+MAIN
+"<p class='title'>%s编队遭敌%s攻击情况报告</p>" 2 unit_name_transform(D2) Type_Impact[D3]
+"\n%s编队报告：" 1 unit_name_transform(D2)
+
+SUB 1
+"%s%s阵地向我开火，我损失飞机%s架。" 3 No_Force_Side[D4] ADA_Class[S1.D1]  D5
+END_SUB
+
+SUB 2
+"%s%s向我开火，我损失飞机%s架，击毁%s%s%s架。" 6 No_Force_Side[D4] Aircraft_Type[S2.D1] D5 No_Force_Side[D4] Aircraft_Type[S2.D1]  S2.D2 
+END_SUB
+
+SUB 3
+"\n我请求更改开火权。" 0
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,45 @@
+
+1504
+SUBJECT
+"通用地面作战参数" 0
+MAIN
+"<p class='title'>  通用地面作战参数报告 </p> \n" 0
+SUB 1
+"  部队交战距离:%s%s。\n\n" 
+                       2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 2
+"  默认的炮兵射击距离:%s%s。\n\n" 
+                       2 UOM_AMT(DISTANCE,S2.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 3
+"  致命伤亡时间为%s。\n\n" 1
+           DURATION(S3.D1, "%d天%h小时%Rm分钟")
+END_SUB
+
+SUB 4
+"  传单包的规模%s份。\n\n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  传单包重量%s%s。\n\n" 
+                   2 UOM_AMT(DRY_WEIGHT,S5.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 6
+"  一般战场图标%s。\n\n"  1 S6.D1 
+END_SUB
+
+SUB 7
+"  一般目标图标%s。\n\n"  1 S7.D1 
+END_SUB
+
+SUB 8
+"  标绘通用作战态势图的军方%s。\n\n"  1 S8.D1
+
+END_SUB
+
+END_MAIN
+

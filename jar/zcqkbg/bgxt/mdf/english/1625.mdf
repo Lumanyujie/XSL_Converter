@@ -1,0 +1,121 @@
+
+1625
+SUBJECT
+"显示可命中目标武器参数%s" 1 Targetable_Weapon[D2]
+
+MAIN
+" <p class='title'> 显示可命中目标武器参数%s报告 </p> \n\n" 1 Targetable_Weapon[D2]
+
+SUB 1
+"  下列可命中目标武器特性已被调理员经由可命中目标武器%s(序号%s)命令修改： \n" 2    Targetable_Weapon[D2] D2
+END_SUB
+
+SUB 2
+"  下列可命中目标武器特性当前被指定为可命中目标武器%s(序号%s)：\n" 2 Targetable_Weapon[D2] D2
+END_SUB
+
+SUB 3
+   SUB 1
+"  防空炮兵目标类型:%2.2s  %s\n" 
+                                 2 S3.S1.D1 Aircraft_Target_Class[S3.S1.D1]
+   END_SUB
+   SUB 2
+"  防空炮兵目标类型:防空炮炮兵不能实施打击。\n" 0
+   END_SUB
+END_SUB
+
+SUB 4
+"  打击类型:%2.2s %s\n" 2 S4.D1 Type_Impact[S4.D1]
+END_SUB
+
+SUB 5
+"  空对空毁伤性:%3.3s %s\n" 2 S5.D1 No_AAL_Index[S5.D1]
+END_SUB
+
+SUB 6
+"  地对空毁伤能力:%3.3s %s\n" 2 S6.D1 No_SAL_Index[S6.D1]
+END_SUB
+
+SUB 7
+"  对地毁伤能力:%3.3s %s\n" 2 S7.D1 No_SKL_Index[S7.D1]
+END_SUB
+
+SUB 8
+"  效果类型:%2.2s %s\n" 2 S8.D1 Effects_Type[S8.D1]
+END_SUB
+
+SUB 9
+"  使用导弹:%2.2s %s\n" 2 S9.D1 Answer[S9.D1]
+END_SUB
+
+SUB 10
+"  精确制导:%2.2s %s\n" 2 S10.D1 Answer[S10.D1]
+END_SUB
+
+SUB 11
+"  补给种类:%3.3s %s\n" 2 S11.D1 Supply_Category[S11.D1]
+END_SUB
+
+SUB 12
+"  重量:%s %s\n" 2 UOM_AMT(DRY_WEIGHT,S12.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 13
+"  地形限制:%2.2s %s\n" 2 S13.D1 SSM_Guidance_Restriction[S13.D1]
+END_SUB
+
+SUB 14
+"  地形影响百分比:%s\n" 1 S14.D1
+END_SUB
+
+SUB 15
+"\  气象条件修正系数:\n" 0
+"  __start_table |  索引  |  气象条件 |   给定修正系数\n" 0
+
+   GROUP 1
+"  |  %3.3s   |       %15.15s      |       %7.7s\n" 3
+            S15.G1.D1 Weather_Condition[S15.G1.D1] S15.G1.D2
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+SUB 16
+"  武器战损评估概率:%s\n" 1 S16.D1
+END_SUB
+
+SUB 17
+"  当前不可用。\n" 0
+END_SUB
+
+SUB 18
+"  非己方炮兵集火突击时间:%s \n"
+                       1 DURATION(S18.D1, "%h 时 and %m 分 %s 秒")
+END_SUB
+
+SUB 19
+"  侦查要求:%2.2s %s\n" 2 S19.D1 Answer[S19.D1]
+END_SUB
+
+SUB 20
+"  命中百分率:%s\n" 1 S20.D1
+END_SUB
+
+SUB 21
+"  当前不可用。\n" 0
+END_SUB
+
+SUB 22
+"  战术数字信息联合链路编码:%s\n" 1 TADIL_TW_Index[S22.D1]
+END_SUB
+
+SUB 23
+"  武器制导类型:%s\n" 1 S23.D1
+END_SUB
+
+SUB 24
+"  轮次序号:%s\n" 1 S24.D1
+END_SUB
+
+END_MAIN
+

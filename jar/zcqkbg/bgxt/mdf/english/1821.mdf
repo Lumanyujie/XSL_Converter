@@ -1,0 +1,83 @@
+
+1821
+SUBJECT
+"%s(编号%s)舰艇部队原型参数--第2组"   2 Ship_Unit_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  舰艇部队原型%s(编号%s)部队特征 </p>\n"  2 Ship_Unit_Prototype[D2] D2
+
+"  他们最多可运送：\n" 0
+
+SUB 1
+"  %s %s 干补给物资。\n" 2   UOM_AMT(DRY_WEIGHT,S1.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 2
+"  %s %s 液态补给物资。\n" 2   UOM_AMT(WET_WEIGHT,S2.D1) UOM(WET_WEIGHT)
+END_SUB
+
+SUB 3
+"  空中力量搜集战术情报最远可达%s%s。\n" 2 UOM_AMT(DISTANCE,S3.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 4
+"  不使用空中力量搜集战术情报。\n" 0
+END_SUB
+
+SUB 5
+"  地面/水上力量搜集战术情报最远可达%s %s。\n" 2
+  UOM_AMT(DISTANCE,S5.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 6
+"  不使用地面/水上力量搜集战术情报。\n" 0
+END_SUB
+
+SUB 7
+"  如果收集空中战术情报，每%s小时报告一次。\n"  1 DURATION(S7.D1, "%.2Th")
+END_SUB
+
+SUB 8
+"  如果收集地面/水上战术情报，每%s小时报告一次。\n" 1 DURATION(S8.D1, "%.2Th")
+END_SUB
+
+SUB 9
+"  如果飞机弹射器受损，该舰修复它平均时间：%s。\n"  1
+                                        DURATION(S9.D1, "%d天%h小时%Rm分")
+END_SUB
+
+SUB 10
+"  修复一处船体破损处的时间是：%s。" 1
+            DURATION(S10.D1, " %d天%h小时%Rm分钟")
+"如果一个目标实体使用此舰船类作为其子类，修复该目标需%s。\n" 1
+           DURATION(S10.D1, " %d天%h小时%Rm分钟")
+END_SUB
+
+SUB 11
+"  如果一个目标实体使用此舰船类作为其子类，摧毁此目标需%s。\n" 1   DURATION(S11.D1, "%d天%h小时%Rm分钟")
+END_SUB
+
+SUB 12
+"  该类舰船图标表示为%s。\n" 1 Graphics_Symbol[S12.D1]
+END_SUB
+
+SUB 13
+"  该类舰船是否被认为是小艇? %s。\n" 1 Answer[S13.D1]
+END_SUB
+
+SUB 14
+"  该类舰船的目标类码是%s。\n" 1 S14.D1
+END_SUB
+
+SUB 15
+"  该舰艇部队原型所需的装载设施数量：%s。\n" 1 S15.D1
+END_SUB
+
+SUB 16
+"  该舰艇部队原型的指挥等级被指定为%s。 \n"
+                                               1 Command_Level[S16.D1]
+END_SUB
+
+
+END_MAIN
+

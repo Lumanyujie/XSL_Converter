@@ -1,0 +1,36 @@
+#
+# FILE:            $JGAME/data/english.hf
+#
+# DATE CREATED:    23 September 1997
+#
+# PROGRAMMER:      Rick Kalinyak
+#                  E. F. Roland
+#
+# DESCRIPTION:     This is the header and footer file for the
+#                  configuration managed version of the English Message
+#                  Definition file.
+
+#
+# The HEADER record starts with the keyword HEADER. If desired it is
+# followed by the variable name, you wish to use when referring to
+# the variable D1. The second variable name refers to variable D2.
+#
+# For example, HEADER gtime sendu
+#
+# would result in the definition of a header. In the header
+# specification, referring to the variable gtime will print out
+# variable D1. Likewise, referring to the variable sendu will
+# print out D2.
+#
+
+HEADER gtime
+"%s (%s)\n" 2 GTIME(gtime) GTIME(gtime, "%f")
+"演习课题：边境西中段反击作战 \n\n" 0
+"        密 级：机密\n\n" 0
+END_HEADER
+
+FOOTER
+"\n       \n" 0
+END_FOOTER
+
+*

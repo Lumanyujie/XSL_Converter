@@ -1,0 +1,21 @@
+
+1852
+SUBJECT
+"%s部队作战系统参数" 1 D2
+MAIN
+
+"<p class='title'>   %s部队作战系统参数报告</p>\n\n" 1 D2
+
+SUB 1
+"  该部队作战系统%s(编号%s)值：\n\n" 
+                                     2 CSP_System_Name[D3,S1.D1] S1.D1
+"  可用数量%s；编制装备表%s\n" 2 S1.D2 S1.D3
+"  正在维护的数量%s；当前伤亡数量%s\n" 2 S1.D4 S1.D5
+"  加权时间%s；不可用数量%s\n" 2 S1.D6 S1.D7
+"  累计阵亡%s；累计负伤%s\n" 2 S1.D8 S1.D9
+"  下次维修时间%s;下次故障时间%s\n\n" 
+                                    2 GTIME(S1.D10) GTIME(S1.D11)       
+END_SUB
+
+END_MAIN
+

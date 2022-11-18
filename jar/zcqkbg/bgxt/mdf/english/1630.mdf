@@ -1,0 +1,36 @@
+
+1630
+SUBJECT
+"%s的原型所属目标属性" 1 D2
+MAIN
+"  调理员已经改变了原型所属目标%s的下列属性:\n\n" 1 D2
+                                                                                
+SUB 1
+"  库名全称：%s\n" 1 S1.D1
+END_SUB
+SUB 2
+"  子类：%s\n" 1 S2.D1
+END_SUB
+SUB 3
+"  目标序号：%s\n" 1 S3.D1
+END_SUB
+SUB 4
+"  天线高度：%s %s\n" 2 UOM_AMT(DISTANCE,S4.D1) UOM(AIRDISTANCE)
+END_SUB
+SUB 5
+"  跑道长度：%s  %s\n" 2 UOM_AMT(DISTANCE,S5.D1) UOM(AIRDISTANCE)
+END_SUB
+SUB 6
+"  距离：%s  %s\n" 2 UOM_AMT(DISTANCE,S6.D1) UOM(DISTANCE)
+END_SUB
+SUB 7
+"  机动性：%s\n" 1 S7.D1
+END_SUB
+SUB 8
+"  作战能力百分数：%s\n" 1 S8.D1
+END_SUB
+SUB 9
+"  分类码：%s\n" 1 S9.D1
+END_SUB
+                                                                                
+END_MAIN

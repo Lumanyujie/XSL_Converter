@@ -1,0 +1,37 @@
+
+1536
+SUBJECT
+"%s的补给运输资源" 1 D2
+MAIN
+"<p class='title'>  属于%s集团的%s运输资源属性 </p>\n\n"
+                          2 Transportation_Class[D3] D2
+
+GROUP 1
+
+   SUB 1
+"  在铁路网%s上。 \n" 1 G1.S1.D1
+   END_SUB
+   SUB 2
+"  集团有%s资源可用。 \n\n" 1 G1.S2.D1 
+   END_SUB
+
+   SUB 3 
+"  %s资源的调配时间参数是:\n\n" 1     Transportation_Class[D3] 
+"  平均调配时间: %s\n" 1 DURATION(G1.S3.D1, "%h时%Rm分")
+"  调配时间标准: %s\n" 1 DURATION(G1.S3.D2, "%h时%Rm分")
+
+   END_SUB
+
+   SUB 4
+"  该补给运输资源（SMA）能自动发送位置报告吗？%s。 \n" 1  
+                                                        Answer[G1.S4.D1]
+   END_SUB
+
+   SUB 5
+"  没有该类属性。\n" 0
+   END_SUB
+
+END_GROUP
+
+END_MAIN
+

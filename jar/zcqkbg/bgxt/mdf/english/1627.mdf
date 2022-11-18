@@ -1,0 +1,40 @@
+
+1627
+SUBJECT
+"显示可命中目标武器参数_3 %s报告" 1 Targetable_Weapon[D2]
+MAIN
+
+"<p class='title'> 显示可命中目标武器参数_3 %s报告</p> \n\n"  1 Targetable_Weapon[D2]
+
+
+SUB 1
+"  下列可命中目标武器特性已被调理员经由可命中目标武器%s(序号%s)命令修改：\n" 2      Targetable_Weapon[D2] D2
+END_SUB
+
+SUB 2
+"  下列可命中目标武器特性当前被指定为可命中目标武器%s(序号%s)：\n" 2 Targetable_Weapon[D2] D2
+END_SUB
+
+SUB 3
+"  下列口径装备可以发射这种武器:\n" 0
+"  __start_table | 口径索引  | 可发射\n" 0
+   GROUP 1
+" |  %-15.15s   | %s\n" 2 Caliber_Index[S3.G1.D1] Answer[S3.G1.D2]
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+"\n" 0
+SUB 4
+"  下列作战系统可发射这种武器:\n" 0
+" __start_table | 作战系统 |   可发射\n" 0
+GROUP 1
+"   | %2.2s %15.15s   |    %s\n" 3 S4.G1.D1 Combat_System[S4.G1.D1]
+                                           Answer[S4.G1.D2] 
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+END_MAIN
+

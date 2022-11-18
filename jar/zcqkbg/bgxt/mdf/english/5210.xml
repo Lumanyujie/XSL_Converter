@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="5210"> <subject> <line><f n="unit_name_transform"><D2/></f>发现敌特战分队报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;<f n="unit_name_transform"><D2/></f>发现敌特战分队报告&lt;/p&gt;</line> <line><br/><f n="unit_name_transform"><D2/></f>向上级报告：于<f n="GTIME"><D1/></f>，</line> <line>发现<f n="No_Force_Side"><D4/></f>一支特战分队，</line> <line>代号<f n="unit_name_transform"><D5/></f>，</line> <line>位于<f n="LOCATION"><D6/><D7/></f>。</line> </main> </msg> </msgs>

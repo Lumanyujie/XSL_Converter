@@ -1,0 +1,20 @@
+
+2520
+SUBJECT
+"新组建部队%s情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>新组建部队%s情况报告</p>" 1 unit_name_transform(D2)
+
+
+"\n导演部为%s新组建一支部队，" 1 No_Force_Side[D4]
+"该部队简称：%s，" 1 unit_name_transform(D2)
+"全称：%s，" 1 unit_name_transform(D3)
+"属于%s集团的%s。" 2 unit_name_transform(D6) Unit_Type[D5]
+
+"\n该部队计划在99天后抵达战场。" 0
+"可与导调人员联系，设置该部队按计划分阶段部署数据（TPFDD）。" 0
+"也可通过显示分阶段部署报告命令，查询该部队的部署数据。" 0
+
+END_MAIN
+

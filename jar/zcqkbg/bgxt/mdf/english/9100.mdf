@@ -1,0 +1,24 @@
+
+9100
+SUBJECT
+"%s待发补给物资%s报告" 2 No_Force_Side[D2] Periodic_or_Summary[D6] 
+MAIN
+
+"<p class='title'>%s待发补给物资%s报告</p>" 2 No_Force_Side[D2] Periodic_or_Summary[D6] 
+"\n报告时间段：%s至%s。" 2 GTIME(D3) GTIME(D1)
+
+"<p class='table_name'>待发补给物资明细</p>" 0
+
+"__start_table|补给类型|单位|本周期待发补给物资|上一周期待发补给物资\n" 0
+
+GROUP 1
+"|%s|%s|%s|%s\n" 4 
+                                SLP_Category_Name[D4,G1.D1]
+                                       SLP_SC_UOM(D4,G1.D1)
+                                       SLP_SC_AMT(D4,G1.D1,G1.D2)
+                                       SLP_SC_AMT(D4,G1.D1,G1.D3)
+END_GROUP
+"__stop_table" 0
+
+END_MAIN
+

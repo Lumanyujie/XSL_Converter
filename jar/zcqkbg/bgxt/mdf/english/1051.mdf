@@ -1,0 +1,296 @@
+
+1051
+SUBJECT
+"%s编队调整位置情况报告" 1 D2
+MAIN
+
+"<p class='title'>%s编队调整位置情况报告</p>" 1 unit_name_transform(D2)
+
+"\n%s已被转移至%s，" 2 unit_name_transform(D2) LOCATION(D3,D4)
+"编队成员具体情况：" 0
+GROUP 1
+
+   SUB 1
+"\n——%s，尚未机动，当前未到达指定阵位，将改变航线向新阵位机动。" 1 unit_name_transform(G1.S1.D1)
+   END_SUB
+
+   SUB 2
+"\n——%s" 1 unit_name_transform(G1.S2.D1)
+"，同时取消以下任务：" 0
+   END_SUB
+
+   SUB 3
+"\n对%s实施%s火力支援。" 2 G1.S3.D1 G1.S3.D2
+   END_SUB
+
+   SUB 4
+"\n在%s附近布雷任务。" 1 LOCATION(G1.S4.D1,G1.S4.D2)
+   END_SUB
+
+   SUB 5
+"\n在%s附近排雷任务。" 1 LOCATION(G1.S5.D1,G1.S5.D2)
+   END_SUB
+
+   SUB 6
+"\n修复%s任务。" 1 G1.S6.D1
+   END_SUB
+
+   SUB 7
+"\n毁坏%s任务。" 1 G1.S7.D1
+   END_SUB
+
+   SUB 8
+"\n对%s火力突击任务。" 1 G1.S8.D1
+   END_SUB
+
+   SUB 9
+"\n向%s火力突击任务。" 1 LOCATION(G1.S9.D1,G1.S9.D2)
+   END_SUB
+
+   SUB 10
+"\n对%s管线维护任务。" 1 G1.S10.D1
+   END_SUB
+
+   SUB 11
+"\n执行编号%s的%s命令。" 2 G1.S11.D2 G1.S11.D1
+   END_SUB
+
+   SUB 12
+"\n完成已暂停的%s命令。" 1 G1.S12.D1
+   END_SUB
+
+   SUB 13
+"\n部署%s侦察分队。" 1 G1.S13.D1
+   END_SUB
+
+   SUB 14
+"\n从%s到%s的一支运输分队，使用物资装卸设备进行装载。" 2 G1.S14.D1
+     G1.S14.D2
+   END_SUB
+
+   SUB 15
+"\n来自%s的一支运输分队，使用物资装卸设施为%s进行卸载。" 2
+                 G1.S15.D1      G1.S15.D2
+   END_SUB
+
+   SUB 16
+"\n后勤物资装载的优先级从%s调至%s。" 2 G1.S16.D1 G1.S16.D2
+   END_SUB
+
+   SUB 17
+"\n后勤物资自动从%s补给到%s。" 2 G1.S17.D1 G1.S17.D2
+   END_SUB
+
+   SUB 18
+"\n即将遂行从%s到%s的补给运输。" 2 G1.S18.D1 G1.S18.D2
+   END_SUB
+
+   SUB 19
+"\n当%s正在被空运时，" 1 G1.S19.D1
+"空运任务取消。" 0
+END_SUB
+
+   SUB 20
+"\n下列任务取消：" 0
+      GROUP 1
+"\n————%s" 1 G1.S20.G1.D1
+      END_GROUP
+   END_SUB
+
+   SUB 24
+"无。" 0
+   END_SUB
+
+   SUB 26
+"\n取消来自于%s、编号为%s的%s任务。"   3 G1.S26.D3 G1.S26.D2 Mission_Type[G1.S26.D1]
+
+   END_SUB
+
+   SUB 27
+"\n%s行动取消，" 1 G1.S27.D1
+"不再分发下列补给：" 0
+"<p class='table_name'>取消补给清单</p>" 0
+"__start_table|补给名称|数量|单位\n" 0
+      GROUP 1
+"|%s|%s|%s" 3 SLP_Category_Name[G1.S27.D2,G1.S27.G1.D1]
+                          SLP_SC_AMT(G1.S27.D2,G1.S27.G1.D1,G1.S27.G1.D2)
+                          SLP_SC_UOM(G1.S27.D2,G1.S27.G1.D1)
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 28
+"\n舰载机部队一并进行位置调整，具体情况：" 0
+      GROUP 1
+         SUB 2
+"\n——%s，同时取消以下任务：" 1 G1.S28.G1.S2.D1
+         END_SUB
+   
+         SUB 3
+"\n对%s实施的%s火力支援。" 2 G1.S28.G1.S3.D1  G1.S28.G1.S3.D2
+         END_SUB
+
+         SUB 4
+"\n在%s附近的布雷。" 1 LOCATION(G1.S28.G1.S4.D1,G1.S28.G1.S4.D2)
+         END_SUB
+
+         SUB 5
+"\n在%s附近的排雷。" 1 LOCATION(G1.S28.G1.S5.D1,G1.S28.G1.S5.D2)
+         END_SUB
+
+         SUB 6
+"\n修复%s。" 1 G1.S28.G1.S6.D1
+         END_SUB
+
+         SUB 7
+"\n毁坏%s。" 1 G1.S28.G1.S7.D1
+         END_SUB
+
+         SUB 8
+"\n对%s开火。" 1 G1.S28.G1.S8.D1
+         END_SUB
+
+         SUB 9
+"\n向%s处开火。"   1 LOCATION(G1.S28.G1.S9.D1,G1.S28.G1.S9.D2)
+         END_SUB
+
+         SUB 10
+"\n对管线%s进行维护。" 1 G1.S28.G1.S10.D1
+         END_SUB
+
+         SUB 11
+"\n执行编号%s的%s命令。" 2 G1.S28.G1.S11.D2 G1.S28.G1.S11.D1
+         END_SUB
+
+         SUB 12
+"\n完成已暂停的%s命令。" 1 G1.S28.G1.S12.D1
+         END_SUB
+
+         SUB 13
+"\n部署%s侦察分队。" 1 G1.S28.G1.S13.D1
+         END_SUB
+
+         SUB 14
+"\n从%s到%s的一支运输分队，使用物资装卸设备进行装载。" 2 G1.S28.G1.S14.D1 G1.S28.G1.S14.D2
+         END_SUB
+
+         SUB 15
+"\n来自%s的一支运输分队，使用物资装卸设施为%s进行卸载。 " 2 G1.S28.G1.S15.D1 G1.S28.G1.S15.D2
+         END_SUB
+
+         SUB 16
+"\n后勤物资装载的优先级从%s调至%s 。" 2 G1.S28.G1.S16.D1   G1.S28.G1.S16.D2
+         END_SUB
+
+         SUB 17
+"\n后勤物资自动从%s补给到%s。" 2 G1.S28.G1.S17.D1
+                     G1.S28.G1.S17.D2
+         END_SUB
+
+         SUB 18
+"\n即将遂行从%s到%s的补给运输。" 2 G1.S28.G1.S18.D1      G1.S28.G1.S18.D2
+         END_SUB
+
+         SUB 19
+"\n当%s正在被空运时，" 1 G1.S28.G1.S19.D1
+"空运任务取消。" 0
+         END_SUB
+
+         SUB 20
+"\n下列编队取消：" 0
+            GROUP 1
+"\n%s" 1 G1.S28.G1.S20.G1.D1
+            END_GROUP
+        END_SUB
+
+         SUB 24
+"无。" 0
+         END_SUB
+
+         SUB 25
+"\n等待起飞的任务因不能按时临空而取消。" 0
+         END_SUB
+
+         SUB 26
+"\n取消来自于%s编号为%s的%s任务。"   3 G1.S28.G1.S26.D3
+                 G1.S28.G1.S26.D2 Mission_Type[G1.S28.G1.S26.D1]
+         END_SUB
+
+         SUB 27
+"\n取消%s行动，" 1 G1.S28.G1.S27.D1
+"下列补给将不再分发：" 0
+"<p class='table_name'>取消补给清单</p>" 0
+"__start_table|补给名称|数量|单位\n" 0
+            GROUP 1
+"|%s|%s|%s" 3 SLP_Category_Name[G1.S28.G1.S27.D2,G1.S28.G1.S27.G1.D1]
+    SLP_SC_AMT(G1.S28.G1.S27.D2,G1.S28.G1.S27.G1.D1,G1.S28.G1.S27.G1.D2)
+    SLP_SC_UOM(G1.S28.G1.S27.D2,G1.S28.G1.S27.G1.D1)
+            END_GROUP
+"__stop_table" 0
+
+         END_SUB
+
+      END_GROUP
+   END_SUB
+
+   SUB 35
+"\n——%s，为遂行两栖作战任务编入%s。"
+                                           2 G1.S35.D1 G1.S35.D2
+"它将搭乘以下舰船：" 0
+      GROUP 1
+"\n————%s" 1 G1.S35.G1.D1
+      END_GROUP
+   END_SUB
+
+   SUB 36
+"\n——%s，已与%s建立联系。" 2 G1.S36.D1 G1.S36.D2
+   END_SUB
+
+   SUB 37
+"\n——%s，未与任何空军基地、前方弹药油料补给点建立联系。" 1 G1.S37.D1
+   END_SUB
+
+   SUB 38
+"\n——%s，也一并机动，它是即将到达部队%s的先遣分队。" 2  G1.S38.D1       G1.S38.D2
+   END_SUB
+
+   SUB 39
+"\n——%s，已占用下列跑道：" 1 G1.S39.D1
+
+      GROUP 1
+"\n————%s；" 1 G1.S39.G1.D1
+      END_GROUP
+"\n————%s（主跑道）。" 1 G1.S39.D2
+   END_SUB
+
+   SUB 40
+"\n\n下列特种部队，机动至新位置：" 0
+      GROUP 1
+"\n——%s，隶属于%s" 2 G1.S40.G1.D1 G1.S40.G1.D2
+      END_GROUP
+   END_SUB
+
+   SUB 41
+"\n——%s，与%s%s的%s停止通讯联络。"   4 G1.S41.D1 G1.S41.D4 G1.S41.D3 G1.S41.D2
+   END_SUB
+
+   SUB 47
+
+      GROUP 1
+"\n——%s：正在操作%s：%s。"  3 G1.S47.D1 MHE_Facility[G1.S47.G1.D2] G1.S47.G1.D1
+      END_GROUP
+   END_SUB
+
+   SUB 48
+"" 0
+   END_SUB
+
+END_GROUP
+SUB 1
+"\n备注：这是一次演习区外机动，所有外方舰艇都将脱离编队，" 0
+"所有搭载的外方部队将按规定时间撤离，" 0
+"所有相关特种部队将归建。" 0
+END_SUB
+
+END_MAIN
+

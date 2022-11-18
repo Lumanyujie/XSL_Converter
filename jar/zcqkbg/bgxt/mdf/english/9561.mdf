@@ -1,0 +1,18 @@
+
+9561
+SUBJECT
+"对高层体系结构对象%s的控制报告" 1 D2
+MAIN
+"<p class='title'> 被传递对象执行报告</p>\n" 0
+SUB 1
+"  %s%s被成功传递给外部模型%s。\n" 3
+                             HLA_Object_Type[S1.D1] D2 External_Model_Only[S1.D2]
+END_SUB
+
+SUB 2
+"  外部模型%s未执行%s%s所传递对象。\n" 3
+                             External_Model_Only[S2.D2] HLA_Object_Type[S2.D1] D2
+END_SUB
+
+END_MAIN
+

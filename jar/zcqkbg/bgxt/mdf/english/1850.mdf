@@ -1,0 +1,178 @@
+
+1850
+SUBJECT
+"%s部队参数" 1 D2
+MAIN
+
+"  %s部队参数\n\n" 1 D2
+
+SUB 1
+"  使用战术部队原型的部队：%s (%s)\n"  2 Tactical_Unit_Prototype[S1.D1] S1.D1
+END_SUB
+
+SUB 2
+"  使用舰船部队原型的部队：%s (%s)\n" 2 Ship_Unit_Prototype[S2.D1] S2.D1
+END_SUB
+
+SUB 3
+"  部队指挥等级：%s\n" 1 Command_Level[S3.D1]
+END_SUB
+
+SUB 4
+"  部队的效能倍增系数：%s\n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  部队的夜间效能：%s\n" 1 S5.D1
+END_SUB
+
+SUB 6
+"  部队拥有的飞机类型：%s (%s)\n" 2 Aircraft_Type[S6.D1] S6.D1
+END_SUB
+
+SUB 7
+"  部队拥有的飞机类型：N/A\n" 0
+END_SUB
+
+SUB 8
+"  每天不确定地支援突击次数：%s\n" 1 S8.D1
+END_SUB
+
+SUB 9
+"  一次可停放飞机的架数：%s\n" 1 S9.D1
+END_SUB
+
+SUB 10
+   SUB 1
+"  是否具有特种作战能力：%s\n" 1 Answer[S10.S1.D1]
+   END_SUB
+   SUB 2
+"  部队装备的飞机能否在舰船上降落：%s\n" 1 Answer[S10.S2.D1]
+   END_SUB
+END_SUB
+
+SUB 11
+"\n  船体已命中次数：%s\n" 1 S11.D1 
+"  当前船体强度百分比：%s\n" 1 S11.D2
+END_SUB
+
+SUB 12
+"\n船体已命中次数：N/A\n" 0
+END_SUB
+
+SUB 13 
+"\n  心理战效果倍增系数：百分之%s %s\n" 2 S13.D1 S13.D2
+"  (百分之百为完全有效)\n\n" 0
+END_SUB
+
+SUB 14
+"部队干物资存储容量：%s %s\n" 2 UOM_AMT(DRY_WEIGHT, S14.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 15
+"  部队液态物资存储容量：%s %s\n" 2 UOM_AMT(WET_WEIGHT, S15.D1) UOM(WET_WEIGHT)
+END_SUB
+
+SUB 16
+"  部队干物资携带能力：%s %s\n" 2 UOM_AMT(DRY_WEIGHT, S16.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 17
+"  部队液态物资携带能力：%s %s\n" 2 UOM_AMT(WET_WEIGHT, S17.D1) UOM(WET_WEIGHT)
+END_SUB
+
+SUB 18
+"  部队识别标识码(UIC)：%s\n" 1 S18.D1
+END_SUB
+
+SUB 19
+"  部队军种代码：%s\n" 1 S19.D1
+END_SUB
+
+SUB 20
+"  部队的舰船基本类型： %s\n" 1 S20.D1
+END_SUB
+
+SUB 21
+"  部队现在/曾经隶属于它的上级是因为：%s\n" 1
+     Unit_Attach_Reason[S21.D1]
+END_SUB
+ 
+SUB 22
+"\n  该部队拥有:\n" 0
+"  %s 个装载设备\n" 1 S22.D1
+"  %s 个正在使用\n" 1 S22.D2
+"  %s 个处于闲置\n\n" 1 S22.D3
+END_SUB
+SUB 23
+"  注意: 如果你试图减少装载设备的数量，且减少的数量高于预期值，部队正在使用应急装载设备，他们现在不能从部队撤离。\n\n" 0
+END_SUB
+SUB 24
+"  当前部队所在区域半径：%s %s\n" 2  UOM_AMT(DISTANCE,S24.D1) UOM(DISTANCE)
+"  全战斗力时部队部署区域半径：%s %s\n" 2  UOM_AMT(DISTANCE,S24.D2) UOM(DISTANCE)
+END_SUB
+
+SUB 25
+"  部队的ICAO码：%s\n" 1 S25.D1
+END_SUB
+
+SUB 26
+"  模型控制的部队：%s\n" 1 S26.D1
+END_SUB
+
+SUB 27
+"部队标识识别码列表: \n" 0
+
+ GROUP 1
+"二级部队标识识别码：%s\n" 1 S27.G1.D1
+ END_GROUP
+"\n" 0
+END_SUB
+
+SUB 28
+"  Link-16开始编组值：%s\n" 1 S28.D1
+END_SUB
+
+SUB 29
+"  Link-16结束编组值：%s\n" 1 S29.D1
+END_SUB
+
+SUB 30
+"  海军部队的PIFF码：%s\n" 1 S30.D1
+END_SUB
+
+SUB 31
+"  海军部队的船体序号：%s\n" 1 S31.D1
+END_SUB
+
+SUB 32
+"  部队的国家码：%s\n" 1 S32.D1
+END_SUB
+
+SUB 33
+"  海军部队的预设沉没时间：%s\n" 1 GTIME(S33.D1) 
+END_SUB
+
+SUB 34
+"  异频雷达收发机位置序号：%s\n" 1 S34.D1
+END_SUB
+
+SUB 35
+"\n  舰船正常巡航速度：%s %s\n" 2 UOM_AMT(NAVAL_SPEED, S35.D1) UOM(NAVAL_SPEED)
+   SUB 1
+"  注意: 下达指令中，如果巡航速度高于许可的最大速度，巡航速度将会被调整\n" 0
+   END_SUB
+
+END_SUB
+
+SUB 36
+"\n  舰上发射器数量：%s\n" 1 S36.D1 
+"  当前可用数量：%s \n" 1 S36.D2
+END_SUB
+
+SUB 37
+"  部队的联合单元数量：%s\n" 1 S37.D1
+"  注意:部队联合单元数值只能使用MANAGE.LINK16.BLOCKS参演人员命令修改。\n" 0
+END_SUB
+
+END_MAIN

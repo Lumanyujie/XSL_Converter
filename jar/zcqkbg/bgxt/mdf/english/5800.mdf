@@ -1,0 +1,48 @@
+
+5800
+SUBJECT
+"战果评估区命令（编号：%s）执行情况报告" 1 D2
+MAIN
+"<p class='title'>战果评估区命令（编号：%s）执行情况报告</p>" 1 D2
+SUB 1
+"\n你方没有编号为“%s”的战损评估区，" 1 unit_name_transform(S1.D1)
+"因此改变或删除战果评估区命令无法执行。" 0
+END_SUB
+SUB 2
+"\n战果评估区“%s”已按照命令要求删除。" 1 unit_name_transform(S2.D1)
+END_SUB
+SUB 3
+"\n战果评估区“%s”的" 1 unit_name_transform(S3.D1)
+"“战斗评估事件后报告”选项已按照命令要求调整。" 0
+END_SUB
+SUB 4
+"\n由于你方已存在编号为“%s”的战果评估区，" 1 unit_name_transform(S4.D1)
+"因此，创建一个新的编号为“%s”" 1 unit_name_transform(S4.D1)
+"的战果评估区的命令无法执行。" 0
+END_SUB
+SUB 5
+"\n编号为“%s”的战损评估区已按照命令要求创建。" 1 unit_name_transform(S5.D1)
+END_SUB
+SUB 6
+"<p class='table_name'>当前有效战果评估区清单</p>" 0
+"__start_table|编号|属方|战斗评估报告选项|区域边界\n" 0
+   GROUP 1
+      SUB 1
+"|%s|%s" 2 unit_name_transform(S6.G1.S1.D1) No_Force_Side[S6.G1.S1.D2]
+"|%s|" 1 Answer[S6.G1.S1.D3]
+         GROUP 1
+"%s—" 1 LOCATION(S6.G1.S1.G1.D1,S6.G1.S1.G1.D2)
+"%s.<br>" 1 LOCATION(S6.G1.S1.G1.D3,S6.G1.S1.G1.D4)
+         END_GROUP
+"\n" 0
+      END_SUB
+   END_GROUP
+"__stop_table" 0
+END_SUB
+       
+SUB 7
+"\n当前没有有效的战果评估区。" 0 
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="1000"> <subject> <line><f n="unit_name_transform"><D2/></f>收到<f n="trans_word"><d>Order</d><D3/></f>命令情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;<f n="unit_name_transform"><D2/></f>收到<f n="trans_word"><d>Order</d><D3/></f>命令情况报告&lt;/p&gt;</line> <line><br/><f n="unit_name_transform"><D2/></f>收到<f n="trans_word"><d>Order</d><D3/></f>命令，</line> <line>命令编号为<D4/>。</line> </main> </msg> </msgs>

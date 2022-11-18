@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="1300"> <subject> <line>系统重启报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;系统重启报告&lt;/p&gt;</line> <line><br/>断点重启完成，可以重新开始推演。</line> </main> </msg> </msgs>

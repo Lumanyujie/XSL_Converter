@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MppConfig>
+<ForceSide_Color>
+<entry name="CHINA" value="1" color="RED" />
+<entry name="JA" value="2" color="PURPLE" />
+<entry name="TW" value="3" color="BLUE" />
+<entry name="USA" value="4" color="GREEN" />
+<entry name="CONT" value="11" color="WHITE" />
+</ForceSide_Color>
+<Exercise_Title>
+<entry name="CHINA" Title="2015全军训练研讨活动" />
+<entry name="JA" Title="2015全军训练研讨活动" />
+<entry name="TW" Title="2015全军训练研讨活动" />
+<entry name="USA" Title="2015全军训练研讨活动" />
+<entry name="CONT" Title="2015全军训练研讨活动" />
+</Exercise_Title>
+<PLAY_CODE>
+<entry name="133集训指挥对抗演练" />
+<entry name="secLevel" value="机密" />
+</PLAY_CODE>
+</MppConfig>

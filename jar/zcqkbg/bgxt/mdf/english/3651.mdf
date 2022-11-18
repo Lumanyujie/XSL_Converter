@@ -1,0 +1,86 @@
+
+3651
+SUBJECT
+"空中%s编队空运情况报告" 1 D2
+MAIN
+
+"<p class='title'>空中%s编队空运情况报告</p>" 1 D2
+
+"\n当前，%s的空运状况：" 1 unit_name_transform(D4)   
+
+SUB 1
+   GROUP 1
+
+      SUB 1
+"\n%s编队，" 1 S1.G1.S1.D1
+"%s%s架，奉命空运。" 2 Aircraft_Type[S1.G1.S1.D3]  S1.G1.S1.D2
+      END_SUB
+
+      SUB 2
+"\n—空运预计完成时间：%s。"   1 GTIME(S1.G1.S2.D1)
+      END_SUB
+
+      SUB 3
+"\n—编队预计起飞时间：%s。" 1 GTIME(S1.G1.S3.D1)
+      END_SUB
+
+      SUB 4
+"\n—编队起飞时间：尚未确定。" 0
+      END_SUB
+
+      SUB 5
+"\n—当前状态：加油中，预计完成时间：起飞后%s小时。" 
+                                   1 DURATION(S1.G1.S5.D1, "%.2Th")
+      END_SUB
+
+      SUB 6
+"\n—当前状态：战斗延迟，预计完成时间：起飞后%s小时。"
+                                   1 DURATION(S1.G1.S6.D1, "%.2Th")
+      END_SUB
+
+      SUB 7
+"\n—当前状态：跑道延迟，预计完成时间：起飞后%s小时。"
+                                   1 DURATION(S1.G1.S7.D1, "%.2Th")
+      END_SUB
+
+      SUB 8
+"\n—当前状态：装载中，预计完成时间：起飞后%s小时。" 
+                                   1 DURATION(S1.G1.S8.D1, "%.2Th")
+      END_SUB
+
+      SUB 9
+"\n—当前状态：最后一批卸载。" 0
+      END_SUB
+
+      SUB 10
+"\n—当前状态：等待部队，无法预计完成时间。" 0
+      END_SUB
+
+      SUB 11
+"\n—当前状态：起飞延迟，无法预计完成时间。" 0
+      END_SUB
+
+      SUB 12
+"\n—当前状态：未知。" 0
+      END_SUB
+
+   END_GROUP
+END_SUB
+
+SUB 2
+   GROUP 1
+      SUB 1
+"\n%s编队，" 1 S2.G1.S1.D1
+"%s%s架，奉命空运。" 2 Aircraft_Type[S2.G1.S1.D3]  S2.G1.S1.D2
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 3
+"\n根据当前运力，在" 0
+"装载和卸载过程都没有延迟的情况下，完成空运任务还" 0
+"需至少%s小时。" 1 DURATION(S3.D1, "%Th")
+END_SUB
+
+END_MAIN
+

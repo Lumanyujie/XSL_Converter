@@ -1,0 +1,200 @@
+1840
+SUBJECT
+"特战分队原型属性, %s " 1 Highres_Unit_Prototype[D3]
+MAIN
+"<p class='title'>特种部队原型属性报告</p>\n\n" 0
+"  特种部队原型属性%s命令\n" 1 D2 
+
+SUB 1
+"  特种部队原型%s某些基本属性已改变。\n\n" 1
+                                                  Highres_Unit_Prototype[D3]
+END_SUB
+
+SUB 2
+"<p class='paragraph'>%s基本属性</p>\n" 1
+                                                  Highres_Unit_Prototype[D3]
+END_SUB
+
+SUB 3
+"  成建制机动速度: %-12.12s\n\n" 1 S3.D1
+END_SUB
+
+SUB 4
+"  召唤近距空中支援能力: %s\n\n" 1 Answer[S4.D1]
+END_SUB
+
+SUB 5
+"  军民联合行动能力: %s\n\n" 1 Answer[S5.D1]
+END_SUB
+
+SUB 6
+"  隐蔽作战能力: %s\n\n" 1 Answer[S6.D1]
+END_SUB
+
+SUB 7
+"  提供作战训练支持能力: %s\n\n" 1 Answer[S7.D1]
+END_SUB
+
+SUB 8
+"  中继能力: %s\n\n" 1 Answer[S8.D1]
+END_SUB
+
+SUB 9
+"  队标: %s  (%s)\n\n" 
+                                       2 Graphics_Symbol[S9.D1] S9.D1
+END_SUB
+
+SUB 10
+   SUB 1
+"  编制船艇类型: %s (%s)\n\n" 2 No_Small_Boat[S10.S1.D1]
+                                                                   S10.S1.D1
+   END_SUB
+
+   SUB 2
+"  救生艇类型: %s (%s)\n\n" 2 No_Small_Boat[S10.S2.D1]
+                                                                   S10.S2.D1
+   END_SUB
+END_SUB
+
+SUB 11
+"  部队展开半径: %s\n\n" 1 S11.D1
+END_SUB
+
+SUB 12
+"  特种分队伏击时间限制: %s 分钟\n\n" 1 DURATION(S12.D1, "%.2Tm")
+END_SUB
+
+SUB 13
+"  特种分队暴露后脱离接触平均耗时: %s\n\n"
+            1 DURATION(S13.D1, "%d 天 %h 小时 %Rm 分钟")
+END_SUB
+
+SUB 14
+"  特种分队被察觉平均耗时: %s\n\n"
+            1 DURATION(S14.D1, "%d 天%h 小时 %Rm 分钟")
+END_SUB
+
+SUB 15
+"  特种分队脱离战斗战斗力临界值: %s\n\n" 1 S15.D1
+END_SUB
+
+SUB 16
+"  紧急报告时被察觉概率: %s\n\n" 1 S16.D1
+END_SUB
+
+SUB 17
+"  例行报告时被察觉概率: %s\n\n" 1 S17.D1
+END_SUB
+
+SUB 18
+"  特种分队被消灭战斗力临界百分比: %s\n\n" 1 S18.D1
+END_SUB
+
+SUB 19
+"  伏击准备时间: %s\n\n" 
+            1 DURATION(S19.D1, "%d 天 %h 小时 %Rm 分钟")
+END_SUB
+
+SUB 20
+"  C3效能: %s\n\n" 1 S20.D1
+END_SUB
+            
+SUB 21
+"  特种部队原型C3能力等级: %s\n\n" 1   C3_Quality_Rating[S21.D1]
+                                                  
+END_SUB
+
+SUB 22
+"  特种部队原型指挥级别: %s\n\n" 1  Command_Level[S22.D1]
+                                                  
+END_SUB
+
+SUB 23
+"  自动转发位置报告数量: %s\n\n" 1  S23.D1
+                                                  
+END_SUB
+
+SUB 24
+"  SUB19到29不可用" 0
+END_SUB
+
+SUB 30
+"\n  %s属性如下\n\n" 1
+                                          Highres_Unit_Prototype[D3]
+END_SUB
+
+SUB 31
+"  非隐蔽状态被察觉概率: %s\n\n" 1 S31.D1
+END_SUB
+
+SUB 32
+"  隐蔽状态时被察觉概率: %s\n\n" 1 S32.D1
+END_SUB
+
+SUB 33
+"  担负监视探测任务时被察觉概率增加值: %s\n\n" 1 S33.D1
+END_SUB
+
+SUB 34
+"  机动状态时被察觉概率: %s\n\n" 1 S34.D1
+END_SUB
+
+SUB 35
+"  预留SUB35到39" 0
+END_SUB
+
+SUB 40
+"\n<p class='tablename'>%s的武器装备系统属性</p>\n\n" 1 Highres_Unit_Prototype[D3]
+"__start_table |武器系统（人员）|编制数量\n\n" 0
+   GROUP 1
+"      |%-15.15s (%3.3s)       |%8.8s\n" 3 Combat_System[S40.G1.D1]
+                                                        S40.G1.D1 S40.G1.D2
+   END_GROUP
+ "__stop_table" 0  
+"\n" 0
+END_SUB
+
+SUB 50
+"<p class='tablename'>%s的补给类属性</p>" 1 Highres_Unit_Prototype[D3]
+"__start_table |补给类别 |携行量\n" 0 
+   GROUP 1
+"      |%s|%s%s\n" 3 Supply_Category[S50.G1.D1]
+                      SLP_SC_AMT(0,S50.G1.D1,S50.G1.D2) SLP_SC_UOM(0,S50.G1.D1)
+   END_GROUP
+   "__stop_table" 0
+"\n" 0
+END_SUB
+
+SUB 51
+"<p class='tablename'>%s的特种部队属性</p>\n\n" 1
+                                                  Highres_Unit_Prototype[D3]
+   SUB 1
+"__start_table |目标类别             |子类别         |可否任意机动   |人员     |机动性\n" 0      
+
+      GROUP 1
+" |%-17.17s   |%-15.15s   |%3.3s    |%4.4s       |%-19.19s\n" 5
+           Target_Category[S51.S1.G1.D1] SUBCAT_NAME{S51.S1.G1.D1,S51.S1.G1.D2}
+                                        Answer[S51.S1.G1.D3] S51.S1.G1.D4
+                                             Target_Mobility[S51.S1.G1.D5]
+
+      END_GROUP
+"__stop_table" 0
+   "\n" 0
+   END_SUB
+
+   SUB 2
+"无\n\n" 0
+   END_SUB
+
+   SUB 3
+"  特种部队的通信指挥类型必须任意创建.\n" 0
+"  (可否任意机动)属性已由否改为是.\n\n" 0
+   END_SUB
+
+END_SUB
+
+SUB 52
+"  无命令显示.\n" 0
+END_SUB
+
+END_MAIN

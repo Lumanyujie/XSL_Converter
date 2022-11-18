@@ -1,0 +1,46 @@
+
+7400
+SUBJECT
+"%s遭敌突击情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s遭敌突击情况报告</p>" 1 unit_name_transform(D2)
+
+"\n%s向%s报告：" 2 unit_name_transform(D2) unit_name_transform(D8)
+"于%s，" 1 GTIME(D1)
+"在%s处，" 1 LOCATION(D3,D4)
+
+SUB 1
+"遭炮火打击。" 0
+END_SUB
+
+SUB 2
+"遭空中火力打击。" 0
+END_SUB
+
+SUB 3
+"遭鱼雷攻击，在近距爆炸未被击中。" 0
+END_SUB
+
+SUB 4
+"遭导弹突击。" 0
+END_SUB
+
+SUB 5
+"遭遇雷场爆炸。" 0
+END_SUB
+
+SUB 6
+"附近发生爆炸，原因尚未查明。" 0
+END_SUB
+
+SUB 7
+"附近有枪炮声，原因尚未查明。" 0
+END_SUB
+
+SUB 8
+"我部无毁伤，行动未受影响。" 0
+END_SUB
+
+END_MAIN
+

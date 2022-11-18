@@ -1,0 +1,37 @@
+
+3600
+SUBJECT
+"空军部队（含所有空军中队）情况报告" 0
+MAIN
+"<p class='title'>空军部队（含所有空军中队）情况报告</p>" 0
+SUB 1
+"__start_table|部队|机场|可用跑道数|所需跑道数|机型|编制数|可用数|维修数|在飞数\n" 0
+       
+END_SUB
+
+GROUP 1
+   SUB 1
+"|%s|%s" 2 unit_name_transform(G1.S1.D1) unit_name_transform(G1.S1.D2)
+"|%s|%s|%s" 3 G1.S1.D3 G1.S1.D4 Aircraft_Type[G1.S1.D6]
+"|%s|%s|%s|%s\n" 4 G1.S1.D5 G1.S1.D7 G1.S1.D8 G1.S1.D9
+   END_SUB
+   SUB 2
+"|%s|%s" 2 unit_name_transform(G1.S2.D1) unit_name_transform(G1.S2.D2)
+"|无|%s|%s" 2 G1.S2.D3 Aircraft_Type[G1.S2.D5]
+"|%s|%s|%s|%s\n" 4 G1.S2.D4 G1.S2.D6 G1.S2.D7 G1.S2.D8
+   END_SUB
+   SUB 3
+"|%s|%s" 2 unit_name_transform(G1.S3.D1) unit_name_transform(G1.S3.D2)
+"|无|无|%s" 1 Aircraft_Type[G1.S3.D4]
+"|%s|%s|%s|%s\n" 4 G1.S3.D3 G1.S3.D5 G1.S3.D6 G1.S3.D7
+   END_SUB
+   SUB 4
+"|%s|无" 1 unit_name_transform(G1.S4.D1)
+"|无|%s|%s" 2 G1.S4.D2 Aircraft_Type[G1.S4.D4]
+"|%s|%s|%s|%s\n" 4 G1.S4.D3 G1.S4.D5 G1.S4.D6 G1.S4.D7
+   END_SUB
+END_GROUP
+"__stop_table" 0
+
+END_MAIN
+

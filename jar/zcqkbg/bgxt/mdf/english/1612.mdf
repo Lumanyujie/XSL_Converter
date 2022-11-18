@@ -1,0 +1,93 @@
+
+1612
+SUBJECT
+"%s %s 的生存能力原型损耗属性" 2 Survivability_Prototype[D2] D2
+MAIN
+
+"  生存力原型%s有如下损耗属性:\n" 1 Survivability_Prototype[D2]
+
+SUB 1 
+"  部队遭受化学武器攻击时，有%s的人员当场死亡\n\n" 1 S1.D1
+END_SUB
+
+SUB 2 
+"  如果部队滞留在化学沾染区，每小时将有%s的人员伤亡\n\n" 1 S2.D1
+END_SUB
+
+SUB 3
+"  部队遭受核武器攻击时，有%s的人员当场死亡\n\n" 1 S3.D1
+END_SUB
+
+SUB 4
+"  如果部队滞留在放射性沾染区，每小时将有%s的人员死亡\n\n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  当守方使用的生存能力原型设置为%s时，修正变量将降低或提高进攻方武器系统的兰切斯特毁伤率\n\n" 1 S5.D1
+END_SUB
+
+SUB 6
+"  遭炮击受损部队至少被延迟%s \n\n"  1 DURATION(S6.D1, "%d天%h小时%Rm分")
+END_SUB
+
+SUB 7
+"  遭炮击受损部队被延迟时间不超过%s \n\n"  1 DURATION(S7.D1, "%d天%h小时%Rm分")
+END_SUB
+
+SUB 8
+"  炮击至少要损伤部队全部战斗力的%s，才能导致部队最大延迟\n\n" 1 S8.D1
+END_SUB
+
+SUB 9
+"  遭空袭受损的部队至少被延迟%s\n\n"  1 DURATION(S9.D1, "%d天%h小时%Rm分")
+END_SUB
+
+SUB 10
+"  遭空袭受损的部队被延迟时间不超过%s\n\n"  1 DURATION(S10.D1, "%d天%h小时%Rm分")
+END_SUB
+
+SUB 11
+"  空袭至少要损伤部队全部战斗力的%s ，才能导致部队最大延迟\n\n" 1 S11.D1
+END_SUB
+
+SUB 12
+"<p class='title'>  在以下地形条件下，攻击中的作战系统%s的损耗计算系数如下： </p>\n" 1 Combat_System[S12.D1]
+"__start_table     | 地形类型      |     编号      |    倍增系数   \n" 0
+   GROUP 1
+"   | %-20.20s | (%2.2s)  |     %10.10s\n" 3 Terrain_Type[S12.G1.D1] S12.G1.D1 S12.G1.D2
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+SUB 13
+"<p class='paragraph'>  在以下地形条件下，非攻击中的作战系统%s的损耗计算系数如下： </p> \n" 1 Combat_System[S13.D1]
+"__start_table  |    地形类型       |    编号     |     倍增系数   \n" 0
+   GROUP 1
+" |   %-20.20s | (%2.2s)  |     %10.10s \n" 3 Terrain_Type[S13.G1.D1] S13.G1.D1 S13.G1.D2
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+SUB 14
+"<p class='tablename'>  敌火力打击下，部队穿越雷场的损耗计算系数如下： </p>\n" 0
+"__start_table     |   机动态势              |        倍增系数   \n" 0
+   GROUP 1
+"   |  %-20.20s          |     %8.8s\n" 2 Unit_Minefield_Posture[S14.G1.D1] S14.G1.D2
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+SUB 15
+"    <p class='tablename'>  在以下地形条件下，使用作战系统%s的面杀伤计算系数如下： </p>\n" 1 Combat_System[S15.D1]
+" __start_table  |   地形类型      |     编号      |    倍增系数   \n" 0
+   GROUP 1
+"   | %-20.20s | (%2.2s)   |    %10.10s \n" 3 Terrain_Type[S15.G1.D1] S15.G1.D1 S15.G1.D2
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+END_MAIN

@@ -1,0 +1,32 @@
+
+1056
+SUBJECT
+"调理员命令 %s, 显示原型所属目标" 1 D2
+MAIN
+"<p class='title'>  %s拥有的目标属性%s: </p>\n\n" 2 D4 D3
+
+GROUP 1
+   SUB 1
+"  POT 主体库名 %s\n" 1 G1.S1.D1
+"  POT 库名全称 %s\n" 1 G1.S1.D2
+"  POT 目标种类 %s\n" 1 G1.S1.D3
+"  POT 目标子类 %s\n" 1 G1.S1.D4
+"  POT 序号%s\n" 1 G1.S1.D5
+"  POT 天线高度%s%s\n" 2 UOM_AMT(DISTANCE,G1.S1.D6)
+                                        UOM(AIRDISTANCE)
+"  POT 飞机跑道长度%s%s\n" 2 UOM_AMT(DISTANCE,G1.S1.D7)
+                                        UOM(AIRDISTANCE)
+"  POT 范围%s%s\n" 2 UOM_AMT(DISTANCE,G1.S1.D8)
+                                        UOM(DISTANCE)
+"  POT 机动性%s\n" 1 G1.S1.D9
+"  POT 战斗力百分比%s%%\n" 1 G1.S1.D10
+"  POT 分类码%s\n" 1 G1.S1.D11
+"\n" 0
+   END_SUB
+   SUB 2
+"  没有属于该原型的目标。\n" 0
+   END_SUB
+END_GROUP
+
+END_MAIN
+

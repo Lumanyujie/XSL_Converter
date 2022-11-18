@@ -1,0 +1,46 @@
+
+1521
+SUBJECT
+"%s飞机掩体目标属性" 1 Aircraft_Shelter_Type[D2]
+MAIN
+
+"<p class='title'>  %s类（编号%s）有下列属性</p>\n\n" 2 Aircraft_Shelter_Type[D2] D2
+
+SUB 1
+"  半径：%s%s\n" 2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+"  修复时间：%s\n"   1 DURATION(S1.D2, "%d天%h时%Rm分")
+"  摧毁时间:%s\n"   1 DURATION(S1.D3, "%d天%h时%Rm分")
+END_SUB
+
+SUB 2 
+"  此类掩体改为存放以下类型飞机，其容纳飞机数量表为：\n" 0
+"   __start_table | 飞机类型 |    编号  |     可存放架数 \n" 0
+  GROUP 1
+" | %-15.15s    |    %3.3s     |       %s \n" 
+              3 Aircraft_Type[S2.G1.D1] S2.G1.D1 S2.G1.D2
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+SUB 3 
+"  该类掩体容量被改变后容纳飞机类别数目表：\n" 0
+"  __start_table |飞机类型   |     编号  |    可存放架数 \n" 0
+  GROUP 1
+" | %-15.15s  |      %3.3s     |       %s \n"     
+              3 Aircraft_Type[S3.G1.D1] S3.G1.D1 S3.G1.D2
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+SUB 4
+"  %s目标的分类码: \n" 1 S4.D1
+"  目标图标:%s\n" 1 S4.D2
+"  公开标识:%s\n" 1 S4.D3
+"  DIS码:%s\n" 1 S4.D4
+END_SUB
+
+END_MAIN
+
+

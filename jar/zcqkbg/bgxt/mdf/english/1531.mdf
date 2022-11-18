@@ -1,0 +1,58 @@
+1531
+SUBJECT
+"%s飞机相关概率、倍增系数、气象条件" 1 Aircraft_Type[D2]
+MAIN
+
+"<p class='title'> %s (编号%s）飞机属性</p>\n\n"  2 Aircraft_Type[D2] D2
+
+SUB 2
+"  在电子战环境下，飞机武器投放能力为正常情况下的%s.\n"   1 S2.D1
+END_SUB
+
+SUB 3
+"  机组人员生存概率:%s \n" 1 S3.D1
+END_SUB
+
+SUB 4
+"  每个六角格内传感器探测到飞机的概率为：%s\n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  空中交战持续的概率:%s \n" 1 S5.D1
+END_SUB
+
+SUB 6
+"\n  气象条件%s属性:\n" 1 Weather_Condition[S6.D1]
+   SUB 1
+"  飞机气象条件系数：%s\n" 1 S6.S1.D1
+   END_SUB
+   SUB 2
+"  飞机气象条件起飞能力:%s\n" 1 Answer[S6.S2.D1]
+   END_SUB
+   SUB 3
+"  飞机气象条件飞行能力:%s\n" 1 Answer[S6.S3.D1]
+   END_SUB
+END_SUB
+
+SUB 7
+"\n  飞机/航空交通管制下，%s到达发射阵位的概率: \n\n"
+                                         1 Aircraft_Type[D2]
+
+   GROUP 1
+"  %15.15s      %7.7s\n" 2
+                     Aircraft_Target_Class[S7.G1.D1] S7.G1.D2
+   END_GROUP
+ 
+END_SUB
+
+SUB 8
+"\n  开火间隔时间:%s\n"
+          1 DURATION(S8.D1, "%h 小时 %m 分钟 and %s 秒")
+END_SUB
+
+SUB 9
+"  武器控制数量:%s\n" 1 S9.D1
+
+END_SUB
+
+END_MAIN

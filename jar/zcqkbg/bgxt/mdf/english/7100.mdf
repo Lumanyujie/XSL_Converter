@@ -1,0 +1,24 @@
+
+7100
+SUBJECT
+"%s毁伤情况报告" 1 unit_name_transform(D5)
+MAIN
+
+"<p class='title'>%s毁伤情况报告</p>" 1 unit_name_transform(D5)
+
+"\n%s发现，%s已被击中。" 2 unit_name_transform(D2) unit_name_transform(D5)
+ 
+SUB 1
+"确信由%s实施，但无力击退敌方。" 1 unit_name_transform(S1.D1)
+END_SUB
+
+SUB 2
+"%s损毁严重，已无法修复。" 1 unit_name_transform(D5)
+END_SUB
+
+SUB 3
+"已对%s展开维修，预计于%s修复。" 2 unit_name_transform(D5) GTIME(S3.D1)
+END_SUB
+
+END_MAIN
+

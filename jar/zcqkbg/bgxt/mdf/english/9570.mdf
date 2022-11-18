@@ -1,0 +1,22 @@
+
+9570
+SUBJECT
+"不能执行战略计划情况报告" 0
+MAIN
+"<p class='title'>不能执行战略计划情况报告</p>" 0
+SUB 1
+"\n%s的战略计划没有任何节点。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 2
+"\n%s是编队一部，不能独立执行命令要求的战略计划。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 3
+"\n如果%s执行命令要求的战略计划，那么在通行路线上存在矛盾。" 1 unit_name_transform(D2)
+END_SUB
+
+"因此，该计划只能放弃。" 0
+
+END_MAIN
+

@@ -1,0 +1,65 @@
+
+4410
+SUBJECT
+"%s按计划抵达战区情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s按计划抵达战区情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+   "\n%s于%s抵达战区，" 2 unit_name_transform(S1.D2) GTIME(S1.D1)
+   "登陆港口：%s，" 1 unit_name_transform(S1.D3)
+   "序列号：%s，" 1 S1.D4
+   "先头部队：%s，" 1 unit_name_transform(S1.D5)
+   "常规保障部队：%s，" 1 unit_name_transform(S1.D6)
+   "上级指挥部队：%s。" 1 unit_name_transform(S1.D7)
+END_SUB
+
+SUB 2
+   "抵达地域：%s。" 1 LOCATION(S2.D1,S2.D2)
+END_SUB
+
+SUB 3
+   "抵达后，向%s机动并加入该部。" 1 unit_name_transform(S3.D1)
+END_SUB
+
+SUB 4
+   "集结完毕后，将向%s地域机动。" 1 LOCATION(S4.D1,S4.D2)
+END_SUB
+
+SUB 5
+   "集结完毕后，向%s机动并加入该部。" 1 unit_name_transform(S5.D1)
+END_SUB
+
+SUB 6
+   "\n主基地：%s。" 1 unit_name_transform(S6.D1)
+END_SUB
+
+SUB 7
+   "\n登陆预备队: %s。" 1 unit_name_transform(S7.D1)
+END_SUB
+
+SUB 8
+   "\n在该处的飞行中队可在以下跑道降落：" 0 
+   GROUP 1
+      "\n——%s" 1 unit_name_transform(S8.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 9
+   "\n以下部队到达后将加入该部队：" 0
+   GROUP 1
+      "\n——%s，" 1 unit_name_transform(S9.G1.D1)
+      "抵达时间：%s" 1 GTIME(S9.G1.D2)
+   END_GROUP
+END_SUB
+
+SUB 10
+   "\n该部队尚无抵达计划。" 0
+END_SUB
+
+SUB 11
+   "\n该部队已到达。" 0
+END_SUB
+
+END_MAIN

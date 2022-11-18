@@ -1,0 +1,89 @@
+
+6305
+SUBJECT
+"%s两栖行动情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s两栖行动情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+"\n%s正在%s，" 2 unit_name_transform(D2) Formation_SubPosture[S1.D1]
+"一个波次刚刚到达，" 0
+   SUB 1
+"攻击目标为%s。" 1 S1.S1.D1
+   END_SUB
+   SUB 2
+"攻击目标不是部队。" 0
+   END_SUB
+   SUB 3
+"这一波次来自 %s。" 1 S1.S3.D1
+   END_SUB
+   SUB 4
+"登陆波次没有明确输送舰船。" 0
+   END_SUB
+   SUB 5
+"这一波次使用%s艘%s。" 2 S1.S5.D2 Small_Boat[S1.S5.D1]
+   END_SUB
+   SUB 6
+"这个编波正在搭载空中编队（%s）。" 1 S1.S6.D1
+   END_SUB
+   SUB 7
+"这个编波正准备卸载补给物资。" 0
+   END_SUB
+   SUB 8
+"这个编波未携带补给物资。" 0
+   END_SUB
+END_SUB
+
+SUB 7
+"\n" 0
+   SUB 1
+"%s遭敌方攻击造成所有补给物资损失，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 2
+"从装载点到卸载点出现航线问题，%s的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 3
+"%s所有具有输送能力的舰船被毁，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 4
+"%s最后一艘舰船被毁，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 5
+"没有适于装卸补给物资的港口设施，%s的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 6
+"%s接到取消海上任务命令，海上补给行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 7
+"由于没有通行航线，%s的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 8
+"%s两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 9
+"由于%s在两栖行动初始阶段的航线问题，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 10
+"由于缺乏两栖行动必需的装备设施，%s的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 11
+"在装载点没有被输送部队和装载物资，%s的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 12
+"接到命令，%s的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 13
+"%s的舰艇不具备扫雷能力，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 14
+"该区域没有敌方雷场，%s的两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 15
+"%s的舰船不具备布雷能力，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+   SUB 16
+"%s没有水雷，两栖行动中止。" 1 unit_name_transform(D2)
+   END_SUB
+END_SUB
+
+END_MAIN

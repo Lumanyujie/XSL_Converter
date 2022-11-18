@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="2941"> <subject> <line>区域天气预报</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;区域天气预报&lt;/p&gt;</line> <line><br/>时间：<f n="GTIME"><D1/></f></line> <line><br/>地点：<f n="LOCATION"><D2/><D3/></f></line> <line>&lt;p class=&apos;table_name&apos;&gt;天气预报明细&lt;/p&gt;</line> <line>__start_table|时间|天气<br/></line>  <group n="1"> <line>|<f n="GTIME"><G1.D1/></f>|<f n="Weather_Condition"><G1.D2/></f><br/></line> </group><line>__stop_table</line> </main> </msg> </msgs>

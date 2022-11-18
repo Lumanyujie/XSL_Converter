@@ -1,0 +1,59 @@
+
+4110
+SUBJECT
+"%s运输队当前情况报告" 1 D2
+MAIN
+"<p class='title'>%s运输队当前情况报告</p>" 1 D2
+SUB 1
+"\n该运输队隶属于%s，预定用卡车输送%s。" 2 unit_name_transform(D3) unit_name_transform(D4)
+END_SUB
+SUB 2
+"\n该运输分队现位于装载点，无法完成装运。" 0
+   SUB 1
+"%s已到达目的地。" 1 unit_name_transform(D3)
+   END_SUB
+   SUB 2 
+"%s目前正在交战。" 1 unit_name_transform(D3)
+   END_SUB
+   SUB 3 
+"%s当前正处于%s态势。" 2  unit_name_transform(D3) Unit_Posture[S2.S3.D1]
+   END_SUB
+   SUB 4
+"%s当前正在%s。"  2 unit_name_transform(D3) Unit_Posture[S2.S4.D1]
+   END_SUB
+   SUB 5 
+"%s当前处于被分割状态。" 1 unit_name_transform(D3)
+   END_SUB
+   SUB 6  
+"%s正搭乘%s编队。" 2 unit_name_transform(D3) S2.S6.D1
+   END_SUB
+   SUB 7  
+"%s正参加%s的两栖作战行动。" 2 unit_name_transform(D3) unit_name_transform(S2.S7.D1)
+   END_SUB
+   SUB 8 
+"%s拥有的装卸设施目前正在工作。" 1 unit_name_transform(D3)
+   END_SUB
+   SUB 9 
+"%s为驻有飞行中队的空军基地。" 1 unit_name_transform(D3)
+   END_SUB
+   SUB 10
+"%s是拥有跑道的空军基地。" 1 unit_name_transform(D3)
+   END_SUB
+   SUB 11
+"装载点附近没有装载所需的装卸设施，" 0
+"而该部队不能使用自己的装卸设施进行装载。" 0
+   END_SUB
+   SUB 12
+"从%s驻地至卸载点之间没有可通行路线。" 1 unit_name_transform(D3)
+   END_SUB
+   SUB 13
+"该部队正在被输送。" 0
+"在接受下一个输送命令前必须完成当前行动。" 0
+   END_SUB
+   SUB 15
+"即使使用运输部队和被运输部队的全部货车资源，" 0
+"也没有足够的运输能力一次性完成%s的运输任务。" 1 unit_name_transform(D3)
+   END_SUB
+END_SUB
+END_MAIN 
+

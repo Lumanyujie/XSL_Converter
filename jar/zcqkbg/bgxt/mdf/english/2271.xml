@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="2271"> <subject> <line><f n="unit_name_transform"><D2/></f>（特战分队）实施掩护行动情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;<f n="unit_name_transform"><D2/></f>（特战分队）实施掩护行动情况报告&lt;/p&gt;</line> <line><br/><f n="unit_name_transform"><D2/></f>当前位于<f n="LOCATION"><D3/><D4/></f>，</line>  <sub n="5"> <line>按照命令，开始实施对<f n="unit_name_transform"><S5.D1/></f>的掩护行动。</line> </sub></main> </msg> </msgs>

@@ -1,0 +1,158 @@
+
+4320
+SUBJECT
+"%s后勤综合情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s后勤综合情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+   "\n%s" 1  unit_name_transform(D2)
+   "当前位于%s地域，" 1 LOCATION(D3,D4)
+   "现战斗力为%s%%，" 1 S1.D1
+   "将所属部队计算在内，战斗力为%s%%。" 1 S1.D2
+END_SUB
+
+SUB 2
+   "\n%s" 1  unit_name_transform(D2)
+   "当前位于%s地域，" 1 LOCATION(D3,D4)
+   "现战斗力为%s%%，" 1 S2.D1
+   "将所属部队计算在内，战斗力为%s%%。" 1 S2.D2
+END_SUB
+
+SUB 3
+   "<p class='table_name'>人员装备综合情况</p>"  0
+   "__start_table|编号|名称|配备乘员|备用数量|" 0
+   "维修（伤病）数量|编制数量|初始编制数量| 废弃数量\n" 0
+   GROUP 1
+      "|%s|%s|%s|%s|%s|%s|%s|%s\n" 8 
+                  S3.G1.D1 CSP_System_Name[D5,S3.G1.D1]
+                  S3.G1.D6 S3.G1.D2
+                  S3.G1.D3 S3.G1.D4
+                  S3.G1.D7 S3.G1.D5
+   END_GROUP
+   "__stop_table" 0
+
+   SUB 1
+      "\n无人员装备情况。" 0
+   END_SUB
+   SUB 2
+      "" 0
+   END_SUB
+   SUB 3
+      "" 0
+   END_SUB
+END_SUB
+
+SUB 4
+   "<p class='table_name'>个人用品综合情况</p>" 0          
+   "__start_table|编号|名称|现有量|待补充量|待发送量|储备量|携行量|单位\n" 0
+   GROUP 1
+      SUB 1
+         "|%s|%s|%s|%s|%s|%s|%s|%s\n" 8 
+                         S4.G1.S1.D1 
+                         SLP_Category_Name[D6,S4.G1.S1.D1]
+                         SLP_SC_AMT(D6,S4.G1.S1.D1,S4.G1.S1.D2)
+                         SLP_SC_AMT(D6,S4.G1.S1.D1,S4.G1.S1.D3)
+                         SLP_SC_AMT(D6,S4.G1.S1.D1,S4.G1.S1.D4)
+                         SLP_SC_AMT(D6,S4.G1.S1.D1,S4.G1.S1.D5)
+                         SLP_SC_AMT(D6,S4.G1.S1.D1,S4.G1.S1.D6)
+                         SLP_SC_UOM(D6,S4.G1.S1.D1)
+      END_SUB
+      SUB 2
+         "|%s|%s|%s|%s|%s|——|——|人\n" 5
+                         S4.G1.S2.D1
+                         SLP_Category_Name[D6,S4.G1.S2.D1]
+                         SLP_SC_AMT(D6,S4.G1.S2.D1,S4.G1.S2.D2)
+                         SLP_SC_AMT(D6,S4.G1.S2.D1,S4.G1.S2.D3)
+                         SLP_SC_AMT(D6,S4.G1.S2.D1,S4.G1.S2.D4)
+      END_SUB    
+      SUB 3
+         "|%s|%s|%s|%s|%s|——|——|具\n" 5
+                         S4.G1.S3.D1
+                         SLP_Category_Name[D6,S4.G1.S3.D1]
+                         SLP_SC_AMT(D6,S4.G1.S3.D1,S4.G1.S3.D2)
+                         SLP_SC_AMT(D6,S4.G1.S3.D1,S4.G1.S3.D3)
+                         SLP_SC_AMT(D6,S4.G1.S3.D1,S4.G1.S3.D4)
+      END_SUB    
+   END_GROUP
+   "__stop_table" 0
+
+END_SUB
+
+SUB 5
+   "<p class='table_name'>弹药补给综合情况</p>" 0          
+   "__start_table|编号|名称|现有量|待补充量|待发送量|储备量|携行量|单位\n" 0
+   GROUP 1
+      "|%s|%s|%s|%s|%s|%s|%s|%s\n" 8 
+                         S5.G1.D1 
+                         SLP_Category_Name[D6,S5.G1.D1]
+                         SLP_SC_AMT(D6,S5.G1.D1,S5.G1.D2)
+                         SLP_SC_AMT(D6,S5.G1.D1,S5.G1.D3)
+                         SLP_SC_AMT(D6,S5.G1.D1,S5.G1.D4)
+                         SLP_SC_AMT(D6,S5.G1.D1,S5.G1.D5)
+                         SLP_SC_AMT(D6,S5.G1.D1,S5.G1.D6)
+                         SLP_SC_UOM(D6,S5.G1.D1)
+   END_GROUP
+   "__stop_table" 0
+
+   SUB 1
+      "\n无弹药补给情况。" 0
+   END_SUB
+
+END_SUB
+
+SUB 6
+   "<p class='table_name'>油料补给综合情况</p>" 0          
+   "__start_table|编号|名称|现有量|待补充量|待发送量|储备量|携行量|单位\n" 0
+   GROUP 1
+      "|%s|%s|%s|%s|%s|%s|%s|%s\n" 8 
+                         S6.G1.D1 
+                         SLP_Category_Name[D6,S6.G1.D1]
+                         SLP_SC_AMT(D6,S6.G1.D1,S6.G1.D2)
+                         SLP_SC_AMT(D6,S6.G1.D1,S6.G1.D3)
+                         SLP_SC_AMT(D6,S6.G1.D1,S6.G1.D4)
+                         SLP_SC_AMT(D6,S6.G1.D1,S6.G1.D5)
+                         SLP_SC_AMT(D6,S6.G1.D1,S6.G1.D6)
+                         SLP_SC_UOM(D6,S6.G1.D1)
+   END_GROUP
+   "__stop_table" 0
+
+   SUB 1
+      "\n无油料补给情况。" 0
+   END_SUB
+
+END_SUB
+
+SUB 7
+   "<p class='table_name'>其它补给综合情况</p>" 0
+   "__start_table|编号|名称|现有量|待补充量|待发送量|储备量|携行量|单位\n" 0
+   GROUP 1
+      "|%s|%s|%s|%s|%s|%s|%s|%s\n" 8 
+                         S7.G1.D1 
+                         SLP_Category_Name[D6,S7.G1.D1]
+                         SLP_SC_AMT(D6,S7.G1.D1,S7.G1.D2)
+                         SLP_SC_AMT(D6,S7.G1.D1,S7.G1.D3)
+                         SLP_SC_AMT(D6,S7.G1.D1,S7.G1.D4)
+                         SLP_SC_AMT(D6,S7.G1.D1,S7.G1.D5)
+                         SLP_SC_AMT(D6,S7.G1.D1,S7.G1.D6)
+                         SLP_SC_UOM(D6,S7.G1.D1)
+   END_GROUP
+   "__stop_table" 0
+
+   SUB 1
+      "\n无其它类补给情况。" 0
+   END_SUB
+END_SUB
+
+SUB 8
+   "<p class='table_name'>作战伤亡综合情况</p>" 0
+   "__start_table|编号|分类|阵亡数累计|伤病数累计\n" 0
+   GROUP 1
+      "|%s|%s|%s|%s\n" 4 S8.G1.D1 CSP_System_Name[D5,S8.G1.D1]
+                         S8.G1.D2 S8.G1.D3 
+   END_GROUP
+   "__stop_table" 0
+END_SUB
+
+END_MAIN
+

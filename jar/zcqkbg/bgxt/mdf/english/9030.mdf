@@ -1,0 +1,44 @@
+
+9030
+
+SUBJECT
+"%s所属飞机战损情况%s报告" 2 No_Force_Side[D2] Periodic_or_Summary[D5] 
+MAIN
+
+"<p class='title'>%s所属飞机战损情况%s报告</p>" 2 No_Force_Side[D2] Periodic_or_Summary[D5]
+"\n报告时间段：%s到%s。" 2 GTIME(D3) GTIME(D1)
+
+SUB 1
+"<p class='table_name'>%s飞机战损明细</p>" 1 Service_Names[S1.D1]  
+"__start_table|机型|出动架次|空战损失|防空损失|油料损失|着陆损失| 空地损失|炮火损失|战斗损失|其他损失\n" 0
+   GROUP 1
+"|%s|%s|%s|%s|%s|%6s|%s|%s|%s|%s\n" 10 
+                  Aircraft_Type[S1.G1.D1] S1.G1.D2 S1.G1.D3 S1.G1.D4 S1.G1.D5 
+                                 S1.G1.D6 S1.G1.D7 S1.G1.D8 S1.G1.D9 S1.G1.D10
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+SUB 2
+"" 0
+END_SUB
+
+SUB 3
+"<p class='table_name'>飞机战损统计</p>" 0 
+"__start_table|机型|出动架次|空战损失|防空损失|油料损失|着陆损失| 空地损失|炮火损失|战斗损失|其他损失\n" 0
+   GROUP 1
+"|%s|%s|%s|%s|%s|%6s|%s|%s|%s|%s\n" 10 
+                 Aircraft_Type[S3.G1.D1] S3.G1.D2 S3.G1.D3 S3.G1.D4 S3.G1.D5 
+                                 S3.G1.D6 S3.G1.D7 S3.G1.D8 S3.G1.D9 S3.G1.D10
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 4
+"\n本方无飞机损失。" 0
+END_SUB
+
+END_MAIN
+
+

@@ -1,0 +1,22 @@
+
+2351
+SUBJECT
+"%s被毁及其驻扎空军中队受损情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s被毁及其驻扎空军中队受损情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n%s遭袭被毁，驻扎于此的下列%s个空军中队受损严重。" 2 unit_name_transform(D2) S1.D1
+"具体情况：" 0
+"<p class='table_name'>受损情况列表</p>" 0
+"__start_table|部队名称|机型|紧急起飞数\n" 0
+
+   GROUP 1
+"|%s|%s|%s\n" 3 unit_name_transform(S1.G1.D1) Aircraft_Type[S1.G1.D3] S1.G1.D2
+   END_GROUP
+
+"__stop_table" 0
+END_SUB
+
+END_MAIN
+

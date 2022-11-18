@@ -1,0 +1,86 @@
+
+1532
+SUBJECT
+"%s小艇的属性." 1 Small_Boat[D2]
+MAIN
+"<p class='title'> %s (索引%s)小艇的属性</p>\n\n"   2 Small_Boat[D2] D2
+
+
+SUB 1
+"   作用范围:%s平方公里的海域\n" 1 S1.D1 
+END_SUB
+
+SUB 2
+"   修复所需时间:%s\n" 
+                                1 DURATION(S2.D1, "%d Days %h Hours and %Rm Minutes")
+END_SUB
+
+SUB 3
+"   损毁所需时间:%s\n" 
+                                1 DURATION(S3.D1, "%d Days %h Hours and %Rm Minutes")
+END_SUB
+
+SUB 4
+"   抢滩登陆能力:%s\n" 1 Answer[S4.D1]
+END_SUB
+
+SUB 5
+"   是否属于一次性使用:%s \n" 1 Answer[S5.D1]
+END_SUB
+
+SUB 6
+"   边波移动速度:%s%s\n" 
+                                2 UOM_AMT(NAVAL_SPEED, S6.D1) UOM(NAVAL_SPEED)
+END_SUB
+
+SUB 7
+"   装载/卸载所需时间:%s小时\n" 1 DURATION(S7.D1, "%.2Th")
+END_SUB
+
+SUB 8
+"   运载能力:%s%s\n" 
+                                2 UOM_AMT(DRY_WEIGHT,S8.D1) UOM(DRY_WEIGHT)
+END_SUB
+
+SUB 9
+"   最小吃水深度:%s%s\n" 
+                                2 UOM_AMT(AIRDISTANCE,S9.D1) UOM(AIRDISTANCE)
+END_SUB
+
+SUB 10
+"   目标种类代码:%s\n" 1 S10.D1
+END_SUB
+
+SUB 11
+"   目标图标标志:%s\n" 1 S11.D1
+END_SUB
+
+SUB 12
+"   两栖作战能力:%s\n" 1 Answer[S12.D1]
+END_SUB
+
+SUB 13
+"   救生艇展开所需时间:%s\n" 1 
+                            DURATION(S13.D1, "%d 天 %h 小时 and %Rm 分")
+
+END_SUB
+
+SUB 14
+"   航行速度:%s\n" 1 No_Ship_Speed_Level[S14.D1]
+END_SUB
+
+SUB 15
+"   DIS代码:%s\n" 1 S15.D1
+END_SUB
+
+SUB 16
+"   在不同的雷区触发水雷的可能性:\n" 0  
+"__start_table｜ 雷区类型 | 触发概率\n" 0
+   GROUP 1
+" | %-20.20s |  %s\n" 2 Minefield_Type[S16.G1.D1], S16.G1.D2
+   END_GROUP
+  "__stop_table" 0 
+END_SUB
+
+END_MAIN
+

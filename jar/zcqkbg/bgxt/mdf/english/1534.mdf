@@ -1,0 +1,17 @@
+
+1534
+SUBJECT
+"%s 的飞机目标类实体属性." 1 Aircraft_Target_Class[D2]
+MAIN
+"<p class='title'>  %s (索引%s)的飞机目标类拥有如下属性</p>\n\n" 2 Aircraft_Target_Class[D2] D2
+
+
+SUB 1
+"   飞机地区:                %s SQ KMs\n" 1 S1.D1
+"   修复时间:                	%s\n" 1 DURATION(S1.D2, "%d天%h时%Rm分")
+"   破坏时间:           	%s\n" 1 DURATION(S1.D3, "%%d天%h时%Rm分")
+"   目标分类代码:       	%s\n" 1 S1.D4
+"   目标符号:	        %s\n" 1 S1.D5
+END_SUB
+
+END_MAIN

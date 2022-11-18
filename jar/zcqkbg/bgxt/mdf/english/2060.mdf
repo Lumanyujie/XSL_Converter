@@ -1,0 +1,20 @@
+
+2060
+SUBJECT
+"%s按程序转移阵地情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s按程序转移阵地情况报告</p>" 1 unit_name_transform(D2)
+
+
+SUB 1
+"\n%s在实施炮兵火力突击后，" 1 unit_name_transform(D2)
+"按规定正在向%s地域机动。" 1 LOCATION(S1.D2,S1.D3)
+END_SUB
+SUB 2
+"\n%s在实施炮兵火力突击后，" 1 unit_name_transform(D2)
+"按规定正在向%s地域撤退。" 1 LOCATION(S2.D2,S2.D3)
+END_SUB
+
+END_MAIN
+

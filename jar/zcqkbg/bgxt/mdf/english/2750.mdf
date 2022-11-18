@@ -1,0 +1,55 @@
+
+2750
+SUBJECT
+"%s与敌遭遇情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s与敌遭遇情况报告</p>" 1 unit_name_transform(D2)
+"\n%s于%s向%s报告：" 3 unit_name_transform(D2) GTIME(D1) unit_name_transform(D7)
+"在%s地域，与敌军遭遇，" 1 LOCATION(D3,D4)
+"当前处于%s态势，战斗力为%2.2f。" 2 Unit_Posture[D5]  D6
+
+SUB 1
+"<p class='table_name'>区域内%s部队信息列表</p>" 1 Threat_Perception[S1.D1]
+"__start_table|所属方|级别|类型|作战态势\n" 0
+   GROUP 1
+
+      SUB 1
+"|%s|%s|%s|%s\n" 4
+       unit_name_transform(S1.G1.S1.D5) Command_Level[S1.G1.S1.D7] Graphics_Symbol[S1.G1.S1.D6]
+                                                 Unit_Posture[S1.G1.S1.D4]
+      END_SUB
+
+      SUB 2
+"|%s|%s|%s|%s\n" 4
+       unit_name_transform(S1.G1.S2.D5) Command_Level[S1.G1.S2.D7] Graphics_Symbol[S1.G1.S2.D6]
+                                                 Unit_Posture[S1.G1.S2.D4]
+      END_SUB
+
+   END_GROUP
+"  __stop_table" 0
+END_SUB
+
+SUB 2
+"<p class='table_name'>区域内己方部队信息列表</p>" 0
+"__start_table|所属方|级别|类型|作战态势\n" 0
+   GROUP 1
+
+      SUB 1
+"|%s|%s|%s|%s\n" 4
+       unit_name_transform(S2.G1.S1.D5) Command_Level[S2.G1.S1.D7] Graphics_Symbol[S2.G1.S1.D6]
+                                                 Unit_Posture[S2.G1.S1.D4]
+      END_SUB
+
+      SUB 2
+"|%s|%s|%s|%s\n" 4
+       unit_name_transform(S2.G1.S2.D5) Command_Level[S2.G1.S2.D7] Graphics_Symbol[S2.G1.S2.D6]
+                                                 Unit_Posture[S2.G1.S2.D4]
+      END_SUB
+
+   END_GROUP
+"  __stop_table" 0
+END_SUB
+
+END_MAIN
+

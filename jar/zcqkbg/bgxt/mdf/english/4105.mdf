@@ -1,0 +1,158 @@
+
+4105
+SUBJECT
+"%s无法执行补给运输命令" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s无法执行补给运输命令</p>" 1 unit_name_transform(D2)
+SUB 23
+"\n%s收到命令，要求运输一批补给物资给%s。" 2 unit_name_transform(D2) unit_name_transform(S23.D1)
+   SUB 1
+"需要由驳船运输，无法完成。" 0
+   END_SUB 
+   SUB 2
+"需要由铁路运输，无法完成。" 0
+   END_SUB 
+   SUB 3
+"需要由卡车运输，无法完成。" 0
+   END_SUB 
+   SUB 4
+"需要空中运输，无法完成。" 0
+   END_SUB 
+   SUB 5
+"需要海上运输，无法完成。" 0
+   END_SUB 
+   SUB 6
+"接收单位规模太小，不能接收物资。" 0
+   END_SUB
+   SUB 7
+"两支部队距离太近，无需运输。" 0
+   END_SUB
+   SUB 8
+"两支部队距离太远，无法运输。" 0
+   END_SUB
+   SUB 9
+"两支部队之间没有合适的水上航线，无法运输。" 0
+   END_SUB
+   SUB 10
+"保障部队没有驳船所需装载设备。" 0
+   END_SUB
+   SUB 11
+"接收单位没有驳船所需卸载设备。" 0
+   END_SUB
+   SUB 12
+"没有足够的运输船只。" 0
+   END_SUB
+   SUB 13
+"接收单位的规模太小，无法接收补给物资。" 0
+   END_SUB
+   SUB 14
+"无可用运输船只。" 0
+   END_SUB
+   SUB 15
+"不明原因，索引号：%s。" 1 S23.S15.D1
+   END_SUB
+   SUB 16
+"两支部队间无合适的水上航线。" 0
+   END_SUB
+   SUB 17
+"两支部队间无铁路线。" 0
+   END_SUB
+   SUB 18
+"保障部队无所需的火车装载设备。" 0
+   END_SUB
+   SUB 19
+"接收部队无所需的火车卸载设备。" 0
+   END_SUB
+   SUB 20
+"火车车皮数量不能满足铁路运输要求。" 0
+   END_SUB
+   SUB 21
+"两支部队间无可行的地面输送路线。" 0
+   END_SUB
+   SUB 22
+"两支部队间无可行的地面输送路线。" 0
+   END_SUB
+   SUB 23
+"保障部队无所需的卡车装载设备。" 0
+   END_SUB
+   SUB 24
+"接收部队无所需的卡车卸载设备。" 0
+   END_SUB
+   SUB 25
+"没有足够的卡车来运输补给物资。" 0
+   END_SUB
+   SUB 26
+"因补给物资太少而无法派遣。" 0
+   END_SUB
+   SUB 27
+"保障部队无法筹措到补给物资。" 0
+   END_SUB
+   SUB 28
+      SUB 4
+"<p class='table_name'>取消补给物资明细</p>" 0
+"__start_table|编号|补给类型|数量|单位\n" 0
+         GROUP 1
+"|%s|%s|%s|%s\n" 4 S23.S28.S4.G1.D1
+                          SLP_Category_Name[S23.D2,S23.S28.S4.G1.D1]
+                          SLP_SC_AMT(S23.D2,S23.S28.S4.G1.D1,S23.S28.S4.G1.D2)
+                          SLP_SC_UOM(S23.D2,S23.S28.S4.G1.D1)
+         END_GROUP
+"__stop_table\n" 0
+      END_SUB
+      SUB 5
+      "" 0
+      END_SUB
+   END_SUB
+   SUB 29
+   "输送补给任务取消。" 0
+   END_SUB
+END_SUB
+
+SUB 25
+"\n按命令，%s需运输补给物资给" 1 unit_name_transform(D2)
+"%s，但按照现行方式没有可行的运输路线。" 1 unit_name_transform(S25.D1)
+"建议调整保障关系或改为空运方式，" 0
+"目前两支部队间所有待执行的补给任务已全部取消。" 0
+
+   SUB 4
+"<p class='table_name'>取消补给物资明细</p>" 0
+"__start_table|编号|补给类型|数量|单位\n" 0
+      GROUP 1
+"|%s|%s|%s|%s\n" 4 S25.S4.G1.D1
+                        SLP_Category_Name[S25.D2,S25.S4.G1.D1]
+                               SLP_SC_AMT(S25.D2,S25.S4.G1.D1,S25.S4.G1.D2)
+                               SLP_SC_UOM(S25.D2,S25.S4.G1.D1)
+
+  
+      END_GROUP
+"__stop_table\n" 0
+   END_SUB
+   SUB 5
+"" 0
+   END_SUB
+END_SUB
+
+SUB 26
+"\n%s与%s之间" 2 unit_name_transform(D2) unit_name_transform(S26.D1)
+"距离%s公里，" 1 S26.D2
+"超出了该补给运输部队的保障范围，" 0
+"因此，两支部队间的补给运输任务无法按时完成。" 0
+
+   SUB 4
+"<p class='table_name'>延期补给物资明细</p>\n" 0
+"__start_table|编号|补给类型|数量|单位\n" 0
+      GROUP 1
+"|%s|%s|%s|%s\n" 4 S26.S4.G1.D1
+                        SLP_Category_Name[S26.D3,S26.S4.G1.D1]
+                               SLP_SC_AMT(S26.D3,S26.S4.G1.D1,S26.S4.G1.D2)
+                               SLP_SC_UOM(S26.D3,S26.S4.G1.D1)
+   
+      END_GROUP
+  "__stop_table\n" 0 
+   END_SUB
+   SUB 5
+"" 0
+   END_SUB
+END_SUB
+
+END_MAIN

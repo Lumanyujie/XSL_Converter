@@ -1,0 +1,44 @@
+
+1500
+SUBJECT
+"最优路径的计算参数"  0
+MAIN
+"<p class='title'>  最优路径的计算参数报告 </p> \n" 0
+SUB 1
+"  最大直线距离：%s。\n\n" 1 S1.D1
+END_SUB
+
+SUB 2
+"  地面航向重叠系数：%s。\n" 1 S2.D1
+END_SUB
+
+SUB 3
+"  地面半宽系数：%s。\n\n" 1 S3.D1
+END_SUB
+
+SUB 4
+"  航向重叠最少六角格数：%s。\n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  航向重叠的最少六角格数：%s。\n\n" 1 S5.D1
+END_SUB
+
+SUB 6
+"  水上航向重叠系数：%s。\n" 1 S6.D1
+END_SUB
+
+SUB 7
+"  水上半宽计算系数：%s。\n\n" 1 S7.D1
+END_SUB
+
+SUB 8
+"  空中航向重叠系数：%s。\n" 1 S8.D1
+END_SUB
+
+SUB 9
+"  空中半宽计算系数：%s。\n\n" 1 S9.D1
+END_SUB
+
+END_MAIN
+

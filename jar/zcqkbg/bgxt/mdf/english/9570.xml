@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="9570"> <subject> <line>不能执行战略计划情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;不能执行战略计划情况报告&lt;/p&gt;</line>  <sub n="1"> <line><br/><f n="unit_name_transform"><D2/></f>的战略计划没有任何节点。</line> </sub> <sub n="2"> <line><br/><f n="unit_name_transform"><D2/></f>是编队一部，不能独立执行命令要求的战略计划。</line> </sub> <sub n="3"> <line><br/>如果<f n="unit_name_transform"><D2/></f>执行命令要求的战略计划，那么在通行路线上存在矛盾。</line> </sub><line>因此，该计划只能放弃。</line> </main> </msg> </msgs>

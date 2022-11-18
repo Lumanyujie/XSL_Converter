@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="2011"> <subject> <line>作战区情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;作战区情况报告&lt;/p&gt;</line>  <sub n="1"> <line><br/>已删除作战区<S1.D1/>。</line> </sub> <sub n="2"> <line><br/>已创建作战区，并命名为“<S2.D1/>”。</line> </sub></main> </msg> </msgs>

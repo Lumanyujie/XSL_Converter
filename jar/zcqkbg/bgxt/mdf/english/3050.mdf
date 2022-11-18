@@ -1,0 +1,457 @@
+
+3050
+SUBJECT
+"空中命令（批号：%s）执行情况报告" 1 D2
+MAIN
+"<p class='title'>空中命令（批号：%s）执行情况报告</p>" 1 D2
+SUB 1
+"\n收到取消近距空中支援命令，" 0
+"被支援部队：%s，飞机类型：%s飞机。" 2 unit_name_transform(S1.D1) CAS_Request_Type[S1.D3]
+"命令执行，" 0
+   SUB 1
+"取消所有近距空中支援任务。" 0
+   END_SUB
+   SUB 2
+"取消%s项近距空中支援任务。" 1 S1.S2.D1
+   END_SUB
+   SUB 3
+"取消调配的空中支援飞机%s架。" 1 S1.S3.D1
+   END_SUB
+   SUB 4
+"取消正在执行空中支援任务的飞机%s架。" 1 S1.S4.D1
+   END_SUB
+   SUB 5
+"取消为空中支援任务预留飞机%s架。" 1 S1.S5.D1
+   END_SUB
+   SUB 6
+"没有可取消的近距空中支援任务。" 0
+   END_SUB
+END_SUB
+
+SUB 2
+"\n命令执行，将编队隐蔽标识改为“%s”。" 1 Answer[S2.D1]
+END_SUB
+
+SUB 4
+"\n%s编队已奉命拦截%s目标，" 2 S4.D1 S4.D2
+"“进入敌防空圈”选项设为“%s”。" 1 Ignore_Air_Defense[S4.D3]
+END_SUB
+
+SUB 5
+"\n近距空中支援请求（任务批号：%s）已收到，" 1 D2
+"但被支援部队%s当前正搭乘舰船，" 1 unit_name_transform(S5.D1)
+"不能参加战斗，所以不需空中支援。" 0
+"当该部队抵岸接敌交战时，才需要近距空中支援。" 0  
+END_SUB
+
+SUB 6
+"空情共享命令（%s）收到，选项设置为“%s”，" 
+                                              2 D2 Comm_Link_Options[S6.D2]
+"当前与以下集团共享空情信息：" 0
+   GROUP 1
+"\n——%s" 1 S6.G1.D1
+   END_GROUP
+"\n" 0
+END_SUB 
+
+SUB 7
+"\n收到创建空中机群命令（机群代字：%s）。" 1 D2
+   SUB 1
+"<p class='table_name'>空中机群%s基本属性</p>" 1 D2
+"__start_table|选项|参数值\n" 0 
+"|汇合点坐标|%s\n" 1 LOCATION(S7.S1.D1,S7.S1.D2)
+"|会合时间|%s\n" 1 GTIME(S7.S1.D3)
+"|压制飞机架次|%s\n" 1 S7.S1.D4
+"|护航飞机架次|%s\n" 1 S7.S1.D5
+"__stop_table" 0
+   END_SUB
+
+   SUB 2
+"<p class='table_name'>出航航线</p>" 0
+"__start_table|坐标|高度\n" 0 
+      GROUP 1
+"|%s|%s\n" 2 LOCATION(S7.S2.G1.D1,S7.S2.G1.D2) UOM_AMT(DISTANCE,S7.S2.G1.D3) 
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 3
+"<p class='table_name'>返航航线</p>" 0
+"__start_table|坐标|高度\n" 0 
+      GROUP 1
+"|%s "                      1 LOCATION(S7.S3.G1.D1,S7.S3.G1.D2)
+         SUB 1
+"|%s\n"                    1 UOM_AMT(DISTANCE,S7.S3.G1.S1.D1)
+         END_SUB
+         SUB 2
+"|经济高度\n" 0
+         END_SUB
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+END_SUB
+
+SUB 8
+"\n收到取消空中机群命令（机群代字：%s），机群所有任务取消。" 1 D2 
+END_SUB
+
+SUB 9
+"\n收到调整空中机群命令（机群代字：%s），执行情况如下：" 1 D2
+   SUB 1
+"\n会合点坐标调整为：%s。" 1 LOCATION(S9.S1.D1,S9.S1.D2)
+   END_SUB
+   SUB 2
+"\n会合时间调整为：%s。" 1 GTIME(S9.S2.D1)
+   END_SUB
+   SUB 3
+"\n压制飞机占比：%s%。" 1 S9.S3.D1
+   END_SUB
+   SUB 4
+"\n护航飞机占比：%s%。" 1 S9.S4.D1
+   END_SUB
+
+   SUB 5
+"<p class='table_name'>调整后出航航线</p>" 0
+"__start_table|坐标|高度\n" 0 
+      GROUP 1
+"|%s|%s\n" 2 LOCATION(S9.S5.G1.D1,S9.S5.G1.D2) UOM_AMT(DISTANCE,S9.S5.G1.D3)
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 6
+"<p class='table_name'>调整后返航航线</p>" 0
+"__start_table|坐标|高度\n" 0 
+      GROUP 1
+"|%s|%s\n" 2 LOCATION(S9.S6.G1.D1,S9.S6.G1.D2) UOM_AMT(DISTANCE,S9.S6.G1.D3)
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 7
+      SUB 1
+"\n不能将会合时间调整为%s，该时间已过。" 
+                                1 GTIME(S9.S7.S1.D1, "%U%d%H%MZ %b %y")
+      END_SUB
+      SUB 2
+"\n不能调整会合时间，初始确定的飞临目标上空时间仍有效。" 0
+      END_SUB   
+   END_SUB
+END_SUB
+
+SUB 10
+"\n%s已受领近距空中支援请求（任务批号：%s）。" 2 unit_name_transform(S10.D2) D2
+END_SUB
+
+SUB 11
+
+   SUB 1
+"\n%s的备用着陆点已调整为%s。" 2 S11.S1.D1 S11.S1.D2
+   END_SUB
+
+   SUB 2
+"\n将%s的作战期间限制外方战略空运任务选项设置为“%s”。" 2 S11.S2.D1 Answer[S11.S2.D2]
+   END_SUB
+
+END_SUB
+
+SUB 12
+"\n将%s的模式1敌我识别器" 1 unit_name_transform(S12.D1)
+"设置为: %s。" 1 S12.D2
+END_SUB
+
+SUB 14
+"\n导演部向%s编队下达调整空中行动命令（任务批号%s）。" 2 D3 D2
+
+   SUB 1
+"飞机已加满燃油。" 0
+   END_SUB
+
+   SUB 2
+"飞机燃油顺利加注。" 0
+   END_SUB
+
+   SUB 3
+"\n每架飞机加油量：%s%s；" 2
+                       SLP_SC_AMT(S14.S3.D5, S14.S3.D6, S14.S3.D1)
+                       SLP_SC_UOM(S14.S3.D5, S14.S3.D6)
+"\n编队加油总量：%s%s；" 2
+                       SLP_SC_AMT(S14.S3.D5, S14.S3.D6, S14.S3.D2)
+                       SLP_SC_UOM(S14.S3.D5, S14.S3.D6)
+"\n每架飞机当前燃油量：%s%s；" 2
+                       SLP_SC_AMT(S14.S3.D5, S14.S3.D6, S14.S3.D3)
+                       SLP_SC_UOM(S14.S3.D5, S14.S3.D6)
+"\n每架飞机燃油容量：%s%s。" 2
+                       SLP_SC_AMT(S14.S3.D5, S14.S3.D6, S14.S3.D4)
+                       SLP_SC_UOM(S14.S3.D5, S14.S3.D6)
+   END_SUB
+
+   SUB 4
+"\n飞机完成武器加挂，具体情况：" 0
+"<p class='table_name'>编队飞机挂载清单</p>" 0
+"__start_table|挂载弹药|编队需求数|编队实际加挂数|编队挂载总数\n" 0 
+      GROUP 1
+"|%s|%s|%s|%s\n" 4 Targetable_Weapon[S14.S4.G1.D1] S14.S4.G1.D2 S14.S4.G1.D3 S14.S4.G1.D4
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 5
+"\n无燃油补给请求, 或飞机油箱已满" 0
+"（副油箱除外）命令无效。" 0
+   END_SUB
+
+   SUB 6
+"\n无弹药需求，或燃油满载请求已执行。" 0
+   END_SUB
+
+   SUB 7
+"\n编队已调整到最初航线。" 0
+   END_SUB
+
+   SUB 8
+"\n编队正要前往加油, 但当前已返回最初航线。" 0
+   END_SUB
+
+   SUB 9
+"\n编队当前速度调整为%s%s。" 2 
+                       UOM_AMT(SPEED,S14.S9.D1) UOM(SPEED)
+   END_SUB
+
+   SUB 10
+"\n由于卸载任务取消，编队无法返回到最初航线。" 0
+   END_SUB
+
+   SUB 11
+"\n每架飞机燃油消耗量：%s%s；" 2
+                       SLP_SC_AMT(S14.S11.D5, S14.S11.D6, S14.S11.D1)
+                       SLP_SC_UOM(S14.S11.D5, S14.S11.D6)
+"\n编队燃油总消耗量：%s%s；" 2
+                       SLP_SC_AMT(S14.S11.D5, S14.S11.D6, S14.S11.D2)
+                       SLP_SC_UOM(S14.S11.D5, S14.S11.D6)
+"\n每架飞机当前燃油量：%s%s；" 2
+                       SLP_SC_AMT(S14.S11.D5, S14.S11.D6, S14.S11.D3)
+                       SLP_SC_UOM(S14.S11.D5, S14.S11.D6)
+"\n每架飞机燃油容量：%s%s。" 2
+                       SLP_SC_AMT(S14.S11.D5, S14.S11.D6, S14.S11.D4)
+                       SLP_SC_UOM(S14.S11.D5, S14.S11.D6)
+   END_SUB
+
+   SUB 12
+"\n飞机完成放油。" 0
+   END_SUB
+
+   SUB 13
+"\n飞机完成耗油。" 0
+   END_SUB
+
+   SUB 14
+"\n无耗油请求，或编队已耗油达到要求，命令无效。" 0
+   END_SUB
+
+   SUB 15
+"\n飞机完成挂载弹药消耗。" 0
+"<p class='table_name'>编队飞机挂载消耗清单</p>" 0
+"__start_table|编队挂载弹药|需要扣减数|编队实际扣减数|编队当前挂载数\n" 0 
+      GROUP 1
+"|%s|%s|%s|%s\n" 4 Targetable_Weapon[S14.S15.G1.D1] S14.S15.G1.D2 S14.S15.G1.D3 S14.S15.G1.D4
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 16
+"\n无挂载弹药消耗需求，或编队挂载扣减达到要求，命令无效。" 0   
+   END_SUB
+
+   SUB 17
+"\n无可用的保障部队。" 0  
+   END_SUB
+
+   SUB 18
+"\n将%s作为保障部队。" 1 S14.S18.D1
+   END_SUB
+
+   SUB 19
+"\n每架飞机专用油料加载量：%s%s；" 2
+                       SLP_SC_AMT(S14.S19.D5, S14.S19.D6, S14.S19.D1)
+                       SLP_SC_UOM(S14.S19.D5, S14.S19.D6)
+"\n编队专用油料加载总量：%s%s；" 2
+                       SLP_SC_AMT(S14.S19.D5, S14.S19.D6, S14.S19.D2)
+                       SLP_SC_UOM(S14.S19.D5, S14.S19.D6)
+"\n每架飞机当前专用油料：%s%s；" 2
+                       SLP_SC_AMT(S14.S19.D5, S14.S19.D6, S14.S19.D3)
+                       SLP_SC_UOM(S14.S19.D5, S14.S19.D6)
+"\n每架飞机初始专用油料：%s%s。" 2
+                       SLP_SC_AMT(S14.S19.D5, S14.S19.D6, S14.S19.D4)
+                       SLP_SC_UOM(S14.S19.D5, S14.S19.D6)
+   END_SUB
+
+   SUB 20
+"\n每架飞机专用油料扣减量：%s%s；" 2
+                       SLP_SC_AMT(S14.S20.D5, S14.S20.D6, S14.S20.D1)
+                       SLP_SC_UOM(S14.S20.D5, S14.S20.D6)
+"\n编队专用油料扣减总量：%s%s；" 2
+                       SLP_SC_AMT(S14.S20.D5, S14.S20.D6, S14.S20.D2)
+                       SLP_SC_UOM(S14.S20.D5, S14.S20.D6)
+"\n每架飞机当前专用油料：%s%s；" 2
+                       SLP_SC_AMT(S14.S20.D5, S14.S20.D6, S14.S20.D3)
+                       SLP_SC_UOM(S14.S20.D5, S14.S20.D6)
+"\n每架飞机初始专用油料：%s%s。" 2
+                       SLP_SC_AMT(S14.S20.D5, S14.S20.D6, S14.S20.D4)
+                       SLP_SC_UOM(S14.S20.D5, S14.S20.D6)
+   END_SUB
+
+END_SUB
+
+SUB 17
+"\n%s编队当前无挂载武器需求。" 1 S17.D1
+END_SUB
+
+SUB 18
+   SUB 1
+      "\n收到处理空中任务指令%s的命令（任务批号：%s），并执行，"
+                       2 S18.S1.D1 D2
+      "对空中任务指令的变更%s，已进行登记。" 1 S18.S1.D2
+   END_SUB
+   SUB 2
+      "\n收到执行空中任务指令%s的命令（任务批号：%s），并执行，"
+                2 S18.D1 D2
+      "该空中任务指令始于%s，止于%s。" 
+           2 GTIME(S18.S2.D2) GTIME(S18.S2.D3)
+   END_SUB
+END_SUB
+
+SUB 20
+
+"\n%s编队收到战略空运计划，" 1 D3
+
+   SUB 1
+"所有站点同意。" 0
+   END_SUB
+
+   SUB 2
+"以下站点拒绝：" 0
+      GROUP 1
+
+         SUB 1
+"\n——%s，拒绝，国际民航组织%s不存在。"
+         2 S20.S2.G1.S1.D1 S20.S2.G1.S1.D2
+         END_SUB
+
+         SUB 2
+"\n——%s，拒绝，"
+         1 S20.S2.G1.S2.D1
+
+            SUB 1
+"与%s关联的国际民航组织%s不在演习区内。"
+         2 S20.S2.G1.S2.S1.D2 S20.S2.G1.S2.S1.D1
+            END_SUB
+
+            SUB 2
+"%s不在演习区内。"
+         1 S20.S2.G1.S2.S2.D1
+            END_SUB
+
+         END_SUB
+
+         SUB 3
+"\n——%s，拒绝，" 1 S20.S2.G1.S3.D1
+"该地点（%s）水深不满足舰艇需求。" 1 LOCATION(S20.S2.G1.S3.D2,S20.S2.G1.S3.D3)
+         END_SUB
+
+         SUB 4
+"\n——%s，拒绝，" 1 S20.S2.G1.S4.D1
+"计划已经使站点序号“%s”生效。" 1
+                                S20.S2.G1.S4.D2
+         END_SUB
+
+      END_GROUP
+
+   END_SUB
+
+   SUB 3
+"\n所有剩余站点同意。" 0
+   END_SUB
+
+   SUB 4
+"\n命令无法执行。" 0
+   END_SUB
+END_SUB
+
+SUB 21
+"\n执行对%s编队分批命令，新编队批号：%s，飞机数量：%s。" 3 S21.D3 S21.D1 S21.D2
+END_SUB
+
+SUB 22
+"\n收到管理空中走廊命令（命令编号：%s），" 1 D2
+
+   SUB 1
+
+"已创建一个新空中走廊，属性如下：" 0
+"<p class='table_name'>空中走廊属性列表</p>" 0
+"__start_table|分类|属性值\n" 0 
+"|名称|%s\n" 1   S22.S1.D1
+"|起点|%s\n" 1   S22.S1.D2
+"|坐标|%s\n" 1   LOCATION(S22.S1.D3,S22.S1.D4)
+"|终点|%s\n" 1   S22.S1.D5
+"|坐标|%s\n" 1   LOCATION(S22.S1.D6,S22.S1.D7)
+"|最小高度|%s\n" 1   S22.S1.D8
+"|最大高度|%s\n" 1   S22.S1.D9
+"|走廊长度|%s%s\n" 2   UOM_AMT(DISTANCE,S22.S1.D10) UOM(DISTANCE)
+"__stop_table" 0
+
+   END_SUB
+
+   SUB 2
+
+"已经对空中走廊%s作出修改，属性如下：" 1 S22.S2.D1
+"<p class='table_name'>空中走廊属性列表</p>" 0
+"__start_table|分类|属性值\n" 0 
+"|名称|%s\n" 1   S22.S2.D1
+"|起点|%s\n" 1   S22.S2.D2
+"|坐标|%s\n" 1   LOCATION(S22.S2.D3,S22.S2.D4)
+"|终点|%s\n" 1   S22.S2.D5
+"|坐标|%s\n" 1   LOCATION(S22.S2.D6,S22.S2.D7)
+"|最小高度|%s\n" 1   S22.S2.D8
+"|最大高度|%s\n" 1   S22.S2.D9
+"|走廊长度|%s%s\n" 2   UOM_AMT(DISTANCE,S22.S2.D10) UOM(DISTANCE)
+"__stop_table" 0
+
+   END_SUB
+
+   SUB 3
+
+"已经删除空中走廊%s，" 1 S22.S3.D1
+"该走廊不再存在，但其起点%s和终点%s未被删除，" 2 S22.S3.D2 S22.S3.D3
+"可用于创建新走廊或修改空中走廊。" 0   
+
+   END_SUB
+
+   SUB 4
+
+"已经创建一个新的空中走廊点，" 0
+"名称：%s，" 1   S22.S4.D1
+"坐标：%s。" 1   LOCATION(S22.S4.D2,S22.S4.D3)
+
+   END_SUB
+
+   SUB 5
+
+"已经对空中走廊点%s作出修改，" 1 S22.S5.D1
+"名称：%s，" 1   S22.S5.D1
+"坐标：%s。" 1   LOCATION(S22.S5.D2,S22.S5.D3)
+
+   END_SUB
+
+   SUB 6
+
+"已经删除空中走廊点%s，" 1 S22.S6.D1
+"该走廊点不再存在，对其他空中走廊没有影响，" 0
+"因为如果该点为其它空中走廊的起点或终点，将不会被删除。" 0
+
+   END_SUB
+
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,32 @@
+
+9130
+SUBJECT
+"%s获取其他方战场目标情报%s报告" 2  No_Force_Side[D2] Periodic_or_Summary[D5]
+MAIN
+
+"<p class='title'>%s获取其他方战场目标情报%s报告</p>" 2 No_Force_Side[D2] Periodic_or_Summary[D5]
+                                                       
+"\n报告时间段：%s至%s。" 2 GTIME(D3) GTIME(D1)
+
+"__start_table|目标名称|类型|坐标|效能|距情报时间间隔（小时）|情报源\n" 0
+
+GROUP 1
+   SUB 1
+"|%s目标|——|——|——|——|——\n" 1 No_Force_Side[G1.S1.D1]
+   END_SUB
+   SUB 2
+"|无隶属方目标|——|——|——|——|——\n" 0
+   END_SUB
+   SUB 3
+"|%s|%s|%s|%2.2f|%s|%s\n" 6 unit_name_transform(G1.S3.D2) Target_Category[G1.S3.D3] LOCATION(G1.S3.D5,G1.S3.D6) G1.S3.D8 DURATION(G1.S3.D4, "%.2Th")  trans_word("QingBao",G1.S3.D7)
+   END_SUB
+   SUB 4
+"|本时段无该方情报|——|——|——|——|——\n" 0
+   END_SUB
+   SUB 5
+"" 0
+   END_SUB
+END_GROUP
+"__stop_table" 0
+END_MAIN
+

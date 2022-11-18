@@ -1,0 +1,326 @@
+
+1052
+SUBJECT
+"%s调整位置情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s调整位置情况报告</p>" 1 unit_name_transform(D2)
+"\n%s已被强制转移至%s。" 2 unit_name_transform(D2)  LOCATION(D3,D4)
+
+SUB 1
+"\n脱离%s编队。" 1 S1.D1
+END_SUB
+
+SUB 2
+"\n%s撤销以下任务：" 1 unit_name_transform(S2.D1)
+
+END_SUB
+
+SUB 3
+"\n对%s的%s火力支援。" 2 unit_name_transform(S3.D2) unit_name_transform(S3.D1)
+END_SUB
+
+SUB 4
+    SUB 1
+"\n在%s附近布雷。" 1 LOCATION(S4.S1.D1,S4.S1.D2)
+    END_SUB
+
+   SUB 2
+"\n在%s附近排雷。" 1 LOCATION(S4.S2.D1,S4.S2.D2)
+   END_SUB
+
+   SUB 3
+"\n修复%s。" 1 unit_name_transform(S4.S3.D1)
+   END_SUB
+    
+   SUB 4
+"\n破坏%s。" 1 unit_name_transform(S4.S4.D1)
+   END_SUB
+
+   SUB 5
+"\n架设一座%s。" 1 Bridge_Class[S4.S5.D1]
+   END_SUB
+
+   SUB 6
+"\n抢修%s（桥梁）。" 1 unit_name_transform(S4.S6.D1)
+   END_SUB
+END_SUB
+
+SUB 5
+"\n与%s%s集团" 2 No_Force_Side[S5.D3] unit_name_transform(S5.D2)
+"的%s建立新的联络关系。" 1 unit_name_transform(S5.D1)
+END_SUB
+
+SUB 6
+"" 0
+END_SUB
+
+SUB 7
+"" 0
+END_SUB
+
+SUB 8
+"\n对%s实施火力突击。" 1 unit_name_transform(S8.D1)
+END_SUB
+
+SUB 9
+"\n向%s地域实施火力突击。" 1 LOCATION(S9.D1,S9.D2)
+END_SUB
+
+SUB 10
+"\n维护%s（管线）。" 1 unit_name_transform(S10.D1)
+END_SUB
+
+SUB 11
+"\n执行%s指令（编号%s）。" 2 trans_word("Order",S11.D2) S11.D1 
+END_SUB
+
+SUB 12
+"\n执行暂停的%s指令。" 1 trans_word("Order",S12.D1)
+END_SUB
+
+SUB 13
+"\n部署%s（侦察分队）。" 1 unit_name_transform(S13.D1)
+END_SUB
+
+SUB 14
+"\n运输分队从%s机动至" 1 unit_name_transform(S14.D1)
+"%s，使用物资装卸设备进行装载。" 1 unit_name_transform(S14.D2)
+END_SUB
+
+SUB 15
+"\n来自%s的运输分队，" 1 unit_name_transform(S15.D1)
+"使用物资装卸设备为%s进行卸载。" 1 unit_name_transform(S15.D2)
+END_SUB
+
+SUB 16
+"\n运输分队从%s机动至%s，" 2 unit_name_transform(S16.D1) unit_name_transform(S16.D2)
+"仍然在征集铁运、船运或车运工具。" 0
+END_SUB
+
+SUB 17
+"\n后勤物资自动从%s补给到%s。" 2 unit_name_transform(S17.D1) unit_name_transform(S17.D2)
+END_SUB
+
+SUB 18
+"\n即将遂行从%s到%s的补给运输。" 2 unit_name_transform(S18.D1) unit_name_transform(S18.D2)
+END_SUB
+
+SUB 19
+"\n%s正随两栖作战行动机动，当收到强制调整位置命令后，将脱离两栖行动。" 1 unit_name_transform(S19.D1)
+END_SUB
+
+SUB 20
+"\n%s正执行空中机动，当收到强制调整位置命令后，" 1 S20.D1
+"终止空中机动，取消下列编队：" 0
+   GROUP 1
+"\n——空中%s编队" 1 S20.G1.D1
+   END_GROUP
+END_SUB
+
+SUB 21
+"\n%s正随护航运输队机动，当收到强制调整位置命令后，" 1 unit_name_transform(D2)
+"将脱离护航船队。" 0
+END_SUB
+
+SUB 26
+
+"\n取消%s%s编队。" 2 S26.D2 Mission_Type[S26.D1] 
+END_SUB
+
+SUB 27
+"\n取消%s任务，" 1 unit_name_transform(S27.D1)
+"下列补给将不再分发：" 0
+"<p class='table_name'>取消补给清单</p>" 0
+"__start_table|补给名称|数量|单位\n" 0
+      GROUP 1
+"|%s|%s|%s" 3 SLP_Category_Name[S27.D2,S27.G1.D1]
+                   SLP_SC_AMT(S27.D2,S27.G1.D1,S27.G1.D2)
+                   SLP_SC_UOM(S27.D2,S27.G1.D1)
+      END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 28
+"\n下列空军部队同时机动，取消以下行动：" 0
+
+   GROUP 1
+"\n——%s：" 1  unit_name_transform(S28.G1.D1)
+
+      SUB 8
+"\n对%s实施火力打击。" 1 unit_name_transform(S28.G1.S8.D1)
+      END_SUB
+
+      SUB 9
+"\n向%s地域实施火力打击。" 1 LOCATION(S28.G1.S9.D1,S28.G1.S9.D2)
+      END_SUB
+
+      SUB 10
+"\n维护%s（管线）。" 1 unit_name_transform(S28.G1.S10.D1)
+      END_SUB
+
+      SUB 11
+"\n执行%s指令（编号%s）。" 2 trans_word("Order",S28.G1.S11.D1) S28.G1.S11.D2
+      END_SUB
+
+      SUB 13
+"\n部署%s（侦察分队）。" 1 unit_name_transform(S28.G1.S13.D1)
+      END_SUB
+
+      SUB 15
+"\n自%s向%s护航运输及卸载。" 2 unit_name_transform(S28.G1.S15.D1) unit_name_transform(S28.G1.S15.D2)
+      END_SUB
+
+      SUB 19
+"\n%s正在被空运，当收到强制调整位置命令后，取消空运。" 1 unit_name_transform(S28.G1.S19.D1)
+      END_SUB
+
+      SUB 20
+"\n下列编队取消：" 0
+         GROUP 1
+"\n——空中%s编队" 1 S28.G1.S20.G1.D1
+         END_GROUP
+      END_SUB
+
+      SUB 21
+"\n部队未被空运，没有行动被终止。" 0
+      END_SUB
+
+      SUB 22
+"\n因不能按时临空，发射或起飞准备任务取消。" 0
+      END_SUB
+
+      SUB 26
+"\n取消%s%s编队。" 2 S28.G1.S26.D2 Mission_Type[S28.G1.S26.D1]
+      END_SUB
+
+      SUB 27
+"\n%s行动取消，" 1 unit_name_transform(S28.G1.S27.D1)
+"下列补给将不再分发：" 0
+"<p class='table_name'>取消补给清单</p>" 0
+"__start_table|补给名称|数量|单位\n" 0
+         GROUP 1
+"|%s|%s|%s" 3 SLP_Category_Name[S28.G1.S27.D2,S28.G1.S27.G1.D1]
+                    SLP_SC_AMT(S28.G1.S27.D2,S28.G1.S27.G1.D1,S28.G1.S27.G1.D2)
+                    SLP_SC_UOM(S28.G1.S27.D2,S28.G1.S27.G1.D1)
+         END_GROUP
+"__stop_table" 0
+      END_SUB
+
+      SUB 28
+"" 0
+      END_SUB
+
+   END_GROUP
+END_SUB
+
+SUB 35
+"\n%s搭乘%s编队，" 2 unit_name_transform(S35.D1) S35.D2
+"分别搭乘以下舰船：" 0
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S35.G1.D1)
+   END_GROUP
+
+   SUB 1
+"\n下列舰船除外：" 0
+    GROUP 1
+"\n——%s，列入%s编队。" 2 unit_name_transform(S35.S1.G1.D1) S35.S1.G1.D2
+    END_GROUP      
+   END_SUB
+
+   SUB 2
+"\n由于尚未到达起始点，下列舰船除外：" 0
+    GROUP 1
+"\n——%s，列入%s编队。" 2 unit_name_transform(S35.S2.G1.D1) S35.S2.G1.D2
+    END_GROUP     
+   END_SUB
+
+END_SUB
+
+SUB 36
+"\n%s已与%s建立联系。" 2 unit_name_transform(S36.D1) unit_name_transform(S36.D2)
+END_SUB
+
+SUB 37
+"\n%s未与任何空军基地或前沿弹药油料补给点建立联系。" 1 unit_name_transform(S37.D1)
+END_SUB
+
+SUB 38
+"\n作为%s的先遣部队，%s同时机动。" 2 unit_name_transform(S38.D2) unit_name_transform(S38.D1)
+END_SUB
+
+SUB 39
+"\n%s将%s作为主跑道，" 2 unit_name_transform(D2) unit_name_transform(S39.D1)
+   SUB 1
+"同时拥有下列跑道：" 0
+      GROUP 1
+"\n——%s" 1 unit_name_transform(S39.S1.G1.D1)
+      END_GROUP
+   END_SUB
+   SUB 2
+"\n允许使用下列跑道：" 0
+      GROUP 1
+"\n——%s" 1 unit_name_transform(S39.S2.G1.D1)
+      END_GROUP
+   END_SUB
+END_SUB
+
+SUB 40
+"\n与之先关联的特种分队同时机动至新的地域：" 0
+   GROUP 1
+"\n——%s，隶属于%s集团。 " 2 unit_name_transform(S40.G1.D1) unit_name_transform(S40.G1.D2)
+   END_GROUP
+END_SUB
+
+SUB 41
+"\n%s与%s方%s集团的%s中断联系。" 4 unit_name_transform(S41.D1) unit_name_transform(S41.D4)  unit_name_transform(S41.D3) unit_name_transform(S41.D2)
+END_SUB
+
+SUB 42
+"\n该机场最长跑道%s米，" 1 UOM_AMT("AIRDISTANCE",S42.D4)
+"而暂驻于此的%s的飞机正常起降" 1 unit_name_transform(S42.D1)
+"至少需要%s米跑道，" 1 UOM_AMT("AIRDISTANCE",S42.D2)
+"因此如要执行空中作战任务，需调理员或本方上级分配合适的跑道。" 0
+END_SUB
+
+SUB 43
+"\n新的驻地无跑道。如要飞行中队执行空中作战任务，需调理员或本方上级分配跑道。" 0
+END_SUB
+
+SUB 47
+   GROUP 1
+"\n——%s，正在操作%s（%s）。" 3 unit_name_transform(S47.D1) unit_name_transform(S47.G1.D1) MHE_Facility[S47.G1.D2]
+    END_GROUP
+END_SUB
+
+SUB 48
+   SUB 1
+"\n遇到核化沾染。" 0
+   END_SUB
+   SUB 2
+"\n遇到化学沾染。" 0
+   END_SUB
+   SUB 3
+"\n遇到核沾染。" 0
+   END_SUB
+   SUB 4
+"\n发现%s雷场，地雷标明国家代码为%s。" 2 unit_name_transform(S48.S4.D2) S48.S4.D1
+   END_SUB
+   SUB 5
+"\n未探测到敌方地雷。" 0
+   END_SUB
+   SUB 6
+"\n该地区有心理战传单散布。" 0
+   END_SUB
+END_SUB
+
+SUB 49
+"" 0
+END_SUB
+
+SUB 50
+"\n%s的%s行动已终止。" 2 unit_name_transform(S50.D2)  HRU_Status[S50.D1] 
+END_SUB
+
+END_MAIN
+

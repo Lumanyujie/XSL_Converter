@@ -1,0 +1,42 @@
+
+7420
+SUBJECT
+"%s遭心理战广播、雷达或通信干扰情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s遭心理战广播、雷达或通信干扰情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+"\n%s报告：所在区域遭敌高强度心理战广播。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 2
+"\n%s报告：所在区域遭敌低强度心理战广播。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 3
+"\n%s报告：所在区域遭敌高强度心理战广播（外文）。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 4
+"\n%s报告：所在区域遭敌低强度心理战广播（外文）。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 5
+"心理战广播源为飞机。" 0
+END_SUB
+
+SUB 6
+"\n%s报告：敌对其战术互联网实施通信干扰。" 1 unit_name_transform(D2) 
+END_SUB
+
+SUB 7
+"\n%s报告：敌对其内部通信网实施通信干扰。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 8
+"\n%s报告：所在区域遭雷达干扰。" 1 unit_name_transform(D2)
+END_SUB
+
+END_MAIN
+

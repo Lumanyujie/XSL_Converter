@@ -1,0 +1,19 @@
+1527
+SUBJECT
+"%s补给类型目标的属性。" 1 Supply_Type[D2]
+MAIN
+
+"<p class='title'> %s 补给类型目标(编号%s)属性</p>\n" 2 Supply_Type[D2] D2
+
+SUB 1
+"   半径:%s%s\n"
+                          2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+"   修复时间:%s\n"
+                          1 DURATION(S1.D2, "%d 天 %h 小时 %Rm 分钟")
+"   破坏时间:%s\n"
+                          1 DURATION(S1.D3, "%d 天 %h 小时 %Rm 分钟")
+"   目标分类代码:%s\n" 1 S1.D4
+"   目标符号:%s\n" 1 S1.D5
+END_SUB
+
+END_MAIN

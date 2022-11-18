@@ -1,0 +1,12 @@
+
+3560
+SUBJECT
+"空中%s编队引导舰艇未到位情况报告" 1 D2
+
+MAIN
+" <p class='title'>空中%s编队引导舰艇未到位情况报告</p>" 1 D2
+
+"\n空中%s编队已按时到达指定航线点%s，" 2 D2 LOCATION(D4,D5)
+"但引导舰艇%s尚未抵达。" 1 unit_name_transform(D3)
+END_MAIN
+

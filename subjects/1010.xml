@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="1010"> <subject> <line>导调人员调试及报告标识状态</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;导调人员调试及报告标识状态&lt;/p&gt;</line> <line><br/>下面是调试及报告标识状态：</line>  <group n="1"> <line><br/>——<f n="Debug_Flag_Name"><G1.D1/></f>：<f n="Answer"><G1.D2/></f>。</line> </group></main> </msg> </msgs>

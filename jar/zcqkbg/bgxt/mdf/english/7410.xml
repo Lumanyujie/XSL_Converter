@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="7410"> <subject> <line><f n="unit_name_transform"><D2/></f>报告发现敌散发传单</line> </subject> <main> <line> <br/> <f n="unit_name_transform"><D2/></f>报告大量传单散布在我军<f n="LOCATION"><D3/><D4/></f>区域附近，企图扰乱<f n="No_Force_Side"><D6/></f><D5/>部队。</line>  <sub n="1"> <line>  传单散发方式为宣传弹散发。</line> </sub> <sub n="2"> <line>  传单散发方式为空中编队散发。</line> </sub> <sub n="3"> <line>  传单散发方式为导弹散发。</line> </sub> <sub n="5"> <line>  传单散发方式未知。</line> </sub></main> </msg> </msgs>

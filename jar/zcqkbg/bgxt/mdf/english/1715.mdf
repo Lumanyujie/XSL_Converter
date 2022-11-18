@@ -1,0 +1,42 @@
+
+1715
+SUBJECT
+"点杀伤命中毁伤概率" 0
+MAIN
+"<p class='title'>  点杀伤命中毁伤概率报告 </p> \n" 0
+SUB 1
+"  点杀伤毁伤参数被改变。" 0
+"点杀伤毁伤指标为%s，打击的目标类为%s， "  2 PKL_Index[S1.D1]    Target_Category[S1.D2]
+"子类为%s，最佳条件下对武器毁伤概率是%s。\n" 2 SUBCAT_NAME{S1.D2,S1.D3} S1.D4
+END_SUB
+
+SUB 2
+"  点杀伤毁伤指标为%s，打击目标为%s: "  2 PKL_Index[S2.D1]
+                                                      Target_Category[D2]
+"对武器，按子类最佳条件下的毁伤概率如下:\n" 0
+
+   GROUP 1
+"打击的目标子类%-15.15s     %8.8s\n"
+                                      2 SUBCAT_NAME{D2,S2.G1.D1} S2.G1.D2
+   END_GROUP
+END_SUB
+
+SUB 3
+"  一个命中概率参数被改变。" 0
+"命中毁伤概率指标为%s，打击的目标为%s， " 2 PHL_Index[S3.D1]  Target_Category[S3.D2]
+"子类为%s，最佳条件下对武器的命中概率现在是%s。\n\n" 2 SUBCAT_NAME{S3.D2,S3.D3} S3.D4
+END_SUB
+
+SUB 4
+"  命中毁伤概率指标为%s，打击的目标为%s，"  2 PHL_Index[S4.D1]
+                                                      Target_Category[D2]
+"对武器按子类最佳条件下的毁伤概率如下:\n" 0
+
+   GROUP 1
+"打击目标子类  %-15.15s     %8.8s\n"
+                                      2 SUBCAT_NAME{D2,S4.G1.D1} S4.G1.D2
+   END_GROUP
+END_SUB
+
+END_MAIN
+

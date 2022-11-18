@@ -1,0 +1,16 @@
+
+7150
+SUBJECT
+"%s（管线）%s（节点）毁伤情况报告" 2 unit_name_transform(D3) unit_name_transform(D2)
+MAIN
+"<p class='title'>%s（管线）%s（节点）毁伤情况报告</p>" 2 unit_name_transform(D3) unit_name_transform(D2)
+
+"\n%s遭敌毁伤，" 1 unit_name_transform(D2)
+"使%s（管线）正常运行受到影响。" 1 unit_name_transform(D3)
+
+SUB 1
+"\n预计%s将在%s小时后，于%s完全修复。" 3 unit_name_transform(D2) DURATION(S1.D1, "%.2Th") GTIME(S1.D2)
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,126 @@
+
+4050
+SUBJECT
+"执行后勤命令情况报告" 0
+MAIN
+"<p class='title'>执行后勤命令情况报告</p>" 0
+SUB 1
+"\n从现在开始，%s的以下申请标准生效：" 1 unit_name_transform(S1.D1)
+"<p class='table_name'>申请标准明细</p>" 0
+"__start_table|类型|再申请标准|储备标准\n" 0
+   GROUP 1
+"|%s|%s%s|%s%s\n" 5 
+                                SLP_Category_Name[S1.D2,S1.G1.D1]
+                                       SLP_SC_AMT(S1.D2,S1.G1.D1,S1.G1.D2)
+                                       SLP_SC_UOM(S1.D2,S1.G1.D1)
+                                       SLP_SC_AMT(S1.D2,S1.G1.D1,S1.G1.D3)
+                                       SLP_SC_UOM(S1.D2,S1.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 2
+"\n%s的保障部队已由%s调整为%s。" 3 unit_name_transform(S2.D1) unit_name_transform(S2.D2) unit_name_transform(S2.D3)
+END_SUB
+
+SUB 3
+"\n以下防空目标的保障部队调整如下：" 0
+"<p class='table_name'>保障部队调整明细</p>" 0
+"__start_table|防空目标名称|原保障部队|现保障部队\n" 0
+   GROUP 1
+"|%s|%s|%s\n" 3 unit_name_transform(S3.G1.D1) unit_name_transform(S3.G1.D2) unit_name_transform(S3.G1.D3)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 4
+"\n收到编号为%s的港口命令，" 1 D2
+   SUB 1
+"%s已从港口的处理队列中清除。" 1 unit_name_transform(S4.S1.D1)
+   END_SUB
+   SUB 2
+"%s已从港口的处理队列中清除。" 1 unit_name_transform(S4.S2.D1)
+   END_SUB
+   SUB 3
+ "已从港口%s的处理队列中退出并转向%s，" 2 unit_name_transform(S4.S3.D1) unit_name_transform(S4.S3.D2)
+ "预计到达新港口时间为%s。" 1 GTIME(S4.S3.D3) 
+   END_SUB
+END_SUB
+
+SUB 5
+"\n收到调整港口装卸优先顺序命令（编号%s），" 1 D2
+   SUB 1
+"%s已被列为优先装卸项目。" 1 unit_name_transform(S5.S1.D1)
+   END_SUB
+   SUB 2
+"已取消%s的优先装卸权。" 1 unit_name_transform(S5.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 6
+"\n收到调整港口装卸优先顺序命令（编号%s），" 1 D2
+   SUB 1
+"战略补给%s已被列为优先装卸项目。" 1 unit_name_transform(S6.S1.D1)
+   END_SUB
+   SUB 2
+"已取消战略补给%s的优先装卸权。" 1 unit_name_transform(S6.S2.D1)
+   END_SUB
+END_SUB
+
+SUB 7
+"\n%s已停止对%s的管线作业。" 2 unit_name_transform(S7.D1) unit_name_transform(S7.D2)
+END_SUB
+
+SUB 8
+"\n%s已收到命令，" 1 unit_name_transform(S8.D1)
+"要求对采用%s方式输送部队时间进行评估，" 1 Unit_Transport_Method[S8.D2]
+"正在执行，将尽快提供评估结果。" 0
+END_SUB
+
+SUB 9
+"\n收到取消运输分队%s的命令，" 1 unit_name_transform(S9.D1)
+   SUB 1
+"该部队正在驻地装载，任务已取消。" 0
+   END_SUB
+   SUB 2
+"该部队正在返回驻地，无其他任务。" 0
+   END_SUB
+   SUB 3
+"该部队已被围困，摆脱后将尽快返回驻地。" 0
+   END_SUB
+   SUB 4
+"该部队正在途中装载补给物资，已开始返回驻地。" 0
+   END_SUB
+   SUB 5
+"该部队正在途中卸载补给物资，已开始返回驻地。" 0
+   END_SUB
+   SUB 6
+"该部队正在返回驻地途中。" 0
+   END_SUB
+END_SUB
+
+SUB 10
+"\n收到对%s实施战略转移命令，" 1 unit_name_transform(D2)
+
+   SUB 1
+"已命令%s向搭载点（%s）机动。" 2 unit_name_transform(D2) LOCATION(D3, D4)
+   END_SUB
+
+   SUB 2
+"该部队正在实施作业，不在装载区，" 0
+"应立即停止作业，并于%s前，到达指定装载区（%s）。" 2 GTIME(D5) LOCATION(D3, D4)
+   END_SUB
+
+   SUB 3
+"%s已做好在当前位置实施装载的准备。" 1 unit_name_transform(D2)
+   END_SUB
+
+END_SUB
+
+SUB 11
+"\n对%s的战略补给计划于%s实施。" 2 unit_name_transform(S11.D1)  GTIME(S11.D2)
+
+END_SUB
+
+END_MAIN
+

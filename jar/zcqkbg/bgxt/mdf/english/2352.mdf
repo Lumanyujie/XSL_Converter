@@ -1,0 +1,38 @@
+
+2352
+SUBJECT
+"%s被毁及其后继影响情况报告" 1 unit_name_transform(D2)
+
+MAIN
+" <p class='title'>%s被毁及其后继影响情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n%s遭袭被毁，" 1 unit_name_transform(D2)
+
+END_SUB
+
+SUB 2
+"即将到此的下列空军中队将受到影响：" 0
+"<p class='table_name'>受影响部队情况列表</p>" 0
+"__start_table|部队名称|具体情况\n" 0
+
+   GROUP 1
+      SUB 1
+"|%s|由于需要一条跑道，到达计划取消\n" 1 unit_name_transform(S2.G1.S1.D1)
+      END_SUB
+      SUB 2
+"|%s|由于没有其他空军基地，仍将到达\n" 1 unit_name_transform(S2.G1.S2.D1)
+      END_SUB
+      SUB 3
+"|%s|到达计划取消\n" 1 unit_name_transform(S2.G1.S3.D1)
+      END_SUB
+   END_GROUP
+
+"__stop_table" 0
+END_SUB
+
+SUB 3
+"按计划，近期没有部队到达，因此对当前任务影响不大。" 0
+END_SUB
+
+END_MAIN
+

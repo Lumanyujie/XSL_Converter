@@ -1,0 +1,141 @@
+1600
+SUBJECT
+"%s%s空中管制原型属性." 2 Air_Control_Prototype[D2] D2
+MAIN
+
+"<p class='title'>%s(属性)</p>\n" 1 Air_Control_Prototype[D2]
+
+SUB 1
+"  侦察编队飞机数量: %s\n\n" 1 S1.D1
+END_SUB
+
+SUB 2
+"  拦截机出动率: %s\n\n" 1 S2.D1
+END_SUB
+
+SUB 3
+"  返航率: %s\n\n" 1 S3.D1
+END_SUB
+
+SUB 4
+"  最大防空驱离率: %s\n\n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  降落跑道长度: %s %s\n\n" 2 
+ UOM_AMT(DISTANCE,S5.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 6
+"  杀伤概率:%s\n\n" 1  S6.D1
+END_SUB
+
+SUB 7
+"  发射前准备时间: %s\n\n" 1 
+ DURATION(S7.D1, "%d 天 %h 小时 %Rm 分钟")
+END_SUB
+
+SUB 8
+"  命令执行率: %s\n\n" 1 S8.D1
+END_SUB
+
+SUB 12
+"  空中信息原型: %s\n\n" 1 S12.D1
+END_SUB
+
+SUB 14 
+"  发射预警平均时间: %s 小时\n\n" 1
+ DURATION(S14.D1, "%.2Th")
+END_SUB
+
+SUB 15
+"  空中航线繁忙率: %4.4s\n\n" 1 S15.D1
+END_SUB
+
+SUB 20
+"  攻击搜索时间: %s\n\n" 1
+                            DURATION(S20.D1, "%d 天 %h 小时 %Rm 分钟")
+END_SUB
+
+SUB 21
+"  探测搜索时间: %s\n\n" 1
+                            DURATION(S21.D1, "%d 天 %h 小时 %Rm 分钟")
+END_SUB
+
+SUB 22
+"  火控系统响应时间: %s\n\n\n" 1
+                            DURATION(S22.D1, "%d 天 %h 小时 %Rm 分钟")
+END_SUB
+
+SUB 9
+"<p class='paragraph'>空中管制原型敌我识别能力</p>\n" 0
+"__start_table  |导演方 |参演方 |识别概率\n" 0
+   GROUP 1
+" |%-10.10s |%-15.15s |%7.7s  \n"
+                       3 No_Force_Side[S9.G1.D1] ROE_No_Force_Side[S9.G1.D2] S9.G1.D3
+   END_GROUP
+"__stop_table"0 
+"\n" 0
+END_SUB
+
+SUB 10
+"<p class='tablename'>任务类型能力</p>\n" 0
+"__start_table |任务类型   |最小出动率   |最大起飞时延                |默认最优路径  |能否互联  |队标\n" 0
+   GROUP 1
+"|%-14.14s |%6.6s  |%-20.20s |%-14.14s |%2.2s |%-30.30s\n" 6
+ Mission_Type[S10.G1.D1] S10.G1.D2 DURATION(S10.G1.D3, "%h 小时 %Rm 分钟")
+ Mission_Routing_Type[S10.G1.D6]
+ Answer[S10.G1.D4] Graphics_Symbol[S10.G1.D5]
+   END_GROUP
+"__stop_table"0   
+"\n" 0
+END_SUB
+
+SUB 11
+"  注意:由于最优化方法的改变，当前任务需调整飞行航线。\n" 0
+END_SUB
+
+SUB 13
+"<p class='tablename'>空中管制原型/天气条件数据</p>\n" 0
+" __start_table  |气象条件   |能否起飞\n" 0
+   GROUP 1
+"             |%-20.20s           |%8.8s\n" 2
+   Weather_Condition[S13.G1.D1] Answer[S13.G1.D2] 
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+SUB 18
+"<p class='tablename'>敌我识别应答原型列表</p>\n" 0
+SUB 1 
+"__start_table  |应答模型名称  |能否识别  |准确度   \n" 0
+   GROUP 1
+"   |%-15.15s              |%-3.3s             |%s\n" 3
+    IFF_Transponder_Mode[S18.S1.G1.D1] Answer[S18.S1.G1.D2] S18.S1.G1.D3
+
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+SUB 2
+"  无敌我识别应答数据\n\n" 0
+END_SUB
+END_SUB
+
+SUB 19
+"<p class='tablename'>飞机目标类别列表</p>\n" 0
+                  
+"__start_table   |飞机目标类别      |主动拦截\n" 0
+   GROUP 1
+"   |%-15.15s       |%-3.3s\n" 2
+    Aircraft_Target_Class[S19.G1.D1] Answer[S19.G1.D2]
+
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+END_MAIN
+
+

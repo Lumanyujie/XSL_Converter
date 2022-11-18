@@ -1,0 +1,30 @@
+
+2905
+SUBJECT
+"参演人员的报告" 0
+MAIN
+"<p class='title'>参演人员的报告</p> \n\n" 0
+
+SUB 1
+   GROUP 1
+"\n%s为以下站位提供默认报告信息：" 1 No_Force_Side[S1.G1.D1]
+      GROUP 1
+"\n——%s：%s" 2 Player_Function[S1.G1.G1.D1] unit_name_transform(S1.G1.G1.D2)
+      END_GROUP
+   END_GROUP
+END_SUB
+
+SUB 2
+"\n以下部队向指定站位报告：" 0
+"__start_table|部队名称|陆军|海军|空军|舰队|情报|特战|后勤\n" 0
+   GROUP 1
+"|%s|" 1 unit_name_transform(S2.G1.D1)
+"%s|%s|%s|%s" 4 S2.G1.D2 S2.G1.D5 S2.G1.D3 S2.G1.D6
+"|%s|%s|%s\n" 3 S2.G1.D7 S2.G1.D8 S2.G1.D4
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+END_MAIN
+

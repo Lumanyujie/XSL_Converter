@@ -1,0 +1,44 @@
+
+3105
+SUBJECT
+"空中%s编队不能执行起飞命令情况报告" 1 D2
+MAIN
+"<p class='title'>空中%s编队不能执行起飞命令情况报告</p>" 1 D2
+SUB 12
+"\n空中%s编队收到命令，" 1 D2
+"但由于%s部分跑道被毁，" 1 unit_name_transform(S12.D1)
+"飞机不能起飞，当前尚未开始修复。" 0
+END_SUB
+
+SUB 13
+"\n空中%s编队收到命令，" 1 D2
+"但由于%s跑道长度不够，" 1 unit_name_transform(S13.D1)
+"飞机无法起飞。" 0
+END_SUB
+
+SUB 14
+"\n空中%s编队收到命令，" 1 D2
+"但由于%s飞行甲板损毁，" 1 unit_name_transform(S14.D1)
+"飞机不能起飞，当前尚未开始修复。" 0
+END_SUB
+
+SUB 40
+"\n空中%s编队收到命令，" 1 D2
+"但由于%s附近天气原因，" 1 unit_name_transform(S40.D1)
+"飞机不能起飞，天气预报显示近期不会好转。" 0
+END_SUB
+
+SUB 51
+"\n空中%s编队收到命令，" 1 D2
+"但由于%s附近水深不足，" 1 unit_name_transform(S51.D1)
+"飞机不能起飞，当前%s没有机动。" 1 unit_name_transform(S51.D1)
+END_SUB
+
+SUB 53
+"\n空中%s编队收到命令，" 1 D2
+"但由于%s尚未接到该编队使用跑道的授权，" 1 unit_name_transform(S53.D1)
+"飞机无法起飞。" 0
+END_SUB
+
+END_MAIN
+

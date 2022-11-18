@@ -1,0 +1,107 @@
+
+5650
+SUBJECT
+"当前情报共享情况汇总" 0
+MAIN
+"<p class='title'>当前情报共享情况汇总</p>" 0
+GROUP 1
+   SUB 1
+"\n\n—编号：%s" 1 G1.S1.D1
+"__start_table|分项|参数|分项|参数\n" 0
+"|开始时间|%s" 1 GTIME(G1.S1.D2)
+"|共享内容|部队情报\n" 0
+"|发送方|%s" 1 No_Force_Side[G1.S1.D3]
+"|接收方|%s\n" 1 No_Force_Side[G1.S1.D4]
+"|是否通报部队属方|%s" 1 Answer[G1.S1.D5]
+"|是否通报部队坐标|%s\n" 1 Answer[G1.S1.D6]
+"|是否通报当前战力|%s" 1 Answer[G1.S1.D7]
+"|是否通报当前态势|%s\n" 1 Answer[G1.S1.D8]
+"__stop_table" 0
+   END_SUB
+
+   SUB 2
+"\n\n—编号：%s" 1 G1.S2.D1
+"__start_table|分项|参数|分项|参数\n" 0
+"|开始时间|%s" 1 GTIME(G1.S2.D2)
+"|共享内容|部队情报\n" 0
+"|情报来源|导演部" 0
+"|接收方|%s\n" 1 No_Force_Side[G1.S2.D3]
+"|是否通报部队属方|%s" 1 Answer[G1.S2.D4]
+"|是否通报部队坐标|%s\n" 1 Answer[G1.S2.D5]
+"|是否通报当前战力|%s" 1 Answer[G1.S2.D6]
+"|是否通报当前态势|%s\n" 1 Answer[G1.S2.D7]
+"__stop_table" 0
+   END_SUB
+
+   SUB 3
+"\n\n—编号：%s" 1 G1.S3.D1
+"__start_table|分项|参数|分项|参数\n" 0
+"|开始时间|%s" 1 GTIME(G1.S3.D2)
+"|共享内容|目标情报\n" 0
+"|发送方|%s" 1 No_Force_Side[G1.S3.D3]
+"|接收方|%s\n" 1 No_Force_Side[G1.S3.D4]
+"|是否通报目标属方|%s" 1 Answer[G1.S3.D5]
+"|是否通报目标坐标|%s\n" 1 Answer[G1.S3.D6]
+"|是否通报当前能力|%s" 1 Answer[G1.S3.D7]
+"|是否通报当前所有者|%s\n" 1 Answer[G1.S3.D8]
+"__stop_table" 0
+   END_SUB
+
+   SUB 4
+"\n\n—编号：%s" 1 G1.S4.D1
+"__start_table|分项|参数|分项|参数\n" 0
+"|开始时间|%s" 1 GTIME(G1.S4.D2)
+"|共享内容|目标情报\n" 0
+"|情报来源|导演部" 0
+"|接收方|%s\n" 1 No_Force_Side[G1.S4.D3]
+"|是否通报目标属方|%s" 1 Answer[G1.S4.D4]
+"|是否通报目标坐标|%s\n" 1 Answer[G1.S4.D5]
+"|是否通报当前能力|%s" 1 Answer[G1.S4.D6]
+"|是否通报当前所有者|%s\n" 1 Answer[G1.S4.D7]
+"__stop_table" 0
+   END_SUB
+
+   SUB 5
+"\n注：该情报共享为一次性任务。" 0 
+   END_SUB
+
+   SUB 6
+"\n注：该情报共享每隔%s小时一次。" 1 DURATION(G1.S6.D1, "%.2Th")
+   END_SUB
+
+   SUB 7
+"\n共享情报部队清单（含下级）：" 0
+   END_SUB
+
+   SUB 8
+"\n共享情报部队清单（不含下级）：" 0
+   END_SUB
+
+   SUB 9
+"\n共享所有已知目标的情报。" 0
+   END_SUB
+
+   SUB 10
+"\n共享以下目标的情报：" 0
+   END_SUB
+
+   SUB 11
+
+      GROUP 1
+" \n——%s" 1 unit_name_transform(G1.S11.G1.D1) 
+      END_GROUP
+
+   END_SUB
+
+   SUB 12
+"\n共享%s的情报。" 1 unit_name_transform(G1.S12.D1)
+   END_SUB
+
+   SUB 13
+"\n当前无情报共享情况。" 0
+   END_SUB		
+
+END_GROUP
+
+END_MAIN
+

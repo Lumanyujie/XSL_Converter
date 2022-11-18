@@ -1,0 +1,20 @@
+
+1828
+SUBJECT
+"舰船部队原型%s（编号%s）参数---补给总量" 
+                                          2 Ship_Unit_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  使用舰船部队原型%s（编号%s）部队的补给类总量</p>\n\n"
+                                          2 Ship_Unit_Prototype[D2] D2
+"   __start_table | 名称 |UOM | 送达战区| 重订补给等级 | 存储目标|基本运载量\n" 0
+GROUP 1
+"|%-15.15s |  %-5.5s |%14.14s  | %14.14s |%14.14s |%14.14s\n" 6
+                         Supply_Category[G1.D1] SLP_SC_UOM(0,G1.D1)
+                            SLP_SC_AMT(0,G1.D1,G1.D2) SLP_SC_AMT(0,G1.D1,G1.D3)
+                            SLP_SC_AMT(0,G1.D1,G1.D4) SLP_SC_AMT(0,G1.D1,G1.D5)
+END_GROUP
+"__stop_table"0
+                                                               
+END_MAIN
+

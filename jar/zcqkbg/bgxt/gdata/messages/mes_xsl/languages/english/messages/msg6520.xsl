@@ -1,0 +1,2389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+   <xsl:import href="../../../mes-util.xsl"/>
+   <xsl:output method="text"/>
+   <xsl:variable name="NL" select="$cr"/>
+   <xsl:template match="/M">
+      <xsl:call-template name="set-table-status">
+         <xsl:with-param name="status" select="'0'"/>
+      </xsl:call-template>
+      <xsl:call-template name="set-table-header">
+         <xsl:with-param name="head" select="''"/>
+      </xsl:call-template>
+      <xsl:call-template name="set-caption">
+         <xsl:with-param name="caption" select="''"/>
+      </xsl:call-template>&lt;html&gt;&lt;body&gt;<xsl:call-template name="render-header"/>
+      <xsl:call-template name="render-body"/>
+      <xsl:call-template name="render-footer"/>&lt;/body&gt;&lt;/html&gt;</xsl:template>
+   <xsl:template name="render-body">
+      <xsl:call-template name="parse-col">
+         <xsl:with-param name="target-string">&lt;p class='title'&gt;</xsl:with-param>
+         <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+      </xsl:call-template>
+      <xsl:call-template name="display_cur_text">
+         <xsl:with-param name="in_string">
+            <xsl:call-template name="unit_name_transform_FUN">
+               <xsl:with-param name="arg1">
+                  <xsl:value-of select="/M/D/@B"/>
+               </xsl:with-param>
+            </xsl:call-template>
+         </xsl:with-param>
+      </xsl:call-template>
+      <xsl:call-template name="parse-col">
+         <xsl:with-param name="target-string">待执行命令汇总报告&lt;/p&gt;</xsl:with-param>
+         <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+      </xsl:call-template>
+      <xsl:for-each select="S1">
+         <xsl:call-template name="process-br"/>
+         <xsl:call-template name="display_cur_text">
+            <xsl:with-param name="in_string">
+               <xsl:call-template name="unit_name_transform_FUN">
+                  <xsl:with-param name="arg1">
+                     <xsl:value-of select="/M/D/@C"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:with-param>
+         </xsl:call-template>
+         <xsl:call-template name="parse-col">
+            <xsl:with-param name="target-string">待执行命令</xsl:with-param>
+            <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+         </xsl:call-template>
+         <xsl:call-template name="display_cur_text">
+            <xsl:with-param name="in_string">
+               <xsl:value-of select="/M/D/@D"/>
+            </xsl:with-param>
+         </xsl:call-template>
+         <xsl:call-template name="parse-col">
+            <xsl:with-param name="target-string">项，详细情况如下：</xsl:with-param>
+            <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+         </xsl:call-template>
+      </xsl:for-each>
+      <xsl:for-each select="S2">
+         <xsl:call-template name="process-br"/>
+         <xsl:call-template name="display_cur_text">
+            <xsl:with-param name="in_string">
+               <xsl:call-template name="unit_name_transform_FUN">
+                  <xsl:with-param name="arg1">
+                     <xsl:value-of select="/M/D/@C"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:with-param>
+         </xsl:call-template>
+         <xsl:call-template name="parse-col">
+            <xsl:with-param name="target-string">有下列待执行命令：</xsl:with-param>
+            <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+         </xsl:call-template>
+      </xsl:for-each>
+      <xsl:for-each select="G1/R">
+         <xsl:for-each select="S1">
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;p class='title1'&gt;命令名称：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@A"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">；序列号：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@B"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;/p&gt;</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令类型：海上机动</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令下达席位：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@C"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:for-each select="S1">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S2">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">到达目的地时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S3">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：立即执行</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S4">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：按任务序号执行</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S5">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">目的地：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="LOCATION_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@B"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S6">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">速度：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="UOM_AMT_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:text>NAVAL_SPEED</xsl:text>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="UOM_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:text>NAVAL_SPEED</xsl:text>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S7">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">航线（节点/航速）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="LOCATION_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@B"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_AMT_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@C"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S8">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">新保障部队：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:value-of select="D/@A"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S9">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">新上级：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:value-of select="D/@A"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+         </xsl:for-each>
+         <xsl:for-each select="S2">
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;p class='title1'&gt;命令名称：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@A"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">；序列号：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@B"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;/p&gt;</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令类型：海上跟踪监视</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令下达席位：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@C"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:for-each select="S1">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S2">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">跟踪监视开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S3">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">跟踪监视开始时间：尽快</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S4">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：按任务序号执行</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S5">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">跟踪监视结束时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S6">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">跟踪监视持续时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="DURATION_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:text>%d Days %h Hours %Rm Minutes</xsl:text>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S7">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">跟踪监视结束时间：当接到新任务时</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S8">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">被跟踪舰艇：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:value-of select="D/@A"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">跟踪方位（真方位）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:value-of select="D/@B"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">跟踪距离：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="UOM_AMT_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:text>DISTANCE</xsl:text>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@C"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">
+                     <xsl:value-of select="' '"/>
+                  </xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide" select="0"/>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="UOM_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:text>DISTANCE</xsl:text>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+         </xsl:for-each>
+         <xsl:for-each select="S3">
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;p class='title1'&gt;命令名称：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@A"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">；序列号：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@B"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;/p&gt;</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令类型：海上巡逻</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令下达席位：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@C"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:for-each select="S1">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S2">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">巡逻开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S3">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">巡逻开始时间：尽快</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S4">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：按任务序号执行</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S5">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">巡逻结束时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S6">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">巡逻持续时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="DURATION_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:text>%d days %h hours %Rm minutes</xsl:text>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S7">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">巡逻结束时间：当接到新任务时</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S8">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">进入航线（节点/航速）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="LOCATION_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@B"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_AMT_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@C"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S9">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">巡逻区域：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:value-of select="D/@A"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S10">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">巡逻区域（多边形区域）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="LOCATION_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@B"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+         </xsl:for-each>
+         <xsl:for-each select="S4">
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;p class='title1'&gt;命令名称：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@A"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">；序列号：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@B"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;/p&gt;</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令类型：海上布雷</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令下达席位：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@C"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:for-each select="S1">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S2">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">布雷开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S3">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">布雷开始时间：尽快</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S4">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：按任务序号执行</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S5">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">使用武器：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="get-vocab-value">
+                        <xsl:with-param name="vocab">Targetable_Weapon</xsl:with-param>
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">布雷类型：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="get-vocab-value">
+                        <xsl:with-param name="vocab">Minefield_Type</xsl:with-param>
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@B"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">布雷数量：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:value-of select="D/@C"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S6">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">雷区失效时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S7">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">雷区失效时间：未设定</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S8">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">雷区位置：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="LOCATION_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@B"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S9">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">进入航线（节点/航速）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="LOCATION_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@B"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_AMT_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@C"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+         </xsl:for-each>
+         <xsl:for-each select="S5">
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;p class='title1'&gt;命令名称：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@A"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">；序列号：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@B"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;/p&gt;</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令类型：海上扫雷</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令下达席位：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@C"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:for-each select="S1">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S2">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">扫雷开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S3">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">扫雷开始时间：尽快</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S4">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：按任务序号执行</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S5">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">扫雷结束时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S6">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">扫雷持续时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="DURATION_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:text>%d days %h hours %Rm minutes</xsl:text>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S7">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">扫雷结束时间：当接到新任务时</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S8">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">行动类型：探测扫雷</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">搜索雷区位置：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="LOCATION_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@B"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S9">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">行动类型：侦察扫雷</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">指定雷区：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:value-of select="D/@A"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S10">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">行动类型：清除水雷障碍</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">指定雷区：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:value-of select="D/@A"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">清除雷障最大深度：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="UOM_AMT_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:text>AIRDISTANCE</xsl:text>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@B"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="UOM_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:text>AIRDISTANCE</xsl:text>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="S1">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">清除雷障方式：全部清除</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+               <xsl:for-each select="S3">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">清除雷障方式：开辟通路</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+               <xsl:for-each select="S4">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">通路方向：</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="get-vocab-value">
+                           <xsl:with-param name="vocab">Hex_Edge</xsl:with-param>
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+         </xsl:for-each>
+         <xsl:for-each select="S6">
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;p class='title1'&gt;命令名称：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@A"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">；序列号：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@B"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;/p&gt;</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令类型：两栖攻击</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令下达席位：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@C"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:for-each select="S1">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S2">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">进攻发起时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S3">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">进攻发起时间：尽快</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S4">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：按任务序号执行</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S5">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">搭载作战部队（名称/隶属集团）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:value-of select="D/@A"/>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:value-of select="D/@B"/>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S6">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">登陆方式：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="S1">
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">滩头或港口登陆</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+               <xsl:for-each select="S2">
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">直升机登陆</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+               <xsl:for-each select="S3">
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">两栖船登陆</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S7">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">登陆航道（节点/航速）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="LOCATION_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@B"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_AMT_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@C"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S8">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">登陆点：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="LOCATION_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@B"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S9">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">展开换乘距离：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="UOM_AMT_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:text>DISTANCE</xsl:text>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">
+                     <xsl:value-of select="' '"/>
+                  </xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide" select="0"/>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="UOM_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:text>DISTANCE</xsl:text>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S10">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">返回航线（节点/航速）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="LOCATION_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@B"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_AMT_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@C"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+         </xsl:for-each>
+         <xsl:for-each select="S7">
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;p class='title1'&gt;命令名称：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@A"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">；序列号：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@B"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;/p&gt;</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令类型：两栖装载</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令下达席位：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@C"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:for-each select="S1">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S2">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">装载开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S3">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">装载开始时间：尽快</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S4">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：按任务序号执行</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S5">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">搭载部队（名称/隶属集团）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:value-of select="D/@A"/>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:value-of select="D/@B"/>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S6">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">装载方式：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="S1">
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">滩头或港口装载</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+               <xsl:for-each select="S2">
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">直升机装载</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+               <xsl:for-each select="S3">
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">两栖船装载</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S7">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">进入装载地域航线（节点/航速）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="LOCATION_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@B"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_AMT_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@C"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S8">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">装载地域：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="LOCATION_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@B"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S9">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">装载区距岸距离：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="UOM_AMT_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:text>DISTANCE</xsl:text>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">
+                     <xsl:value-of select="' '"/>
+                  </xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide" select="0"/>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="UOM_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:text>DISTANCE</xsl:text>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S10">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">输送航线（节点/航速）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="LOCATION_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@B"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_AMT_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@C"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+         </xsl:for-each>
+         <xsl:for-each select="S8">
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;p class='title1'&gt;命令名称：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@A"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">；序列号：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@B"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;/p&gt;</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令类型：海上输送</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="process-br"/>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">命令下达席位：</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:value-of select="D/@C"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:for-each select="S1">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S2">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">装载开始时间：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="GTIME_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S3">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">装载开始时间：尽快</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S4">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">机动开始时间：按任务序号执行</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S5">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">装载补给物资：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="unit_name_transform_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">，</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="get-vocab-value">
+                           <xsl:with-param name="vocab">SLP_Category_Name</xsl:with-param>
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="../../D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">：</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="SLP_SC_AMT_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="../../D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg3">
+                              <xsl:value-of select="D/@B"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="SLP_SC_UOM_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:value-of select="../../D/@A"/>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@A"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">。</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S6">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">编队提供补给物资。</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S7">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">进入装载地域航线（节点/航速）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:variable name="out-string">
+                     <xsl:call-template name="format-string-left">
+                        <xsl:with-param name="str">
+                           <xsl:call-template name="LOCATION_FUN">
+                              <xsl:with-param name="arg1">
+                                 <xsl:value-of select="D/@A"/>
+                              </xsl:with-param>
+                              <xsl:with-param name="arg2">
+                                 <xsl:value-of select="D/@B"/>
+                              </xsl:with-param>
+                           </xsl:call-template>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:variable>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string" select="$out-string"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_AMT_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@C"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S8">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">装载地域：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="LOCATION_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@B"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S9">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">提供补给部队：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:value-of select="D/@A"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S10">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">输送航线（节点/航速）：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:for-each select="G1/R">
+                  <xsl:call-template name="process-br"/>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">——</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:variable name="out-string">
+                     <xsl:call-template name="format-string-left">
+                        <xsl:with-param name="str">
+                           <xsl:call-template name="LOCATION_FUN">
+                              <xsl:with-param name="arg1">
+                                 <xsl:value-of select="D/@A"/>
+                              </xsl:with-param>
+                              <xsl:with-param name="arg2">
+                                 <xsl:value-of select="D/@B"/>
+                              </xsl:with-param>
+                           </xsl:call-template>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:variable>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string" select="$out-string"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="parse-col">
+                     <xsl:with-param name="target-string">/</xsl:with-param>
+                     <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_AMT_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                           <xsl:with-param name="arg2">
+                              <xsl:value-of select="D/@C"/>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+                  <xsl:call-template name="display_cur_text">
+                     <xsl:with-param name="in_string">
+                        <xsl:call-template name="UOM_FUN">
+                           <xsl:with-param name="arg1">
+                              <xsl:text>NAVAL_SPEED</xsl:text>
+                           </xsl:with-param>
+                        </xsl:call-template>
+                     </xsl:with-param>
+                  </xsl:call-template>
+               </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="S11">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">卸载点：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="LOCATION_FUN">
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@A"/>
+                        </xsl:with-param>
+                        <xsl:with-param name="arg2">
+                           <xsl:value-of select="D/@B"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+            <xsl:for-each select="S12">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">接收补给部队：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:value-of select="D/@A"/>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+         </xsl:for-each>
+         <xsl:for-each select="S20">
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string">&lt;p class='title1'&gt;穿越国境限制&lt;/p&gt;</xsl:with-param>
+               <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+            </xsl:call-template>
+            <xsl:for-each select="G1/R">
+               <xsl:call-template name="process-br"/>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">边界名称：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:variable name="out-string">
+                  <xsl:call-template name="format-string-left">
+                     <xsl:with-param name="str">
+                        <xsl:value-of select="D/@A"/>
+                     </xsl:with-param>
+                     <xsl:with-param name="width" select="15"/>
+                     <xsl:with-param name="trim" select="15"/>
+                  </xsl:call-template>
+               </xsl:variable>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string" select="$out-string"/>
+               </xsl:call-template>
+               <xsl:call-template name="parse-col">
+                  <xsl:with-param name="target-string">，是否允许穿越：</xsl:with-param>
+                  <xsl:with-param name="is-begin-with-slide">0</xsl:with-param>
+               </xsl:call-template>
+               <xsl:call-template name="display_cur_text">
+                  <xsl:with-param name="in_string">
+                     <xsl:call-template name="get-vocab-value">
+                        <xsl:with-param name="vocab">Answer</xsl:with-param>
+                        <xsl:with-param name="arg1">
+                           <xsl:value-of select="D/@B"/>
+                        </xsl:with-param>
+                     </xsl:call-template>
+                  </xsl:with-param>
+               </xsl:call-template>
+            </xsl:for-each>
+         </xsl:for-each>
+      </xsl:for-each>
+   </xsl:template>
+   <xsl:template name="display_cur_text">
+      <xsl:param name="in_string"/>
+      <xsl:variable name="table_status">
+         <xsl:call-template name="get-table-status"/>
+      </xsl:variable>
+      <xsl:variable name="normalized-string" select="normalize-space($in_string)"/>
+      <xsl:variable name="space-string">
+         <xsl:call-template name="replace-func">
+            <xsl:with-param name="str" select="$in_string"/>
+            <xsl:with-param name="str-a" select="' '' '"/>
+            <xsl:with-param name="str-b" select="'&amp;nbsp;'"/>
+         </xsl:call-template>
+      </xsl:variable>
+      <xsl:if test="$table_status=5">
+         <xsl:variable name="header-temp">
+            <xsl:call-template name="get-table-header"/>
+         </xsl:variable>
+         <xsl:call-template name="set-table-header">
+            <xsl:with-param name="head">
+               <xsl:value-of select="concat($header-temp,$in_string)"/>
+            </xsl:with-param>
+         </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="$table_status=6">
+         <xsl:variable name="caption-temp">
+            <xsl:call-template name="get-caption"/>
+         </xsl:variable>
+         <xsl:call-template name="set-caption">
+            <xsl:with-param name="caption">
+               <xsl:value-of select="concat($caption-temp,$in_string)"/>
+            </xsl:with-param>
+         </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="$table_status=0">
+         <xsl:if test="starts-with($normalized-string,'|')=true()">
+            <xsl:variable name="header">
+               <xsl:call-template name="get-table-header"/>
+            </xsl:variable>
+            <xsl:variable name="caption">
+               <xsl:call-template name="get-caption"/>
+            </xsl:variable>
+            <xsl:if test="string-length($header)!=0">
+               <xsl:if test="string-length($caption)!=0">
+                  <xsl:text>&lt;class ='qita'&gt;</xsl:text>
+                  <xsl:value-of select="normalize-space($caption)"/>
+                  <xsl:text>&lt;/p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</xsl:text>
+                  <xsl:call-template name="set-caption">
+                     <xsl:with-param name="caption" select="''"/>
+                  </xsl:call-template>
+               </xsl:if>
+               <xsl:text>&lt;table border="1" cellspacing="0" cellpadding="1" width="97%" class='table_all'&gt;</xsl:text>
+               <xsl:text>&lt;tr style="word-wrap:break-word"&gt;</xsl:text>
+               <xsl:call-template name="display-headers">
+                  <xsl:with-param name="header-string" select="$header"/>
+               </xsl:call-template>
+               <xsl:text>&lt;/tr&gt;</xsl:text>
+               <xsl:text>&lt;tr style="word-wrap:break-word"&gt;</xsl:text>
+               <xsl:text>&lt;td class='table_td'&gt;</xsl:text>
+               <xsl:if test="string-length($header)&gt;1">
+                  <xsl:value-of select="substring-after($normalized-string,'|')"/>
+               </xsl:if>
+               <xsl:call-template name="set-table-status">
+                  <xsl:with-param name="status" select="3"/>
+               </xsl:call-template>
+            </xsl:if>
+            <xsl:if test="string-length($header)=0">
+               <xsl:value-of select="$space-string"/>
+            </xsl:if>
+         </xsl:if>
+         <xsl:if test="starts-with($normalized-string,'|')=false()">
+            <xsl:variable name="caption-temp">
+               <xsl:call-template name="get-caption"/>
+            </xsl:variable>
+            <xsl:if test="string-length($caption-temp)!=0">
+               <xsl:value-of select="$caption-temp"/>
+               <xsl:text>&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</xsl:text>
+               <xsl:call-template name="set-caption">
+                  <xsl:with-param name="caption" select="''"/>
+               </xsl:call-template>
+            </xsl:if>
+            <xsl:value-of select="$space-string"/>
+         </xsl:if>
+      </xsl:if>
+      <xsl:if test="$table_status=1">
+         <xsl:choose>
+            <xsl:when test="starts-with($normalized-string,'|')=true()">
+               <text>&lt;tr&gt;</text>
+               <text>&lt;td class='table_td'&gt;</text>
+               <xsl:value-of select="substring-after($normalized-string,'|')"/>
+               <xsl:call-template name="set-table-status">
+                  <xsl:with-param name="status" select="3"/>
+               </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+               <text>&lt;/table&gt;</text>
+               <xsl:call-template name="set-table-status">
+                  <xsl:with-param name="status" select="0"/>
+               </xsl:call-template>
+               <xsl:variable name="caption-temp">
+                  <xsl:call-template name="get-caption"/>
+               </xsl:variable>
+               <xsl:if test="string-length($caption-temp)!=0">
+                  <xsl:value-of select="$caption-temp"/>
+                  <xsl:call-template name="set-caption">
+                     <xsl:with-param name="caption" select="''"/>
+                  </xsl:call-template>
+                  <xsl:text>&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</xsl:text>
+               </xsl:if>
+               <xsl:value-of select="$space-string"/>
+            </xsl:otherwise>
+         </xsl:choose>
+      </xsl:if>
+      <xsl:if test="$table_status=2">
+         <xsl:text>&lt;td class='table_td'&gt;</xsl:text>
+         <xsl:if test="starts-with($normalized-string,'|')">
+            <xsl:value-of select="substring-after($normalized-string,'|')"/>
+         </xsl:if>
+         <xsl:if test="starts-with($normalized-string,'|')=false()">
+            <xsl:value-of select="$normalized-string"/>
+         </xsl:if>
+         <xsl:call-template name="set-table-status">
+            <xsl:with-param name="status" select="3"/>
+         </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="$table_status=3">
+         <xsl:choose>
+            <xsl:when test="starts-with($normalized-string,'|')=true()">
+               <text>&lt;/td&gt;</text>
+               <xsl:call-template name="set-table-status">
+                  <xsl:with-param name="status" select="2"/>
+               </xsl:call-template>
+               <xsl:if test="string-length(substring-after($normalized-string,'|'))&gt;0">
+                  <text>&lt;td class='table_td'&gt;</text>
+                  <xsl:value-of select="substring-after($normalized-string,'|')"/>
+                  <xsl:call-template name="set-table-status">
+                     <xsl:with-param name="status" select="3"/>
+                  </xsl:call-template>
+               </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:value-of select="$normalized-string"/>
+            </xsl:otherwise>
+         </xsl:choose>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template name="display-headers">
+      <xsl:param name="header-string"/>
+      <xsl:variable name="first-string" select="substring-before($header-string,'|')"/>
+      <xsl:if test="string-length($first-string)!=0">
+         <xsl:text>&lt;th class='table_th'&gt;</xsl:text>
+         <xsl:value-of select="normalize-space($first-string)"/>
+         <xsl:text>&lt;/th&gt;</xsl:text>
+         <xsl:call-template name="display-headers">
+            <xsl:with-param name="header-string" select="substring-after($header-string,'|')"/>
+         </xsl:call-template>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template name="save-header">
+      <xsl:param name="header-string"/>
+      <xsl:call-template name="set-table-header">
+         <xsl:with-param name="head" select="$header-string"/>
+      </xsl:call-template>
+      <xsl:call-template name="set-table-status">
+         <xsl:with-param name="status" select="5"/>
+      </xsl:call-template>
+   </xsl:template>
+   <xsl:template name="stop-table">
+      <xsl:variable name="table-status">
+         <xsl:call-template name="get-table-status"/>
+      </xsl:variable>
+      <xsl:choose>
+         <xsl:when test="$table-status=3">
+            <xsl:text>&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xsl:text>
+         </xsl:when>
+         <xsl:when test="$table-status=2">
+            <xsl:text>&lt;/tr&gt;&lt;/table&gt;</xsl:text>
+         </xsl:when>
+         <xsl:when test="$table-status=1">
+            <xsl:text>&lt;/table&gt;</xsl:text>
+         </xsl:when>
+      </xsl:choose>
+      <xsl:call-template name="set-table-status">
+         <xsl:with-param name="status" select="0"/>
+      </xsl:call-template>
+   </xsl:template>
+   <xsl:template name="process-br">
+      <xsl:variable name="table-status">
+         <xsl:call-template name="get-table-status"/>
+      </xsl:variable>
+      <xsl:choose>
+         <xsl:when test="$table-status=3">
+            <xsl:text>&lt;/td&gt;&lt;/tr&gt;</xsl:text>
+            <xsl:call-template name="set-table-status">
+               <xsl:with-param name="status" select="1"/>
+            </xsl:call-template>
+         </xsl:when>
+         <xsl:when test="$table-status=2">
+            <xsl:text>&lt;/tr&gt;</xsl:text>
+            <xsl:call-template name="set-table-status">
+               <xsl:with-param name="status" select="1"/>
+            </xsl:call-template>
+         </xsl:when>
+         <xsl:when test="$table-status=5">
+            <xsl:variable name="header-temp">
+               <xsl:call-template name="get-table-header"/>
+            </xsl:variable>
+            <xsl:call-template name="set-table-header">
+               <xsl:with-param name="head">
+                  <xsl:value-of select="concat($header-temp,'|')"/>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="set-table-status">
+               <xsl:with-param name="status" select="0"/>
+            </xsl:call-template>
+         </xsl:when>
+         <xsl:when test="$table-status=6">
+            <xsl:call-template name="set-table-status">
+               <xsl:with-param name="status" select="0"/>
+            </xsl:call-template>
+         </xsl:when>
+         <xsl:when test="$table-status=0">
+            <xsl:text>&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</xsl:text>
+         </xsl:when>
+      </xsl:choose>
+   </xsl:template>
+   <xsl:template name="replace-func">
+      <xsl:param name="str"/>
+      <xsl:param name="str-a"/>
+      <xsl:param name="str-b"/>
+      <xsl:choose>
+         <xsl:when test="contains($str,$str-a)">
+            <xsl:call-template name="replace-func">
+               <xsl:with-param name="str"
+                               select="concat(substring-before($str,$str-a),$str-b,substring-after($str,$str-a))"/>
+               <xsl:with-param name="str-a" select="$str-a"/>
+               <xsl:with-param name="str-b" select="$str-b"/>
+            </xsl:call-template>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:value-of select="$str"/>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+   <xsl:template name="parse-col">
+      <xsl:param name="target-string"/>
+      <xsl:param name="is-begin-with-slide" select="0"/>
+      <xsl:choose>
+         <xsl:when test="contains($target-string,'|')">
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:if test="$is-begin-with-slide=1">
+                     <xsl:value-of select="concat('|',substring-before($target-string,'|'))"/>
+                  </xsl:if>
+                  <xsl:if test="$is-begin-with-slide=0">
+                     <xsl:value-of select="substring-before($target-string,'|')"/>
+                  </xsl:if>
+               </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="parse-col">
+               <xsl:with-param name="target-string" select="substring-after($target-string,'|')"/>
+               <xsl:with-param name="is-begin-with-slide" select="1"/>
+            </xsl:call-template>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:call-template name="display_cur_text">
+               <xsl:with-param name="in_string">
+                  <xsl:if test="$is-begin-with-slide=1">
+                     <xsl:value-of select="concat('|',$target-string)"/>
+                  </xsl:if>
+                  <xsl:if test="$is-begin-with-slide=0">
+                     <xsl:value-of select="$target-string"/>
+                  </xsl:if>
+               </xsl:with-param>
+            </xsl:call-template>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+</xsl:stylesheet>

@@ -1,0 +1,70 @@
+
+1608
+SUBJECT
+"%s%s机动原型属性" 2 Maneuver_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  %s机动原型机动属性 </p>\n\n" 1 Maneuver_Prototype[D2]
+SUB 1
+"  处于进攻态势时，部队机动所耗时间为普通情形机动相同距离的%s倍。\n" 1 S1.D1
+END_SUB
+
+SUB 2
+"  处于阻击态势时，部队机动所耗时间为普通情形机动相同距离的%s倍。\n" 1 S2.D1
+END_SUB
+
+SUB 3
+"  处于撤出态势时，部队机动所耗时间为普通情形机动相同距离的%s倍。\n" 1 S3.D1
+END_SUB
+
+SUB 4
+"  隐蔽机动时，部队机动所耗时间为普通情形机动相同距离的%s倍。\n" 1 S4.D1
+
+END_SUB
+
+SUB 5
+"  在化学沾染区，部队机动所耗时间为普通情形机动相同距离的%s倍。\n" 1 S5.D1
+END_SUB
+
+SUB 6
+"  处于核沾染区，部队机动所耗时间为普通情形机动相同距离的%s倍。\n" 1 S6.D1
+END_SUB
+
+SUB 7
+"  抵达目的地后，部队将耗费%s从仓促防御转为阵地防御。\n\n" 
+              1 DURATION(S7.D1, "%d 天, %h 小时 %Rm 分")
+END_SUB
+   
+SUB 8
+"  对未进行发射准备的地地导弹探测发现概率的修正系数是%s。\n\n" 1 S8.D1
+END_SUB
+
+SUB 9
+"  炮兵最大机动时间修正系数是%s。\n\n" 1 S9.D1
+END_SUB
+
+SUB 10
+"  隐蔽部队探测隐蔽部队发现时间倍增系数：\n" 0
+
+"    __start_table   |    地形    |    发现隐蔽部队所需时间是正常情况下的比例\n" 0
+   GROUP 1
+" |%15.15s (编号 %s)   |  %12.12s \n\n" 
+                               3 Terrain_Type[S10.G1.D1] S10.G1.D1 S10.G1.D2
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+SUB 11
+"  部队在指定地形机动中，遭伏击的概率\n" 0
+
+"  __start_table   |   地形   |   机动原型（MVP） |   受埋伏概率\n" 0
+   GROUP 1
+"  |     %s (编号 %s)  |      %s (编号 %s)     |  %s\n" 5  Terrain_Type[S11.G1.D1] S11.G1.D1 S11.G1.D2 S11.G1.D3 S11.G1.D4
+   END_GROUP
+"__stop_table"0
+
+END_SUB
+
+END_MAIN
+

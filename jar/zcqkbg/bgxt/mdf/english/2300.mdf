@@ -1,0 +1,287 @@
+
+2300
+SUBJECT
+"%s当前行动受阻情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s当前行动受阻情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+"\n%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(S1.D2,S1.D3)
+"处于%s态势。" 1 Unit_Posture[S1.D1]
+   SUB 1
+"现由于没有抵达目的地的可通行路线，无法机动。" 0
+   END_SUB
+   SUB 2
+"现已抵达目的地。" 0
+   END_SUB
+   SUB 3
+"由于路网被毁，道路不通，" 0 
+"无法机动。" 0
+   END_SUB
+END_SUB
+
+SUB 2
+"\n%s当前仍处于%s态势，" 2 unit_name_transform(D2) Unit_Posture[S2.D2]
+"战斗力剩余%s%%。" 1 S2.D1
+"企图继续组织进攻，但由于兵力太弱，无法实施。" 0
+"等待下一步指令。" 0
+END_SUB
+
+SUB 3
+"\n%s当前仍处于%s态势，" 2 unit_name_transform(D2) Unit_Posture[S3.D2]
+"战斗力剩余%s%%。" 1 S3.D1
+"企图恢复阻击行动，但由于兵力太弱，无法实施。" 0
+"等待下一步指令。" 0
+END_SUB
+
+SUB 4
+"\n%s当前仍处于%s态势，" 2 unit_name_transform(D2) Unit_Posture[S4.D2]
+"战斗力剩余%s%%。" 1 S4.D1
+"企图组织撤退，但由于兵力太弱，无法实施。" 0
+"等待下一步指令。" 0
+END_SUB
+
+SUB 5
+"\n%s当前位于%s，处于阻击态势，" 2 unit_name_transform(D2) LOCATION(S5.D1,S5.D2)
+"准备撤退。" 0
+   SUB 1
+"但撤退路线已被敌军封锁。" 0
+   END_SUB
+   SUB 2
+"但撤退路线受到敌火威胁较大。" 0
+   END_SUB
+   SUB 3
+"但撤退路线受到进攻之敌威胁。" 0
+   END_SUB
+   SUB 4
+"部队战斗力已达到转入下一作战态势的临界点。" 0
+   END_SUB
+   SUB 5
+"部队正陷入激战，其机动能力收到很大影响。" 0
+   END_SUB
+   SUB 6
+"现正在卸载%s（需优先抵达战场）。" 1 unit_name_transform(S5.S6.D1)
+   END_SUB
+   SUB 7
+"现正在卸载%s（不需优先抵达战场）。" 1 unit_name_transform(S5.S7.D1)
+   END_SUB
+   SUB 8
+"现正在为%s卸载需优先抵达战场的补给物资。" 1 unit_name_transform(S5.S8.D1)
+   END_SUB
+   SUB 9
+"现正在为%s卸载不需优先抵达战场的补给物资。" 1 unit_name_transform(S5.S9.D1)
+   END_SUB
+   SUB 10
+"现正在为%s编队装载%s。" 2 S5.S10.D2 unit_name_transform(S5.S10.D1)
+   END_SUB
+   SUB 11
+"现正在为%s编队装载补给物资。" 1 S5.S11.D1
+   END_SUB
+   SUB 12
+"现正在为%s编队卸载%s。" 2 S5.S12.D2 unit_name_transform(S5.S12.D1)
+   END_SUB
+   SUB 13
+"现正在为%s编队装载补给物资。" 1 S5.S13.D1
+   END_SUB
+   SUB 14
+"现正在为%s编队挂载、加油。" 1 S5.S14.D1
+   END_SUB
+   SUB 15
+"现正在为%s编队卸载海上补给物资。" 1 S5.S15.D1
+   END_SUB
+   SUB 16
+"现正在为%s编队装载海上补给物资。" 1 S5.S16.D1
+   END_SUB
+   SUB 17
+"现正在协助%s从%s编队登陆。" 2 unit_name_transform(S5.S17.D1) S5.S17.D2
+   END_SUB
+   SUB 18
+"现正在协助%s搭乘%s编队。" 2 unit_name_transform(S5.S18.D1) S5.S18.D2
+   END_SUB
+   SUB 19
+"但燃油耗尽，无法机动。" 0
+   END_SUB
+END_SUB
+
+SUB 6
+"\n%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(S6.D1,S6.D2)
+"正处于阻击态势，企图撤退，" 0
+   SUB 1
+"但撤退路线已被敌军封锁。" 0
+   END_SUB
+   SUB 2
+"但撤退路线受到敌军威胁。" 0
+   END_SUB
+   SUB 3
+"但撤退路线受到进攻之敌威胁。" 0
+   END_SUB
+   SUB 4
+"部队战斗力已达到转入下一作战态势的临界点。" 0
+   END_SUB
+   SUB 5
+"但部队正陷入激战，其机动能力收到很大影响。" 0
+   END_SUB
+   SUB 6
+"但没有抵达目的地的可通行路线。" 0
+   END_SUB
+   SUB 7
+"现已到达目的地。" 0
+   END_SUB
+END_SUB
+
+SUB 7
+"\n%s当前位于%s，企图机动，" 2 unit_name_transform(D2) LOCATION(S7.D1,S7.D2)
+   SUB 1
+"但由于正在卸载需优先到达战场的%s，无法实施，请求支援。 " 1 unit_name_transform(S7.S1.D1)
+   END_SUB
+   SUB 2
+"但由于正在卸载非优先到达战场的%s，无法实施，请求支援。" 1 unit_name_transform(S7.S2.D1)
+   END_SUB
+   SUB 3
+"但由于正在为%s卸载需优先保障的补给物资，无法实施，请求支援。" 1 unit_name_transform(S7.S3.D1)
+   END_SUB
+   SUB 4
+"但由于正在为%s卸载非优先保障的补给物资，无法实施，请求支援。" 1 unit_name_transform(S7.S4.D1)
+   END_SUB
+   SUB 5
+"但由于正在为%s编队装载%s，无法实施，请求支援。" 2 S7.S5.D2 unit_name_transform(S7.S5.D1)
+   END_SUB
+   SUB 6
+"但由于正在为%s编队装载补给，无法实施，请求支援。" 1 S7.S6.D1
+   END_SUB
+   SUB 7
+"但由于正在为%s编队卸载%s，无法实施，请求支援。" 2 S7.S7.D2 unit_name_transform(S7.S7.D1)
+   END_SUB
+   SUB 8
+"但由于正在为%s编队卸载补给，无法实施，请求支援。" 1 S7.S8.D1
+   END_SUB
+   SUB 9
+"但由于正在为%s编队挂载、加油，无法实施，请求支援。" 1 S7.S9.D1
+   END_SUB
+   SUB 10
+"但由于正在为%s编队卸载补给物资，无法实施，请求支援。" 1 S7.S10.D1
+   END_SUB
+   SUB 11
+"但由于正在为%s编队装载载补给物资，无法实施，请求支援。" 1 S7.S11.D1
+   END_SUB
+   SUB 12
+"但由于正在协助%s从%s编队登陆，无法实施，请求支援。" 2 unit_name_transform(S7.S12.D1) S7.S12.D2
+   END_SUB
+   SUB 13
+"但由于正在协助%s搭乘%s编队，无法实施，请求支援。" 2 unit_name_transform(S7.S13.D1) S7.S13.D2
+   END_SUB
+END_SUB
+
+SUB 8
+"\n%s当前位于%s，正处于防御态势，" 2 unit_name_transform(D2) LOCATION(S8.D1,S8.D2)
+"因油料不足，无力实施机动，请求支援。" 0
+END_SUB
+
+SUB 9
+"\n%s是一支港口部队，现位于%s，" 2 unit_name_transform(D2) LOCATION(S9.D2,S9.D3)
+"正处于防御态势，" 0
+"战斗力剩余%s%%，" 1 S9.D1 
+
+   SUB 1
+"由于正在卸载需优先到达战场的%s，" 1 unit_name_transform(S9.S1.D1)
+   END_SUB
+   SUB 2
+"由于正在卸载非优先到达战场的%s，" 1 unit_name_transform(S9.S2.D1)
+   END_SUB
+   SUB 3
+"由于正在为%s卸载需优先到达战场的战略补给物资，" 1 unit_name_transform(S9.S3.D1)
+   END_SUB
+   SUB 4
+"由于正在为%s卸载非优先到达战场的战略补给物资，" 1 unit_name_transform(S9.S4.D1)
+   END_SUB
+   SUB 5
+"由于正在为空中%s编队装载%s，" 2 S9.S5.D2 unit_name_transform(S9.S5.D1)
+   END_SUB
+   SUB 6
+"由于正在为空中%s编队装载补给，" 1 S9.S6.D1
+   END_SUB
+   SUB 7
+"由于正在为空中%s编队卸载%s，" 2 S9.S7.D2 unit_name_transform(S9.S7.D1)
+   END_SUB
+   SUB 8
+"由于正在为空中%s编队卸载补给，" 1 S9.S8.D1
+   END_SUB
+   SUB 9
+"由于正在为空中%s编队挂载、加油，" 1 S9.S9.D1
+   END_SUB
+   SUB 10
+"由于正在为海上%s编队卸载补给，" 1 S9.S10.D1
+   END_SUB
+   SUB 11
+"由于正在为海上%s编队装载补给，" 1 S9.S11.D1
+   END_SUB
+   SUB 12
+"由于正在协助%s从海上%s编队登陆，" 2 unit_name_transform(S9.S12.D1) S9.S12.D2
+   END_SUB
+   SUB 13
+"由于正在协助%s搭乘海上%s编队，" 2 unit_name_transform(S9.S13.D1) S9.S13.D2
+   END_SUB
+"不能撤退。" 0
+END_SUB
+
+SUB 10
+"\n%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(S10.D2,S10.D3)
+"正处于防御态势，战斗力剩余%s%%，" 1 S10.D1
+"企图组织撤退，但" 0
+   SUB 1
+"燃油耗尽，" 0
+   END_SUB
+"无力组织。" 0
+END_SUB
+
+SUB 11
+"\n%s正在与敌激战，处于%s态势，" 2 unit_name_transform(D2) Unit_Posture[S11.D2]
+"当前战斗力剩余%s%%，无法实施机动，" 1 S11.D1
+"因此不能执行新命令。" 0
+END_SUB
+
+SUB 13
+"\n%s正在脱离地面战斗编组%s，" 2 unit_name_transform(D2) S13.D4 
+"但没有发现可到达预期位置的可通行路线。" 0
+END_SUB
+
+SUB 14
+"\n%s正在脱离地面战斗编组%s，" 2 unit_name_transform(D2) S14.D4
+"接收到了由%s下达的%s命令。" 2 unit_name_transform(S14.D6) trans_word("Order",S14.D5)
+END_SUB
+
+SUB 15
+"\n%s正在脱离地面战斗编组%s，" 2 unit_name_transform(D2) S15.D4 
+"已无力继续保持%s态势，" 1 Unit_Posture[S15.D5] 
+"当前战斗力剩余%2.2f。" 1 S15.D6
+END_SUB
+
+SUB 17
+"\n%s当前不能按照命令执行火力打击任务" 1 unit_name_transform(D2)
+   SUB 1
+"，其正在组织非战斗性机动" 0
+   END_SUB
+   SUB 2
+"，其打击目标是%s" 1 unit_name_transform(S17.S2.D1)
+   END_SUB
+   SUB 3
+"，其突击地域为：%s" 1 LOCATION(S17.S3.D1,S17.S3.D2)
+   END_SUB
+   SUB 4 
+      SUB 1
+" ，打击任务最迟开火时间是%s" 1 GTIME(S17.S4.D1)
+" ，命令已取消" 0 
+      END_SUB
+      SUB 2
+"，打击任务的最迟开火时间是%s，" 1 GTIME(S17.S4.D1)
+"计划在机动完成后实施打击" 0
+      END_SUB
+      SUB 3
+"，打击任务没有规定最迟开火时间，" 0
+"计划在机动完成后实施打击" 0
+      END_SUB
+   END_SUB
+"。" 0
+END_SUB
+
+END_MAIN

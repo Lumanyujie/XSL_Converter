@@ -1,0 +1,51 @@
+
+1803
+SUBJECT
+"战术部队原型，为%s(编号%s)改变的补给数量"   2 Tactical_Unit_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  使用战术部队原型%s(编号%s)的部队补给类总量 </p>\n\n"     2 Tactical_Unit_Prototype[D2] D2
+
+SUB 1
+ "    __start_table    | 种类  |  (编号) |  补给至战区\n" 0
+    GROUP 1
+" | %15.15s  |  (%3.3s)| %14.14s %s\n" 4 Supply_Category[S1.G1.D1] S1.G1.D1
+                        SLP_SC_AMT(0,S1.G1.D1,S1.G1.D2) SLP_SC_UOM(0,S1.G1.D1)
+ END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+SUB 2
+  "    __start_table    | 种类 |  (编号)  |  重新安排的补给标准\n" 0
+GROUP 1
+
+"|  %15.15s |   (%3.3s)| %14.14s %s\n" 4 Supply_Category[S2.G1.D1] S2.G1.D1
+                        SLP_SC_AMT(0,S2.G1.D1,S2.G1.D2) SLP_SC_UOM(0,S2.G1.D1)
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+SUB 3
+"   __start_table    |种类    (编号)  |  库存目标\n" 0
+GROUP 1
+"  |%15.15s  |  (%3.3s) |%14.14s %s\n" 4 Supply_Category[S3.G1.D1] S3.G1.D1
+                        SLP_SC_AMT(0,S3.G1.D1,S3.G1.D2) SLP_SC_UOM(0,S3.G1.D1)
+   END_GROUP
+"__stop_table"0
+"\n" 0
+END_SUB
+
+SUB 4
+ "    __start_table    | 种类    (编号) |   基本运载量等级\n" 0
+GROUP 1
+" | %15.15s   | (%3.3s)| %14.14s %s\n" 4 Supply_Category[S4.G1.D1] S4.G1.D1
+                        SLP_SC_AMT(0,S4.G1.D1,S4.G1.D2) SLP_SC_UOM(0,S4.G1.D1)
+"__stop_table"0
+END_GROUP
+"\n" 0
+END_SUB
+
+END_MAIN
+

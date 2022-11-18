@@ -1,0 +1,514 @@
+
+6520
+SUBJECT
+"%s待执行命令汇总报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s待执行命令汇总报告</p>" 1 unit_name_transform(D2)
+
+SUB 1 
+"\n%s待执行命令%s项，详细情况如下：" 2 unit_name_transform(D3) D4
+END_SUB
+
+SUB 2 
+"\n%s有下列待执行命令：" 1 unit_name_transform(D3)
+END_SUB
+
+GROUP 1
+
+   SUB 1 
+
+"<p class='title1'>命令名称：%s；序列号：%s</p>" 2 G1.S1.D1 G1.S1.D2
+"\n命令类型：海上机动" 0
+"\n命令下达席位：%s" 1 G1.S1.D3
+
+      SUB 1
+"\n机动开始时间：%s" 1 GTIME(G1.S1.S1.D1)
+      END_SUB
+
+      SUB 2
+"\n到达目的地时间：%s" 1 GTIME(G1.S1.S2.D1)
+      END_SUB
+
+      SUB 3
+"\n机动开始时间：立即执行" 0
+      END_SUB
+
+      SUB 4
+"\n机动开始时间：按任务序号执行" 0
+      END_SUB
+
+      SUB 5
+"\n目的地：%s" 1 LOCATION(G1.S1.S5.D1, G1.S1.S5.D2)
+      END_SUB
+
+      SUB 6
+"\n速度：%s%s" 2
+                          UOM_AMT(NAVAL_SPEED, G1.S1.S6.D1) UOM(NAVAL_SPEED)
+      END_SUB
+
+      SUB 7
+"\n航线（节点/航速）：" 0
+         GROUP 1
+"\n——%s/%s%s" 3  LOCATION(G1.S1.S7.G1.D1, G1.S1.S7.G1.D2)
+                          UOM_AMT(NAVAL_SPEED, G1.S1.S7.G1.D3) UOM(NAVAL_SPEED)
+         END_GROUP
+      END_SUB
+
+      SUB 8
+"\n新保障部队：%s" 1 G1.S1.S8.D1
+      END_SUB
+
+      SUB 9
+"\n新上级：%s" 1 G1.S1.S9.D1
+      END_SUB
+
+   END_SUB
+
+   SUB 2 
+
+"<p class='title1'>命令名称：%s；序列号：%s</p>" 2 G1.S2.D1 G1.S2.D2
+"\n命令类型：海上跟踪监视" 0
+"\n命令下达席位：%s" 1 G1.S2.D3
+
+      SUB 1
+"\n机动开始时间：%s" 1 GTIME(G1.S2.S1.D1)
+      END_SUB
+
+      SUB 2
+"\n跟踪监视开始时间：%s" 1 GTIME(G1.S2.S2.D1)
+      END_SUB
+
+      SUB 3
+"\n跟踪监视开始时间：尽快" 0
+      END_SUB
+
+      SUB 4
+"\n机动开始时间：按任务序号执行" 0
+      END_SUB
+
+      SUB 5
+"\n跟踪监视结束时间：%s" 1 GTIME(G1.S2.S5.D1)
+      END_SUB
+
+      SUB 6
+"\n跟踪监视持续时间：%s" 1
+                        DURATION(G1.S2.S6.D1, "%d Days %h Hours %Rm Minutes")
+      END_SUB
+
+      SUB 7
+"\n跟踪监视结束时间：当接到新任务时" 0
+      END_SUB
+
+      SUB 8
+"\n被跟踪舰艇：%s" 1 G1.S2.S8.D1
+"\n跟踪方位（真方位）：%s" 1 G1.S2.S8.D2
+"\n跟踪距离：%s %s" 2 UOM_AMT(DISTANCE, G1.S2.S8.D3)
+                                     UOM(DISTANCE)
+      END_SUB
+
+   END_SUB
+
+   SUB 3 
+
+"<p class='title1'>命令名称：%s；序列号：%s</p>" 2 G1.S3.D1 G1.S3.D2
+"\n命令类型：海上巡逻" 0
+"\n命令下达席位：%s" 1 G1.S3.D3
+
+      SUB 1
+"\n机动开始时间：%s" 1 GTIME(G1.S3.S1.D1)
+      END_SUB
+
+      SUB 2
+"\n巡逻开始时间：%s" 1 GTIME(G1.S3.S2.D1)
+      END_SUB
+
+      SUB 3
+"\n巡逻开始时间：尽快" 0
+      END_SUB
+
+      SUB 4
+"\n机动开始时间：按任务序号执行" 0
+      END_SUB
+
+      SUB 5
+"\n巡逻结束时间：%s" 1 GTIME(G1.S3.S5.D1)
+      END_SUB
+
+      SUB 6
+"\n巡逻持续时间：%s" 1
+                        DURATION(G1.S3.S6.D1, "%d days %h hours %Rm minutes")
+      END_SUB
+
+      SUB 7
+"\n巡逻结束时间：当接到新任务时" 0
+      END_SUB
+
+      SUB 8
+"\n进入航线（节点/航速）：" 0
+         GROUP 1
+"\n——%s/%s%s" 3  LOCATION(G1.S3.S8.G1.D1, G1.S3.S8.G1.D2)
+                          UOM_AMT(NAVAL_SPEED, G1.S3.S8.G1.D3) UOM(NAVAL_SPEED)
+         END_GROUP
+
+      END_SUB
+
+      SUB 9
+"\n巡逻区域：%s" 1 G1.S3.S9.D1
+      END_SUB
+
+      SUB 10
+"\n巡逻区域（多边形区域）：" 0
+         GROUP 1
+"\n——%s" 1  LOCATION(G1.S3.S10.G1.D1, G1.S3.S10.G1.D2)
+         END_GROUP
+
+      END_SUB
+
+   END_SUB
+
+   SUB 4 
+
+"<p class='title1'>命令名称：%s；序列号：%s</p>" 2 G1.S4.D1 G1.S4.D2
+"\n命令类型：海上布雷" 0
+"\n命令下达席位：%s" 1 G1.S4.D3
+
+      SUB 1
+"\n机动开始时间：%s" 1 GTIME(G1.S4.S1.D1)
+      END_SUB
+
+      SUB 2
+"\n布雷开始时间：%s" 1 GTIME(G1.S4.S2.D1)
+      END_SUB
+
+      SUB 3
+"\n布雷开始时间：尽快" 0
+      END_SUB
+
+      SUB 4
+"\n机动开始时间：按任务序号执行" 0
+      END_SUB
+
+      SUB 5
+"\n使用武器：%s" 1 Targetable_Weapon[G1.S4.S5.D1]
+"\n布雷类型：%s" 1 Minefield_Type[G1.S4.S5.D2]
+"\n布雷数量：%s" 1 G1.S4.S5.D3
+      END_SUB
+
+      SUB 6
+"\n雷区失效时间：%s" 1 GTIME(G1.S4.S6.D1)
+      END_SUB
+
+      SUB 7
+"\n雷区失效时间：未设定" 0
+      END_SUB
+
+      SUB 8
+"\n雷区位置：%s" 1 LOCATION(G1.S4.S8.D1, G1.S4.S8.D2)
+      END_SUB
+
+      SUB 9
+"\n进入航线（节点/航速）：" 0
+         GROUP 1
+"\n——%s/%s%s" 3  LOCATION(G1.S4.S9.G1.D1, G1.S4.S9.G1.D2)
+                          UOM_AMT(NAVAL_SPEED, G1.S4.S9.G1.D3) UOM(NAVAL_SPEED)
+         END_GROUP
+
+      END_SUB
+
+  END_SUB
+
+   SUB 5 
+
+"<p class='title1'>命令名称：%s；序列号：%s</p>" 2 G1.S5.D1 G1.S5.D2
+"\n命令类型：海上扫雷" 0
+"\n命令下达席位：%s" 1 G1.S5.D3
+
+      SUB 1
+"\n机动开始时间：%s" 1 GTIME(G1.S5.S1.D1)
+      END_SUB
+
+      SUB 2
+"\n扫雷开始时间：%s" 1 GTIME(G1.S5.S2.D1)
+      END_SUB
+
+      SUB 3
+"\n扫雷开始时间：尽快" 0
+      END_SUB
+
+      SUB 4
+"\n机动开始时间：按任务序号执行" 0
+      END_SUB
+
+      SUB 5
+"\n扫雷结束时间：%s" 1 GTIME(G1.S5.S5.D1)
+      END_SUB
+
+      SUB 6
+"\n扫雷持续时间：%s" 1
+                        DURATION(G1.S5.S6.D1, "%d days %h hours %Rm minutes")
+      END_SUB
+
+      SUB 7
+"\n扫雷结束时间：当接到新任务时" 0
+      END_SUB
+
+      SUB 8
+"\n行动类型：探测扫雷" 0
+"\n搜索雷区位置：%s" 1 LOCATION(G1.S5.S8.D1, G1.S5.S8.D2)
+      END_SUB
+
+      SUB 9
+"\n行动类型：侦察扫雷" 0
+"\n指定雷区：%s" 1 G1.S5.S9.D1
+      END_SUB
+
+      SUB 10
+"\n行动类型：清除水雷障碍" 0
+"\n指定雷区：%s" 1 G1.S5.S10.D1
+"\n清除雷障最大深度：%s%s" 2 UOM_AMT(AIRDISTANCE,G1.S5.S10.D2) 
+                                         UOM(AIRDISTANCE)
+         SUB 1
+"\n清除雷障方式：全部清除" 0
+         END_SUB
+         SUB 3
+"\n清除雷障方式：开辟通路" 0
+         END_SUB
+         SUB 4
+"\n通路方向：%s" 1 Hex_Edge[G1.S5.S10.S4.D1]
+         END_SUB
+      END_SUB
+
+   END_SUB
+
+   SUB 6 
+
+"<p class='title1'>命令名称：%s；序列号：%s</p>" 2 G1.S6.D1 G1.S6.D2
+"\n命令类型：两栖攻击" 0
+"\n命令下达席位：%s" 1 G1.S6.D3
+
+      SUB 1
+"\n机动开始时间：%s" 1 GTIME(G1.S6.S1.D1)
+      END_SUB
+
+      SUB 2
+"\n进攻发起时间：%s" 1 GTIME(G1.S6.S2.D1)
+      END_SUB
+
+      SUB 3
+"\n进攻发起时间：尽快" 0
+      END_SUB
+
+      SUB 4
+"\n机动开始时间：按任务序号执行" 0
+      END_SUB
+
+      SUB 5
+"\n搭载作战部队（名称/隶属集团）：" 0
+         GROUP 1
+"\n——%s/%s" 2 G1.S6.S5.G1.D1 G1.S6.S5.G1.D2
+         END_GROUP
+      END_SUB
+
+      SUB 6
+"\n登陆方式：" 0
+         SUB 1
+"滩头或港口登陆" 0
+         END_SUB
+         SUB 2
+"直升机登陆" 0
+         END_SUB
+         SUB 3
+"两栖船登陆" 0
+         END_SUB
+      END_SUB
+
+      SUB 7
+"\n登陆航道（节点/航速）：" 0
+         GROUP 1
+"\n——%s/%s%s" 3  LOCATION(G1.S6.S7.G1.D1, G1.S6.S7.G1.D2)
+                          UOM_AMT(NAVAL_SPEED, G1.S6.S7.G1.D3) UOM(NAVAL_SPEED)
+         END_GROUP
+
+      END_SUB
+
+      SUB 8
+"\n登陆点：%s" 1 LOCATION(G1.S6.S8.D1, G1.S6.S8.D2)
+      END_SUB
+
+      SUB 9
+"\n展开换乘距离：%s %s" 2 UOM_AMT(DISTANCE, G1.S6.S9.D1)
+                                           UOM(DISTANCE)
+      END_SUB
+
+      SUB 10
+"\n返回航线（节点/航速）：" 0
+         GROUP 1
+"\n——%s/%s%s" 3  LOCATION(G1.S6.S10.G1.D1, G1.S6.S10.G1.D2)
+                          UOM_AMT(NAVAL_SPEED, G1.S6.S10.G1.D3) UOM(NAVAL_SPEED)
+         END_GROUP
+
+      END_SUB
+
+   END_SUB
+
+   SUB 7 
+
+"<p class='title1'>命令名称：%s；序列号：%s</p>" 2 G1.S7.D1 G1.S7.D2
+"\n命令类型：两栖装载" 0
+"\n命令下达席位：%s" 1 G1.S7.D3
+
+      SUB 1
+"\n机动开始时间：%s" 1 GTIME(G1.S7.S1.D1)
+      END_SUB
+
+      SUB 2
+"\n装载开始时间：%s" 1 GTIME(G1.S7.S2.D1)
+      END_SUB
+
+      SUB 3
+"\n装载开始时间：尽快" 0
+      END_SUB
+
+      SUB 4
+"\n机动开始时间：按任务序号执行" 0
+      END_SUB
+
+      SUB 5
+"\n搭载部队（名称/隶属集团）：" 0
+         GROUP 1
+"\n——%s/%s" 2 G1.S7.S5.G1.D1 G1.S7.S5.G1.D2
+         END_GROUP
+      END_SUB
+
+      SUB 6
+"\n装载方式：" 0
+         SUB 1
+"滩头或港口装载" 0
+         END_SUB
+         SUB 2
+"直升机装载" 0
+         END_SUB
+         SUB 3
+"两栖船装载" 0
+         END_SUB
+      END_SUB
+
+      SUB 7
+"\n进入装载地域航线（节点/航速）：" 0
+
+         GROUP 1
+"\n——%s/%s%s" 3  LOCATION(G1.S7.S7.G1.D1, G1.S7.S7.G1.D2)
+                          UOM_AMT(NAVAL_SPEED, G1.S7.S7.G1.D3) UOM(NAVAL_SPEED)
+         END_GROUP
+
+      END_SUB
+
+      SUB 8
+"\n装载地域：%s" 1 LOCATION(G1.S7.S8.D1, G1.S7.S8.D2)
+      END_SUB
+
+      SUB 9
+"\n装载区距岸距离：%s %s" 2 UOM_AMT(DISTANCE, G1.S7.S9.D1)
+                                           UOM(DISTANCE)
+      END_SUB
+
+      SUB 10
+"\n输送航线（节点/航速）：" 0
+
+         GROUP 1
+"\n——%s/%s%s" 3  LOCATION(G1.S7.S10.G1.D1, G1.S7.S10.G1.D2)
+                          UOM_AMT(NAVAL_SPEED, G1.S7.S10.G1.D3) UOM(NAVAL_SPEED)
+         END_GROUP
+
+      END_SUB
+
+   END_SUB
+
+   SUB 8 
+
+"<p class='title1'>命令名称：%s；序列号：%s</p>" 2 G1.S8.D1 G1.S8.D2
+"\n命令类型：海上输送" 0
+"\n命令下达席位：%s" 1 G1.S8.D3
+
+      SUB 1
+"\n机动开始时间：%s" 1 GTIME(G1.S8.S1.D1)
+      END_SUB
+
+      SUB 2
+"\n装载开始时间：%s" 1 GTIME(G1.S8.S2.D1)
+      END_SUB
+
+      SUB 3
+"\n装载开始时间：尽快" 0
+      END_SUB
+
+      SUB 4
+"\n机动开始时间：按任务序号执行" 0
+      END_SUB
+
+      SUB 5
+"\n装载补给物资：" 0
+         GROUP 1
+"\n——%s，%s：%s%s。" 4  unit_name_transform(G1.S8.S5.G1.D1)
+                             SLP_Category_Name[G1.S8.S5.D1,G1.S8.S5.G1.D1]
+                     SLP_SC_AMT(G1.S8.S5.D1,G1.S8.S5.G1.D1,G1.S8.S5.G1.D2)
+                                    SLP_SC_UOM(G1.S8.S5.D1,G1.S8.S5.G1.D1)
+
+         END_GROUP
+
+      END_SUB
+
+      SUB 6
+"\n编队提供补给物资。" 0
+      END_SUB
+
+      SUB 7
+"\n进入装载地域航线（节点/航速）：" 0
+
+         GROUP 1
+"\n——%-25s/%s%s" 3  LOCATION(G1.S8.S7.G1.D1, G1.S8.S7.G1.D2)
+                          UOM_AMT(NAVAL_SPEED, G1.S8.S7.G1.D3) UOM(NAVAL_SPEED)
+         END_GROUP
+
+      END_SUB
+
+      SUB 8
+"\n装载地域：%s" 1 LOCATION(G1.S8.S8.D1, G1.S8.S8.D2)
+      END_SUB
+
+      SUB 9
+"\n提供补给部队：%s" 1 G1.S8.S9.D1
+      END_SUB
+
+      SUB 10
+"\n输送航线（节点/航速）：" 0
+
+         GROUP 1
+"\n——%-25s/%s%s" 3  LOCATION(G1.S8.S10.G1.D1, G1.S8.S10.G1.D2)
+                          UOM_AMT(NAVAL_SPEED, G1.S8.S10.G1.D3) UOM(NAVAL_SPEED)
+         END_GROUP
+
+      END_SUB
+
+      SUB 11
+"\n卸载点：%s" 1 LOCATION(G1.S8.S11.D1, G1.S8.S11.D2)
+      END_SUB
+
+      SUB 12
+"\n接收补给部队：%s" 1 G1.S8.S12.D1
+      END_SUB
+
+   END_SUB
+
+   SUB 20
+"<p class='title1'>穿越国境限制</p>" 0
+
+      GROUP 1
+"\n边界名称：%-15.15s，是否允许穿越：%s" 2 G1.S20.G1.D1 Answer[G1.S20.G1.D2]
+      END_GROUP
+
+   END_SUB
+
+END_GROUP
+
+END_MAIN

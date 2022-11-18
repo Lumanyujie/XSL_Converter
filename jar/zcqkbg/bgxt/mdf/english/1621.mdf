@@ -1,0 +1,29 @@
+
+1621
+SUBJECT
+"%s（%s）后勤补给原型%s中补给输送限制属性" 3 Supply_Shipment_Method[D3] Sustainment_Log_Prototype[D2] D2 
+MAIN
+
+"<p class='title'>  %s后勤补给原型%s输送限制属性报告  </p>\n\n" 2 Sustainment_Log_Prototype[D2] Supply_Shipment_Method[D3] 
+
+SUB 1
+"  %s输送的最短距离为%s%s。\n\n" 3 Supply_Shipment_Method[D3]
+                                           UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 2
+"  %s输送的最远距离%s%s。\n\n" 3 Supply_Shipment_Method[D3]
+                                           UOM_AMT(DISTANCE,S2.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 3
+"  接收%s输送的最小部队规模为%s规模。\n\n" 2 Supply_Shipment_Method[D3] Unit_Size[S3.D1]
+END_SUB
+
+SUB 4
+"  完成%s输送所需运输工具数量至少为%s。\n\n" 2
+                                            Supply_Shipment_Method[D3] S4.D1
+END_SUB
+
+END_MAIN
+

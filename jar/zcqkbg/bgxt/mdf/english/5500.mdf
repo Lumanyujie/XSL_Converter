@@ -1,0 +1,1014 @@
+
+5500
+SUBJECT
+"卫星影像情报" 0
+
+
+MAIN
+"<p class='title'>卫星影像情报</p>" 0
+
+"\n情报汇总时间：%s。" 1 GTIME(D4)
+SUB 1
+"<p class='title1'>新标注项目清单</p>" 0
+
+   GROUP 1
+ 
+      SUB 1
+"\n\n——编号：%s" 1 S1.G1.D2
+"\n名称：%s，" 1 unit_name_transform(S1.G1.D4)
+"所属集团：%s，敏感目标标识：%s，" 2 unit_name_transform(S1.G1.D5) S1.G1.D6
+"坐标：%s，主体情况：%s，" 2 LOCATION(S1.G1.D7,S1.G1.D8) IIR_Status_Code[S1.G1.D12]
+"附加情况：%s，与前次情报相比：%s。" 2 IIR_Status_Code[S1.G1.D13] IIR_Change_Code[S1.G1.D14]
+      END_SUB
+      
+      SUB 2
+"\n\n——编号：%s" 1 S1.G1.D2
+"\n名称：%s，" 1 unit_name_transform(S1.G1.D4)
+"所属集团：%s，敏感目标标识：%s，" 2 unit_name_transform(S1.G1.D5) S1.G1.D6
+"坐标：%s，主体情况：%s，" 2 LOCATION(S1.G1.D7,S1.G1.D8) IIR_Status_Code[S1.G1.D12]
+"附加情况：%s，与前次情报相比：%s。" 2 IIR_Status_Code[S1.G1.D13] IIR_Change_Code[S1.G1.D14]
+      END_SUB
+
+      SUB 3
+"\n\n——编号：%s" 1 S1.G1.D2
+"\n名称：%s，" 1 unit_name_transform(S1.G1.D4)
+"所属集团：%s，敏感目标标识：%s，" 2 unit_name_transform(S1.G1.D5) S1.G1.D6
+"坐标：%s，主体情况：%s，" 2 LOCATION(S1.G1.D7,S1.G1.D8) IIR_Status_Code[S1.G1.D12]
+"附加情况：%s，与前次情报相比：%s。" 2 IIR_Status_Code[S1.G1.D13] IIR_Change_Code[S1.G1.D14]
+      END_SUB
+ 
+      SUB 4
+"\n防空阵地（%s），配备%s个发射装置。" 2 ADA_Class[S1.G1.S4.D1] S1.G1.S4.D2 
+      END_SUB
+ 
+      SUB 5
+"\n%s，具有%s条通路。" 2 Bridge_Class[S1.G1.S5.D1] S1.G1.S5.D2
+      END_SUB
+ 
+      SUB 6
+"\n%s，具有%s条通路。" 2 Tunnel_Class[S1.G1.S6.D1] S1.G1.S6.D2
+      END_SUB
+ 
+      SUB 7
+"\n%s阵地。" 1 Sensor_Type[S1.G1.S7.D1]
+      END_SUB
+ 
+      SUB 8
+"\n跑道（%s），配备%s个飞机机库。 " 2 S1.G1.S8.D2 Runway_Type[S1.G1.S8.D1]    
+      END_SUB
+ 
+      SUB 9
+"\n%s，具有%s条通路。" 2 Interdiction_Point_Type[S1.G1.S9.D1] S1.G1.S9.D2
+      END_SUB
+ 
+      SUB 10
+"\n存储点（%s）。" 1 Supply_Storage_Area[S1.G1.S10.D1]
+      END_SUB
+ 
+      SUB 11
+"\n%s，装备%s个发射装置。" 2 Surface_Surface_Missile[S1.G1.S11.D1] S1.G1.S11.D2
+      END_SUB
+ 
+      SUB 12
+"\n%s。" 1 Facility_Type[S1.G1.S12.D1]
+      END_SUB
+ 
+      SUB 13
+"\n%s，%s个。" 2 Aircraft_Shelter_Type[S1.G1.S13.D1] S1.G1.S13.D2     
+      END_SUB
+ 
+      SUB 14
+"\n装卸设施（%s），具备同时执行%s项任务能力。" 2 MHE_Facility[S1.G1.S14.D1] S1.G1.S14.D2
+      END_SUB
+ 
+      SUB 15
+"\n标准雷场%s个。" 1 S1.G1.S15.D2
+      END_SUB
+ 
+      SUB 16
+"\n%s。" 1 Pumping_Station_Class[S1.G1.S16.D1]
+      END_SUB
+ 
+      SUB 17
+"\n%s。" 1 Jammer_Type[S1.G1.S17.D1]
+      END_SUB
+
+      SUB 18
+"\n%s。" 1 Comm_Site_Type[S1.G1.S18.D1]
+      END_SUB
+ 
+      SUB 19
+"\n舰艇（%s）。" 1 Ship_Unit_Prototype[S1.G1.S19.D1]
+      END_SUB
+ 
+      SUB 20
+"\n%s，%s台、套。" 2 Combat_Arms_Type[S1.G1.S20.D1] S1.G1.S20.D2
+      END_SUB
+ 
+      SUB 21
+"\n%s，%s台、套。" 2 Transportation_Class[S1.G1.S21.D1] S1.G1.S21.D2
+      END_SUB
+ 
+      SUB 22
+"\n%s，%s架。" 2 Aircraft_Type[S1.G1.S22.D1] S1.G1.S22.D2
+      END_SUB
+ 
+      SUB 23
+"\n两栖输送工具（%s），%s艘。" 2 Small_Boat[S1.G1.S23.D1] S1.G1.S23.D2
+      END_SUB
+ 
+      SUB 24
+"\n补给（%s）。" 1 Supply_Type[S1.G1.S24.D1]
+      END_SUB 
+     
+      SUB 25
+"\n%s，处于%s态势。"
+                 2 Graphics_Symbol[S1.G1.S25.D1]  Unit_Posture[S1.G1.S25.D2]
+         SUB 1
+           "人员、装备情况如下：" 0
+           "__start_table|类型|数量\n" 0
+            GROUP 1
+               SUB 1
+            "|%s|%s\n" 2 CSP_System_Name[S1.G1.S25.S1.G1.D3,S1.G1.S25.S1.G1.D2]
+                         S1.G1.S25.S1.G1.D1
+               END_SUB
+               SUB 2
+            "|%s|%s\n" 2 Combat_System[S1.G1.S25.S1.G1.D2] S1.G1.S25.S1.G1.D1
+               END_SUB
+               SUB 3
+            "|%s|%s\n" 2 Aircraft_Type[S1.G1.S25.S1.G1.D2] S1.G1.S25.S1.G1.D1
+               END_SUB
+            END_GROUP
+            "__stop_table" 0
+         END_SUB
+
+         SUB 2
+
+            SUB 1
+            "\n舰艇吃水较浅，%s。" 1 Riding_Low_State[S1.G1.S25.S2.S1.D1]
+            END_SUB
+
+            SUB 2
+            "\n舰艇%s。" 1 Listing_Direction[S1.G1.S25.S2.S2.D1]
+             END_SUB
+
+            SUB 3
+            "\n舰艇%s。 " 1 Listing_Position[S1.G1.S25.S2.S3.D1]
+            END_SUB
+
+            SUB 4
+            "\n舰艇起火，可看到%s。" 1 Fire_Type_State[S1.G1.S25.S2.S4.D1]
+            END_SUB
+
+            SUB 5
+            "\n可看到%s。" 1 Fire_Size_State[S1.G1.S25.S2.S5.D1]
+            END_SUB
+
+            SUB 6
+            "\n舰艇周边%s。" 1 Oil_Slick_State[S1.G1.S25.S2.S6.D1]
+            END_SUB
+
+            SUB 7
+            "\n浮油位于%s。" 1 Oil_Slick_Location[S1.G1.S25.S2.S7.D1]
+            END_SUB
+
+         END_SUB
+      END_SUB
+ 
+      SUB 31 
+         GROUP 1
+ "\n标识：%s，描述：%s，" 2 S1.G1.S31.G1.D1 REPLACE(S1.G1.S31.G1.D2,".","_", "-", "_")      
+ "坐标：%s，注释：%s。" 2 LOCATION(S1.G1.D7, S1.G1.D8) S1.G1.S31.G1.D3
+         END_GROUP
+      END_SUB
+ 
+      SUB 32
+"\n该地区防空设施：" 0
+"__start_table|类型|数量\n" 0
+         GROUP 1
+            "|%s|%s\n"   2 ADA_Class[S1.G1.S32.G1.D1] S1.G1.S32.G1.D2
+            SUB 1
+            END_SUB
+         END_GROUP
+"__stop_table" 0 
+      END_SUB
+ 
+      SUB 33
+"\n该地区防空设施未知。" 0
+      END_SUB
+ 
+   END_GROUP
+ 
+END_SUB
+ 
+SUB 2
+"<p class='title1'>已侦察部队情报</p>" 0
+
+   GROUP 1
+     
+      SUB 1
+"\n\n——编号：%s" 1 S2.G1.D2
+"\n名称：%s，" 1 unit_name_transform(S2.G1.D4)
+"所属集团：%s，敏感目标标识：%s，" 2 unit_name_transform(S2.G1.D5) S2.G1.D6
+"坐标：%s，主体情况：%s，" 2 LOCATION(S2.G1.D7,S2.G1.D8) IIR_Status_Code[S2.G1.D12]
+"附加情况：%s，与前次情报相比：%s。" 2 IIR_Status_Code[S2.G1.D13] IIR_Change_Code[S2.G1.D14]
+      END_SUB
+ 
+      SUB 2
+"\n该部队（%s），处于%s状态。" 2 Graphics_Symbol[S2.G1.S2.D1] Unit_Posture[S2.G1.S2.D2] 
+        SUB 1
+           "人员、装备情况如下：" 0
+           "__start_table|类型|数量\n" 0
+            GROUP 1
+               SUB 1
+            "|%s|%s\n" 2 CSP_System_Name[S2.G1.S2.S1.G1.D3,S2.G1.S2.S1.G1.D2]
+                         S2.G1.S2.S1.G1.D1
+               END_SUB
+               SUB 2
+            "|%s|%s\n" 2 Combat_System[S2.G1.S2.S1.G1.D2] S2.G1.S2.S1.G1.D1
+               END_SUB
+            END_GROUP
+            "__stop_table" 0
+         END_SUB
+ 
+         SUB 2
+            SUB 1
+            "\n舰艇吃水较浅，%s。" 1 Riding_Low_State[S2.G1.S2.S2.S1.D1]
+            END_SUB
+
+            SUB 2
+            "\n舰艇%s。" 1 Listing_Direction[S2.G1.S2.S2.S2.D1]
+             END_SUB
+
+            SUB 3
+            "\n舰艇%s。 " 1 Listing_Position[S2.G1.S2.S2.S3.D1]
+            END_SUB
+
+            SUB 4
+            "\n舰艇起火，可看到%s。" 1 Fire_Type_State[S2.G1.S2.S2.S4.D1]
+            END_SUB
+
+            SUB 5
+            "\n可看到%s。" 1 Fire_Size_State[S2.G1.S2.S2.S5.D1]
+            END_SUB
+
+            SUB 6
+            "\n舰艇周边%s。" 1 Oil_Slick_State[S2.G1.S2.S2.S6.D1]
+            END_SUB
+
+            SUB 7
+            "\n浮油位于%s。" 1 Oil_Slick_Location[S2.G1.S2.S2.S7.D1]
+            END_SUB
+        END_SUB
+
+      END_SUB
+ 
+      SUB 32
+"\n该地区防空设施：" 0
+"__start_table|类型|数量\n" 0
+         GROUP 1
+            "|%s|%s\n"   2 ADA_Class[S2.G1.S32.G1.D1] S2.G1.S32.G1.D2
+            SUB 1
+            END_SUB
+         END_GROUP
+"__stop_table" 0 
+      END_SUB
+ 
+      SUB 33
+"\n该地区防空设施未知。" 0
+      END_SUB
+ 
+   END_GROUP
+ 
+END_SUB
+ 
+SUB 3
+"<p class='title1'>已毁伤目标情报</p>" 0
+
+   GROUP 1
+ 
+      SUB 2
+"\n\n——编号：%s" 1 S3.G1.D2
+"\n名称：%s，" 1 unit_name_transform(S3.G1.D4)
+"所属集团：%s，敏感目标标识：%s，" 2 unit_name_transform(S3.G1.D5) S3.G1.D6
+"坐标：%s，主体情况：%s，" 2 LOCATION(S3.G1.D7,S3.G1.D8) IIR_Status_Code[S3.G1.D12]
+"附加情况：%s，与前次情报相比：%s。" 2 IIR_Status_Code[S3.G1.D13] IIR_Change_Code[S3.G1.D14]
+      END_SUB
+
+      SUB 3
+"\n\n——编号：%s" 1 S3.G1.D2
+"\n名称：%s，" 1 unit_name_transform(S3.G1.D4)
+"所属集团：%s，敏感目标标识：%s，" 2 unit_name_transform(S3.G1.D5) S3.G1.D6
+"坐标：%s，主体情况：%s，" 2 LOCATION(S3.G1.D7,S3.G1.D8) IIR_Status_Code[S3.G1.D12]
+"附加情况：%s，与前次情报相比：%s。" 2 IIR_Status_Code[S3.G1.D13] IIR_Change_Code[S3.G1.D14]
+      END_SUB
+
+      SUB 4
+"\n防空阵地（%s），配备%s个发射单元，" 2 ADA_Class[S3.G1.S4.D1] S3.G1.S4.D2       
+"%s个发射装置毁坏，%s个火控雷达毁坏。" 2 S3.G1.S4.D3 S3.G1.S4.D4
+         SUB 1
+            GROUP 1
+               SUB 1
+         "发射装置将于%s前修复。 " 1 GTIME(S3.G1.S4.S1.G1.D1)
+               END_SUB
+
+               SUB 2
+         "火控雷达将于%s前修复。 " 
+                                                     1 GTIME(S3.G1.S4.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体恢复工程将于%s前完成。 "
+                                                     1 GTIME(S3.G1.S4.S1.G1.D1)
+               END_SUB
+            END_GROUP
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+
+       SUB 5
+"\n%s，有%s条通路，其中%s条通路关闭。"
+                           3 Bridge_Class[S3.G1.S5.D1] S3.G1.S5.D2 S3.G1.S5.D3
+ 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。"
+                                                       1 GTIME(S3.G1.S5.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                                       1 GTIME(S3.G1.S5.S1.G1.D1)
+               END_SUB
+            END_GROUP
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+
+
+     SUB 6
+         "\n%s，有%s条通路，其中%s条通路关闭。"
+                             3 Tunnel_Class[S3.G1.S6.D1] S3.G1.S6.D2 S3.G1.S6.D3
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。"
+                                                        1 GTIME(S3.G1.S6.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                                        1 GTIME(S3.G1.S6.S1.G1.D1)
+               END_SUB
+            END_GROUP
+
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 7
+         "\n损毁阵地（%s）。" 1 Sensor_Type[S3.G1.S7.D1]
+ 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S7.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                                     1 GTIME(S3.G1.S7.S1.G1.D1)
+               END_SUB
+            END_GROUP
+
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 8
+         "\n跑道（%s），有%s处明显损毁。"
+                             2 Runway_Type[S3.G1.S8.D1] S3.G1.S8.D3        
+     SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S8.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                                1 GTIME(S3.G1.S8.S1.G1.D1)
+               END_SUB
+            END_GROUP
+
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+  
+      SUB 9
+        "\n%s，有%s条通路，其中%s条通路已关闭。"
+                           3 Interdiction_Point_Type[S3.G1.S9.D1] S3.G1.S9.D2
+                                                                  S3.G1.S9.D3
+       
+      SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S9.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                            1 GTIME(S3.G1.S9.S1.G1.D1)
+               END_SUB
+            END_GROUP
+
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 10
+         "\n存储点（%s）。 " 1 Supply_Storage_Area[S3.G1.S10.D1]
+ 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S10.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                             1 GTIME(S3.G1.S10.S1.G1.D1)
+               END_SUB
+            END_GROUP
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 11
+         "\n%s，装备%s个发射装置，其中%s个损毁。 "
+                      3 Surface_Surface_Missile[S3.G1.S11.D1] S3.G1.S11.D2
+                                                             S3.G1.S11.D3         
+      SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。"
+                                                 1 GTIME(S3.G1.S11.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                                 1 GTIME(S3.G1.S11.S1.G1.D1)
+               END_SUB
+            END_GROUP
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 12
+         "\n%s。" 1 Facility_Type[S3.G1.S12.D1]
+ 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S12.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                             1 GTIME(S3.G1.S12.S1.G1.D1)
+               END_SUB
+            END_GROUP
+
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 13
+         " \n机堡（%s）%s个，其中%s个损毁。"
+              3 Aircraft_Shelter_Type[S3.G1.S13.D1] S3.G1.S13.D2 S3.G1.S13.D3
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S13.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                                    1 GTIME(S3.G1.S13.S1.G1.D1)
+               END_SUB
+            END_GROUP
+
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 14
+         "\n装卸设施（%s）%s套，其中%s套损毁。"
+                         3 MHE_Facility[S3.G1.S14.D1] S3.G1.S14.D2 S3.G1.S14.D3 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S14.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                                     1 GTIME(S3.G1.S14.S1.G1.D1)
+               END_SUB
+            END_GROUP
+
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 15
+         "\n失效雷场。" 0
+      END_SUB
+ 
+      SUB 16
+         "\n%s。" 1 Pumping_Station_Class[S3.G1.S16.D1] 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S16.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                            1 GTIME(S3.G1.S16.S1.G1.D1)
+               END_SUB
+            END_GROUP
+          
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 17
+         "\n%s。" 1 Jammer_Type[S3.G1.S17.D1]
+ 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S17.S1.G1.D1)
+               END_SUB
+
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                            1 GTIME(S3.G1.S17.S1.G1.D1)
+               END_SUB
+            END_GROUP
+          
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+
+      SUB 18
+         "\n%s。" 1 Comm_Site_Type[S3.G1.S18.D1]
+ 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S18.S1.G1.D1)
+               END_SUB
+
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                            1 GTIME(S3.G1.S18.S1.G1.D1)
+               END_SUB
+            END_GROUP
+          
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+
+      END_SUB
+ 
+      SUB 19
+         "\n舰艇（%s）。" 1 Ship_Unit_Prototype[S3.G1.S19.D1]
+ 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S19.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                            1 GTIME(S3.G1.S19.S1.G1.D1)
+               END_SUB
+            END_GROUP
+          
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 20
+          "\n%s，%s台、套，其中%s损毁。"
+                              3 Combat_Arms_Type[S3.G1.S20.D1] S3.G1.S20.D2
+                                S3.G1.S20.D3 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S20.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                            1 GTIME(S3.G1.S20.S1.G1.D1)
+               END_SUB
+            END_GROUP
+          
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 21
+         "\n%s，%s台、套，其中%s损毁。" 3 Transportation_Class[S3.G1.S21.D1] S3.G1.S21.D2
+                               S3.G1.S21.D3
+ 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S21.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                            1 GTIME(S3.G1.S21.S1.G1.D1)
+               END_SUB
+            END_GROUP
+          
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 22
+         "\n%s，%s架，其中%s架损毁。"  3 S3.G1.S22.D2
+                                       Aircraft_Type[S3.G1.S22.D1] S3.G1.S22.D3
+          SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S22.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                                     1 GTIME(S3.G1.S22.S1.G1.D1)
+               END_SUB
+            END_GROUP
+  
+          
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+       SUB 23
+         "\n两栖输送工具（%s），%s艘，其中%s艘损坏。"
+                           3 Small_Boat[S3.G1.S23.D1] S3.G1.S23.D2
+                             S3.G1.S23.D3
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s开始维修。" 1 GTIME(S3.G1.S23.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主体修复工程将于%s前完成。"
+                                                    1 GTIME(S3.G1.S23.S1.G1.D1)
+               END_SUB
+            END_GROUP
+          
+         END_SUB
+ 
+         SUB 2
+         "无修复记录。" 0
+         END_SUB
+ 
+      END_SUB
+ 
+      SUB 24
+         "\n补给（%s）。" 1 Supply_Type[S3.G1.S24.D1]
+ 
+         SUB 1
+            GROUP 1
+               SUB 1
+         "将于%s前开始补充。" 1 GTIME(S3.G1.S24.S1.G1.D1)
+               END_SUB
+               SUB 3
+         "主要工作将于%s前完成。"
+                                            1 GTIME(S3.G1.S24.S1.G1.D1)
+               END_SUB
+            END_GROUP
+          
+         END_SUB
+ 
+         SUB 2
+         "无补给记录。" 0
+         END_SUB
+ 
+      END_SUB
+
+      SUB 32
+"\n该地区防空设施：" 0
+"__start_table|类型|数量\n" 0
+         GROUP 1
+            "|%s|%s\n"   2 ADA_Class[S3.G1.S32.G1.D1] S3.G1.S32.G1.D2
+            SUB 1
+            END_SUB
+         END_GROUP
+"__stop_table" 0 
+      END_SUB
+ 
+      SUB 33
+"\n该地区防空设施未知。" 0
+      END_SUB
+       
+      SUB 34
+
+      END_SUB
+
+   END_GROUP
+ 
+END_SUB
+ 
+SUB 4
+"<p class='title1'>未毁伤目标情报</p>" 0
+
+   GROUP 1
+ 
+      SUB 2
+"\n\n——编号：%s" 1 S4.G1.D2
+"\n名称：%s，" 1 unit_name_transform(S4.G1.D4)
+"所属集团：%s，敏感目标标识：%s，" 2 unit_name_transform(S4.G1.D5) S4.G1.D6
+"坐标：%s，主体情况：%s，" 2 LOCATION(S4.G1.D7,S4.G1.D8) IIR_Status_Code[S4.G1.D12]
+"附加情况：%s，与前次情报相比：%s。" 2 IIR_Status_Code[S4.G1.D13] IIR_Change_Code[S4.G1.D14]
+      END_SUB
+ 
+      SUB 3
+"\n\n——编号：%s" 1 S4.G1.D2
+"\n名称：%s，" 1 unit_name_transform(S4.G1.D4)
+"所属集团：%s，敏感目标标识：%s，" 2 unit_name_transform(S4.G1.D5) S4.G1.D6
+"坐标：%s，主体情况：%s，" 2 LOCATION(S4.G1.D7,S4.G1.D8) IIR_Status_Code[S4.G1.D12]
+"附加情况：%s，与前次情报相比：%s。" 2 IIR_Status_Code[S4.G1.D13] IIR_Change_Code[S4.G1.D14]
+      END_SUB
+ 
+      SUB 4
+"\n防空阵地（%s），配备%s个发射装置。" 2 ADA_Class[S4.G1.S4.D1] S4.G1.S4.D2 
+      END_SUB
+ 
+      SUB 5
+"\n%s，具有%s条通路。" 2 Bridge_Class[S4.G1.S5.D1] S4.G1.S5.D2
+      END_SUB
+ 
+      SUB 6
+"\n%s，具有%s条通路。" 2 Tunnel_Class[S4.G1.S6.D1] S4.G1.S6.D2
+      END_SUB
+ 
+      SUB 7
+"\n%s阵地。" 1 Sensor_Type[S4.G1.S7.D1]
+      END_SUB
+ 
+      SUB 8
+"\n跑道（%s），配备%s个飞机机库。 " 2 S4.G1.S8.D2 Runway_Type[S4.G1.S8.D1]    
+      END_SUB
+ 
+      SUB 9
+"\n%s，具有%s条通路。" 2 Interdiction_Point_Type[S4.G1.S9.D1] S4.G1.S9.D2
+      END_SUB
+ 
+      SUB 10
+"\n存储点（%s）。" 1 Supply_Storage_Area[S4.G1.S10.D1]
+      END_SUB
+ 
+      SUB 11
+"\n%s，装备%s个发射装置。" 2 Surface_Surface_Missile[S4.G1.S11.D1] S4.G1.S11.D2
+      END_SUB
+ 
+      SUB 12
+"\n%s。" 1 Facility_Type[S4.G1.S12.D1]
+      END_SUB
+   
+      SUB 13
+"\n%s，%s个。" 2 Aircraft_Shelter_Type[S4.G1.S13.D1] S4.G1.S13.D2     
+      END_SUB
+ 
+      SUB 14
+"\n装卸设施（%s），具备同时执行%s项任务能力。" 2 MHE_Facility[S4.G1.S14.D1] S4.G1.S14.D2
+      END_SUB
+ 
+      SUB 15
+"\n标准雷场%s个。" 1 S4.G1.S15.D2
+      END_SUB
+ 
+      SUB 16
+"\n%s。" 1 Pumping_Station_Class[S4.G1.S16.D1]
+      END_SUB
+ 
+      SUB 17
+"\n%s。" 1 Jammer_Type[S4.G1.S17.D1]
+      END_SUB
+
+      SUB 18
+"\n%s。" 1 Comm_Site_Type[S4.G1.S18.D1]
+      END_SUB
+ 
+      SUB 19
+"\n舰艇（%s）。" 1 Ship_Unit_Prototype[S4.G1.S19.D1]
+      END_SUB
+ 
+      SUB 20
+"\n%s，%s台、套。" 2 Combat_Arms_Type[S4.G1.S20.D1] S4.G1.S20.D2
+      END_SUB      
+ 
+      SUB 21
+"\n%s，%s台、套。" 2 Transportation_Class[S4.G1.S21.D1] S4.G1.S21.D2
+      END_SUB
+ 
+      SUB 22
+"\n%s，%s架。" 2 Aircraft_Type[S4.G1.S22.D1] S4.G1.S22.D2
+      END_SUB
+ 
+      SUB 23
+"\n两栖输送工具（%s），%s艘。" 2 Small_Boat[S4.G1.S23.D1] S4.G1.S23.D2
+      END_SUB
+ 
+      SUB 24
+"\n补给（%s）。" 1 Supply_Type[S4.G1.S24.D1]
+      END_SUB
+
+      SUB 31
+"\n补给运输队。" 0
+      END_SUB
+ 
+      SUB 32
+"\n该地区防空设施：" 0
+"__start_table|类型|数量\n" 0
+         GROUP 1
+            "|%s|%s\n"   2 ADA_Class[S4.G1.S32.G1.D1] S4.G1.S32.G1.D2
+            SUB 1
+            END_SUB
+         END_GROUP
+"__stop_table" 0 
+      END_SUB
+ 
+      SUB 33
+"\n该地区防空设施未知。" 0
+      END_SUB      
+ 
+   END_GROUP
+ 
+END_SUB
+ 
+SUB 5
+"<p class='title1'>陆上飞机编队情报</p>" 0
+
+   GROUP 1
+ 
+      SUB 1
+"\n\n——编号：%s" 1 S5.G1.D2
+"\n机型：%s，数量：%s，" 2 unit_name_transform(S5.G1.D3) S5.G1.D18
+"坐标：%s，主体情况：%s，" 2 LOCATION(S5.G1.D6,S5.G1.D7) IIR_Status_Code[S5.G1.D11]
+"附加情况：%s，与前次情报相比：%s。" 2 IIR_Status_Code[S5.G1.D12] IIR_Change_Code[S5.G1.D13]
+      END_SUB
+
+      SUB 2
+"\n%s，%s架在陆地。" 2 unit_name_transform(S5.G1.D17) S5.G1.D15
+      END_SUB
+
+      SUB 32
+             GROUP 1
+                SUB 1
+ 
+                END_SUB
+             END_GROUP
+
+      END_SUB
+ 
+      SUB 33
+ 
+      END_SUB
+ 
+   END_GROUP
+
+END_SUB
+
+SUB 6
+
+"<p class='title1'>作战系统残骸情报</p>" 0
+   GROUP 1
+ 
+      SUB 1
+"\n\n——编号：%s" 1 S6.G1.D2
+"\n残骸类型：%s，坐标：%s，" 2 unit_name_transform(S6.G1.D3) LOCATION(S6.G1.D6,S6.G1.D7)
+"主体情况：%s，" 1 IIR_Status_Code[S6.G1.D11]
+"附加情况：%s，与前次情报相比：%s。" 2 IIR_Status_Code[S6.G1.D12] IIR_Change_Code[S6.G1.D13]
+      END_SUB
+
+      SUB 2
+"\n%s，%s处在陆地。" 2 unit_name_transform(S6.G1.D17) S6.G1.D15
+      END_SUB
+
+      SUB 11
+"\n\n——编号：%s" 1 S6.G1.D2
+"\n残骸类型：浮油，坐标：%s，" 1 LOCATION(S6.G1.D3,S6.G1.D4)
+"\n发现时间：%s，注释：既有浮油也有其它漂浮物。" 1 GTIME(S6.G1.D1)
+      END_SUB
+
+      SUB 32
+"\n该地区防空设施：" 0
+"__start_table|类型|数量\n" 0
+         GROUP 1
+            "|%s|%s\n"   2 ADA_Class[S6.G1.S32.G1.D1] S6.G1.S32.G1.D2
+            SUB 1
+            END_SUB
+         END_GROUP
+"__stop_table" 0 
+      END_SUB
+ 
+      SUB 33
+"\n该地区防空设施未知。" 0
+      END_SUB           
+
+   END_GROUP
+
+END_SUB
+
+SUB 7
+"<p class='title1'>不再现目标情报</p>" 0
+   GROUP 1
+
+     SUB 5
+"\n\n——编号：%s" 1 S7.G1.D1
+"\n没有部队可报，敏感目标标识：%s，" 1 S7.G1.S5.D7
+"坐标：%s，侦察时间：%s，" 2 LOCATION(S7.G1.S5.D2,S7.G1.S5.D3) GTIME(S7.G1.S5.D1)
+"%s没有再出现。" 1 unit_name_transform(S7.G1.S5.D6)
+        SUB 1
+         "\n消失飞机机型：%s。" 1 Aircraft_Type[S7.G1.S5.S1.D1]
+        END_SUB
+     END_SUB
+      SUB 8
+"\n\n——编号：%s" 1 S7.G1.D1
+"\n没有目标可报，敏感目标标识：%s，" 1 S7.G1.S8.D7
+"坐标：%s，侦察时间：%s，" 2 LOCATION(S7.G1.S8.D2,S7.G1.S8.D3) GTIME(S7.G1.S8.D1)
+"%s没有再出现。" 1 unit_name_transform(S7.G1.S8.D6)
+      END_SUB
+
+   END_GROUP 
+
+END_SUB
+
+END_MAIN
+

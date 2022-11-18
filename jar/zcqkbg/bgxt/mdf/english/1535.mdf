@@ -1,0 +1,13 @@
+
+1535
+SUBJECT
+"%s政治属性" 1 Political_Country[D2]
+MAIN
+"<p class='title'>  %s政治属性</p>\n\n" 1 Political_Country[D2] 
+
+"  行政国家%s (编号%s) 由下列参数构成：\n" 2  Political_Country[D2] D2
+"  对外联络国家编码: %s\n" 1 D3
+"  对外联络DIS码: %s\n" 1 D4
+   
+END_MAIN
+

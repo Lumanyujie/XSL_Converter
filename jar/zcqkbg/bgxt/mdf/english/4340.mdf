@@ -1,0 +1,167 @@
+
+4340
+SUBJECT
+"%s（港口）情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s（港口）情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1  
+   GROUP 1
+      "\n\n——%s" 1 unit_name_transform(S1.G1.D1)
+      "装卸设施类型：%s，" 1 MHE_Facility[S1.G1.D2]
+      "完好率：%s%。当前具体设备状态：" 1 S1.G1.D3
+      "__start_table｜设备编号｜状态｜完成（修复）时间｜当前行动\n" 0
+      SUB 1
+         GROUP 1
+            SUB 1
+               "｜%s｜闲｜无｜无\n" 1 S1.G1.S1.G1.S1.D1
+            END_SUB
+            SUB 2
+               "｜%s｜忙｜%s｜%s\n" 3 
+                      S1.G1.S1.G1.S2.D1
+                      GTIME(S1.G1.S1.G1.S2.D2)
+                      unit_name_transform(S1.G1.S1.G1.S2.D3)
+            END_SUB
+            SUB 3
+               "｜%s｜忙｜%s｜装载%s\n" 3 
+                      S1.G1.S1.G1.S3.D1
+                      GTIME(S1.G1.S1.G1.S3.D2)
+                      unit_name_transform(S1.G1.S1.G1.S3.D3)
+            END_SUB
+            SUB 4
+               "｜%s｜忙｜%s｜卸载%s\n" 3 
+                      S1.G1.S1.G1.S4.D1
+                      GTIME(S1.G1.S1.G1.S4.D2)
+                      unit_name_transform(S1.G1.S1.G1.S4.D3)
+            END_SUB
+            SUB 5
+               "｜%s｜忙｜%s｜装载%s\n" 3 
+                      S1.G1.S1.G1.S5.D1
+                      GTIME(S1.G1.S1.G1.S5.D2)
+                      unit_name_transform(S1.G1.S1.G1.S5.D3)
+            END_SUB
+            SUB 6
+               "｜%s｜忙｜%s｜战略补给任务（%s）\n" 3 
+                      S1.G1.S1.G1.S6.D1
+                      GTIME(S1.G1.S1.G1.S6.D2)
+                      unit_name_transform(S1.G1.S1.G1.S6.D3)
+            END_SUB
+            SUB 7
+               "｜%s｜忙｜%s｜将%s卸载给%s\n" 4 
+                      S1.G1.S1.G1.S7.D1
+                      GTIME(S1.G1.S1.G1.S7.D2)
+                      unit_name_transform(S1.G1.S1.G1.S7.D3)
+                      unit_name_transform(S1.G1.S1.G1.S7.D4)
+            END_SUB
+            SUB 8
+               "｜%s｜忙｜%s｜装载补给至%s\n" 3 
+                      S1.G1.S1.G1.S8.D1
+                      GTIME(S1.G1.S1.G1.S8.D2)
+                      unit_name_transform(S1.G1.S1.G1.S8.D3)
+            END_SUB
+            SUB 9
+               "｜%s｜忙｜%s｜保障%s从%s登岸\n" 4 
+                      S1.G1.S1.G1.S9.D1
+                      GTIME(S1.G1.S1.G1.S9.D2)
+                      unit_name_transform(S1.G1.S1.G1.S9.D3)
+                      unit_name_transform(S1.G1.S1.G1.S9.D4)
+            END_SUB
+            SUB 10
+               "｜%s｜忙｜%s｜将%s装载至%s\n" 4 
+                      S1.G1.S1.G1.S10.D1
+                      GTIME(S1.G1.S1.G1.S10.D2)
+                      unit_name_transform(S1.G1.S1.G1.S10.D3)
+                      unit_name_transform(S1.G1.S1.G1.S10.D4)
+            END_SUB
+            SUB 11
+               "｜%s｜忙｜%s｜运输至%s\n" 3 
+                      S1.G1.S1.G1.S11.D1
+                      GTIME(S1.G1.S1.G1.S11.D2)
+                      unit_name_transform(S1.G1.S1.G1.S11.D3)
+            END_SUB
+            SUB 12
+               "｜%s｜忙｜%s｜从%s运输\n" 3 
+                      S1.G1.S1.G1.S12.D1
+                      GTIME(S1.G1.S1.G1.S12.D2)
+                      unit_name_transform(S1.G1.S1.G1.S12.D3)
+            END_SUB
+            SUB 13
+               "｜%s｜毁伤｜%s｜无\n" 2 
+                      S1.G1.S1.G1.S13.D1
+                      GTIME(S1.G1.S1.G1.S13.D2)
+            END_SUB
+            SUB 14
+               "｜%s｜毁伤｜未计划｜无\n" 1 
+                      S1.G1.S1.G1.S14.D1
+            END_SUB
+         END_GROUP
+         "__stop_table" 0
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 2
+"\n该港口当前无部队和补给物资装卸输送任务。" 0
+END_SUB
+
+SUB 3
+   "<p class='table_name'>港口待作业情况列表</p>" 0
+   "__start_table｜项目名称｜开始等待时间｜抵达排序" 0
+   "｜开始排序｜完成排序｜是否优先项目\n" 0
+   GROUP 1
+      SUB 1
+         "｜（部队）%s｜%s｜%s｜%s｜%s｜%s\n" 6 
+                unit_name_transform(S3.G1.S1.D1) GTIME(S3.G1.S1.D2)
+                S3.G1.S1.D3 S3.G1.S1.D4
+                S3.G1.S1.D5 Answer[S3.G1.S1.D6]
+      END_SUB
+      SUB 2
+         "｜（空中编队）%s｜%s｜%s｜%s｜%s｜%s\n" 6 
+                unit_name_transform(S3.G1.S2.D1) GTIME(S3.G1.S2.D2)
+                S3.G1.S2.D3 S3.G1.S2.D4
+                S3.G1.S2.D5 Answer[S3.G1.S2.D6]
+      END_SUB
+      SUB 3
+         "｜（战略补给）%s（%s）｜%s｜%s｜%s｜%s｜%s\n" 7 
+                unit_name_transform(S3.G1.S3.D1) 
+                unit_name_transform(S3.G1.S3.D2) GTIME(S3.G1.S3.D3)
+                S3.G1.S3.D4 S3.G1.S3.D5
+                S3.G1.S3.D6 Answer[S3.G1.S3.D7]
+      END_SUB
+      SUB 4
+         "｜（海上补给编队）%s｜%s｜%s｜%s｜%s｜%s\n" 6 
+                unit_name_transform(S3.G1.S4.D1) GTIME(S3.G1.S4.D2)
+                S3.G1.S4.D3 S3.G1.S4.D4
+                S3.G1.S4.D5 Answer[S3.G1.S4.D6]
+      END_SUB
+      SUB 5
+         "｜（两栖攻击编队）%s｜%s｜%s｜%s｜%s｜%s\n" 6 
+                unit_name_transform(S3.G1.S5.D1) GTIME(S3.G1.S5.D2)
+                S3.G1.S5.D3 S3.G1.S5.D4
+                S3.G1.S5.D5 Answer[S3.G1.S5.D6]
+      END_SUB
+      SUB 6
+         "｜（装载编队）%s｜%s｜%s｜%s｜%s｜%s\n" 6 
+                unit_name_transform(S3.G1.S6.D1) GTIME(S3.G1.S6.D2)
+                S3.G1.S6.D3 S3.G1.S6.D4
+                S3.G1.S6.D5 Answer[S3.G1.S6.D6]
+      END_SUB
+      SUB 7
+         "｜至%s运输队｜%s｜%s｜%s｜%s｜%s\n" 6 
+                unit_name_transform(S3.G1.S7.D1) GTIME(S3.G1.S7.D2)
+                S3.G1.S7.D3 S3.G1.S7.D4
+                S3.G1.S7.D5 Answer[S3.G1.S7.D6]
+      END_SUB
+      SUB 8
+         "｜自%s运输队｜%s｜%s｜%s｜%s｜%s\n" 6 
+                unit_name_transform(S3.G1.S8.D1) GTIME(S3.G1.S8.D2)
+                S3.G1.S8.D3 S3.G1.S8.D4
+                S3.G1.S8.D5 Answer[S3.G1.S8.D6]
+      END_SUB
+   END_GROUP
+   "__stop_table" 0  
+END_SUB
+
+END_MAIN
+

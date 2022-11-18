@@ -1,0 +1,22 @@
+
+3140
+SUBJECT
+"空中机群（代字：%s）情况报告" 1 D2
+
+MAIN
+"<p class='title'>空中机群（代字：%s）情况报告</p>" 1 D2 
+
+SUB 2
+"\n在该空中机群中，以下编队不能在计划临空时间" 0
+"（%s）时抵达：" 1 GTIME(D3, "%U%d%H%MZ %b %y")
+"<p class='table_name'>不能按时到达编队名单</p>" 0  
+"__start_table|编队批号|最早临空时间\n" 0
+   GROUP 1
+"|%s|%s\n" 2 S2.G1.D1 GTIME(S2.G1.D2)
+   END_GROUP
+"__stop_table" 0
+"\n如果机群临空时间窗口不变，以上编队将自动取消。" 0
+END_SUB
+
+END_MAIN
+

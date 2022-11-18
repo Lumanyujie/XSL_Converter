@@ -1,0 +1,69 @@
+
+1854
+SUBJECT
+"关于%s方%s的情报 " 2 No_Force_Side[D2] unit_name_transform(D3)
+MAIN
+
+"<p class='title'>   %s方掌握%s的情报数据报告  </p>\n\n"   2 No_Force_Side[D2] unit_name_transform(D3)
+
+SUB 1
+"  %s方感知到该部队。\n" 1 S1.D1 
+END_SUB
+
+SUB 2
+"  隶属于%s方。\n" 1 No_Force_Side[S2.D1]
+END_SUB
+
+SUB 3
+"  有%s%s可用。\n" 2 S3.D1 Combat_System[S3.D2]
+END_SUB
+
+SUB 4
+"  不能维持一个可感知的作战系统数量。\n" 0
+END_SUB
+
+SUB 5
+"  位于%s。\n" 1 LOCATION(S5.D1,S5.D2)
+END_SUB
+
+SUB 6
+"  现有战斗力是%s。\n" 1 S6.D1
+END_SUB
+
+SUB 7
+"  处于%s态势。\n" 1 Unit_Posture[S7.D1]
+END_SUB
+
+SUB 8
+  "%s方没有该部队的信息。\n" 1 No_Force_Side[S8.D1]
+END_SUB
+
+SUB 9
+"  部队尚余探测时间的百分之%s。" 1 S9.D1
+"根据当前情况，下一次侦察发现该舰船的时间应为：%s。\n" 1 S9.D2
+"部队最大噪音探测时间为：%s小时。\n" 1 DURATION(S9.D3, "%.2Th")
+"部队最小噪音探测时间为：%s小时。\n" 1 DURATION(S9.D4, "%.2Th")
+END_SUB
+
+SUB 10
+"  该部队未实施隐蔽行动。\n" 0
+END_SUB
+
+SUB 11
+"  该部队正实施隐蔽行动。\n" 0
+END_SUB
+
+SUB 12
+"  该部队不能实施隐蔽行动。\n" 0
+END_SUB
+
+SUB 13
+"  数据:\n" 0
+"  航向:%s 度\n" 1 S13.D1
+"  速度:%s %s\n" 2  UOM_AMT(NAVAL_SPEED, S13.D2) UOM(NAVAL_SPEED)
+"  深度:%s %s\n" 2  UOM_AMT(AIRDISTANCE,S13.D3) UOM(AIRDISTANCE)
+"  深水状况: %s\n" 1 Depth_State[S13.D4]
+END_SUB
+
+END_MAIN
+

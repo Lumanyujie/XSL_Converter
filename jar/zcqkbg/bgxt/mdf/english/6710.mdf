@@ -1,0 +1,86 @@
+
+6710
+SUBJECT
+"%s编队海上补给行动评估报告" 1 D4
+
+MAIN
+
+
+"<p class='title'>%s编队海上补给行动评估报告</p>" 1 D4
+
+"\n编号为%s的命令要求对" 1 D2
+"%s编队完成海上补给行动所需时间进行评估。" 1 D4
+"以下预测结果由%s提供：" 1 unit_name_transform(D3)
+"\n进入装载点时间：%s；\n" 1
+                              DURATION(D5, "%d 天, %h 小时 %Rm 分")
+"\n装载时间：%s；" 1
+                              DURATION(D6, "%d 天, %h 小时 %Rm 分")
+"\n海上运输至卸载点时间：%s；" 1
+                              DURATION(D7, "%d 天, %h 小时 %Rm 分")
+"\n卸载时间：%s；" 1
+                              DURATION(D8, "%d 天, %h 小时 %Rm 分")
+"\n总行动时间：%s；" 1
+                              DURATION(D9, "%d 天, %h 小时 %Rm 分")
+"\n指定装载点：%s；" 1 LOCATION(D10, D11)
+"\n提供补给部队：%s；" 1 unit_name_transform(D12)
+"\n指定卸载点：%s；" 1 LOCATION(D13, D14)
+"\n接收补给部队：%s。" 1 unit_name_transform(D15)
+
+SUB 1 
+"\n命令中补给物资如下：" 0
+"<p class='table_name'>海上补给物资明细</p>" 0
+"__start_table|编号|类型|数量|单位\n" 0
+   GROUP 1
+"|%s|%s|%s|%s\n" 4 S1.G1.D1
+                                     SLP_Category_Name[S1.D1,S1.G1.D1]
+                                            SLP_SC_AMT(S1.D1,S1.G1.D1,S1.G1.D2)
+                                            SLP_SC_UOM(S1.D1,S1.G1.D1)
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 2
+   SUB 1
+"\n干货补给物资总计%s%s；" 2 UOM_AMT(DRY_WEIGHT,S2.S1.D1)
+                                                       UOM(DRY_WEIGHT)
+"液货补给物资总计%s%s。" 2 UOM_AMT(DRY_WEIGHT,S2.S1.D2)
+                                                         UOM(DRY_WEIGHT)
+   END_SUB
+   SUB 2
+"\n编队仅能运输" 0
+"干货补给物资%s %s；" 2 UOM_AMT(DRY_WEIGHT,S2.S2.D1)
+                                                       UOM(DRY_WEIGHT)
+"液货补给物资%s %s。" 2 UOM_AMT(DRY_WEIGHT,S2.S2.D2)
+                                                         UOM(DRY_WEIGHT)
+"\n备注：以上评估仅针对编队能够运输的补给物资。" 0
+   END_SUB
+END_SUB
+
+SUB 3
+"\n已指定进入航线。" 0
+END_SUB
+
+SUB 4
+"\n已指定从装载点到卸载点的输送航线。" 0
+END_SUB
+
+SUB 5
+"\n未指定进入航线，编队已抵达" 0
+"行动点。不需要规定进入时间。" 0
+END_SUB
+
+SUB 6 
+"\n下列舰艇已加入编队或正在前往编队机动途中：" 0
+
+    GROUP 1
+"\n——%-20.20s，是否已加入编队：%s" 2 unit_name_transform(S6.G1.D1) Answer[S6.G1.D2]
+    END_GROUP
+
+"\n该编队当前态势：%s。" 1 Formation_Posture[S6.D1]
+END_SUB
+
+SUB 7
+"\n提供补给部队隶属该编队。" 0
+END_SUB
+
+END_MAIN

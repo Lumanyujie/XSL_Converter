@@ -1,0 +1,415 @@
+
+2920
+SUBJECT
+   "%s当前情况报告" 1 unit_name_transform(D2)
+MAIN
+   "<p class='title'>%s当前情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+   "\n%s尚未进入战场，目前没有情况可报。" 1 unit_name_transform(D2)
+END_SUB
+ 
+SUB 2
+
+END_SUB
+
+GROUP 1
+   "\n——%s" 1 unit_name_transform(G1.D1)
+   "__start_table|分项|数值\n" 0
+   "|所属集团|%s\n" 1 unit_name_transform(G1.D2)
+   "|态势|%s\n" 1 Unit_Posture[G1.D5]
+   "|当前战斗力|%2.2f\n" 1 G1.D6
+   "|坐标|%s\n" 1 LOCATION(G1.D3,G1.D4)
+   "|保障部队|%s\n" 1 unit_name_transform(G1.D7)
+   "|作战方向|%s\n" 1 Hex_Edge[G1.D8]
+   "|武装直升机数量|%s\n" 1 G1.D9
+   "|其他情况|" 0
+   SUB 1
+      "%s没有担负任务，将其配属给另一支部队。" 1 unit_name_transform(G1.S1.D1)
+   END_SUB
+ 
+   SUB 2
+      "预计还需行军%s，于%s到达%s。" 3 DURATION(G1.S2.D1, "%d天%h小时%Rm分钟") GTIME(G1.S2.D4) LOCATION(G1.S2.D2,G1.S2.D3)
+   END_SUB
+ 
+   SUB 3
+      "正陷入激战。" 0
+   END_SUB
+ 
+   SUB 4
+      "当前速度为%s%s，最大速度可达%s%s。"
+                             4 UOM_AMT(NAVAL_SPEED,G1.S4.D1) UOM(NAVAL_SPEED)
+                               UOM_AMT(NAVAL_SPEED,G1.S4.D2) UOM(NAVAL_SPEED)
+      SUB 1                         
+         "目前处于%s状态（%s米）。" 2 Depth_State[G1.S4.S1.D1] UOM_AMT("AIRDISTANCE",G1.S4.S1.D2)
+      END_SUB
+      
+      SUB 2
+         "电池剩余电量%2.2f。是否充电：%s。" 2 G1.S4.S2.D1 Answer[G1.S4.S2.D2]
+      END_SUB
+                               
+   END_SUB
+ 
+   SUB 5
+      "平均速度为%s%s。" 2 UOM_AMT(SPEED,G1.S5.D1) UOM(SPEED)
+   END_SUB
+ 
+   SUB 6
+      "未遭遇敌军部队。" 0
+   END_SUB
+ 
+   SUB 7
+      "交战中机动，平均速度为%s%s。"
+                               2 UOM_AMT(SPEED,G1.S7.D1) UOM(SPEED)
+   END_SUB
+ 
+   SUB 8
+      "与%s支特种部队建立联系并由其提供支援，情况如下：" 1 G1.S8.D1
+      GROUP 1
+         "<br>—%s，隶属%s集团，当前%s状态。" 
+               3 unit_name_transform(G1.S8.G1.D1) unit_name_transform(G1.S8.G1.D2) HRU_Status[G1.S8.G1.D3]
+      END_GROUP
+   END_SUB
+ 
+   SUB 9
+      "同%s集团的%s建立联系，当前%s状态。" 
+              3 unit_name_transform(G1.S9.D2) unit_name_transform(G1.S9.D1) HRU_Status[G1.S9.D3]
+   END_SUB
+ 
+   SUB 10
+      "按命令，对%s集团的%s实施跟踪监视。"
+              2 unit_name_transform(G1.S10.D2) unit_name_transform(G1.S10.D1)
+   END_SUB
+ 
+   SUB 11
+      SUB 1
+         "附近有外方部队活动，无法确定直瞄火力射程内的部队属性。" 0
+      END_SUB
+
+      SUB 2
+         "附近区域外方部队总计%s支：" 1 G1.S11.S2.D1
+         GROUP 1
+            "<br>—%s，隶属%s，方向：%2.2s，态势：%13.13s，是否交战：%s。" 5
+                                 unit_name_transform(G1.S11.S2.G1.D2)
+                                 unit_name_transform(G1.S11.S2.G1.D1)
+                                            Hex_Edge[G1.S11.S2.G1.D3]
+                                        Unit_Posture[G1.S11.S2.G1.D4]
+                                              Answer[G1.S11.S2.G1.D5]
+         END_GROUP
+      END_SUB
+   END_SUB
+ 
+   SUB 12
+      "在%s编队中，编队态势为%s。" 2 G1.S12.D1
+                                        Formation_Posture[G1.S12.D2]
+   END_SUB
+ 
+   SUB 13
+      "运用空军力量机动，本次行动预计完成时间为%s。" 1 G1.S13.D1
+   END_SUB
+ 
+   SUB 14
+      "告警！报错信息，通知有关人员。" 0
+   END_SUB
+ 
+   SUB 15
+      "搭乘海上%s编队。" 1 G1.S15.D1
+   END_SUB
+
+   SUB 16
+      SUB 1
+         "正在休整，还将持续%s。"
+                       1 DURATION(G1.S16.S1.D1, "%h小时%Rm分钟")
+      END_SUB
+      SUB 2
+         "%s燃料耗尽，请求补给。" 1 unit_name_transform(D2)
+      END_SUB
+      SUB 3
+         "%s电池量低，需要充电。" 1 unit_name_transform(D2)
+      END_SUB           
+   END_SUB
+
+   SUB 17
+      "在演习中，%s未担负任务。" 1 unit_name_transform(D2)
+   END_SUB
+
+   SUB 18
+      "指定任务: %s，是否转变部队态势: %s。" 2 HRU_Status[G1.S18.D1] Answer[G1.S18.D2]
+   END_SUB
+
+   SUB 19
+      "%s担负空中投送任务。 " 1 unit_name_transform(G1.S19.D1)
+   END_SUB
+
+   SUB 20
+      "%s担负其他的空中作战计划。" 1  unit_name_transform(D2)
+   END_SUB
+
+   SUB 21
+      SUB 1
+         SUB 1
+            "在去%s布雷的途中。"
+                 1 LOCATION(G1.S21.S1.S1.D1,G1.S21.S1.S1.D2)
+         END_SUB
+         SUB 2
+            "在去%s附近排雷的途中。"
+                 1 LOCATION(G1.S21.S1.S2.D1,G1.S21.S1.S2.D2)
+         END_SUB
+         SUB 3
+            "在去修复%s的途中。"
+                 1 unit_name_transform(G1.S21.S1.S3.D1)
+         END_SUB
+         SUB 4
+            "在去破坏%s的途中。"
+                 1 unit_name_transform(G1.S21.S1.S4.D1)
+         END_SUB
+         SUB 5
+            "在去%s附近开辟%s条通道%s的途中。"
+                 3 LOCATION(G1.S21.S1.S5.D1,G1.S21.S1.S5.D2) G1.S21.S1.S5.D4 unit_name_transform(G1.S21.S1.S5.D3)
+         END_SUB
+         SUB 6
+            "在去修复%s的途中。"
+                 1 unit_name_transform(G1.S21.S1.S6.D1)
+         END_SUB
+      END_SUB
+      SUB 2
+         SUB 1
+            "正在%s布雷。"
+                1 LOCATION(G1.S21.S2.S1.D1,G1.S21.S2.S1.D2)
+         END_SUB
+         SUB 2
+            "正在%s附近排雷。"
+                1 LOCATION(G1.S21.S2.S2.D1,G1.S21.S2.S2.D2)
+         END_SUB
+         SUB 3
+            "正在修复%s。"
+                1 unit_name_transform(G1.S21.S2.S3.D1)
+         END_SUB
+         SUB 4
+            "正在破坏%s。"
+                1 unit_name_transform(G1.S21.S2.S4.D1)
+         END_SUB
+         SUB 5
+            "正在%s附近开辟%s条通道%s。"
+                3 LOCATION(G1.S21.S2.S5.D1,G1.S21.S2.S5.D2) G1.S21.S2.S5.D4 unit_name_transform(G1.S21.S2.S5.D3)
+         END_SUB
+         SUB 6
+            "正在恢复%s。"
+                1 unit_name_transform(G1.S21.S2.S6.D1)
+         END_SUB
+      END_SUB
+      SUB 3
+         "%s预期在到达后%s内完成任务。" 2 unit_name_transform(D2) DURATION(G1.S21.S3.D1, "%d days %h hours %Rm minutes")
+      END_SUB
+      SUB 4
+         "%s预计于%s完成任务。"
+               2 unit_name_transform(D2) GTIME(G1.S21.S4.D1)
+      END_SUB
+      SUB 5
+         "%s预期于%s完成任务。"
+               2 unit_name_transform(D2) GTIME(G1.S21.S5.D1)
+      END_SUB
+
+   END_SUB
+
+   SUB 22
+      "部队采用%s运输，" 1 Supply_Shipment_Method[G1.S22.D1]
+      "运输分队为%s。" 1 unit_name_transform(G1.S22.D2)
+      SUB 1
+         "当前正在装载。" 0
+      END_SUB
+      SUB 2
+         "当前正在去往卸载点途中。" 0
+      END_SUB
+      SUB 3
+         "当前正在卸载。" 0
+      END_SUB
+      SUB 4
+         "收到取消行动的命令，当前正在返回途中。" 0
+      END_SUB
+   END_SUB
+
+   SUB 23
+      "%s隶属于地面战斗编组%s。" 2  unit_name_transform(D2) G1.S23.D1
+      SUB 1
+         "该地面战斗编组的部队如下：" 0
+      END_SUB
+      SUB 2
+         "<br>—%s，%s%s，态势：%s。 " 4   unit_name_transform(G1.S23.S2.D1) 
+                                           UOM_AMT(SPEED,G1.S23.S2.D2) 
+                                           UOM(SPEED) 
+                                           Unit_Posture[G1.S23.S2.D3]
+      END_SUB
+   END_SUB
+
+   SUB 24
+      "%s有如下巡逻命令待执行：" 1  unit_name_transform(D2) 
+      GROUP 1
+         "<br>—%s命令, 持续巡逻到%s为止。" 2 unit_name_transform(G1.S24.G1.D1) GTIME(G1.S24.G1.D2)
+      END_GROUP
+   END_SUB
+
+   SUB 25
+      "%s共有%s个水密船舱：" 2  unit_name_transform(G1.S25.D1) G1.S25.D2
+      GROUP 1
+         SUB 1
+            "<br>—%s号船舱（是否损坏：%s）内有：" 
+                                 2 G1.S25.G1.S1.D1 Answer[G1.S25.G1.S1.D2]
+         END_SUB
+         GROUP 1
+            SUB 1
+               "<br>——飞机弹射器：" 0
+               "总计%s个，是否正在使用：%s。" 2 G1.S25.G1.G1.S1.D1 Answer[G1.S25.G1.G1.S1.D2]
+            END_SUB
+
+            SUB 2
+               "<br>——%s：" 1  Small_Boat[G1.S25.G1.G1.S2.D1] 
+               "总计%s艘，可用%s艘。" 2 G1.S25.G1.G1.S2.D2 G1.S25.G1.G1.S2.D3
+            END_SUB
+
+            SUB 3  
+               "<br>——%s：" 1  Target_Category[G1.S25.G1.G1.S3.D1]
+               "%s" 1 G1.S25.G1.G1.S3.D2
+            END_SUB
+
+            SUB 4
+               "<br>——火控雷达：" 0
+            END_SUB
+
+            SUB 5
+               "数量：%s。" 1 G1.S25.G1.G1.S5.D1
+            END_SUB
+
+            SUB 6
+               "发射器数量：%s。" 1 G1.S25.G1.G1.S6.D1
+            END_SUB
+
+            SUB 7
+               "是否正在运行：%s。" 1 Answer[G1.S25.G1.G1.S7.D1]
+            END_SUB
+
+            SUB 8
+               "<br>——仅剩下补给物资和武器装备。" 0
+            END_SUB
+         END_GROUP
+      END_GROUP
+   END_SUB
+   "\n" 0
+   "__stop_table" 0
+END_GROUP
+
+
+SUB 3
+   SUB 1
+      "<p class='table_name'>火力打击任务情况报告</p>" 0
+      "__start_table |弹药类型|打击目标|当前状态\n" 0
+   END_SUB
+
+   GROUP 1
+      "|%s|" 1 Targetable_Weapon[S3.G1.D1]
+      SUB 1
+         "%s" 1 unit_name_transform(S3.G1.S1.D1)
+      END_SUB
+      SUB 2
+         "%s" 1 LOCATION(S3.G1.S2.D1,S3.G1.S2.D2)
+      END_SUB
+      SUB 3
+         "方位%s度，距离%s%s"
+                    3 S3.G1.S3.D1 UOM_AMT(DISTANCE,S3.G1.S3.D2) UOM(DISTANCE)
+      END_SUB
+      SUB 4
+         SUB 1
+            "|已开火，结束时间：%s。\n" 1 GTIME(S3.G1.D2)
+         END_SUB
+         SUB 2
+            "|已计划，开始打击时间：%s。\n" 1 GTIME(S3.G1.D2)
+         END_SUB
+         SUB 3
+            "|等待，命令时间：%s。\n" 1 GTIME(S3.G1.D2)
+         END_SUB
+      END_SUB
+   END_GROUP
+   "__stop_table" 0
+   
+   SUB 98
+      SUB 1
+         "\n%s正在实施炮火打击，不能转移阵地。" 1 unit_name_transform(D2)
+      END_SUB
+      SUB 2
+         "\n在每发射%s发弹后，%s将自动转移阵地。" 2 S3.S98.S2.D1 unit_name_transform(D2)
+         "截至报告时，已发射炮弹%s发。" 1 S3.S98.S2.D2
+      END_SUB
+   END_SUB
+
+   SUB 99
+      "\n已完成所有火力打击任务。" 0
+   END_SUB
+END_SUB
+
+SUB 4
+   SUB 1
+      "<p class='table_name'>边界争端情况报告</p>" 0
+      "__start_table|边界名称|是否争端\n" 0
+   END_SUB
+
+   SUB 2
+      "|%s|%s\n" 2 unit_name_transform(S4.S2.D1) Answer[S4.S2.D2]
+   END_SUB
+   "__stop_table" 0
+
+   SUB 99
+      "\n没有边界争端。" 0
+   END_SUB
+
+END_SUB
+
+SUB 5 
+   "\n受到防空干扰。"0
+END_SUB
+
+SUB 6
+   "\n通信延迟，大约%s%%信息受到影响。" 1 S6.D1
+END_SUB
+
+SUB 7
+   "\n受到通信干扰，通信能力下降。" 0
+END_SUB
+
+SUB 8 
+   "\n遭受心理战广播影响。" 0
+END_SUB
+
+SUB 9
+   "\n舰艇于%s遭受重创，" 1 GTIME(S9.D1)
+   "预计于%s沉没。" 1 GTIME[S9.D2]
+
+   SUB 1
+      "当前%s。" 1 Riding_Low_State[S9.S1.D1]
+   END_SUB
+
+   SUB 2
+      "%s。" 1 Listing_Direction[S9.S2.D1]
+   END_SUB
+
+   SUB 3
+      "%s。" 1 Listing_Position[S9.S3.D1]
+   END_SUB
+
+   SUB 4
+      "%s。" 1 Fire_Type_State[S9.S4.D1]
+   END_SUB
+
+   SUB 5
+      "%s。" 1 Fire_Size_State[S9.S5.D1]
+   END_SUB
+
+   SUB 6
+      "燃油泄漏，海面%s。" 1 Oil_Slick_State[S9.S6.D1]
+   END_SUB
+
+   SUB 7
+      "浮油位于%s。" 1 Oil_Slick_Location[S9.S7.D1]
+   END_SUB
+
+END_SUB
+
+END_MAIN

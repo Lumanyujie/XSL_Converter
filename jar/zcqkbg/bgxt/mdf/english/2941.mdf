@@ -1,0 +1,20 @@
+
+2941
+SUBJECT
+"区域天气预报" 0
+
+MAIN
+"<p class='title'>区域天气预报</p>" 0 
+
+"\n时间：%s" 1 GTIME(D1)
+"\n地点：%s" 1 LOCATION(D2,D3)
+
+"<p class='table_name'>天气预报明细</p>" 0
+"__start_table|时间|天气\n" 0
+   GROUP 1
+"|%s|%s\n" 2 GTIME(G1.D1) Weather_Condition[G1.D2]
+   END_GROUP
+"__stop_table" 0
+
+END_MAIN
+

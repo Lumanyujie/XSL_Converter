@@ -1,0 +1,59 @@
+
+1624
+SUBJECT
+"%s(%s)后勤原型公共属性" 2 Sustainment_Log_Prototype[D2] D2 
+MAIN
+
+"<p class='title'>  %s后勤原型有下列公共属性: </p>\n\n" 1 
+                                                  Sustainment_Log_Prototype[D2] 
+
+SUB 2 
+"  毁损评估时，%s补给类与补给类别%s等效。\n"  2 Supply_Category[S2.D1] Supply_Type[S2.D2]
+END_SUB
+
+SUB 3
+"  基本装载量的下列部分留为部队自用:\n" 0
+   GROUP 1
+"%-13.13s   %8.8s留用\n" 2 Supply_Category[S3.G1.D1] S3.G1.D2
+   END_GROUP
+"\n" 0
+END_SUB
+
+SUB 4
+"  船运类装卸设施需求:" 0 
+   GROUP 1
+"  船运类%-17.17s%s\n" 2 MHE_Eligible[S4.G1.D1] MHE_Requirement[S4.G1.D2]
+   END_GROUP
+"\n" 0
+END_SUB
+
+SUB 5
+"  补给类战斗毁伤评估损耗等级是:\n" 0
+"  __start_table |  种类  |   轻度到中度 | 中度到重度\n" 0
+   GROUP 1
+"|  %-15.15s |       %9.9s  |          %9.9s\n"
+                       3 BDA_Supply_Cat[S5.G1.D1] S5.G1.D2 S5.G1.D3
+   END_GROUP
+"__stop_table"0
+
+"\n" 0
+END_SUB
+
+SUB 6
+"  后勤补给原型默认的露天存储:  %s\n" 1 Supply_Storage_Area[S6.D1]
+END_SUB
+
+SUB 7
+"  部队不同态势的燃料修正系数是:\n" 0
+"  __start_table |部队态势|       燃料修正系数\n" 0
+   GROUP 1
+" | %-15.15s   |   %9.9s\n"
+                       2 Active_Unit_Posture[S7.G1.D1] S7.G1.D2
+   END_GROUP
+"__stop_table"0
+
+"\n" 0
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,84 @@
+
+2760
+SUBJECT
+"%s（特战分队）接敌情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s（特战分队）接敌情况报告</p>" 1 unit_name_transform(D2)
+"\n%s向%s报告：" 2 unit_name_transform(D2) unit_name_transform(D6)
+
+SUB 1
+"该部现位于%s，" 1 LOCATION(D3,D4)
+"拟于%s，" 1 GTIME(D1)
+"伏击%s。" 1 unit_name_transform(S1.D1)
+END_SUB
+
+SUB 2
+"该部拟于%s，" 1 GTIME(D1)
+"在%s地域，" 1 LOCATION(D3,D4)
+"伏击%s，现正在赶往伏击点途中。" 1 unit_name_transform(S2.D1)
+END_SUB
+
+SUB 3
+"该部于%s，" 1 GTIME(D1)
+"在%s地域，" 1 LOCATION(S3.D2,S3.D3)
+"对%s发起了攻击。" 1 unit_name_transform(S3.D1)
+"当前战斗力为%s%%，" 1 S3.D4
+"处于%s态势。" 1 HRU_Status[S3.D5]
+END_SUB
+ 
+SUB 4 
+"该部于%s，" 1 GTIME(D1)
+"在%s地域，" 1 LOCATION(S4.D2,S4.D3)
+"与%s展开了交战。" 1 unit_name_transform(S4.D1)
+"当前战斗力为%s%%，" 1 S4.D4
+"处于%s态势。" 1 HRU_Status[S4.D5]
+END_SUB  
+ 
+SUB 5 
+"该部于%s，" 1 GTIME(D1)
+"在%s地域，" 1 LOCATION(S5.D2,S5.D3)
+"遭%s攻击。" 1 unit_name_transform(S5.D1)
+"当前战斗力为%s%%，" 1 S5.D4
+"处于%s态势。" 1 HRU_Status[S5.D5]
+"交战规则不允许还击。" 0
+END_SUB  
+ 
+SUB 6
+"此刻，%s已被消灭。" 1 unit_name_transform(S6.D1)
+END_SUB  
+ 
+SUB 7 
+"此刻，双方正在激战。" 0 
+END_SUB  
+ 
+SUB 8 
+   SUB 1
+"此刻，遭外方某部队火力打击。" 0 
+   END_SUB
+   SUB 2
+"此刻，遭外方某特战分队火力打击。" 0
+   END_SUB
+END_SUB  
+
+SUB 9
+"此刻，停止交战，开始撤退。" 0
+END_SUB
+
+SUB 10
+"此刻，正试图撤退，与敌脱离接触。" 0
+END_SUB
+
+SUB 11
+"此刻，目标定位点%s被击中，对%s造成影响。" 2 S11.D1 unit_name_transform(S11.D2)
+END_SUB
+
+SUB 12
+"\n发现以下目标：" 0
+   GROUP 1
+"\n——%s。" 1 unit_name_transform(S12.G1.D1)
+   END_GROUP
+END_SUB
+ 
+END_MAIN 
+

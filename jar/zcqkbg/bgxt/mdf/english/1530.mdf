@@ -1,0 +1,110 @@
+
+1530
+SUBJECT
+" %s飞机的飞行距离和飞行高度属性。" 1 Aircraft_Type[D2]
+MAIN
+
+"<p class='title'>%s (编号%s)飞机属性</p>\n\n"  2 Aircraft_Type[D2] D2
+
+SUB 1
+"  以经济飞行高度飞行时的最大航程:%s%s\n" 2
+                                      UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+END_SUB
+ 
+SUB 2
+"  最大航行距离:%s %s\n" 2
+                                      UOM_AMT(DISTANCE,S2.D1) UOM(DISTANCE)
+END_SUB
+ 
+SUB 3
+"  以最大飞行高度飞行时的最大航程:%s %s\n" 2
+                                      UOM_AMT(DISTANCE,S3.D1) UOM(DISTANCE)
+END_SUB
+ 
+SUB 4
+"  满载燃油量: %s %s\n"
+           2 UOM_AMT(WET_WEIGHT,S4.D1) UOM(WET_WEIGHT)
+END_SUB
+
+SUB 5
+"  备用燃油的航行距离:%s %s\n"
+           2 UOM_AMT(DISTANCE,S5.D1) UOM(DISTANCE)
+END_SUB
+ 
+SUB 6
+"  空中交战时燃油附加消耗因子:%s\n" 1 S6.D1
+END_SUB
+
+SUB 7
+"  默认的飞机挂载:%s\n" 1 S7.D1
+
+   SUB 1
+"  飞机挂载%s的清单如下:\n" 1 S7.S1.D1
+      SUB 1
+"  包括下列武器:\n" 0
+         SUB 1
+            GROUP 1
+"  %-15.15s   %s\n" 2 Targetable_Weapon[S7.S1.S1.S1.G1.D1]
+                                                     S7.S1.S1.S1.G1.D2
+            END_GROUP
+         END_SUB
+         SUB 2
+"  无\n" 0
+         END_SUB
+      END_SUB
+      SUB 2
+"  包括下列传感器:\n" 0
+         SUB 1
+            GROUP 1
+"  %s\n" 1 Sensor_Type[S7.S1.S2.S1.G1.D1]
+            END_GROUP
+         END_SUB
+         SUB 2
+"  无\n" 0
+         END_SUB
+      END_SUB
+      SUB 3
+"  包括下列干扰机:\n" 0
+         SUB 1
+            GROUP 1
+"  %s\n" 1 Jammer_Type[S7.S1.S3.S1.G1.D1]
+            END_GROUP
+         END_SUB
+         SUB 2
+"  无\n" 0
+         END_SUB
+      END_SUB
+      SUB 4
+"  包括下列补给物资:\n" 0
+         SUB 1
+            GROUP 1
+"  补给类 %3.3s  %-15.15s  %14.14s %s\n" 4 S7.S1.S4.S1.G1.D1
+                        Supply_Category[S7.S1.S4.S1.G1.D1]
+                           SLP_SC_AMT(0,S7.S1.S4.S1.G1.D1,S7.S1.S4.S1.G1.D2)
+                           SLP_SC_UOM(0,S7.S1.S4.S1.G1.D1)
+            END_GROUP
+         END_SUB
+         SUB 2
+"  无\n" 0
+         END_SUB
+      END_SUB
+      SUB 6
+"  包括以下数量的附加油料:\n\n" 0
+"  %s %s\n" 2 UOM_AMT(WET_WEIGHT,S7.S1.S6.D1) UOM(WET_WEIGHT)
+      END_SUB
+   END_SUB
+
+END_SUB
+
+SUB 8
+"  余油量:%s %s\n"
+           2 OUM_AMT(DISTANCE,S8.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 9
+"  最大油量:%s %s\n"
+           2 UOM_AMT(DISTANCE,S9.D1) UOM(DISTANCE)
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,38 @@
+
+1525
+SUBJECT
+"干扰机%s的属性。" 1 Jammer_Type[D2]
+MAIN
+
+"<p class='title'>%s (索引号 %s)干扰机属性</p>\n\n"  2 Jammer_Type[D2] D2
+
+SUB 1
+"  半径:%s%s\n"
+                          2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+"  修复时间:%s\n"
+                          1 DURATION(S1.D2, "%d 天 %h 小时 %Rm 分 ")
+"  损坏时间:%s\n"
+                          1 DURATION(S1.D3, "%d 天 %h 小时 %Rm 分 ")
+"  压制时间:%s\n"
+                          1 DURATION(S1.D4, "%d 天 %h 小时 %Rm 分 ")
+END_SUB
+
+SUB 2
+"  干扰机类型:%s\n" 1 Jammer_Function[S2.D1]
+"  输出功率:%s decibels\n" 1 S2.D2
+"  最大范围:%s %s\n" 
+                                        2 UOM_AMT(DISTANCE,S2.D3) UOM(DISTANCE)
+"  目标类型类码:%s\n" 1 S2.D4
+"  目标符号:%s\n" 1 S2.D5
+"  标记:%s\n" 1 S2.D6
+"  数据代码:%s\n" 1 S2.D7
+END_SUB
+
+SUB 3
+"  电子情报索引:%s\n" 1 S3.D1
+"  电子情报频率:%s\n" 1 S3.D2
+"  电子情报程序代码:%s\n" 1 S3.D3
+END_SUB
+
+END_MAIN
+

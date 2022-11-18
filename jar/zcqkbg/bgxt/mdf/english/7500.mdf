@@ -1,0 +1,243 @@
+
+7500
+SUBJECT
+"%s损毁情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s损毁情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+   SUB 1
+"\n%s报告：该部正在遭受%s炮火打击。" 2 unit_name_transform(D2) unit_name_transform(S1.S1.D1)
+   END_SUB
+   SUB 2
+"\n%s报告：该部遭%s导弹突击。" 2 unit_name_transform(D2) unit_name_transform(S1.S2.D1)
+   END_SUB
+   SUB 3
+"\n%s报告：该部遭%s鱼雷攻击。" 2 unit_name_transform(D2) unit_name_transform(S1.S3.D1)
+   END_SUB
+END_SUB
+
+SUB 2
+   SUB 1
+"\n%s报告：该部遭敌小股部队攻击。" 1 unit_name_transform(D2)
+   END_SUB
+END_SUB
+
+SUB 3
+"\n%s报告：该部遭%s空中编队火力打击。" 2 unit_name_transform(D2) unit_name_transform(S3.D1)
+END_SUB
+
+SUB 4
+"\n%s报告：该部所在区域发现雷场。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 5
+"\n%s报告：该部在实施两栖作战行动时，遭敌炮火突击。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 6
+"部分受损，原因尚未查明。" 0
+END_SUB
+
+SUB 7
+"无装备、人员或物资损失。" 0
+END_SUB
+
+SUB 8
+"船体受损，破裂处增加%s个。" 1 S8.D1
+END_SUB
+
+SUB 9
+"弹射器受损，破损处增加%s个。" 1 S9.D1
+END_SUB
+
+SUB 10
+"<p class='table_name'>人员和装备受损情况列表</p>" 0
+"__start_table|类型|受损数量\n" 0
+   GROUP 1
+"|%s|%s\n" 2 CSP_System_Name[D3,S10.G1.D1] S10.G1.D2
+   END_GROUP
+"__stop_table" 0
+"\n备注：人员总数不包括在战斗系统中的伤亡人员。" 0
+END_SUB
+
+SUB 11
+"\n人员和装备未遭受严重损失。" 0
+END_SUB
+
+SUB 12
+"<p class='table_name'>补给物资损毁情况列表</p>" 0
+"__start_table|类型|受损数量|单位\n" 0
+   GROUP 1
+"|%s|%s|%s\n" 3 SLP_Category_Name[D4,S12.G1.D1] SLP_SC_AMT(D4,S12.G1.D1,S12.G1.D2) SLP_SC_UOM(D4,S12.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 13
+"\n补给物资未遭受严重损失。" 0
+END_SUB
+
+SUB 14
+   SUB 1
+"\n部队行动预计将延误%s。" 1 DURATION(S14.S1.D1, "%d天%h时%Rm分")
+   END_SUB
+   SUB 2
+"" 0
+   END_SUB
+   SUB 3
+"\n工程任务完成时间预计将推迟%s。" 1 DURATION(S14.S3.D1, "%d天%h时%Rm分")
+   END_SUB
+END_SUB
+
+SUB 15
+   GROUP 1
+"\n——%s，被击中，属%s%s。" 3 unit_name_transform(S15.G1.D2) unit_name_transform(D2) Target_Category[S15.G1.D1]
+
+      SUB 1
+"<p class='table_name'>补给物资损毁情况列表</p>" 0
+"__start_table|类型|受损数量|单位\n" 0
+         GROUP 1
+"|%s|%s|%s\n" 3 SLP_Category_Name[D4,S15.G1.S1.G1.D1] SLP_SC_AMT(D4,S15.G1.S1.G1.D1,S15.G1.S1.G1.D2) SLP_SC_UOM(D4,S15.G1.S1.G1.D1)
+         END_GROUP
+"__stop_table" 0
+      END_SUB
+
+      SUB 2
+"\n储备的补给物资无重大损失。" 0
+      END_SUB
+
+      SUB 3
+"\n%s个发射装置被毁。" 1 S15.G1.S3.D1
+      END_SUB
+
+      SUB 4
+"\n%s个空机堡被毁。" 1 S15.G1.S4.D1
+      END_SUB
+
+      SUB 5
+"机堡被毁时里面有%s，" 1 Aircraft_Type[S15.G1.S5.D1]
+"损毁飞机数按人员和装备损失情况向上级部队报告。" 0
+      END_SUB
+
+      SUB 6
+"\n%s个发射装置被毁（含之前被毁的%s个），" 2 S15.G1.S6.D1 S15.G1.S6.D2
+"部分发射任务暂停，待有可用发射架时再行计划。" 0
+      END_SUB
+
+      SUB 7
+"损毁严重，已失去辐射能力。" 0
+      END_SUB
+
+      SUB 8
+"\n新增%s个跑道损毁处，当前可用跑道长度为%s米。" 2 S15.G1.S8.D1 UOM_AMT("AIRDISTANCE",S15.G1.S8.D2)
+      END_SUB
+
+      SUB 9
+"\n%s个设备设施损毁（含先前被毁的%s），" 2 S15.G1.S9.D1 S15.G1.S9.D2
+"部分任务暂停，待设备设施修复后时再行计划。" 0
+      END_SUB
+
+      SUB 10
+"<p class='table_name'>随以上设施被毁的补给物资情况列表</p>" 0
+"__start_table|类型|受损数量|单位\n" 0
+         GROUP 1
+"|%s|%s|%s\n" 3 SLP_Category_Name[D4,S15.G1.S10.G1.D1] SLP_SC_AMT(D4,S15.G1.S10.G1.D1,S15.G1.S10.G1.D2) SLP_SC_UOM(D4,S15.G1.S10.G1.D1)
+         END_GROUP
+"__stop_table" 0
+      END_SUB
+
+      SUB 11
+"\n储备的补给物资无重大损失。" 0
+      END_SUB
+
+      SUB 12
+"效能已降低%s%%。" 1 S15.G1.S12.D1
+      END_SUB
+      SUB 13 
+"效能已降至%s%%。" 1 S15.G1.S13.D1
+          SUB 1
+"仍能与其他站点通信。" 0
+          END_SUB
+          SUB 2
+"已不能与其他站点通信。" 0
+          END_SUB
+      END_SUB
+      SUB 14
+"\n%s个火控雷达被毁。" 1 S15.G1.S14.D1
+      END_SUB
+      SUB 15
+"<p class='table_name'>随以上装置被毁的补给物资情况列表</p>" 0
+"__start_table|类型|受损数量|单位\n" 0
+"|%s|%s|%s\n" 3 SLP_Category_Name[D4,S15.G1.S15.D1] SLP_SC_AMT(D4,S15.G1.S15.D1,S15.G1.S15.D2) SLP_SC_UOM(D4,S15.G1.S15.D1)
+"__stop_table" 0
+      END_SUB
+"\n" 0
+   END_GROUP
+END_SUB
+
+SUB 16
+   GROUP 1
+      SUB 1
+"\n——%s，位于该区域，" 1 unit_name_transform(S16.G1.S1.D2)
+"为%s%s，" 2 unit_name_transform(D2) Target_Category[S16.G1.S1.D1]
+"受损后导致管线%s不能正常工作，已开始维修。" 1 unit_name_transform(S16.G1.S1.D3)
+      END_SUB
+      SUB 2
+"\n——%s，位于该区域，" 1 unit_name_transform(S16.G1.S2.D2)
+"为%s%s，" 2 unit_name_transform(D2) Target_Category[S16.G1.S2.D1]
+"受损后导致管线%s效能削弱，但仍可发挥作用。管线作业正常。" 1 unit_name_transform(S16.G1.S2.D3)
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 17
+"\n%s作战能力受到影响，" 1 unit_name_transform(D2)
+"原因：%s。" 1 S17.D3
+   SUB 1
+  "其所属目标同时受到影响。" 0
+   END_SUB
+   SUB 2
+"其所属目标不受影响。" 0
+   END_SUB
+   SUB 3
+"当前实际战斗力为%2.2f，" 1 S17.D1
+"报告的战斗力为%2.2f。" 1 S17.D2
+"\n备注：舰艇实际战斗力和报告的战斗力之间可能存在差异，" 0
+"这是因为舰艇的报告战斗力是由原型定义的平均打击次数来计算，而不是由实际打击次数来计算。" 0
+   END_SUB
+   SUB 4
+"当前战斗力为%2.2f。" 1 S17.D2
+   END_SUB
+END_SUB
+
+SUB 18
+"\n求救，求救，求救！" 0
+"\n%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(S18.D1,S18.D2)
+"现损毁严重，正在下沉，" 0
+"将于%s个小时内沉没，" 1 S18.D3
+"请求支援。" 0
+"\n求救，求救，求救！" 0
+END_SUB
+
+SUB 19
+"<p class='table_name'>人员和装备受损情况列表</p>" 0
+"__start_table|类型|受损数量\n" 0
+   GROUP 1
+"|%s|%s\n" 2  CSP_System_Name[D3,S19.G1.D1] S19.G1.D2
+   END_GROUP
+"__stop_table" 0
+"\n备注：总数包含了维修或抢救的装备、人员，不包含武器装备中的乘员伤亡。" 0
+END_SUB
+
+SUB 20
+"<p class='table_name'>船只受损情况列表</p>" 0
+"__start_table|类型|受损数量\n" 0
+   GROUP 1
+"|%s|%s\n" 2  Small_Boat[S20.G1.D2] S20.G1.D1
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+END_MAIN

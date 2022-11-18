@@ -1,0 +1,21 @@
+
+2250
+SUBJECT
+"%s摧毁补给仓库情况报告" 1 unit_name_transform(D4)
+MAIN
+
+"<p class='title'>%s摧毁补给仓库情况报告</p>" 1 unit_name_transform(D4)
+"\n%s在撤离%s地域时，" 2 unit_name_transform(D4) LOCATION(D2,D3)
+"摧毁了下列补给仓库中的所有物资：" 0
+
+GROUP 1
+   SUB 1
+"\n——%s，未知属方目标。" 1 unit_name_transform(G1.S1.D1)
+   END_SUB
+   SUB 2
+"\n——%s，%s目标。" 2 unit_name_transform(G1.S2.D1) No_Force_Side[G1.S2.D2]
+   END_SUB
+END_GROUP
+
+END_MAIN
+

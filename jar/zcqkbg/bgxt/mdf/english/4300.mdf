@@ -1,0 +1,35 @@
+
+4300
+SUBJECT
+"水路运输情况报告" 0
+MAIN
+"<p class='title'>水路运输情况报告</p>" 0
+
+"\n当前各方拥有的水路运输工具如下：" 0
+
+GROUP 1
+   SUB 1
+"\n%s：没有水路运输工具。" 1 No_Force_Side[G1.S1.D1]
+   END_SUB
+   SUB 2
+"\n%s：水路运输工具如下表。" 1 No_Force_Side[G1.S2.D1]
+"<p class='table_name'>%s水路运输工具列表</p>" 1 No_Force_Side[G1.S2.D1]
+"__start_table|运输工具类型|当前可用数|隶属集团\n" 0
+      GROUP 1
+         GROUP 1
+            SUB 1
+"|%s|%s|%s\n" 3 Transportation_Class[G1.S2.G1.G1.S1.D1]
+                G1.S2.G1.G1.S1.D2 unit_name_transform(G1.S2.G1.G1.S1.D3)
+            END_SUB
+            SUB 2
+"|%s|当前没有|%s\n" 2 Transportation_Class[G1.S2.G1.G1.S2.D1]
+                      unit_name_transform(G1.S2.G1.G1.S2.D2)
+            END_SUB
+         END_GROUP
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+END_GROUP
+
+END_MAIN
+

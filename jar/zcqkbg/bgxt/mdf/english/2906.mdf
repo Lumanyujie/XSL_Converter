@@ -1,0 +1,33 @@
+
+2906
+SUBJECT
+"部队方关系报告" 0
+MAIN
+" <p class='title'>各对阵方关系情况报告</p>" 0
+SUB 1
+
+"<p class='table_name'>本方和其他对阵方关系列表</p>" 0
+"__start_table|其他对阵方|关系\n" 0
+   GROUP 1
+"|%s|%s\n" 2 No_Force_Side[S1.G1.D1] Relationship[S1.G1.D2]
+   END_GROUP
+END_SUB
+
+SUB 2
+
+"<p class='table_name'>各对阵方关系列表</p>" 0
+
+"__start_table |对阵方|对阵方|关系\n" 0
+   GROUP 1
+      SUB 1
+      END_SUB
+      GROUP 1
+"|%s|%s|%s\n" 3 No_Force_Side[S2.G1.G1.D1] No_Force_Side[S2.G1.G1.D2] Relationship[S2.G1.G1.D3]
+      END_GROUP
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+END_MAIN
+

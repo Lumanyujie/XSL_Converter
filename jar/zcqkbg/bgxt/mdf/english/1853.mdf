@@ -1,0 +1,25 @@
+
+1853
+SUBJECT
+"%s部队补给类参数" 1 D2
+MAIN
+
+"<p class='title'>  %s部队补给类参数报告</p>\n\n" 1 D2
+
+SUB 1
+"  部队补给%s(通用名称：%s；编号：%s)值：\n" 3 SLP_Category_Name[D3,S1.D1]
+Supply_Category[S1.D1] S1.D1 
+"  现有量：%12.12s %s\n" 2 SLP_SC_AMT(D3,S1.D1,S1.D2) SLP_SC_UOM(D3,S1.D1)
+"  重新调整等级: %12.12s %s\n" 2 SLP_SC_AMT(D3,S1.D1,S1.D3) SLP_SC_UOM(D3,S1.D1)
+"  储存目标：%12.12s %s\n" 2 SLP_SC_AMT(D3,S1.D1,S1.D4) SLP_SC_UOM(D3,S1.D1)
+"  应收量：%12.12s %s\n" 2 SLP_SC_AMT(D3,S1.D1,S1.D5) SLP_SC_UOM(D3,S1.D1)
+"  基本载运量: %12.12s %s\n" 2 SLP_SC_AMT(D3,S1.D1,S1.D6) SLP_SC_UOM(D3,S1.D1)
+END_SUB
+
+SUB 2
+"\n  改变补给类%s可用量被拒绝， " 1 SLP_Category_Name[D3,S2.D1]
+"  因为该补给类为油料或弹药，并且由外部模块JCATS控制。\n" 0
+END_SUB
+
+END_MAIN
+

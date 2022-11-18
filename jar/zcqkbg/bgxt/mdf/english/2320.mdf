@@ -1,0 +1,19 @@
+
+2320
+SUBJECT
+"%s（地面战斗编组）当前行动情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s（地面战斗编组）当前行动情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+"\n由于%s已从该编组中撤出，" 1 unit_name_transform(S1.D1)
+"且新的主要突击部队%s由于道路原因无法到达，" 1 unit_name_transform(S1.D2)
+"因此该战斗编组解散。" 0
+
+END_SUB
+SUB 2
+"\n主要突击部队%s已达成作战目标，特遣队解散。" 1 unit_name_transform(S2.D1)
+END_SUB
+END_MAIN
+

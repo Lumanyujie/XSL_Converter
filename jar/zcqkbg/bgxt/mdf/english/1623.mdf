@@ -1,0 +1,42 @@
+1623
+SUBJECT
+"后勤补给%s属性" 1 Sustainment_Log_Prototype[D2]
+MAIN
+"<p class='title'>后勤补给%s属性</p>" 1 Sustainment_Log_Prototype[D2] 
+
+SUB 1
+"  补给的最大距离为%s%s。" 2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 2
+"  完成最大距离补给需耗时%s。" 
+              1 DURATION(S2.D1, "%d 天 %h 小时 %Rm 分钟")
+END_SUB
+
+SUB 3
+"  空运/空投部队携带%s的作战补给物资。"1 DURATION(S3.D1,"%d 天 %h 小时 %Rm 分钟")
+END_SUB
+
+SUB 4
+"  两栖攻击部队携带%s的作战补给物资上岸。"
+              1 DURATION(S4.D1, "%d 天 %h 小时 %Rm 分钟")
+END_SUB
+
+SUB 5
+"  当有补给物资低于基本携行量的%s时，部队要向后勤和指挥人员报告。" 1 S5.D1
+END_SUB
+
+SUB 6
+"\n\n  若%s后勤部队获得" 1
+                                      Sustainment_Log_Prototype[S6.D1]
+"  %s的补给，后勤物资可用比例为:\n" 1 Sustainment_Log_Prototype[D2] 
+   GROUP 1
+"  %15.15s  %8.8s \n" 2 Supply_Category[S6.G1.D1] S6.G1.D2
+   END_GROUP
+END_SUB
+
+SUB 7
+"  战斗伤亡人员是否被运回?  %s\n\n" 1 Answer[S7.D1]
+END_SUB
+
+END_MAIN

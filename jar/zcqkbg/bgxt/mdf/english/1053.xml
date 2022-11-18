@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="1053"> <subject> <line>改变雷场<D2/>效能百分比 </line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;  改变雷场<D2/>效能百分比报告 &lt;/p&gt; <br/><br/></line>  <sub n="1"> <line>  模型（CEP）刚收到调理员指令或外部事件，</line> <line>要求将雷场<D2/>的效能百分比降至<S1.D1/>。</line> <line>其目标数改为<S1.D2/>。</line> <line>其效能百分比没有降低。<br/></line> </sub> <sub n="2"> <line>  模型（CEP）刚收到调理员指令或外部事件,</line> <line>要求将无地雷的雷场<D2/>的效能百分比增至<S2.D1/>。</line> <line>其效能百分比没有提高。指令被忽略。<br/></line> </sub></main> </msg> </msgs>

@@ -1,0 +1,25 @@
+1631
+SUBJECT
+"%s (%s)C3质量等级属性" 2 C3_Quality_Rating[D2] D2
+MAIN
+"  %sC3质量等级有下列属性:\n" 1 C3_Quality_Rating[D2]
+
+SUB 1
+"  效能倍增系数：%s\n" 1 S1.D1
+"  最低C3效能：%s\n" 1 S1.D2
+"  最高级别指挥机构信息传输平均时延：%s\n" 1 DURATION(S1.D3, "%.4Tm分")
+"  次高级别指挥机构信息传输平均时延：%s\n" 1 DURATION(S1.D4, "%.4Tm分")
+"  最高级别指挥机构最大信息传输时延：%s\n" 1 DURATION(S1.D5, "%.4Tm分")
+"  次高级别指挥机构最大信息传输时延：%s\n" 1 DURATION(S1.D6, "%.4Tm分")
+"  干扰延迟时间均值：%s\n" 1 DURATION(S1.D7, "%.4Tm分")
+"  干扰延迟时间最大值：%s\n" 1 DURATION(S1.D8, "%.4Tm分")
+"  优先级：%s\n" 1 S1.D9
+"  下一级质量等级：%s\n" 1 C3_Quality_Rating_Allow_None[S1.D10]
+"  下一级等级效能：%s\n" 1 S1.D11
+"  上一级质量等级：%s\n" 1 C3_Quality_Rating_Allow_None[S1.D12]
+"  上一级等级效能：%s\n" 1 S1.D13
+"  C3损耗倍增系数：%s\n" 1 S1.D14
+
+END_SUB
+
+END_MAIN

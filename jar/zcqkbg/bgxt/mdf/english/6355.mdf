@@ -1,0 +1,70 @@
+
+6355
+SUBJECT
+"%s海运行动情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s海运行动情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 12
+"\n" 0
+   SUB 1
+"%s遭敌方攻击造成补给物资损失殆尽，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 2
+"从装载点到卸载点出现航线问题，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 3
+"%s所有具有输送能力的舰船被毁，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 4
+"%s最后一艘舰船被毁，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 5
+"没有适于装卸补给物资的港口设施，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 6
+"%s接到取消海上任务命令，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 7
+"由于没有通行航线，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 8
+"%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 9
+"由于%s在两栖行动初始阶段的航线问题，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 10
+"由于缺乏两栖行动必需的装备设施，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 11
+"在装载点没有被输送部队和装载物资，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 12
+"接到命令，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 13
+"%s的舰艇不具备扫雷能力，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 14
+"该区域没有敌方雷场，%s海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 15
+"%s的舰船不具备布雷能力，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+   SUB 16
+"%s没有水雷，海上补给行动中止，物资已调配给%s。" 2 unit_name_transform(D2) unit_name_transform(S12.D1)
+   END_SUB
+
+END_SUB
+
+SUB 13
+"\n在补给点，%s没有找到适合的装载地域，海上运输任务中止。" 1 unit_name_transform(D2)
+END_SUB
+
+SUB 14
+"\n在卸载点，%s没有找到适合的卸载地域，海上运输任务中止。" 1 unit_name_transform(D2)
+END_SUB
+
+END_MAIN
+

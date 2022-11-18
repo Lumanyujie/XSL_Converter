@@ -1,0 +1,179 @@
+1045
+SUBJECT
+"%s命令执行情况报告" 1 trans_word("Order",D2)
+
+MAIN
+"<p class='title'>%s命令执行情况报告</p>" 1 trans_word("Order",D2) 
+
+SUB 4
+"\n%s的作战能力已经发生变化，变化原因是：%s。" 2 unit_name_transform(D3) S4.D3
+
+   SUB 1
+"其所属目标也受到影响。" 0
+   END_SUB
+   SUB 2
+"其所属目标未受到影响。" 0
+   END_SUB
+   SUB 4
+"当前战斗力是%s%%。" 1 S4.D2
+   END_SUB
+END_SUB
+
+SUB 5
+"\n创建国家边界%s的命令已经完成。" 1 unit_name_transform(D3)
+END_SUB
+
+SUB 6
+"\n%s已经损毁%s" 2 unit_name_transform(D3) CSP_System_Name[S6.D4,S6.D1]
+"%s台（套）。损毁原因为：%s。" 2 S6.D2 S6.D3
+   SUB 1
+"%s中%s人阵亡。" 2 CSP_System_Name[S6.D4,S6.D1] S6.S1.D1
+   END_SUB 
+   SUB 2
+"没有乘员在内。" 0
+   END_SUB 
+END_SUB
+
+SUB 7
+"\n%s已经损失了%s" 2 unit_name_transform(D3) SLP_Category_Name[S7.D4,S7.D1]
+"%s%s，" 2 SLP_SC_AMT(S7.D4,S7.D1,S7.D2) SLP_SC_UOM(S7.D4,S7.D1)
+"损毁原因是：%s。" 1 S7.D3
+   SUB 1
+"共伤亡%s人。" 1 S7.S1.D1
+   END_SUB
+END_SUB
+
+SUB 8
+"\n目标%s的能力已经提高%s%%，" 2 unit_name_transform(D3) S8.D1
+"提高原因是：%s，" 1 S8.D3
+"目标当前能力为%s%%。" 1 S8.D2
+END_SUB
+
+SUB 9
+"\n目标%s的能力已降至%s%%，" 2 unit_name_transform(D3) S9.D1
+"原因是：%s。" 1 S9.D2
+END_SUB
+
+SUB 10
+"\n没有物资的补给目标%s已经遭到毁坏，原因是：%s，" 2 unit_name_transform(D3) S10.D1
+"目标仍有100%的物资储存能力。" 0
+END_SUB
+
+SUB 11
+"\n目标%s已经损失%s%%的补给物资，原因是：%s，" 3 unit_name_transform(D3) S11.D2 S11.D3
+"目标仍有储存补给物资的能力，但下列补给物资已经损毁：" 0
+
+"<p class='table_name'>损毁补给物资明细</p>" 0
+ "__start_table|补给物资名称|损毁量|剩余量\n" 0
+   GROUP 1
+"|%s|%s%s|%s%s\n" 5
+                   SLP_Category_Name[S11.D1,S11.G1.D1]
+                          SLP_SC_AMT(S11.D1,S11.G1.D1,S11.G1.D2)
+                          SLP_SC_UOM(S11.D1,S11.G1.D1)
+                          SLP_SC_AMT(S11.D1,S11.G1.D1,S11.G1.D3)
+                          SLP_SC_UOM(S11.D1,S11.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 12
+"\n新的作战能力是%s%%。" 1 S12.D1
+END_SUB
+
+SUB 14
+"\n%s已经被重建，" 1 unit_name_transform(D3)
+"位置：%s。" 1 LOCATION(D4,D5)
+   SUB 1
+"它加入%s编队，搭乘下列舰船：" 1 S14.S1.D1
+      GROUP 1
+"\n——%s。" 1 S14.S1.G1.D1
+      END_GROUP
+   END_SUB
+
+   SUB 2
+"\n下列舰船除外：" 0
+    GROUP 1
+"\n——%s，隶属%s编队。" 2 S14.S2.G1.D1 S14.S2.G1.D2
+    END_GROUP      
+   END_SUB
+
+   SUB 3
+"\n下列舰船除外，因为它们在返回初始阵位途中：" 0
+    GROUP 1
+"\n——%s，隶属%s编队。" 2 S14.S3.G1.D1 S14.S3.G1.D2
+    END_GROUP     
+   END_SUB
+
+END_SUB
+
+SUB 15
+"\n%s已被指定为%s的常驻基地。" 2 S15.D1 unit_name_transform(D2)
+END_SUB
+
+SUB 16
+"\n该部队没有指定保障部队，如果参演人员不为其下达补给指令，将得不到后续补给。" 0
+END_SUB
+
+SUB 17
+"\n%s是%s新的主跑道。" 2 S17.D1 unit_name_transform(D2)
+END_SUB
+
+SUB 18
+"\n%s没有在附近找到可用的跑道，" 1 unit_name_transform(D2)
+"此时不能升空作战。" 0
+END_SUB
+
+SUB 19
+
+   SUB 1
+"\n目标位置已经调整，情况如下：" 0
+"目标名称：%s；" 1 S19.D1
+"目标主体：%s；" 1 unit_name_transform(D3)
+"目标位置：%s。" 1 LOCATION(D4,D5)
+   END_SUB
+   SUB 2
+"\n目标已经生成，情况如下：" 0
+"目标名称：%s；" 1 S19.D1
+"目标主体：%s；" 1 unit_name_transform(D3)
+"目标分类码：%s；" 1 S19.D7
+"目标类型：%s；" 1 Target_Category[S19.D2]
+"具体类型：%s；" 1 S19.D5
+"机动类别：%s；" 1 Target_Mobility[S19.D6]
+"目标位置：%s；" 1 LOCATION(D4,D5)  
+"能力百分比：%s%%；" 1 S19.D3
+"目标代码：%s。" 1 S19.D4
+   END_SUB
+END_SUB
+
+SUB 38
+"\n%s在%s布设了%s枚地雷，" 3 No_Force_Side[S38.D1] LOCATION(D4,D5) S38.D2
+"雷场名称为%s。当前此区域共有%s" 2 unit_name_transform(D3) No_Force_Side[S38.D1]
+"的%s个雷场。" 1 S38.D3
+
+END_SUB
+
+SUB 45
+"\n%s雷场的有效地雷已减少%s%%，" 2 unit_name_transform(D3)  S45.D1
+"最初布设了%s枚地雷，现有%s枚。" 2 S45.D2 S45.D3
+   SUB 1
+"雷场效能仍为100%，原因是：%s。" 1 S45.S1.D1
+   END_SUB
+   SUB 2
+"雷场效能减至0，原因是：%s。" 1 S45.S2.D1
+   END_SUB
+END_SUB
+
+SUB 51
+"\n天线高度：%s米。" 1 UOM_AMT("AIRDISTANCE",S51.D1)
+END_SUB
+
+SUB 56
+"\n删除国界线%s的命令已执行。" 1 D3
+END_SUB
+
+SUB 64
+"\n目标距离：%s%s。" 2 UOM_AMT(DISTANCE,S64.D1) UOM(DISTANCE)
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,37 @@
+
+7600
+SUBJECT
+"%s管网损毁情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s管网损毁情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n%s报告：" 1 unit_name_transform(D2)
+"%s实施了远程空中突击。" 1 unit_name_transform(D6)
+END_SUB
+
+SUB 2
+"\n%s报告：" 1 unit_name_transform(D2)
+"%s实施了远程导弹突击。" 1 unit_name_transform(D6)
+END_SUB
+
+SUB 3
+"\n%s报告：" 1 unit_name_transform(D2)
+"%s实施远程炮火突击。" 1 unit_name_transform(D6)
+END_SUB
+
+SUB 4
+"%s的%s" 2 unit_name_transform(D2) unit_name_transform(S4.D2)
+"（%s）遭毁伤。" 1 Target_Category[S4.D1]
+"而该%s属于管线%s，" 2 Target_Category[S4.D1] unit_name_transform(S4.D3)
+"因此其工作效能被削弱。目前已开始维修。" 0
+   SUB 1
+"\n同时遭打击造成毁伤的还有：" 0
+      GROUP 1
+"\n——%s（%s），" 2 unit_name_transform(S4.S1.G1.D2) Target_Category[S4.S1.G1.D1]
+"属于管线%s，已组织维修。" 1  unit_name_transform(S4.S1.G1.D3)
+      END_GROUP
+   END_SUB
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,51 @@
+
+3020
+SUBJECT
+"对%s近距空中支援请求执行情况报告" 1 unit_name_transform(D3) 
+MAIN
+
+"<p class='title'>对%s近距空中支援请求执行情况报告</p>" 1 unit_name_transform(D3)
+
+"\n于%s，组织%s个编队对%s实施近距空中支援。" 3 GTIME(D4) D2 unit_name_transform(D3)
+
+SUB 1
+"主要包括：" 0   
+   GROUP 1
+"\n——空中%s编队，%s架飞机，从%s派出。" 3 S1.G1.D1 S1.G1.D2 unit_name_transform(S1.G1.D3)
+   END_GROUP
+END_SUB
+
+SUB 2
+"\n%s共有%s架飞机执行近距空中支援任务。" 2 unit_name_transform(S2.D1) S2.D2
+END_SUB
+
+SUB 3
+"\n此时没有地面或空中值班飞机。" 0
+END_SUB
+
+SUB 4
+"\n此时没有其他的地面或空中值班飞机。" 0
+END_SUB
+
+SUB 5
+"\n但目前不能满足所有支援请求。" 0
+END_SUB
+
+SUB 6
+"\n%s个编队因超出作战范围无法实施支援。" 1 S6.D1
+END_SUB
+
+SUB 7
+"\n%s个编队机载油料不足。" 1 S7.D1
+END_SUB
+
+SUB 8
+"\n%s个编队武器挂载不足。" 1 S8.D1 
+END_SUB
+
+SUB 9
+"\n该部队当前未交战。" 0
+END_SUB
+
+END_MAIN
+

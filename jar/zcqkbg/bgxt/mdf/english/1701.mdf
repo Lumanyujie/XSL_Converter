@@ -1,0 +1,74 @@
+
+1701
+SUBJECT
+"飞机挂载方案（%s）情况报告" 1 D2
+
+MAIN 
+"<p class='title'>飞机挂载方案（%s）情况报告</p>" 1 D2
+SUB 1
+   SUB 1
+      SUB 1
+         "<p class='table_name'>武器挂载清单</p>" 0
+         "__start_table|武器|数量\n" 0
+         GROUP 1
+            "|%s|%s\n" 2 Targetable_Weapon[S1.S1.S1.G1.D1] S1.S1.S1.G1.D2
+         END_GROUP
+         "__stop_table" 0
+      END_SUB
+      SUB 2
+         "\n未挂载武器。" 0
+      END_SUB
+   END_SUB
+
+   SUB 2
+      SUB 1
+         "<p class='table_name'>传感器挂载清单</p>" 0
+         "__start_table|传感器类型|数量\n" 0
+         GROUP 1
+            "|%s|1\n" 1 Sensor_Type[S1.S2.S1.G1.D1]
+         END_GROUP
+         "__stop_table" 0
+      END_SUB
+      SUB 2
+         "\n未挂载传感器。" 0
+      END_SUB
+   END_SUB
+
+   SUB 3
+      SUB 1
+         "<p class='table_name'>干扰机挂载清单</p>" 0
+         "__start_table|干扰机类型|数量\n" 0
+         GROUP 1
+            "|%s|1\n" 1 Jammer_Type[S1.S3.S1.G1.D1]
+         END_GROUP
+         "__stop_table" 0
+      END_SUB
+      SUB 2
+         "\n未挂载干扰机。" 0
+      END_SUB
+   END_SUB
+
+   SUB 4
+      SUB 1
+         "<p class='table_name'>物资挂载清单</p>" 0
+         "__start_table|类型|数量|单位\n" 0
+         GROUP 1
+            "|%s|%s|%s\n" 3
+                    Supply_Category[S1.S4.S1.G1.D1]
+                    SLP_SC_AMT(0,S1.S4.S1.G1.D1,S1.S4.S1.G1.D2)
+                    SLP_SC_UOM(0,S1.S4.S1.G1.D1)
+         END_GROUP
+         "__stop_table" 0
+      END_SUB
+      SUB 2
+         "\n未挂载物资。" 0
+      END_SUB
+   END_SUB
+   SUB 6
+      "\n挂载机动燃油" 0
+      "%s%s。" 2 UOM_AMT(WET_WEIGHT,S1.S6.D1) UOM(WET_WEIGHT)
+   END_SUB
+END_SUB
+
+END_MAIN
+

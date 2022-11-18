@@ -1,0 +1,41 @@
+
+1508
+SUBJECT
+"通用地形参数" 0
+MAIN
+"<p class='title'>  通用地形参数报告 </p> \n" 0
+SUB 1
+"  地形类型参数%s:\n\n" 1 Terrain_Type[S1.D1]
+END_SUB
+
+SUB 2
+"  机动时间倍增系数:%s\n" 1 S2.D1                                                   
+END_SUB
+
+SUB 3
+"  传单散开时间:%s\n" 1 DURATION(S3.D1, "%d 天, %h 小时, %Rm 分")
+END_SUB
+
+SUB 4
+"  探测舰船倍增系数:%s\n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  消声系数:%s db/km\n" 1 S5.D1
+END_SUB  
+
+SUB 6
+"  障碍类型:%s" 1 Barrier_Type[S6.D1] 
+"时间倍增系数:%s\n" 1 S6.D2
+END_SUB
+
+SUB 7
+"  基本障碍类型:%s\n" 1 Basic_Barrier_Type[S7.D1]
+"通行性  航线\n" 0
+"良好  %s\n" 1 S7.D2
+"一般  %s\n" 1 S7.D3
+"差  %s\n" 1 S7.D4
+END_SUB
+
+END_MAIN
+

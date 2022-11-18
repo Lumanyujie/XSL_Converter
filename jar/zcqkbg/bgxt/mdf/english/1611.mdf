@@ -1,0 +1,78 @@
+
+1611
+SUBJECT
+"%s%s反机动能力原型属性"  2 Mobility_Cntr_Mob_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  %s反机动原型属性:</p>\n\n"  1 Mobility_Cntr_Mob_Prototype[D2]
+
+SUB 1
+"  默认布雷速度: %s %s。\n"
+                2 UOM_AMT(SPEED,S1.D1) UOM(SPEED) 
+END_SUB
+
+SUB 2
+"  默认排雷速度: %s %s。\n"
+                2 UOM_AMT(SPEED,S2.D1) UOM(SPEED) 
+END_SUB
+
+SUB 3
+"  默认探雷速度: %s %s。\n"
+                2 UOM_AMT(SPEED,S3.D1) UOM(SPEED) 
+END_SUB
+
+SUB 4
+"  默认侦雷速度: %s %s。\n"
+                2 UOM_AMT(SPEED,S4.D1) UOM(SPEED) 
+END_SUB
+
+SUB 5
+"\n  以下雷场扫雷和布雷时间是新的。" 0
+"可以使用显示命令查看完整布雷和扫雷时间列表。\n" 0
+
+   GROUP 1
+"%-16.16s雷场:\n" 1 Minefield_Type[S5.G1.D1]
+"扫雷耗时 %s\n" 1
+          DURATION(S5.G1.D2, "%d天,%h时,%Rm 分")
+"布雷耗时 %s\n\n" 1
+          DURATION(S5.G1.D3, "%d天,%h时,%Rm 分")
+   END_GROUP
+END_SUB
+
+SUB 6
+"\n  以下为完整的扫雷和布雷时间列表： \n" 0
+
+   GROUP 1
+"%-16.16s 雷场:\n" 1 Minefield_Type[S6.G1.D1]
+"扫雷耗时 %s\n" 1
+          DURATION(S6.G1.D2, "%d天,%h时,%Rm 分")
+"布雷耗时 %s\n\n" 1
+          DURATION(S6.G1.D3, "%d天,%h时,%Rm 分")
+   END_GROUP
+END_SUB
+
+SUB 7 
+"  车队通过雷场的延迟时间:\n\n"  0
+"    __start_table | 地形类型|      编号 |      延迟时间\n" 0
+   GROUP 1
+"  | %-20.20s  |  %3.3s|     %s\n"
+                     3 Terrain_Type[S7.G1.D1] S7.G1.D1
+                       DURATION(S7.G1.D2, "%d天,%h时,%Rm 分")
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 8
+"\n  处于%s态势的部队通过雷场时，" 1         Unit_Minefield_Posture[S8.D1]
+"不同地形条件的延迟时间:\n\n" 0
+"    __start_table |地形类型 |      编号   |     延迟时间\n" 0
+   GROUP 1
+"  | %-20.20s|    %3.3s |    %s\n"
+                     3 Terrain_Type[S8.G1.D1] S8.G1.D1
+                       DURATION(S8.G1.D2, "%d天,%h时,%Rm 分")
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+END_MAIN
+

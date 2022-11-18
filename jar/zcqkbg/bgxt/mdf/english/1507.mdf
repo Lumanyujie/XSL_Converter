@@ -1,0 +1,46 @@
+
+1507
+SUBJECT
+"通用海军参数" 0
+MAIN
+"<p class='title'> 通用海军参数</p>\n\n" 0
+SUB 1
+"  只有补给物资达到申请量的%s时，海上补给才会开始。\n"  1 S1.D1
+END_SUB
+
+SUB 2
+"  只有部队在%s天（最大两栖行经时间）内能够行进舰船与突击/登录点间路程， " 1 S2.D1
+"舰船或部队的两栖登陆船才会在突击/登陆行动中被使用。\n" 0
+END_SUB
+
+SUB 3
+"  %s%s是参加突击/抢滩行动的舰船距离出发地的最大距离(最大海滩行动距离)。\n" 2 UOM_AMT(DISTANCE,S3.D1) UOM(DISTANCE)
+
+END_SUB
+
+SUB 4
+"  %s%s是参加两栖行动要求使用海滩或车辆资源的舰船自动驶入的最大距离（最大的舰船移动距离)。\n" 2 UOM_AMT(DISTANCE,S4.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 5
+"  电子侦察监视（ESM）报告标志被设置为：%s。\n" 1 Answer[S5.D1]
+END_SUB
+
+SUB 6
+"  关于新深水区。新区域最大深度未被接受的原因：" 0
+"区域范围无效(区域未重叠)或者区域最大深度" 0
+"超过了允许的最大水深。然而为该区域指定的新的机动时间倍增系数被接受。\n" 0
+END_SUB
+
+SUB 7
+"<p class='table_name'> 当前深水区属性设置表</p>" 0
+"__start_table|区域|区域名称|最大深度|机动时间倍增系数\n" 0
+   GROUP 1
+"|%s|%s|%s%s|%s\n" 
+   5 S7.G1.D1 S7.G1.D2  UOM_AMT(AIRDISTANCE,S7.G1.D3) UOM(AIRDISTANCE) S7.G1.D4
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+END_MAIN
+

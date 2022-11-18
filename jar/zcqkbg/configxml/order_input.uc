@@ -1,0 +1,11 @@
+FT              FT    AIRDISTANCE                         1                   0
+FT              FT    DISTANCE                    3280.8399                   0
+KM              KM    DISTANCE                            1                   0
+METERS          M     DISTANCE                         1000                   0
+KM_PER_DAY      KM_DY SPEED                               1                   0
+KM_PER_HR       KM_HR SPEED                           .0417                   0
+KM_PER_DAY      KM_DY NAVAL_SPEED                         1                   0
+KM_PER_HOUR     KM_HR NAVAL_SPEED                     .0417                   0
+KNOTS           KNTS  NAVAL_SPEED                     .0225                   0
+TON_GAL         GAL   WET_WEIGHT                          1                   0
+TON_GAL         TON   DRY_WEIGHT                          1                   0

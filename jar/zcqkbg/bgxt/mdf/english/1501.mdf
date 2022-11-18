@@ -1,0 +1,73 @@
+
+1501
+
+SUBJECT
+"模型事件时间" 0
+MAIN
+"<p class='title'>  模型事件时间报告 </p> \n" 0
+
+SUB 1
+"  调整过载系数区间：%s天(%s时)\n\n"
+                           2 DURATION(S1.D1, "%.6Td")
+                             DURATION(S1.D1, "%.2Th")
+END_SUB
+
+SUB 2
+"  兰彻斯特方程系数计算基准时间：%s天(%s时)(%s分钟)\n\n" 
+                          3 DURATION(S2.D1, "%.6Td") 
+                            DURATION(S2.D1, "%.2Th")
+                            DURATION(S2.D1, "%.3Tm")
+END_SUB
+
+SUB 3
+"  评估作战间隔时间：%s天(%s时)(%s分钟)\n\n" 
+                          3 DURATION(S3.D1, "%.6Td")
+                            DURATION(S3.D1, "%.2Th")
+                            DURATION(S3.D1, "%.3Tm")
+END_SUB
+
+SUB 4
+"  评估作战最小间隔时：%s天(%s时)(%s分钟)\n\n" 
+                         3 DURATION(S4.D1, "%.6Td")
+                           DURATION(S4.D1, "%.2Th")
+                           DURATION(S4.D1, "%.3Tm")
+END_SUB
+
+SUB 5
+"  特种部队评估作战时间：%s天(%s时)(%s分钟)\n\n" 
+                         3 DURATION(S5.D1, "%.6Td")
+                           DURATION(S5.D1, "%.2Th")
+                           DURATION(S5.D1, "%.3Tm")
+END_SUB
+
+SUB 6
+"  核辐射评估的间隔时间：%s天(%s时)\n\n" 
+                        2 DURATION(S6.D1, "%.6Td")
+                          DURATION(S6.D1, "%.2Th")
+END_SUB
+
+SUB 7
+"  化学污染接触评估间隔时间：%s天(%s时)\n\n" 
+                         2 DURATION(S7.D1, "%.6Td")
+                           DURATION(S7.D1, "%.2Th")
+END_SUB
+
+SUB 8
+"  核沾染时间：%s天(%s时)\n\n" 
+                         2 DURATION(S8.D1, "%.6Td")
+                           DURATION(S8.D1, "%.2Th")
+END_SUB
+
+SUB 9
+"  化学沾染时间：%s天(%s时)\n\n" 
+                        2 DURATION(S9.D1, "%.6Td")
+                          DURATION(S9.D1, "%.2Th")
+END_SUB
+
+SUB 10
+"  导弹发射间隔时间：%s\n"
+                       1 DURATION(S10.D1, " %天%小时%分%秒")
+END_SUB
+
+END_MAIN
+

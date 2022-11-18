@@ -1,0 +1,22 @@
+
+6600
+SUBJECT
+"%s发现敌潜艇情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s发现敌潜艇情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n最新情报：发现外方潜艇，位于%s。" 1 LOCATION(D5,D6)
+END_SUB
+
+SUB 2
+"\n疑似%s的%s潜艇位于%s，" 3 unit_name_transform(D4) D3  LOCATION(D5,D6)
+"时间：%s。" 1  GTIME(D7, "%U%d%H%MZ")  
+END_SUB
+
+SUB 3
+"\n疑似%s的%s潜艇目标丢失，位置：%s，" 3 unit_name_transform(D4) D3  LOCATION(D5,D6)
+"时间：%s。" 1 GTIME(D7, "%U%d%H%MZ") 
+
+END_SUB
+ 
+END_MAIN

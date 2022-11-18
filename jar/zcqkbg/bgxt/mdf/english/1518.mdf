@@ -1,0 +1,46 @@
+
+1518
+SUBJECT
+"补给存储区%s目标属性" 1 Supply_Storage_Area[D2]
+MAIN
+
+"<p class='title'>补给存储区%s目标属性</p>\n\n"  1 Supply_Storage_Area[D2]
+
+SUB 1
+"  目标半径：%s%s\n" 
+                          2 UOM_AMT(DISTANCE,S1.D1) UOM(DISTANCE)
+"  修复时间: %s\n" 
+                          1 DURATION(S1.D2, "%d天%h时%Rm分")
+"  摧毁时间：%s\n"
+                          1 DURATION(S1.D3, "%d天%h时%Rm分")
+"  目标分类码: %s\n" 1 S1.D4
+"  目标图标符号: %s\n" 1 S1.D5
+"  地下标识: %s\n" 1 S1.D6
+"  开放标识: %s\n" 1 S1.D7
+"  DIS代码: %s\n" 1 S1.D8
+END_SUB
+
+SUB 2 
+"  补给类最新初始数量表\n" 0
+   GROUP 1
+"     __start_table |  种类 |      编号  |     初始数量\n" 0
+"  | %15.15s |    %3.3s| %12.12s %s\n\n" 4 Supply_Category[S2.G1.D1] S2.G1.D1
+                        SLP_SC_AMT(0,S2.G1.D1,S2.G1.D2) SLP_SC_UOM(0,S2.G1.D1)
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 3 
+"  该类目标按每类指定数量表:\n" 0
+   GROUP 1
+"    __start_table |  种类  |      编号        |初始数量\n" 0
+                                                                                  
+ "  | %15.15s    |%3.3s |  %12.12s %s \n\n" 4   Supply_Category[S3.G1.D1] S3.G1.D1
+                        SLP_SC_AMT(0,S3.G1.D1,S3.G1.D2) SLP_SC_UOM(0,S3.G1.D1)
+   END_GROUP
+"__stop_table"0
+END_SUB
+
+END_MAIN
+
+

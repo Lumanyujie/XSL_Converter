@@ -1,0 +1,53 @@
+
+9170
+SUBJECT
+"%s获取其他方作战编成情报%s报告" 2  No_Force_Side[D2] Type_BDA_Report[D5]
+MAIN
+ 
+"<p class='title'>%s获取其他方作战编成情报%s报告</p>" 2  No_Force_Side[D2] Type_BDA_Report[D5]
+"\n报告时间段：%s至%s。" 2 GTIME(D3) GTIME(D1)
+
+GROUP 1
+
+"<p class='table_name'>当前%s情报信息</p>" 1 No_Force_Side[G1.D1]
+ "__start_table|序号|部队、目标或装备|隶属集团|位置|时间\n" 0      
+GROUP 1
+
+SUB 1
+       
+        "|%s|%s|%s|%s|%s\n" 5 G1.G1.D1 unit_name_transform(G1.G1.S1.D2)  unit_name_transform(G1.G1.S1.D3)  LOCATION(G1.G1.S1.D5,G1.G1.S1.D6)  GTIME(G1.G1.S1.D4)
+ 
+    
+      END_SUB
+
+      SUB 2
+
+   
+        "|%s|%s|%s|%s|%s\n" 5 G1.G1.D1 unit_name_transform(G1.G1.S2.D2) unit_name_transform(G1.G1.S2.D3)   LOCATION(G1.G1.S2.D5,G1.G1.S2.D6) GTIME(G1.G1.S2.D4)
+  
+
+      END_SUB
+
+      SUB 3
+   
+  
+ "|%s|%s|%s|%s|%s\n" 5 G1.G1.D1 unit_name_transform(G1.G1.S3.D2) unit_name_transform(G1.G1.S3.D3)   LOCATION(G1.G1.S3.D5,G1.G1.S3.D6) GTIME(G1.G1.S3.D4)
+
+
+      END_SUB
+
+      SUB 4
+
+  
+"|—— |%s：%s（台、套）|——|——|%s\n" 
+         3 CSP_System_Name[G1.G1.S4.D2,G1.G1.S4.D1] G1.G1.S4.D3 GTIME(G1.G1.S4.D4)
+
+
+      END_SUB
+
+     END_GROUP
+"__stop_table\n" 0
+     END_GROUP
+
+END_MAIN
+

@@ -1,0 +1,36 @@
+
+1725
+SUBJECT
+
+"火力武器类兰彻斯特损耗系数%s" 1 FWL_Case[D2]
+
+MAIN
+ " <p class='title'>  火力武器类兰彻斯特损耗系数%s </p> \n\n" 1 FWL_Case[D2]
+
+SUB 1
+"  一个或多个火力武器类兰彻斯特损耗系数已被改变。" 0
+"对于将%s(系统%s)作为损耗计算单位的%s兰彻斯特方程计算战损情形," 3                                               Combat_System[S1.D1] S1.D1 D2
+"以下受损系统有新的兰彻斯特系数损耗系数分配:\n" 0   
+
+GROUP 1
+"  __start_table |  系统      |      损耗系数 \n" 0
+"  | %3.3s  %15.15s  |  %13.13s\n" 
+3 S1.G1.D1   Combat_System[S1.G1.D1] S1.G1.D2 
+  END_GROUP
+"__stop_table"0
+END_SUB
+
+SUB 2
+"  对于将%s(系统%s)作为损耗计算单位的%s兰彻斯特方程计算战损情形, "
+ 3          Combat_System[S2.D1] S2.D1 D2
+"以下受损系统有新的兰彻斯特系数损耗系数分配:\n" 0
+"   __start_table |        系统  |     损耗系数\n" 0  
+
+ GROUP 1"   |%3.3s  %15.15s  |  %13.13s\n" 3 S2.G1.D1                                   Combat_System[S2.G1.D1] S2.G1.D2   
+
+END_GROUP
+
+"__stop_table"0
+END_SUB
+
+END_MAIN

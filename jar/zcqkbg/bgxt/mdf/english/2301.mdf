@@ -1,0 +1,15 @@
+
+2301
+SUBJECT
+"%s转移阵地受阻情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s转移阵地受阻情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 16
+"\n%s在当前阵地已达发射波次上限，" 1  unit_name_transform(D2)
+"需立即转移阵地，但周边无适合地域，" 0
+"只能原地继续执行任务。" 0
+END_SUB 
+
+END_MAIN
+

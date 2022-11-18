@@ -1,0 +1,26 @@
+
+1523
+SUBJECT
+"%s的命令等级属性." 1 Command_Level[D2]
+MAIN
+"<p class='title'> 命令等级%s(索引%s) 的属性: </p>\n\n" 
+ 2         Command_Level[D2] D2
+
+SUB 1
+"  命令等级名称:%s\n" 1 S1.D1
+END_SUB
+
+SUB 2
+"  超视距信息名称:%s\n" 1 S2.D1
+END_SUB
+
+SUB 3
+"  低等级命令名称:%s(索引%s)\n" 2 Command_Level[S3.D1] S3.D1 
+END_SUB
+
+SUB 4
+"  部队级别:%s(索引%s)\n" 2 Echelon_Level[S4.D1] S4.D1
+END_SUB
+
+END_MAIN
+

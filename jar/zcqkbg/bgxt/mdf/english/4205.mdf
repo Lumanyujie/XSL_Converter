@@ -1,0 +1,59 @@
+
+4205
+SUBJECT
+"%s物资转储情况报告" 1 unit_name_transform(D2)
+MAIN  
+"<p class='title'>%s物资转储情况报告</p>" 1 unit_name_transform(D2)
+SUB 2
+"\n%s收到大批补给物资，" 1 unit_name_transform(D2)
+   SUB 1
+"来自于战略后勤补给。" 0
+   END_SUB
+   SUB 2
+"来自于%s的补给。" 1 unit_name_transform(S2.S2.D1)
+   END_SUB
+   SUB 3
+      SUB 1
+"来自于%s运输队的补给。" 1 unit_name_transform(S2.S3.D1)
+      END_SUB
+      SUB 2 
+"来自于%s的临机补给。" 1 unit_name_transform(S2.S3.D1)
+      END_SUB
+      SUB 3 
+"来自于%s的定期补给。" 1 unit_name_transform(S2.S3.D1)
+      END_SUB
+   END_SUB
+   SUB 4
+"来自于%s的支援。" 1 unit_name_transform(S2.S4.D1)
+   END_SUB
+   SUB 5
+"来源未知。" 0
+   END_SUB
+   SUB 6
+"这批补给物资已超出了部队的携行能力。" 0
+   END_SUB
+   SUB 7
+"这批补给物资已超出了部队的存储能力。" 0
+   END_SUB
+   SUB 8
+"超出部队携行和存储能力的物资是%s%s干货，和%s%s液货。" 4 UOM_AMT(DRY_WEIGHT,S2.S8.D1)
+                                           UOM(DRY_WEIGHT)
+                                           UOM_AMT(WET_WEIGHT,S2.S8.D2)
+                                           UOM(WET_WEIGHT)
+"因此，转储以下补给物资：" 0
+"<p class='table_name'>转储补给物资清单</p>" 0
+"__start_table|补给类型|数量|单位\n" 0
+   END_SUB
+   GROUP 1
+"|%s|%s|%s\n" 3 SLP_Category_Name[S2.D1,S2.G1.D1] SLP_SC_AMT(S2.D1,S2.G1.D1,S2.G1.D2) SLP_SC_UOM(S2.D1,S2.G1.D1)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 3
+"\n补给物资已转储在%s的补给物资存储区，" 1 unit_name_transform(D2) 
+"位于%s。" 1 LOCATION(S3.D1, S3.D2)
+"下达“后勤报告”命令可以获得当前补给物资清单。" 0
+END_SUB
+
+END_MAIN

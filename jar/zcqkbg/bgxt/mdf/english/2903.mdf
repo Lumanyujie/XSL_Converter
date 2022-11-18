@@ -1,0 +1,19 @@
+
+2903
+SUBJECT
+"%s战斗力分配情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s战斗力分配情况报告</p>" 1 unit_name_transform(D2)
+
+"__start_table|方向|战斗力分配值\n" 0
+"|%s|%2.2f\n" 2 Hex_Edge[D3] D4
+"|%s|%2.2f\n" 2 Hex_Edge[D13] D14
+"|%s|%2.2f\n" 2 Hex_Edge[D5] D6
+"|%s|%2.2f\n" 2 Hex_Edge[D11] D12
+"|%s|%2.2f\n" 2 Hex_Edge[D7] D8
+"|%s|%2.2f\n" 2 Hex_Edge[D9] D10
+"__stop_table" 0
+
+END_MAIN
+

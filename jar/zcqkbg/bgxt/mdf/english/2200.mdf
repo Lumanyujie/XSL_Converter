@@ -1,0 +1,149 @@
+
+2200
+SUBJECT
+"%s转换交战态势情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s转换交战态势情况报告</p>" 1 unit_name_transform(D2)
+"\n%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(D3,D4)
+
+SUB 1
+"油料耗尽，被迫由%s转为防御态势，已请求油料补给。" 1 Unit_Posture[S1.D1]
+END_SUB
+
+SUB 2
+"现有战斗力为%2.2f，已突破丧失战斗力阈值（%2.2f），被迫转为%s态势，无法再进行抗击。" 3 S2.D3 S2.D1 Unit_Posture[S2.D2]
+END_SUB
+
+SUB 3
+"在最近%s小时内，战损达%s%%，被迫转为防御。" 2 DURATION(S3.D2, "%.2Th") S3.D1 
+END_SUB
+
+SUB 4
+"企图由%s转为%s态势时，" 2 Unit_Posture[S4.D1] Unit_Posture[S4.D2]
+"因港口作业不能实施机动" 0
+   SUB 1
+"（正卸载优先进入战场的%s）" 1 unit_name_transform(S4.S1.D1)
+   END_SUB
+   SUB 2
+"（正卸载非优先进入战场的%s）" 1 unit_name_transform(S4.S2.D1)
+   END_SUB
+   SUB 3
+"（正为%s卸载优先进入战场的船运补给物资）" 1 unit_name_transform(S4.S3.D1)
+   END_SUB
+   SUB 4
+"（正为%s卸载非优先进入战场的船运补给物资）" 1 unit_name_transform(S4.S4.D1)
+   END_SUB
+   SUB 5
+"（正为空中%s编队装载%s）" 2 S4.S5.D2 unit_name_transform(S4.S5.D1)
+   END_SUB
+   SUB 6
+"（正为空中%s编队装载补给物资）" 1 S4.S6.D1
+   END_SUB
+   SUB 7
+"（正为空中%s编队卸载%s）" 2 S4.S7.D2 unit_name_transform(S4.S7.D1)
+   END_SUB
+   SUB 8
+"（正为空中%s编队卸载补给物资）" 1 S4.S8.D1
+   END_SUB
+   SUB 9
+"（正为空中%s编队重新挂载或加油）" 1 S4.S9.D1
+   END_SUB
+   SUB 10
+"（正卸载%s编队的海上补给物资）" 1 S4.S10.D1
+   END_SUB
+   SUB 11
+"（正为%s编队装载海上补给物资）" 1 S4.S11.D1
+   END_SUB
+   SUB 12
+"（正协助搭载%s的%s上岸）" 2 unit_name_transform(S4.S12.D2) unit_name_transform(S4.S12.D1)
+   END_SUB
+   SUB 13
+"（正协助%s搭载%s）" 2 unit_name_transform(S4.S13.D1) unit_name_transform(S4.S13.D2)
+   END_SUB
+
+"，部队转入防御，当前战斗力为%s。" 1 S4.D3
+END_SUB
+
+SUB 5
+"\n部队为固定翼飞行部队，" 0
+"态势由%s转为%s时，无法实施机动。" 2 Unit_Posture[S5.D1] Unit_Posture[S5.D2]
+"部队目前处于防御状态，战斗力为%2.2f。" 1 S5.D3
+END_SUB
+
+SUB 6
+"企图由%s转为%s态势时，" 2 Unit_Posture[S6.D1] Unit_Posture[S6.D2]
+   SUB 1
+"  油料耗尽，" 0
+   END_SUB
+"无法实施机动，目前处于防御状态。" 0
+"当前战斗力为%2.2f。" 1 S6.D3
+END_SUB
+
+SUB 7
+"在地面交战规则变为“否”之前，部队一直保持着进攻态势。目前，部队处于防御。" 0
+END_SUB
+
+SUB 8
+"与敌遭遇，" 0
+   SUB 1
+"在直瞄火力范围内无法判明目标。" 0
+   END_SUB
+
+   SUB 2
+"<p class='table_name'>当面敌军情况</p>" 0
+"__start_table|部队名称|所属集团|方位|态势|战斗状态\n" 0
+      GROUP 1
+"|%s|%s" 2 unit_name_transform(S8.S2.G1.D2) unit_name_transform(S8.S2.G1.D1)
+"|%s|%s|%s\n" 3 Hex_Edge[S8.S2.G1.D3] Unit_Posture[S8.S2.G1.D4] Answer[S8.S2.G1.D5]
+      END_GROUP
+"__stop_table\n" 0
+   END_SUB
+END_SUB
+
+SUB 9
+"区域内无敌军活动。" 0
+END_SUB
+
+SUB 10
+"在机动过程中与敌遭遇，现已转入防御态势。" 0
+   SUB 1
+"区域内有外军部队活动，无法确定直瞄火力范围内部队的属性。" 0
+   END_SUB
+
+   SUB 2
+"<p class='table_name'>当面敌军情况</p>" 0
+"__start_table|部队名称|所属集团|方位|态势|战斗状态\n" 0
+      GROUP 1
+"|%s|%s" 2 unit_name_transform(S10.S2.G1.D2) unit_name_transform(S10.S2.G1.D1)
+"|%s|%s|%s\n" 3 Hex_Edge[S10.S2.G1.D3] Unit_Posture[S10.S2.G1.D4] Answer[S10.S2.G1.D5]
+      END_GROUP
+"__stop_table\n" 0
+   END_SUB
+
+   SUB 3
+"由于作战，脱离了地面战斗编组%s。" 1 S10.S3.D1
+   END_SUB
+
+END_SUB
+
+SUB 11
+"突发情况报告结束。" 0
+END_SUB
+
+SUB 12
+"正在撤退，现抵达%s，战斗力为%s%%。" 2 LOCATION(D3,D4) S12.D1
+END_SUB
+
+SUB 13
+"部队连续机动已达到上限，" 0
+"其先前态势为%s，" 1 Unit_Posture[S13.D1]
+"当前转入防御，" 0
+"可在休整%s后继续机动。" 1 DURATION(S13.D2, "%d天%h小时%Rm分钟")
+END_SUB
+
+SUB 14
+"该部队为地面战斗编组%s中的最后一支部队，该战斗编组不再存在。" 1 S14.D1
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,108 @@
+
+5850
+SUBJECT
+"情报搜索区命令（编号：%s）执行情况报告" 1 D2
+MAIN
+"<p class='title'>情报搜索区命令（编号：%s）执行情况报告</p>" 1 D2
+SUB 1
+"\n编号为“%s”的情报搜索区不存在，" 1 unit_name_transform(S1.D1)
+"因此无法生成该情报搜索区报告。" 0
+END_SUB
+
+SUB 2
+"\n%s当前没有情报搜索区，"   1 No_Force_Side[S2.D1]
+"因此无法生成该方所有情报搜索区报告。" 0
+END_SUB
+
+GROUP 1
+"\n\n——%s情报搜索区" 1 unit_name_transform(G1.D1)
+"\n优先级：%s级，" 1 unit_name_transform(G1.D3)
+"搜索区级别：%s，" 1 DSA_Use[G1.D4]
+"类型：%s。" 1 DSA_Area_Type[G1.D2]
+
+   SUB 1
+"\n定点搜索区，搜索点坐标：%s。" 1 LOCATION(G1.S1.D1,G1.S1.D2)
+   END_SUB
+
+   SUB 2
+"\n圆形搜索区，圆心点坐标：%s，" 1 LOCATION(G1.S2.D1,G1.S2.D2)
+"搜索半径：%s%s。" 2 UOM_AMT(DISTANCE,G1.S2.D3) UOM(DISTANCE)
+   END_SUB
+
+   SUB 3
+"\n带状搜索区，带状区开始点：%s，" 1 LOCATION(G1.S3.D2,G1.S3.D3)
+"带状区结束点：%s，" 1 LOCATION(G1.S3.D3,G1.S3.D5)
+"搜索宽度：%s%s。" 2 UOM_AMT(DISTANCE,G1.S3.D1) UOM(DISTANCE)
+   END_SUB
+
+   SUB 4
+"\n多边形搜索区，搜索区由以下边界点组成：%s" 1 LOCATION(G1.S4.D1,G1.S4.D2)
+      GROUP 1
+"，%s" 1 LOCATION(G1.S4.G1.D1,G1.S4.G1.D2)
+      END_GROUP
+"。" 0
+   END_SUB
+
+   SUB 5
+"\n目标搜索区，目标名称：%s，" 1 unit_name_transform(G1.S5.D1)
+"坐标：%s。" 1 LOCATION(G1.S5.D2,G1.S5.D3)
+   END_SUB
+
+   SUB 6
+"\n结束时间：未定，" 0
+   END_SUB
+
+   SUB 7
+"\n结束时间：%s，" 1 GTIME(G1.S7.D1)
+   END_SUB
+
+   SUB 8
+"搜索周期：%s，" 1 DURATION(G1.S8.D1, "%d天%h小时%m分%Rs秒")
+   END_SUB
+
+   SUB 9
+"搜索周期：未定，" 0
+   END_SUB
+
+   SUB 10
+"最后搜索时间：%s。" 1 GTIME(G1.S10.D1)
+   END_SUB
+
+   SUB 11
+"最后搜索时间：未定。" 0
+   END_SUB
+
+   SUB 12
+"" 0
+   END_SUB
+
+   SUB 13
+"\n无空中编队使用该情报搜索区。" 0
+   END_SUB
+
+   SUB 14
+"\n以下空中编队使用该情报搜索区：" 0
+      GROUP 1
+         "\n——%s编队" 1 unit_name_transform(G1.S14.G1.D1)
+      END_GROUP
+   END_SUB
+
+   SUB 15
+"\n敏感目标区编号：%s。" 1 G1.S15.D1
+   END_SUB
+
+   SUB 16
+"\n是否单次搜索：%s。" 1  Yes_No_Flag[G1.S16.D1]
+   END_SUB
+
+   SUB 17
+"\n情报收集模式：" 0
+      GROUP 1
+"\n——%s：%s" 2 Sensor_Collection_Mode[G1.S17.G1.D1] Yes_No_Flag[G1.S17.G1.D2]
+      END_GROUP
+   END_SUB
+
+END_GROUP
+
+END_MAIN
+

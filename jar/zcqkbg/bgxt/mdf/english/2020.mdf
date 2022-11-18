@@ -1,0 +1,42 @@
+
+2020
+SUBJECT
+"%s执行敏感目标区命令情况报告" 1 unit_name_transform(D2)
+MAIN
+
+"<p class='title'>%s执行敏感目标区命令情况报告</p>" 1 unit_name_transform(D2)
+"\n命令收到并执行，敏感目标区%s" 1 D3
+SUB 1
+   SUB 1
+  "已创建完成，名称：%s，" 1 S1.S1.D1
+  "具体描述：%s。" 1 S1.S1.D2 
+   END_SUB
+
+   SUB 2
+  "已被更改，名称：%s，" 1 S1.S2.D1
+  "具体描述：%s。" 1 S1.S2.D2 
+   END_SUB
+
+   SUB 3
+  "具有属性：" 0
+  "名称：%s，" 1 S1.S3.D1
+  "具体描述：%s。" 1 S1.S3.D2 
+   END_SUB
+
+"\n包括以下敏感目标：" 0
+"<p class='table_name'>敏感目标清单</p>" 0
+ "__start_table｜类型｜名称｜别名\n" 0
+
+   GROUP 1
+ "｜%s｜%s｜%s\n" 3 S1.G1.D1 unit_name_transform(S1.G1.D2) S1.G1.D3
+   END_GROUP
+
+"__stop_table" 0 
+END_SUB
+
+SUB 2
+"已经删除。" 0
+END_SUB
+
+END_MAIN
+

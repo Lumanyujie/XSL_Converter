@@ -1,0 +1,127 @@
+
+9160
+SUBJECT
+"%s人员疾病情况%s报告" 2 unit_name_transform(D3) Type_BDA_Report[D5]
+MAIN
+
+"<p class='title'>%s人员疾病情况%s报告</p>" 2 unit_name_transform(D3) Type_BDA_Report[D5]
+
+"\n以下为%s，在%s至%s期间" 3 unit_name_transform(D3) GTIME(D4) GTIME(D1)
+"人员疾病情况。该部所属人员总计%s人。" 1 D6
+"此情报由%s（特战分队）获取。" 1 unit_name_transform(D2)
+
+SUB 1
+   "<p class='table_name'>当前各类疾病人数</p>" 0
+   "__start_table|分类" 0
+   GROUP 1
+   "|%s" 1 CSP_System_Name[S1.G1.D1,S1.G1.D2]
+   END_GROUP
+   "\n" 0
+END_SUB
+
+SUB 2
+   GROUP 1
+   "|%s" 1 Disease_Failure[S2.G1.D1]
+
+      GROUP 1
+      "|%s" 1 S2.G1.G1.D1
+      END_GROUP
+      "\n" 0 
+   END_GROUP
+   "__stop_table\n" 0
+END_SUB
+
+SUB 3
+   "<p class='table_name'>本时段内新增病例人数</p>" 0
+   "__start_table|分类" 0
+   GROUP 1
+   "|%s" 1 CSP_System_Name[S3.G1.D1,S3.G1.D2]
+   END_GROUP
+   "\n" 0
+
+END_SUB
+ 
+SUB 4
+   GROUP 1
+   "|%s" 1 Disease_Failure[S4.G1.D1]
+
+      GROUP 1
+      "|%s" 1 S4.G1.G1.D1
+      END_GROUP
+      "\n" 0 
+   END_GROUP
+   "__stop_table\n" 0 
+ 
+END_SUB
+ 
+SUB 5
+  "<p class='table_name'>本时段内因病死亡人数</p>" 0
+   "__start_table|分类" 0
+   GROUP 1
+   "|%s" 1 CSP_System_Name[S5.G1.D1,S5.G1.D2]
+   END_GROUP
+   "\n" 0
+
+END_SUB
+
+SUB 6
+   GROUP 1
+   "|%s" 1 Disease_Failure[S6.G1.D1]
+
+      GROUP 1
+      "|%s" 1 S6.G1.G1.D1
+      END_GROUP
+      "\n" 0 
+   END_GROUP
+   "__stop_table\n" 0
+
+END_SUB
+
+SUB 7
+  "<p class='table_name'>本时段内疾病治愈人数</p>" 0
+   "__start_table|分类" 0
+   GROUP 1
+   "|%s" 1 CSP_System_Name[S7.G1.D1,S7.G1.D2]
+   END_GROUP
+   "\n" 0
+
+END_SUB
+
+SUB 8
+   GROUP 1
+   "|%s" 1 Disease_Failure[S8.G1.D1]
+
+      GROUP 1
+      "|%s" 1 S8.G1.G1.D1
+      END_GROUP
+      "\n" 0 
+   END_GROUP
+   "__stop_table\n" 0
+
+END_SUB
+ 
+SUB 9
+  "<p class='table_name'>本时段内因其他原因死亡人数</p>" 0
+   "__start_table|分类" 0
+   GROUP 1
+   "|%s" 1 CSP_System_Name[S9.G1.D1,S9.G1.D2]
+   END_GROUP
+   "\n" 0
+
+END_SUB
+
+SUB 10
+   GROUP 1
+   "|%s" 1 Disease_Failure[S10.G1.D1]
+
+      GROUP 1
+      "|%s" 1 S10.G1.G1.D1
+      END_GROUP
+      "\n" 0 
+   END_GROUP
+   "__stop_table\n" 0
+
+END_SUB
+
+
+END_MAIN

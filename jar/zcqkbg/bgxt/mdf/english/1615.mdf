@@ -1,0 +1,43 @@
+
+1615
+SUBJECT
+"%s编号%s情报信息原型战术属性" 2 Intel_Info_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  %s情报信息原型战术情报属性  </p>\n\n"  1 Intel_Info_Prototype[D2]
+
+SUB 1
+"  建制内空中力量对非己方部队的发现概率: %s。\n\n"    1 S1.D1
+END_SUB
+
+SUB 2
+"  建制内空中力量探测对他方或中立方目标的发现概率：%s。\n\n" 
+                                1 S2.D1
+END_SUB
+
+SUB 3
+"  建制内空中力量数据平均融合时间: %s。\n\n"
+               1 DURATION(S3.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 4
+"  建制内地面力量对非己方部队的发现概率: %s。\n\n" 1 S4.D1
+END_SUB
+
+SUB 5
+"  建制内地面力量探测对他方或中立方目标的发现概率：%s。\n\n" 
+                          1 S5.D1
+END_SUB
+
+SUB 6
+"  建制内地面力量数据平均融合时间: %s。\n\n"
+               1 DURATION(S6.D1, "%d天%h时%Rm分")
+END_SUB
+
+SUB 7
+"  战术情报报告时间范围：%s。\n\n"
+               1 DURATION(S7.D1, " %h时%Rm分")
+END_SUB
+
+END_MAIN
+

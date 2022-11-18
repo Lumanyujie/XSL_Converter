@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="2055"> <subject> <line>改变对阵方命令执行情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;改变对阵方命令执行情况报告&lt;/p&gt;</line>  <sub n="19"> <line><br/><f n="unit_name_transform"><S19.D1/></f>向<f n="No_Force_Side"><S19.D2/></f>下达了</line> <line>变更对阵方关系命令（编号：<D2/>），</line> <line>要求将其与<f n="No_Force_Side"><S19.D3/></f>的关系</line> <line>由<f n="Relationship"><S19.D4/></f>调整为<f n="Relationship"><S19.D5/></f>，</line> <line>命令已经执行。</line> </sub></main> </msg> </msgs>

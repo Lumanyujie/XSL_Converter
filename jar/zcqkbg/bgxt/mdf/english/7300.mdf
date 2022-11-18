@@ -1,0 +1,263 @@
+
+7300
+SUBJECT
+"%s与%s交战毁伤情况报告" 2 unit_name_transform(D3) unit_name_transform(D2)
+MAIN
+"<p class='title'>%s与%s交战毁伤情况报告</p>" 2 unit_name_transform(D3) unit_name_transform(D2)
+SUB 1
+   SUB 1
+"\n%s实施火力突击，" 1 unit_name_transform(S1.S1.D1)
+"预期弹着点：%s。" 1 LOCATION(D4,D5)
+   END_SUB
+
+   SUB 2
+"\n由外部事件造成的火力打击，" 0
+"预期弹着点：%s。" 1 LOCATION(D4,D5)
+   END_SUB
+
+   SUB 3
+" \n%s实施火力突击，" 1 unit_name_transform(S1.S3.D1)
+"预期弹着点：%s。" 1 LOCATION(D4,D5)
+   END_SUB
+END_SUB
+
+SUB 2
+   SUB 1
+"\n%s发射导弹，" 1 unit_name_transform(S2.S1.D1)
+"预期弹着点：%s。" 1 LOCATION(D4,D5)
+   END_SUB
+
+   SUB 2
+"\n由外部事件引起的导弹发射，" 0
+"预期弹着点：%s。" 1 LOCATION(D4,D5)
+   END_SUB
+END_SUB
+
+SUB 3
+"\n某特战分队与%s在%s展开交战。" 2 unit_name_transform(S3.D1) LOCATION(D4,D5)
+END_SUB
+
+SUB 4
+"\n某特战分队与%s在%s展开交战。" 2 unit_name_transform(S4.D1) LOCATION(D4,D5)
+END_SUB
+
+SUB 5
+"\n在两栖作战中，实施炮火打击，" 0
+"预期弹着点：%s。" 1 LOCATION(D4,D5)
+END_SUB
+
+SUB 6
+   SUB 1
+"\n由%s抽组的%s" 2 S6.S1.D3 Aircraft_Type[S6.S1.D2]
+"空中编队（批号：%s），" 1 S6.S1.D1
+"火力突击弹着点：%s。" 1 LOCATION(D4,D5)
+   END_SUB
+
+   SUB 2
+"\n由外部事件引起的空中火力突击，" 0
+"预期弹着点：%s。" 1 LOCATION(D4,D5)
+   END_SUB
+END_SUB
+
+SUB 7
+"\n一艘舰艇在穿越雷区时，" 0
+"在%s水域触雷。" 1 LOCATION(D4,D5)
+END_SUB
+
+SUB 8
+"\n使用以下弹药：" 0
+   GROUP 1
+"\n——%s，%s枚（发）" 2 Targetable_Weapon[S8.G1.D2] S8.G1.D1
+   END_GROUP
+END_SUB
+
+SUB 9
+"\n该编队交战结果如下：" 0
+END_SUB
+
+SUB 10
+"\n—未指定目标：" 0
+END_SUB
+
+SUB 11
+"\n—%s：" 1 unit_name_transform(S11.D1)
+END_SUB
+
+SUB 12
+"\n—%s：" 1 unit_name_transform(S12.D1)
+END_SUB
+
+SUB 13
+"\n—空中%s编队  ：" 1 S13.D1
+END_SUB
+
+SUB 14
+"\n—由%s派出的运输队：" 1 unit_name_transform(S14.D1)
+END_SUB
+
+SUB 15
+"\n—目标点坐标：" 0
+
+END_SUB
+
+SUB 16
+"\n—突击方位/距离：" 0
+END_SUB
+
+SUB 17
+"\n—%s：" 1 unit_name_transform(S17.D1)
+END_SUB
+
+SUB 18
+"\n—目标定位点%s：" 1 S18.D1
+END_SUB
+
+SUB 19
+"\n——未知。" 0
+END_SUB
+
+SUB 20
+"\n——无毁伤，导弹掠地飞行时自毁。" 0
+END_SUB
+
+SUB 21
+"\n——无毁伤，导弹掠海飞行时自毁。" 0
+END_SUB
+
+SUB 22
+"\n——无毁伤，导弹飞出地形匹配区时自毁。" 0
+END_SUB
+
+SUB 23
+"\n——无毁伤。" 0
+END_SUB
+
+SUB 24
+"\n——无毁伤，巡航导弹遭防空拦截。" 0
+END_SUB
+
+SUB 30
+   GROUP 1
+      SUB 1
+"\n——%s。" 1 Targetable_Weapon[S30.G1.S1.D1]
+      END_SUB
+
+      SUB 2
+"\n——雷场。" 0
+      END_SUB
+
+      SUB 3
+"\n——%s，%s，%s%s。" 4  unit_name_transform(S30.G1.S3.D1)
+                      SLP_Category_Name[S30.G1.S3.D4,S30.G1.S3.D2]
+                             SLP_SC_AMT(S30.G1.S3.D4,S30.G1.S3.D2,S30.G1.S3.D3)
+                             SLP_SC_UOM(S30.G1.S3.D4,S30.G1.S3.D2)
+      END_SUB
+
+      SUB 4
+"\n——%s，%s，" 2 unit_name_transform(S30.G1.S4.D1)
+                                 CSP_System_Name[S30.G1.S4.D5,S30.G1.S4.D2]
+"损失%s个，毁伤%s个。" 2  S30.G1.S4.D3, S30.G1.S4.D4
+      END_SUB
+
+      SUB 5
+"\n——%s船体受损，出现%s处破裂口。" 2 
+                          unit_name_transform(S30.G1.S5.D1) S30.G1.S5.D2 
+      END_SUB
+
+      SUB 6
+"\n——%s弹射器毁坏, %s个弹射器失效。" 2
+                         unit_name_transform(S30.G1.S6.D1) S30.G1.S6.D2 
+      END_SUB
+
+      SUB 7
+"\n——%s小型艇受损，%s艘%s损失。" 3 
+                      unit_name_transform(S30.G1.S7.D1) S30.G1.S7.D2 
+                      Small_Boat[S30.G1.S7.D3] 
+      END_SUB
+
+      SUB 8
+"\n——%s损失%s个，战损率%2.4f。" 3
+                    unit_name_transform(S30.G1.S8.D1) S30.G1.S8.D2 S30.G1.S8.D3 
+      END_SUB
+
+      SUB 9
+"\n——%s，%s：%s%s。" 4 unit_name_transform(S30.G1.S9.D1)
+            SLP_Category_Name[S30.G1.S9.D4,S30.G1.S9.D3]                          
+            SLP_SC_AMT(S30.G1.S9.D4,S30.G1.S9.D3,S30.G1.S9.D2)
+            SLP_SC_UOM(S30.G1.S9.D4,S30.G1.S9.D3)
+                   
+      END_SUB
+
+      SUB 10
+"\n——%s损失装卸设施%s套，战损率%2.4f。" 3
+             unit_name_transform(S30.G1.S10.D1) S30.G1.S10.D2 S30.G1.S10.D3 
+      END_SUB
+
+      SUB 11
+"\n——%s的运输分队，损失%s%s辆（节）。" 3 unit_name_transform(S30.G1.S11.D1)
+              Transportation_Class[S30.G1.S11.D2] S30.G1.S11.D3
+      END_SUB
+
+      SUB 12
+"\n——%s的机降编队，损失%s%s架。" 3 unit_name_transform(S30.G1.S12.D1) Aircraft_Type[S30.G1.S12.D3] S30.G1.S12.D2
+      END_SUB
+
+      SUB 13
+"\n——%s，%s：%s%s。" 4 
+                                        unit_name_transform(S30.G1.S13.D1)
+                      SLP_Category_Name[S30.G1.S13.D4,S30.G1.S13.D2]
+               SLP_SC_AMT(S30.G1.S13.D4,S30.G1.S13.D2,S30.G1.S13.D3)
+                             SLP_SC_UOM(S30.G1.S13.D4,S30.G1.S13.D2)
+      END_SUB
+
+      SUB 14
+"\n——%s，%s：损失%s个，无毁伤。" 3 
+                                unit_name_transform(S30.G1.S14.D1)
+                CSP_System_Name[S30.G1.S14.D4,S30.G1.S14.D2]
+                                S30.G1.S14.D3
+      END_SUB
+
+      SUB 15
+"\n——%s的未知项目：%s，类型：%s，数量：%s，" 4 unit_name_transform(S30.G1.S15.D1) unit_name_transform(S30.G1.S15.D2)
+                                                 unit_name_transform(S30.G1.S15.D3) S30.G1.S15.D4
+"武器：%s，击毁概率：%2.2f。" 2 S30.G1.S15.D5 S30.G1.S15.D6
+      END_SUB
+
+      SUB 16
+"\n——%s，损失发射架%s个，战损率%2.2f。" 
+                3 unit_name_transform(S30.G1.S16.D1) S30.G1.S16.D2 S30.G1.S16.D3
+      END_SUB
+
+      SUB 17
+"\n——%s，损失火控雷达%s个，战损率%2.2f。" 
+                3 unit_name_transform(S30.G1.S17.D1) S30.G1.S17.D2 S30.G1.S17.D3 
+      END_SUB
+
+      SUB 18
+"\n——目标定位点%s，遭打击损毁。" 1 S30.G1.S18.D1 
+      END_SUB
+
+      SUB 19
+"\n——外部武器。" 0
+      END_SUB
+
+      SUB 30
+"\n——错误，请通知技术人员。" 0
+      END_SUB
+
+      SUB 31
+"\n——%s的未知项目：%s，类型：%s，数量：%s，" 4 unit_name_transform(S30.G1.S31.D1) unit_name_transform(S30.G1.S31.D2)
+                                                 unit_name_transform(S30.G1.S31.D3) S30.G1.S31.D4
+"武器：%s，击毁概率：%2.2f。" 2 S30.G1.S31.D5 S30.G1.S31.D6
+      END_SUB
+
+   END_GROUP
+
+END_SUB
+
+SUB 31
+"\n更多毁伤可能由联合冲突战术仿真系统造成。" 0
+END_SUB
+
+END_MAIN
+

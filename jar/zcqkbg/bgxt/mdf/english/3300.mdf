@@ -1,0 +1,25 @@
+
+3300
+SUBJECT
+"空中%s编队中止空运行动情况报告" 1 D2
+MAIN
+"<p class='title'>空中%s编队中止空运行动情况报告</p>" 1 D2
+
+SUB 1
+"\n该编队为空运%s的最后一支编队，" 1 unit_name_transform(S1.D1)
+"但该部队现已全部装载完毕，因此编队空运任务中止。" 0
+END_SUB
+
+SUB 2
+"\n该编队正在空运%s，" 1 unit_name_transform(S2.D1)
+"一部已完成投送。此时该部队重新分组，" 0
+"已完成投送的一部成为独立部队，因此空运任务中止。" 0
+END_SUB
+
+SUB 3
+"\n该编队正在空运%s，" 1 unit_name_transform(S3.D1)
+"已开始运输，但第一批次至今尚未投送，因此空运任务中止。" 0
+END_SUB
+
+END_MAIN
+

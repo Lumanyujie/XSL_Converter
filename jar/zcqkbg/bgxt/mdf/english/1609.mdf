@@ -1,0 +1,30 @@
+
+1609
+SUBJECT
+"  网络情报原型, 潜艇属性特征为 %s %s." 
+                                                 2 Intel_Info_Prototype[D2] D2
+MAIN
+"  潜艇具有下列网络情报特征: %s \n" 1 Intel_Info_Prototype[D2]
+
+SUB 1
+"\n  潜艇火力定位时间是 %s 天\n" 1 S1.D1
+                          
+END_SUB
+
+SUB 2
+"\n  潜艇火力定位距离是 %s %s.\n" 2
+                                         UOM_AMT(DISTANCE,S2.D1) UOM(DISTANCE)
+END_SUB
+
+SUB 3
+"\n  潜艇探测时间缩减量为 %s\n" 1 S3.D1
+                          
+END_SUB
+
+SUB 4
+"\n  潜艇降低探测范围量：%s %s.\n" 2
+                                         UOM_AMT(DISTANCE,S4.D1) UOM(DISTANCE)
+END_SUB
+
+END_MAIN  
+

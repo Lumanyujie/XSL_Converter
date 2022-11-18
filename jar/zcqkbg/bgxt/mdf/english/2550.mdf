@@ -1,0 +1,24 @@
+
+2550
+SUBJECT
+"%s遭核生化沾染情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s遭核生化沾染情况报告</p>" 1 unit_name_transform(D2)
+
+
+
+SUB 1
+"\n紧急警报：" 0
+"%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(S1.D1,S1.D2)
+"正在遭受化学袭击！" 0
+END_SUB
+
+SUB 2
+"\n紧急警报：" 0
+"%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(S2.D1,S2.D2)
+"在其附近地区发生一次核爆！" 0
+END_SUB
+
+END_MAIN
+

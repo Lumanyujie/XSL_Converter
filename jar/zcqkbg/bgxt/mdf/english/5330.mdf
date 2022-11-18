@@ -1,0 +1,17 @@
+
+5330
+SUBJECT
+"%s面面导弹发射准备情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s面面导弹发射准备情况报告</p>" 1 unit_name_transform(D2)
+"\n%s当前位于%s，" 2 D2 LOCATION(D3,D4)
+"已开始组织面面导弹发射准备。" 0
+SUB 1
+"分别有以下导弹：" 0
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S1.G1.D1)
+   END_GROUP
+END_SUB
+
+END_MAIN
+

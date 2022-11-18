@@ -1,0 +1,30 @@
+
+1616
+SUBJECT
+"%s(编号 %s)的生存能力原型疾病/故障率" 2 Survivability_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  %s生存能力原型%s疾病/故障率报告  </p>\n\n" 2 Survivability_Prototype[D2] Disease_Failure[D3]
+"  __start_table |作战系统   |   发生率|   恢复率  |死亡（报废）率\n" 0
+
+GROUP 1
+" | %-15.15s|  %-8.8s  |        %-8.8s     |      %-8.8s\n" 4
+   Combat_System[G1.D1] G1.D2 G1.D3 G1.D4
+END_GROUP
+"__stop_table"0
+
+SUB 1
+"\n  下列部队没有使用新的配置\n" 0
+"  生存能力原型%s   \n" 1 Survivability_Prototype[D2] 
+"  疾病/故障%s   \n" 1 Diesease_Failure[D3]
+"  作战系统%s    \n" 1 Combat_System[S1.D1]
+   GROUP 1
+"  %s\n\n" 1 S1.G1.D1
+   END_GROUP
+END_SUB
+SUB 2
+"  所有部队已更新。\n\n" 0
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,31 @@
+
+2311
+SUBJECT
+"<p class='title'>%s（特战分队）行动受阻情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s（特战分队）行动受阻情况报告</p>" 1 unit_name_transform(D2)
+
+"\n%s在执行任务时，遇到困难。" 1 unit_name_transform(D2)
+
+SUB 1
+"伏击结束后，不能撤退。" 0
+END_SUB
+SUB 2
+"掩护结束后，不能撤退。" 0
+END_SUB
+SUB 3
+"巡逻结束后，不能撤退。" 0
+END_SUB
+SUB 6 
+"收到编号为%s的%s命令，" 2 S6.D2 trans_word("Order",S6.D1)
+"但无法完成对%s作战任务。" 1 unit_name_transform(S6.D3)
+   SUB 1
+"因为%s由我方某特战分队负责掩护。" 1 unit_name_transform(S6.D3)
+   END_SUB
+   SUB 2
+"正在终止行动。" 0
+   END_SUB
+END_SUB
+ 
+END_MAIN

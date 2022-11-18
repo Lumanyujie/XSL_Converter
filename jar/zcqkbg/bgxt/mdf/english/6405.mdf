@@ -1,0 +1,15 @@
+
+6405
+SUBJECT
+"%s海上失联情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s海上失联情况报告</p>" 1 unit_name_transform(D2)
+SUB 5
+"\n%s与所在编队指挥舰" 1 unit_name_transform(D2)
+"的通信联络完全中断，目前已离开编队, " 0
+"正单独行动，" 0
+"等待新的命令。" 0
+END_SUB
+
+END_MAIN
+

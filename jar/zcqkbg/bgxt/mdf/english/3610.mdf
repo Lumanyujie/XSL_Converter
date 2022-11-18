@@ -1,0 +1,92 @@
+
+3610
+SUBJECT
+"空军%s情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>空军%s情况报告</p>" 1 unit_name_transform(D2)
+SUB 1
+"\n%s当前" 1 unit_name_transform(S1.D1)
+"敌我识别模式1：%s。" 1 S1.D2
+END_SUB  
+
+SUB 2
+"\n该部目前没有机场。" 0
+END_SUB  
+
+SUB 3
+"\n机场：%s。" 1 unit_name_transform(S3.D1)
+END_SUB  
+
+SUB 4
+"\n飞行甲板当前可用。" 0
+END_SUB  
+
+SUB 5
+"\n机场目前没有跑道。" 0
+END_SUB  
+
+SUB 6
+"\n机场目前有%s条跑道可用。" 1 S6.D1
+END_SUB  
+
+SUB 7
+"\n最长跑道数据：" 0
+"\n—跑道：%s；" 1 unit_name_transform(S7.D1)
+"\n—最大长度：%s米；" 1 UOM_AMT("AIRDISTANCE",S7.D2)
+"\n—当前长度：%s米；" 1 UOM_AMT("AIRDISTANCE",S7.D3)
+"\n—需要的起飞长度：%s米；" 1 UOM_AMT("AIRDISTANCE",S7.D4)
+"\n—需要的降落长度：%s米。" 1 UOM_AMT("AIRDISTANCE",S7.D5)
+END_SUB  
+
+SUB 8
+"\n跑道损毁数量：%s；" 1 S8.D1
+"\n正修复跑道数量：%s。" 1 S8.D2
+   SUB 2 
+      GROUP 1
+"\n——%s，修复长度%s米。" 2 GTIME(S8.S2.G1.D1) UOM_AMT("AIRDISTANCE",S8.S2.G1.D2)
+      END_GROUP
+   END_SUB
+END_SUB  
+
+SUB 9
+"\n该机场其他可用跑道数据：" 0
+   GROUP 1
+"\n—跑道：%s，" 1 unit_name_transform(S9.G1.D1)
+"最大长度：%s米，" 1 UOM_AMT("AIRDISTANCE",S9.G1.D2)
+"当前长度：%s米。" 1 UOM_AMT("AIRDISTANCE",S9.G1.D3)
+      SUB 1
+"跑道损毁：%s，" 1 S9.G1.S1.D1
+"正修复：%s。" 1 S9.G1.S1.D2
+      END_SUB
+      SUB 2
+         GROUP 1
+"\n——%s，修复长度%s米。" 2 GTIME(S9.G1.S2.G1.D1) UOM_AMT("AIRDISTANCE",S9.G1.S2.G1.D2)
+         END_GROUP
+      END_SUB
+   END_GROUP
+END_SUB
+ 
+SUB 10
+"\n为该空军中队指派%s%s架。" 2 Aircraft_Type[S10.D2] S10.D1
+"<p class='table_name'>飞机修复清单</p>" 0
+"__start_table|修复时间|修复数量\n" 0  
+   GROUP 1
+      SUB 1
+"" 0
+      END_SUB
+      SUB 2
+"|%s|%s\n" 2 GTIME(S10.G1.S2.D1) S10.G1.S2.D2
+      END_SUB
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+ 
+SUB 11
+"\n飞机维修总数：%s，" 1 S11.D1
+"在飞数：%s，" 1 S11.D2
+"可用数：%s。" 1 S11.D3
+END_SUB
+ 
+END_MAIN
+

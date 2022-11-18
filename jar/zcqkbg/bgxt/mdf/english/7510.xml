@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="7510"> <subject> <line><f n="unit_name_transform"><D2/></f>两栖作战情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;<f n="unit_name_transform"><D2/></f>两栖作战情况报告&lt;/p&gt;</line> <line><br/><f n="unit_name_transform"><D2/></f>当前位于<f n="LOCATION"><D4/><D5/></f>，</line> <line>在两栖作战中，共发射<f n="Targetable_Weapon"><D7/></f><D3/>枚（发）。</line> </main> </msg> </msgs>

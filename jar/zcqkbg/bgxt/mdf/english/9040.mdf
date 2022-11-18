@@ -1,0 +1,152 @@
+
+9040
+
+SUBJECT
+"%s空中任务情况%s报告" 2 No_Force_Side[D2] Periodic_or_Summary[D5] 
+MAIN
+
+"<p class='title'>%s空中任务情况%s报告</p>" 2 No_Force_Side[D2] Periodic_or_Summary[D5] 
+ "\n报告起止时间：%s至%s。" 2 GTIME(D3) GTIME(D1)
+GROUP 1
+   SUB 1
+         SUB 1
+"<p class='title1'>空对地武器发射统计</p>" 0
+         END_SUB
+         SUB 2
+"<p class='title1'>空战统计</p>" 0
+         END_SUB
+         SUB 3
+"<p class='title1'>空中编队统计</p>" 0
+         END_SUB
+   END_SUB
+
+   SUB 2
+         SUB 1
+
+"\n——%s" 1 Service_Names[G1.S2.S1.D1]
+         END_SUB
+         SUB 2
+"\n——总计" 0
+         END_SUB
+   END_SUB
+
+   SUB 5
+"<p class='table_name'>空对地突击交战结果</p>" 0
+"__start_table|机型|战损|已着陆|发射武器\n" 0 
+      GROUP 1
+         SUB 1
+"|%s|%s|%s|%s\n" 4 Aircraft_Type[G1.S5.G1.S1.D1]
+                                  G1.S5.G1.S1.D2 G1.S5.G1.S1.D3 G1.S5.G1.S1.D4
+         END_SUB
+
+         SUB 2
+"|该时段无战损战果|——|——|——\n" 0
+         END_SUB
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 6
+"<p class='table_name'>近距空中支援交战结果</p>" 0
+"__start_table|机型|战损|已着陆|发射武器\n" 0 
+      GROUP 1
+         SUB 1
+"|%s|%s|%s|%s\n" 4 Aircraft_Type[G1.S6.G1.S1.D1]
+                                  G1.S6.G1.S1.D2 G1.S6.G1.S1.D3 G1.S6.G1.S1.D4
+         END_SUB
+         SUB 2
+"|该时段无战损战果|——|——|——\n" 0
+         END_SUB
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 7
+"<p class='table_name'>对敌防空压制交战结果</p>" 0
+"__start_table|机型|战损|已着陆|发射武器\n" 0 
+      GROUP 1
+         SUB 1
+"|%s|%s|%s|%s\n" 4 Aircraft_Type[G1.S7.G1.S1.D1]
+                                  G1.S7.G1.S1.D2 G1.S7.G1.S1.D3 G1.S7.G1.S1.D4
+         END_SUB
+         SUB 2
+"|该时段无战损战果|——|——|——\n" 0
+         END_SUB
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 8
+"<p class='table_name'>空中游猎交战结果</p>" 0
+"__start_table|机型|战损|已着陆|发射武器\n" 0 
+      GROUP 1
+         SUB 1
+"|%s|%s|%s|%s\n" 4 Aircraft_Type[G1.S8.G1.S1.D1]
+                                  G1.S8.G1.S1.D2 G1.S8.G1.S1.D3 G1.S8.G1.S1.D4
+         END_SUB
+         SUB 2
+"|该时段无战损战果|——|——|——\n" 0
+         END_SUB
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 9
+"<p class='table_name'>空中反潜交战结果</p>" 0   
+"__start_table|机型|战损|已着陆|发射武器\n" 0 
+      GROUP 1
+         SUB 1
+"|%s|%s|%s|%s\n" 4 Aircraft_Type[G1.S9.G1.S1.D1]
+                                  G1.S9.G1.S1.D2 G1.S9.G1.S1.D3 G1.S9.G1.S1.D4
+         END_SUB
+         SUB 2
+"|该时段无战损战果|——|——|——\n" 0
+         END_SUB
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 10
+"<p class='table_name'>空中巡逻交战结果</p>" 0 
+" __start_table |机型|出动架次|转场|拦截|交战\n" 0  
+      GROUP 1
+         SUB 1
+"|%s|%s|%s|%s|%s\n" 5 
+                Aircraft_Type[G1.S10.G1.S1.D1] G1.S10.G1.S1.D2 G1.S10.G1.S1.D3 
+                                              G1.S10.G1.S1.D4 G1.S10.G1.S1.D5
+         END_SUB
+         SUB 2
+"|该时段无报告|——|——|——|——\n" 0
+         END_SUB
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+
+   SUB 11
+"<p class='table_name'>空中护航交战结果</p>" 0 
+"__start_table|机型|出动架次|转场|关联|拦截|交战\n" 0  
+      GROUP 1
+         SUB 1
+"|%s|%s|%s|%s|%s|%s\n" 6 
+                Aircraft_Type[G1.S11.G1.S1.D1] G1.S11.G1.S1.D2 G1.S11.G1.S1.D3 
+                               G1.S11.G1.S1.D4 G1.S11.G1.S1.D5 G1.S11.G1.S1.D6
+         END_SUB
+         SUB 2
+"|该时段无报告|——|——|——|——|——\n" 0
+         END_SUB
+      END_GROUP
+ "__stop_table" 0
+   END_SUB
+
+   SUB 12
+"<p class='table_name'>汇总情况</p>" 0 
+"__start_table|任务类型|已起飞|已修复|执行任务中\n" 0
+      GROUP 1
+"|%s|%s|%s|%s\n" 4 
+             Mission_Type[G1.S12.G1.D1] G1.S12.G1.D2 G1.S12.G1.D3 G1.S12.G1.D4
+      END_GROUP
+ "__stop_table" 0
+   END_SUB
+END_GROUP
+
+END_MAIN

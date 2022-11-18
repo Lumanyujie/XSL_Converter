@@ -1,0 +1,77 @@
+
+4250
+SUBJECT
+"%s补给情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s补给情况报告</p> " 1 unit_name_transform(D2)
+SUB 1
+"\n%s正准备将额外的补给配送给其它部队，" 1 unit_name_transform(D2)
+   SUB 1
+"原因是该部队即将开始机动。" 0
+   END_SUB
+   SUB 2
+"原因是该部队即将开始两栖行动。" 0
+   END_SUB
+   SUB 3
+"原因是即将空运该部队。" 0
+   END_SUB
+   SUB 4
+"原因是从敌方部队缴获了补给物资。" 0
+   END_SUB
+   SUB 5
+"原因是接收了大批战略补给物资。" 0
+   END_SUB
+   SUB 6
+"原因是从敌方部队缴获了补给物资。" 0
+   END_SUB
+   SUB 7
+"原因是飞行部队需要转场。" 0
+   END_SUB
+   SUB 8
+"原因是空运补给物资到达。" 0
+   END_SUB
+   SUB 9
+"原因是多余补给物资需要运输队运送。" 0
+   END_SUB
+   SUB 10
+"原因是该部队等待水路输送、铁路输送或公路输送。" 0
+   END_SUB
+   SUB 11
+"一些未知原因，通报技术人员。" 0
+   END_SUB
+   SUB 12
+"<p class='table_name'>接收补给物资部队名单</p>" 0
+"__start_table|部队名称\n" 0
+      GROUP 1
+"|%s\n" 1 unit_name_transform(S1.S12.G1.D1)
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+   SUB 13
+"<p class='table_name'>卸载补给物资清单</p>" 0
+"__start_table|补给类型|数量|单位\n" 0
+      GROUP 1
+"|%s|%s|%s\n" 3 SLP_Category_Name[S1.D1,S1.S13.G1.D1]
+                     SLP_SC_AMT(S1.D1,S1.S13.G1.D1,S1.S13.G1.D2)
+                     SLP_SC_UOM(S1.D1,S1.S13.G1.D1)
+      END_GROUP
+"__stop_table" 0
+   END_SUB
+   SUB 14
+"\n全部超额补给物资已完成配送。" 0
+   END_SUB
+END_SUB
+
+SUB 2
+"\n%s的第%s类补给物资已低于再申请阈值。" 2 unit_name_transform(D2) S2.D1
+END_SUB
+
+SUB 3
+"\n%s已收到%s的申请，" 2 unit_name_transform(D2) unit_name_transform(S3.D1)
+"但两支部队相距%s%s，" 2             UOM_AMT(DISTANCE,S3.D2) UOM(DISTANCE)
+"现有的水路、铁路或公路输送工具都无法送达，" 0
+"该申请已撤销。建议后勤部门考虑调整保障关系。" 0
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="2301"> <subject> <line><f n="unit_name_transform"><D2/></f>转移阵地受阻情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;<f n="unit_name_transform"><D2/></f>转移阵地受阻情况报告&lt;/p&gt;</line>  <sub n="16"> <line><br/><f n="unit_name_transform"><D2/></f>在当前阵地已达发射波次上限，</line> <line>需立即转移阵地，但周边无适合地域，</line> <line>只能原地继续执行任务。</line> </sub></main> </msg> </msgs>

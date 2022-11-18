@@ -1,0 +1,27 @@
+
+1806
+SUBJECT
+"战术部队原型%s(编号%s)补给消耗" 
+                                          2 Tactical_Unit_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  战术部队原型%s(编号%s)正常每天或每千米消耗补给物资数量 </p>\n\n"  2 Tactical_Unit_Prototype[D2] D2
+
+" __start_table | 名称  |编号  |  机动每千米正常消耗   \n" 0
+
+GROUP 1
+"|%15.15s |  (%3.3s)  |%10.10s  %-4.4s  %-10.10s  %10.10s %-4.4s  %-10.10s\n" 8
+                                                Supply_Category[G1.D1] G1.D1 
+        SLP_SC_AMT(0,G1.D1,G1.D2) SLP_SC_UOM(0,G1.D1) Consumption_Type[G1.D1] 
+        SLP_SC_AMT(0,G1.D1,G1.D3) SLP_SC_UOM(0,G1.D1) Consumption_Type[G1.D1] 
+END_GROUP
+"__stop_table"0
+
+"\n" 0
+
+SUB 1
+"  这些消耗类型没有任何补给可用。\n" 0
+END_SUB
+
+END_MAIN
+

@@ -1,0 +1,42 @@
+
+2900
+SUBJECT
+"防空阵地作战情况报告" 0
+MAIN
+
+"<p class='title'>防空阵地作战情况报告</p>" 0
+
+"\n注：按编号为%s的指令，提供此报告，" 1 D2
+SUB 1
+"涉及所有对阵方。" 0
+END_SUB
+
+SUB 2
+"仅涉及%s。" 1 No_Force_Side[S2.D1]
+END_SUB
+
+SUB 3
+"仅涉及%s。" 1 unit_name_transform(S3.D1)
+END_SUB
+
+SUB 4
+"涉及%s及其所属部队。" 1 unit_name_transform(S4.D1)
+END_SUB
+
+SUB 5
+"__start_table|阵地名称|上级单位|保障部队|弹药数量|" 0
+"准备发射数|再装填数量|发射单元数量|效能|位置\n" 0
+   GROUP 1
+"|%s|%s|" 2 S5.G1.D1 unit_name_transform(S5.G1.D2)
+"%s|%s|%s|" 3 unit_name_transform(S5.G1.D3) S5.G1.D4 S5.G1.D5
+"%s|%s|%s%%|" 3 S5.G1.D6 S5.G1.D7 S5.G1.D8
+"%s\n" 1 LOCATION(S5.G1.D9,S5.G1.D10)
+   END_GROUP
+"__stop_table" 0
+END_SUB
+
+SUB 6
+    "\n未发现目标。" 0
+END_SUB
+
+END_MAIN

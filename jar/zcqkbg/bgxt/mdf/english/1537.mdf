@@ -1,0 +1,24 @@
+ 
+1537
+SUBJECT
+"作战系统可见性/人员%s（编号%s）"       2 Combat_System[D2] D2
+MAIN
+"<p class='title'> 作战系统可见性/人员报告</p>\n\n" 0 
+
+SUB 1
+"  作战系统%s(%s)被认为是人员。\n" 2 Combat_System[D2] D2
+END_SUB
+SUB 2
+"  作战系统%s(%s)不被认为是人员。\n" 2 Combat_System[D2] D2
+END_SUB
+
+"  作战系统%s(%s)在指定类别地形中有指定的可见性值：\n"
+                          2 Combat_System[D2] D2
+
+GROUP 1
+"  地形类型%-18.18s(%s), %s%不能被探测。\n" 
+                           3 Terrain_Type[G1.D1] G1.D1 G1.D2
+END_GROUP
+ 
+END_MAIN
+

@@ -1,0 +1,26 @@
+
+2140
+SUBJECT
+"%s不能抽组特战分队情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s不能抽组特战分队情况报告</p>" 1 unit_name_transform(D2)
+
+"\n拟从%s中按%s，自动抽组特战分队，"  2  unit_name_transform(D2)
+  Highres_Unit_Prototype[D3]
+
+   SUB 1
+"但由于%s没有足够资源，当前无法完成抽组任务。" 1 unit_name_transform(D2)
+
+
+   END_SUB
+
+   SUB 2
+"但由于该特战分队的计划配置地域%s为水域，而又没有装备船艇，所以当前无法抽组。" 1 LOCATION(D4, D5)
+   END_SUB
+
+"命令尚未取消，" 0
+"将继续尝试抽组。" 0
+
+END_MAIN
+

@@ -1,0 +1,30 @@
+
+3400
+SUBJECT
+"空中%s编队空运物资任务进展情况报告" 1 D2
+MAIN
+"<p class='title'>空中%s编队空运物资任务进展情况报告</p>" 1 D2
+
+"\n当前，该编队尚未收到全部空运物资，缺项如下：" 0
+"<p class='table_name'>待收物资清单</p>" 0
+"__start_table|物资名称|数量\n" 0
+GROUP 1
+"|%s|%s\n" 2 SLP_Category_Name[D3,G1.D1] G1.D2
+END_GROUP
+"__stop_table" 0
+
+SUB 1
+"\n该编队将在当前地域加油，尔后返场。" 0
+END_SUB
+
+SUB 2
+"\n备注：一架飞机不能同时装载干货和液货。" 0
+END_SUB
+
+SUB 3
+"\n按照命令中规定的飞机数量，该编队无法完成所有规定物资的空运任务。" 0
+END_SUB
+
+"\n该编队无法全部满足任务规定的所有物资项的空运要求。" 0
+
+END_MAIN

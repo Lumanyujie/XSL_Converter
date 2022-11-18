@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="5901"> <subject> <line><f n="unit_name_transform"><D2/></f>侦察情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;<f n="unit_name_transform"><D2/></f>侦察情况报告&lt;/p&gt;</line> <line><br/><f n="unit_name_transform"><D2/></f>于<f n="GTIME"><D1/></f>，</line>  <sub n="7"> <line>发现<f n="unit_name_transform"><S7.D2/></f></line> <line>被<f n="unit_name_transform"><S7.D3/></f>击毁，该部无力将其击退。</line> </sub></main> </msg> </msgs>

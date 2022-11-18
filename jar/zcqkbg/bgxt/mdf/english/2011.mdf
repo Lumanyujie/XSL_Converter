@@ -1,0 +1,17 @@
+
+2011
+SUBJECT
+"作战区情况报告" 0
+MAIN
+
+"<p class='title'>作战区情况报告</p>" 0
+SUB 1
+"\n已删除作战区%s。" 1 S1.D1 
+END_SUB
+
+SUB 2
+"\n已创建作战区，并命名为“%s”。" 1 S2.D1 
+END_SUB
+
+END_MAIN
+

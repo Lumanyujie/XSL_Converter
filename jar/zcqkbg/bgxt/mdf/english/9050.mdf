@@ -1,0 +1,101 @@
+
+9050
+SUBJECT
+"%s空军基地和空军部队情况%s报告" 2 No_Force_Side[D2] Periodic_or_Summary[D5]  
+MAIN
+
+"<p class='title'>%s空军基地和空军部队情况%s报告</p>" 2 No_Force_Side[D2] Periodic_or_Summary[D5]  
+"\n报告时间段：%s至%s。" 2 GTIME(D3) GTIME(D1)
+
+SUB 1
+"<p class='table_name'>空军基地情况</p>" 0
+"__start_table|编号|机场名称|战斗状态|位置|下次维修时间\n" 0
+
+   GROUP 1
+      SUB 1
+"|%s|%s|%s|%s|不需要维修\n" 4 S1.G1.S1.D1
+                                      unit_name_transform(S1.G1.S1.D2) Answer[S1.G1.S1.D3]
+                                       LOCATION(S1.G1.S1.D4,S1.G1.S1.D5)
+      END_SUB
+      SUB 2
+"|%s|%s|%s|%s|%s\n" 5 S1.G1.S2.D1
+                                             unit_name_transform(S1.G1.S2.D2) Answer[S1.G1.S2.D3]
+                          LOCATION(S1.G1.S2.D4,S1.G1.S2.D5) GTIME(S1.G1.S2.D6)
+      END_SUB
+      SUB 3
+"|%s|%s|%s|%s|未计划\n" 4 S1.G1.S3.D1
+                                       unit_name_transform(S1.G1.S3.D2) Answer[S1.G1.S3.D3]
+                                       LOCATION(S1.G1.S3.D4,S1.G1.S3.D5)
+      END_SUB
+      SUB 4
+"|%s|%s|%s|%s|基地内无跑道\n" 4 S1.G1.S4.D1
+                                       unit_name_transform(S1.G1.S4.D2) Answer[S1.G1.S4.D3]
+                                       LOCATION(S1.G1.S4.D4,S1.G1.S4.D5)
+      END_SUB
+
+   END_GROUP
+"__stop_table\n" 0
+END_SUB
+
+SUB 2
+"\n无空军基地可报告。" 0
+END_SUB
+
+SUB 3
+"<p class='table_name'>空军部队情况</p>" 0
+
+"__start_table|编号|部队名称（机型）|编制数|飞行数|值班数|维修数|当前可用数" 0
+"|%s小时内可用数|%s小时内可用数\n" 2 S3.D1 S3.D2
+
+   GROUP 1
+      SUB 1
+"|%s|%s（%s）|" 3 S3.G1.S1.D1 unit_name_transform(S3.G1.S1.D2) Aircraft_Type[S3.G1.S1.D3]
+"%s|%s|%s|%s|%s|%s|%s\n" 7
+                            S3.G1.S1.D14 S3.G1.S1.D15 S3.G1.S1.D16 S3.G1.S1.D9
+                            S3.G1.S1.D4 S3.G1.S1.D5 S3.G1.S1.D6 
+      END_SUB
+      SUB 2
+"|—|空军基地内无部队驻扎|—|—|—|—|—|—|—\n" 0
+      END_SUB
+   END_GROUP
+
+"__stop_table\n" 0
+
+END_SUB
+
+SUB 4
+"<p class='table_name'>跑道情况</p>" 0
+
+"__start_table|编号|跑道名称|下次维修时间|最大长度（米）|当前长度（米）|损毁处\n" 0
+
+   GROUP 1
+      SUB 1
+"|%s|%s|%s|%s|%s|%s\n" 6 S4.G1.S1.D1 unit_name_transform(S4.G1.S1.D2)
+                       GTIME(S4.G1.S1.D3) UOM_AMT("AIRDISTANCE",S4.G1.S1.D4) UOM_AMT("AIRDISTANCE",S4.G1.S1.D5) S4.G1.S1.D6 
+      END_SUB
+      SUB 2
+"|%s|%s|未计划|%s|%s|%s\n" 5 S4.G1.S2.D1 unit_name_transform(S4.G1.S2.D2) UOM_AMT("AIRDISTANCE",S4.G1.S2.D3) UOM_AMT("AIRDISTANCE",S4.G1.S2.D4) S4.G1.S2.D5 
+      END_SUB
+      SUB 3
+"|%s|%s|不需要维修|%s|%s|%s\n" 5 S4.G1.S3.D1 unit_name_transform(S4.G1.S3.D2) UOM_AMT("AIRDISTANCE",S4.G1.S3.D3) UOM_AMT("AIRDISTANCE",S4.G1.S3.D4) S4.G1.S3.D5 
+      END_SUB
+      SUB 4
+"|—|空军基地无跑道可用|—|—|—|—\n。" 0
+      END_SUB
+   END_GROUP
+
+"__stop_table\n" 0
+END_SUB
+
+
+SUB 5
+"<p class='table_name'>航油情况</p>" 0
+
+"__start_table|编号|油料类型|现有数量（升）|待领数量（升）|基本携行量（升）\n" 0
+   GROUP 1
+"|%s|III型航空|%s|%s|%s\n" 4 S5.G1.D1 UOM_AMT("WET_WEIGHT",S5.G1.D2) UOM_AMT("WET_WEIGHT",S5.G1.D3) UOM_AMT("WET_WEIGHT",S5.G1.D4)
+   END_GROUP
+"__stop_table\n" 0
+END_SUB
+
+END_MAIN

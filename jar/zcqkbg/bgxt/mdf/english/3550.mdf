@@ -1,0 +1,27 @@
+
+3550
+SUBJECT
+"无法拦截空中目标%s的情况报告" 1 D3
+MAIN
+"<p class='title'>无法拦截空中目标%s的情况报告</p>" 1 D3
+
+"\n%s方空中目标%s，" 2 Threat_Perception[D2] D3
+ 
+"%s%s架，"  2 Aircraft_Target_Class[D7] D6
+"当前位于%s，"  1 LOCATION(D8,D9)
+"航向：%s度，" 1 D10
+"航速：%s千米/小时，"  1 UOM_AMT("SPEED",D11)
+"高度：%s米。" 1 UOM_AMT("AIRDISTANCE",D12)
+
+"现没有符合要求的作战飞机实施拦截。" 0
+
+SUB 1
+"\n初步判定，该目标来自%s。" 1 No_Force_Side[D5]
+END_SUB
+ 
+SUB 2
+"\n现对该目标属方情况不明。" 0
+END_SUB
+ 
+END_MAIN
+

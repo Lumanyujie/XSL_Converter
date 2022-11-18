@@ -1,0 +1,14 @@
+
+1010
+SUBJECT
+"导调人员调试及报告标识状态" 0
+
+MAIN
+"<p class='title'>导调人员调试及报告标识状态</p>" 0
+
+"\n下面是调试及报告标识状态：" 0
+   GROUP 1
+"\n——%s：%s。" 2 Debug_Flag_Name[G1.D1] Answer[G1.D2]
+   END_GROUP
+END_MAIN
+

@@ -1,0 +1,18 @@
+
+1632
+SUBJECT
+"IFF异频雷达收发机模型参数" 0
+
+MAIN
+"<p class='title'>  IFF异频雷达收发机模型参数报告 </p> \n" 0
+
+"  场景中使用的敌我识别异频雷达模型（ITM）数值:\n" 0
+"\n" 0
+"  __start_table |  ITM名称   |    代码类型\n" 0
+GROUP 1
+"  |  %2.2s |%-15.15s  | %s\n" 3 G1.D1 IFF_Transponder_Mode[G1.D1] ITM_Codes[G1.D2] 
+END_GROUP
+"__stop_table"0
+
+END_MAIN
+

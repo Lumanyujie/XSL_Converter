@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="1512"> <subject> <line>显示气象条件标识</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt; 气象条件信息归纳表 &lt;/p&gt;<br/><br/></line> <line>  __start_table  | 编号 |  气象条件  |   标识|  优先级 |  环境噪音<br/></line>  <group n="1"> <line>|<G1.D1 p="3" w="3"/>|  <f n="Weather_Condition" p="15" w="21"><G1.D1/></f> | <f n="WC_Symbol" p="15" w="15"><G1.D2/></f> |     <G1.D3 p="3" w="3"/> |  <G1.D4 p="8" w="11"/><br/></line> </group><line>__stop_table</line> </main> </msg> </msgs>

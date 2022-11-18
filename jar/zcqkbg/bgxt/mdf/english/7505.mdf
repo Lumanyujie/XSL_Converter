@@ -1,0 +1,21 @@
+
+7505
+SUBJECT
+"%s%s求救信号" 2 unit_name_transform(D2) Attack_Result[D5]
+
+MAIN
+"<p class='title'>%s%s求救信号</p>"  2 unit_name_transform(D2) Attack_Result[D5]
+
+SUB 19
+"\n求救，求救，求救！" 0
+"\n%s当前位于%s，" 2 unit_name_transform(D2) LOCATION(S19.D1,S19.D2)
+"现损毁严重，正在下沉，" 0
+"已不能执行%s命令（编号：%s），" 2 trans_word("Order",S19.D3) S19.D4
+"请求支援。" 0
+"\n求救，求救，求救！" 0
+END_SUB
+END_MAIN
+
+
+
+

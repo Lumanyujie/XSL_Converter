@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="6405"> <subject> <line><f n="unit_name_transform"><D2/></f>海上失联情况报告</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;<f n="unit_name_transform"><D2/></f>海上失联情况报告&lt;/p&gt;</line>  <sub n="5"> <line><br/><f n="unit_name_transform"><D2/></f>与所在编队指挥舰</line> <line>的通信联络完全中断，目前已离开编队, </line> <line>正单独行动，</line> <line>等待新的命令。</line> </sub></main> </msg> </msgs>

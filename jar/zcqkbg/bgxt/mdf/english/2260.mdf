@@ -1,0 +1,94 @@
+
+2260
+SUBJECT
+"反炮兵行动情况报告" 0
+MAIN
+"<p class='title'>反炮兵行动情况报告</p>" 0
+
+SUB 1
+"\n当%s在%s附近地区发射炮弹时，" 2 unit_name_transform(S1.D1) LOCATION(S1.D2,S1.D3)
+"炮位侦校雷达探测出其部队属性。" 0
+"使用雷达如下：" 0
+   GROUP 1
+"\n——%s" 1 unit_name_transform(S1.G1.D1)
+   END_GROUP
+"\n已请求实施反击。" 0
+END_SUB
+SUB 2
+"\n下达火力反击任务%s项：" 1 S2.D1
+   GROUP 1
+"\n——%s，" 1 unit_name_transform(S2.G1.D1)                             
+"于%s，" 1 GTIME(S2.G1.D4)                              
+"发射%s%s枚（发）。" 2 Targetable_Weapon[S2.G1.D3] S2.G1.D2                        
+   END_GROUP
+END_SUB
+SUB 3
+"但当前没有可执行火力反击任务的部队。" 0
+END_SUB
+SUB 4
+"\n但以下部队不能受领执行反击任务：" 0
+   GROUP 1
+      SUB 1
+"\n——%s，当前不能参与作战。" 1 unit_name_transform(S4.G1.S1.D1)
+      END_SUB
+      SUB 2
+"\n——%s，正进行两栖作战。" 1 unit_name_transform(S4.G1.S2.D1)
+      END_SUB
+      SUB 3
+"\n——%s（%s%s枚），不能按时开火。" 3 unit_name_transform(S4.G1.S3.D1) Targetable_Weapon[S4.G1.S3.D3] S4.G1.S3.D2
+      END_SUB
+      SUB 4
+"\n——%s，正在机动，不能及时开火。" 1 unit_name_transform(S4.G1.S4.D1)
+      END_SUB
+      SUB 5
+"\n——%s，交战规则不允许。" 1 unit_name_transform(S4.G1.S5.D1)
+      END_SUB
+      SUB 6
+"\n——%s，目标点超出%s射程。" 2 unit_name_transform(S4.G1.S6.D1) Targetable_Weapon[S4.G1.S6.D3]
+      END_SUB
+      SUB 7
+"\n——%s（%s%s枚），没有执行火力任务的武器装备。" 3  unit_name_transform(S4.G1.S7.D1) Targetable_Weapon[S4.G1.S7.D3] S4.G1.S7.D2
+      END_SUB
+      SUB 8
+"\n——%s（%s%s枚），没有执行火力任务所需的弹药。" 3 unit_name_transform(S4.G1.S8.D1) Targetable_Weapon[S4.G1.S8.D3] S4.G1.S8.D2
+      END_SUB
+      SUB 9
+"\n——%s（%s%s枚），重复下达任务。" 3 unit_name_transform(S4.G1.S9.D1) Targetable_Weapon[S4.G1.S9.D3] S4.G1.S9.D2
+      END_SUB
+      SUB 10
+"\n——%s（%s%s枚），当前战力不足，" 3 unit_name_transform(S4.G1.S10.D1) Targetable_Weapon[S4.G1.S10.D3] S4.G1.S10.D2
+         SUB 1
+"只能完成%s%的火力打击任务。" 1 S4.G1.S10.S1.D1
+         END_SUB
+         SUB 2
+"已实施有效反击。" 0 
+         END_SUB
+         SUB 3
+"反击得不偿失。" 0                                                     
+         END_SUB
+
+      END_SUB
+      SUB 11
+"\n——%s，不在演习区。" 1 S4.G1.S11.D1
+      END_SUB
+      SUB 12
+"\n——%s，交战规则设定的作战距离不够。" 1 S4.G1.S12.D1
+      END_SUB
+
+   END_GROUP
+
+END_SUB
+
+SUB 5
+"\n经测算，敌火力突击地域为%s。" 1 LOCATION(S5.D1,S5.D2)
+END_SUB
+
+SUB 6
+"\n预计敌重点突击%s地域附近目标。" 1 LOCATION(S6.D1,S6.D2)
+END_SUB
+
+SUB 7
+"" 0
+END_SUB
+
+END_MAIN

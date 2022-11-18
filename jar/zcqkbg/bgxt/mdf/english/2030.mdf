@@ -1,0 +1,28 @@
+
+2030
+SUBJECT
+"巡航导弹%s重新锁定目标情况报告" 1 D2
+
+MAIN
+"<p class='title'>巡航导弹%s重新锁定目标情况报告</p>"  1 D2
+
+ 
+"\n%s的控制程序已按命令调整，预定攻击目标时间：%s。"  2 D2 GTIME(D4)
+SUB 1
+"锁定目标：%s。" 1 S1.D1
+END_SUB
+
+SUB 2
+"目标点坐标：%s。" 1 LOCATION(S2.D1,S2.D2)
+END_SUB
+
+SUB 3
+"导弹轨道状态：%s。" 1 Orbit_Status[S3.D1]
+END_SUB
+
+SUB 4
+"轨道位置：%s。" 1 LOCATION(S4.D1,S4.D2)
+END_SUB
+
+END_MAIN
+

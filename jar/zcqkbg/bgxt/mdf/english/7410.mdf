@@ -1,0 +1,26 @@
+
+7410
+SUBJECT
+"%s报告发现敌散发传单" 1 unit_name_transform(D2)
+MAIN
+
+" \n %s报告大量传单散布在我军%s区域附近，企图扰乱%s%s部队。" 4 unit_name_transform(D2) LOCATION(D3, D4) No_Force_Side[D6] D5
+
+SUB 1
+"  传单散发方式为宣传弹散发。" 0
+END_SUB
+
+SUB 2
+"  传单散发方式为空中编队散发。" 0
+END_SUB
+
+SUB 3
+"  传单散发方式为导弹散发。" 0
+END_SUB
+
+SUB 5
+"  传单散发方式未知。" 0
+END_SUB
+
+END_MAIN
+

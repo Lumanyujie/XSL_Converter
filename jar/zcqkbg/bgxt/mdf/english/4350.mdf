@@ -1,0 +1,37 @@
+
+4350
+SUBJECT
+"%s（目标）补给情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s（目标）补给情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+   "\n%s无相关补给情况列表。" 1 unit_name_transform(S1.D1)
+END_SUB
+
+SUB 2
+   "\n%s相关补给列表如下：" 1 unit_name_transform(S2.D1)
+END_SUB
+
+SUB 3
+   "" 0
+END_SUB
+
+SUB 4
+   "<p class='table_name'>该目标相关补给情况</p>" 0
+   "__start_table|补给|数量|单位\n" 0
+   GROUP 1
+      "|%s|%s|%s\n" 3
+           SLP_Category_Name[S4.D1,S4.G1.D1]
+           SLP_SC_AMT(S4.D1,S4.G1.D1,S4.G1.D2)
+           SLP_SC_UOM(S4.D1,S4.G1.D1)
+   END_GROUP
+   "__stop_table" 0
+END_SUB
+
+SUB 5
+   "\n该目标当前无补给情况报告。" 0 
+END_SUB
+
+END_MAIN
+

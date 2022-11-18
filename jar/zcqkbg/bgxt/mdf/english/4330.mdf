@@ -1,0 +1,76 @@
+
+4330
+SUBJECT
+"管线情况报告" 0
+MAIN
+"<p class='title'>管线情况报告</p>" 0
+
+SUB 1
+   GROUP 1
+      SUB 1
+         "\n\n——%s" 1 unit_name_transform(S1.G1.S1.D1)
+      END_SUB
+      SUB 2
+         "\n%s负责该管线保障。" 1 unit_name_transform(S1.G1.S2.D1)
+      END_SUB
+      SUB 3
+         "\n当前无部队负责该管线保障。" 0
+      END_SUB
+      SUB 4
+         "" 0
+      END_SUB
+      SUB 5
+         "现无关联目标。" 0
+      END_SUB
+      SUB 6
+         "<p class='table_name'>与该管线关联目标列表</p>" 0
+         "__start_table|目标名称|类型|坐标|能力\n" 0
+         GROUP 1
+            "|%s|%s|%s|%s%%\n" 4 
+                    unit_name_transform(S1.G1.S6.G1.D1)
+                    Target_Category[S1.G1.S6.G1.D2]
+                    LOCATION(S1.G1.S6.G1.D3,S1.G1.S6.G1.D4)
+                    S1.G1.S6.G1.D5
+         END_GROUP
+         "__stop_table" 0
+      END_SUB
+      SUB 7
+         "<p class='table_name'>失效泵站列表</p>" 0
+         "__start_table|名称|维修进度|能力\n" 0
+         GROUP 1
+            SUB 1
+               "|%s|已列入计划|%s%%\n" 2 
+                    unit_name_transform(S1.G1.S7.G1.S1.D1) 
+                    GTIME(S1.G1.S7.G1.S1.D2)
+            END_SUB
+            SUB 2
+               "|%s|已列入计划|0\n" 1 
+                    unit_name_transform(S1.G1.S7.G1.S2.D1) 
+            END_SUB
+         END_GROUP
+         "__stop_table" 0
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 2
+   SUB 1
+      "\n以下管线当前不受%s部队管控，" 1 No_Force_Side[S2.S1.D1]
+      "因此其状态信息无法获取。" 0
+   END_SUB
+   SUB 2
+      GROUP 1
+         "\n——%s" 1 unit_name_transform(S2.S2.G1.D1)
+      END_GROUP
+   END_SUB
+   SUB 3
+      "\n无管线可报。" 0
+   END_SUB
+END_SUB
+
+SUB 3
+   "\n本次演习不涉及管线。" 0
+END_SUB
+
+END_MAIN
+

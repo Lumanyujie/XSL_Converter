@@ -1,0 +1,130 @@
+
+6500
+SUBJECT
+"当前两栖作战行动汇总报告" 0
+MAIN
+
+"<p class='title'>当前两栖作战行动汇总报告</p>" 0
+
+SUB 1
+   GROUP 1
+      SUB 1
+"\n——%s编队当前态势：前往装载。" 1 unit_name_transform(S1.G1.S1.D1)
+      END_SUB
+      SUB 2
+"\n——%s编队当前态势：前往攻击。" 1 unit_name_transform(S1.G1.S2.D1)
+      END_SUB
+      SUB 3
+"\n——%s编队当前态势：位于装载点。" 1 unit_name_transform(S1.G1.S3.D1)
+      END_SUB
+      SUB 4
+"\n——%s编队当前态势：位于攻击点。" 1 unit_name_transform(S1.G1.S4.D1)
+      END_SUB
+      SUB 5
+"\n——%s编队当前态势：无两栖作战行动。" 1 unit_name_transform(S1.G1.S5.D1)
+      END_SUB
+      SUB 6
+"<p class='table_name'>编队舰艇和搭载部队明细</p>" 0
+"__start_table|舰艇名称|搭载部队|装载干货重量|装载液货体积\n" 0
+         GROUP 1
+"|%s|%s|%s%s|%s%s\n" 6
+          S1.G1.S6.G1.D1 unit_name_transform(S1.G1.S6.G1.D2)
+          UOM_AMT(DRY_WEIGHT,S1.G1.S6.G1.D3) UOM(DRY_WEIGHT)
+          UOM_AMT(WET_WEIGHT,S1.G1.S6.G1.D4) UOM(WET_WEIGHT)
+         END_GROUP
+"__stop_table" 0         
+"\n" 0
+      END_SUB
+      SUB 7
+"<p class='table_name'>编队可用运输工具明细</p>" 0
+"         已装载\n" 0
+"__start_table|部队/舰艇|船艇类型|数量\n" 0
+         GROUP 1
+"|%s|%s|%s\n" 3 S1.G1.S7.G1.D1  S1.G1.S7.G1.D2 S1.G1.S7.G1.D3
+         END_GROUP
+"__stop_table" 0
+"\n" 0
+      END_SUB
+      SUB 8
+"\n下列部队奉命执行当前作战任务：" 0
+         GROUP 1
+            SUB 1
+"\n——%s：准备攻击" 1 S1.G1.S8.G1.S1.D1
+            END_SUB
+            SUB 2
+"\n——%s：准备装载" 1 S1.G1.S8.G1.S2.D1
+            END_SUB
+            SUB 3
+"\n——%s：前往装载点, 距其%s%s" 3 S1.G1.S8.G1.S3.D1
+                              UOM_AMT(DISTANCE,S1.G1.S8.G1.S3.D2) UOM(DISTANCE)
+            END_SUB
+            SUB 4
+"\n——%s：距装载点%s%s，且并未向装载点机动" 3 S1.G1.S8.G1.S4.D1
+                              UOM_AMT(DISTANCE,S1.G1.S8.G1.S4.D2) UOM(DISTANCE)
+            END_SUB
+            SUB 5
+"\n——%s：攻击马上结束" 1 S1.G1.S8.G1.S5.D1
+            END_SUB
+            SUB 6
+"\n——%s：攻击尚未开始" 1 S1.G1.S8.G1.S6.D1
+            END_SUB
+            SUB 7
+"\n——%s：已开始攻击" 1 S1.G1.S8.G1.S7.D1
+            END_SUB
+            SUB 8
+"\n——%s：装载马上完成" 1 S1.G1.S8.G1.S8.D1
+            END_SUB
+            SUB 9
+"\n——%s：装载尚未开始,部队已到达装载点，准备装载" 1
+                                                    S1.G1.S8.G1.S9.D1
+            END_SUB
+            SUB 10
+"\n——%s：装载尚未开始，部队距装载点%s%s，正前往装载点" 
+                           3 S1.G1.S8.G1.S10.D1
+                             UOM_AMT(DISTANCE,S1.G1.S8.G1.S10.D2) UOM(DISTANCE)
+            END_SUB
+            SUB 11
+"\n——%s：装载尚未开始，部队距装载点%s%s，尚未前往装载点" 
+                            3 S1.G1.S8.G1.S11.D1
+                              UOM_AMT(DISTANCE,S1.G1.S8.G1.S11.D2) UOM(DISTANCE)
+            END_SUB
+            SUB 12
+"\n——%s：装载已开始" 1 S1.G1.S8.G1.S12.D1
+            END_SUB
+            SUB 13
+"\n——%s：出现错误，请通知技术人员" 
+                                 1 S1.G1.S8.G1.S13.D1
+            END_SUB
+         END_GROUP
+      END_SUB
+      SUB 9
+"\n大约还需要%s小时抵滩，预计到达时间：%s。" 
+                             2 DURATION(S1.G1.S9.D1, "%.2Th") GTIME(S1.G1.S9.D2)
+      END_SUB
+      SUB 10
+"\n下列部队预期完成任务时间如下：" 0 
+         GROUP 1
+            SUB 1
+"\n——%s空中编队，出现错误，请告知技术人员在SIMU52.DAT文件中发现错误数据" 1 S1.G1.S10.G1.S1.D1
+            END_SUB
+            SUB 2
+"\n——%s：%s" 2 S1.G1.S10.G1.S2.D1 GTIME(S1.G1.S10.G1.S2.D2)
+            END_SUB
+            SUB 3
+"\n——%s：没有拟制任务计划，出现错误，请告知技术人员" 1 S1.G1.S10.G1.S3.D1
+            END_SUB
+         END_GROUP
+      END_SUB
+   END_GROUP
+END_SUB
+
+SUB 2
+"\n当前没有两栖作战行动。" 0
+END_SUB
+
+SUB 3
+"\n备注：以上评估依据编队当前实力，" 0
+"行动结束前，实力损毁可能会使计划时间延长，而加强舰船力量可能会使计划时间缩短。" 0
+END_SUB
+
+END_MAIN

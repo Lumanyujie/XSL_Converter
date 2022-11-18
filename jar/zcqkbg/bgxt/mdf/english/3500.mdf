@@ -1,0 +1,65 @@
+
+3500
+SUBJECT
+"%s自行起飞情况报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s自行起飞情况报告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+"\n%s当前处于敌直瞄火力下，企图强行起飞，" 1 unit_name_transform(D2)
+"但因跑道长度不够，无法完成。" 0
+END_SUB
+
+SUB 2
+"\n%s当前处于敌直瞄火力下，企图强行起飞，" 1 unit_name_transform(D2)
+"但在飞机航程内没有适用的降落点。" 0
+END_SUB
+
+SUB 3
+"\n由于%s自行起飞，导致以下后果：" 1 unit_name_transform(D2)
+   SUB 1
+"\n—损失正在维修的飞机%s架。" 1 S3.S1.D1
+   END_SUB
+
+   SUB 2
+"\n—取消以下等待起飞的编队：" 0
+      GROUP 1
+"\n——%s编队，%s" 2 Mission_Type[S3.S2.G1.D1] S3.S2.G1.D2
+      END_GROUP
+   END_SUB
+
+   SUB 3
+"\n—对飞机起飞计划无影响。" 0
+   END_SUB
+
+   SUB 4
+"\n—无飞机受损。" 0
+   END_SUB
+
+END_SUB
+
+SUB 4
+"\n%s当前处于敌直瞄火力下，企图强行起飞，" 1 unit_name_transform(D2)
+"但由于补给缺乏，起飞失败，" 0
+"当前位置：%s。" 1 LOCATION(D3,D4)
+END_SUB
+
+SUB 5
+"\n%s当前处于敌直瞄火力下，" 1 unit_name_transform(D2)
+"正自行起飞至%s。" 1 unit_name_transform(S5.D1)
+END_SUB
+
+SUB 6
+"\n%s当前机场被毁，企图强行起飞，" 1 unit_name_transform(D2)
+"但由于补给缺乏，起飞失败，" 0
+"当前位置：%s。" 1 LOCATION(D3,D4)
+END_SUB
+
+SUB 7
+"\n%s当前机场被毁，企图强行起飞，" 1 unit_name_transform(D2)
+"正自行起飞至%s。" 1 unit_name_transform(S7.D1)
+END_SUB
+
+END_MAIN
+

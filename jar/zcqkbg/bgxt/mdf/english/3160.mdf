@@ -1,0 +1,45 @@
+
+3160
+SUBJECT
+"由%s下达的关于机场租借权的通告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>由%s下达的关于机场租借权的通告</p>" 1 unit_name_transform(D2)
+
+SUB 1
+
+"\n对%s在%s的租借关系" 2 No_Force_Side[D4] unit_name_transform(D2)
+"做出调整，" 0
+"指派跑道：%s，" 1 D5
+"最大飞机数量：%s，" 1 D6
+"将从%s起生效：" 1 GTIME(D3)
+
+"<p class='table_name'>调整清单</p>" 0  
+"__start_table|类别|数量\n" 0
+   GROUP 1
+"|%s|%s%s\n" 3 SLP_Category_Name[D7,S1.G1.D1]
+                    SLP_SC_AMT(D7, S1.G1.D1, S1.G1.D2)
+                    SLP_SC_UOM(D7, S1.G1.D1)
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+SUB 2
+"\n对%s在%s的租借关系" 2 No_Force_Side[D4] unit_name_transform(D2)
+"做出调整，并已生效。" 0
+"当前授权租借行为，指派跑道：%s，" 1 D5
+"最大飞机数量：%s。" 1 D6
+
+"<p class='table_name'>调整清单</p>" 0  
+"__start_table|类别|数量\n" 0
+   GROUP 1
+"|%s|%s%s\n" 3 SLP_Category_Name[D7,S2.G1.D1]
+                    SLP_SC_AMT(D7,S2.G1.D1,S2.G1.D2)
+                    SLP_SC_UOM(D7,S2.G1.D1)
+   END_GROUP
+"__stop_table" 0
+
+END_SUB
+
+END_MAIN
+

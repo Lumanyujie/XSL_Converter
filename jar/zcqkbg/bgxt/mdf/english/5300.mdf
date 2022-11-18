@@ -1,0 +1,151 @@
+
+5300
+SUBJECT
+"%s对周边地域目标侦测情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s对周边地域目标侦测情况报告</p>" 1  unit_name_transform(D2)
+"\n%s当前位于%s地域，" 2 unit_name_transform(D2)  LOCATION(D3,D4)
+"现将周边目标情况报告如下：" 0
+  
+SUB 1
+
+   GROUP 1
+
+      SUB 1
+"\n\n——%s" 1 unit_name_transform(S1.G1.S1.D2)
+"\n目标类型：%s，" 1 Target_Category[S1.G1.S1.D1]
+"属方：未知，坐标：%s，" 1 LOCATION(S1.G1.S1.D3,S1.G1.S1.D4)
+"效能：%s。" 1 S1.G1.S1.D5
+      END_SUB
+
+      SUB 2
+"\n\n——%s" 1 unit_name_transform(S1.G1.S2.D3)
+"\n目标类型：%s，" 1 Target_Category[S1.G1.S2.D2]
+"属方：%s，" 1 No_Force_Side[S1.G1.S2.D1]
+"坐标：%s，" 1 LOCATION(S1.G1.S2.D4,S1.G1.S2.D5)
+"效能：%s。" 1 S1.G1.S2.D6
+      END_SUB
+
+      SUB 3
+"\n以下补给物资从补给存储目标%s中去除：" 1 unit_name_transform(S1.G1.S3.D1)
+      END_SUB
+
+      SUB 4
+"__start_table|补给|类型|数量|单位\n" 0   
+         GROUP 1
+"|%s|%s|%s%s\n" 4 unit_name_transform(S1.G1.S4.G1.D1) 
+                  SLP_Category_Name[S1.G1.S4.D1,S1.G1.S4.G1.D1]
+                         SLP_SC_AMT(S1.G1.S4.D1,S1.G1.S4.G1.D1,S1.G1.S4.G1.D2)
+                         SLP_SC_UOM(S1.G1.S4.D1,S1.G1.S4.G1.D1)
+         
+         END_GROUP 
+"__stop_table" 0
+      END_SUB
+
+      SUB 5
+"\n没有补给物资去除。" 0
+      END_SUB
+
+      SUB 6
+"\n%s毁坏。" 1 unit_name_transform(S1.G1.S6.D1) 
+      END_SUB
+
+      SUB 7
+"\n该%s目标已失去效能。" 1 Target_Category[S1.G1.S7.D1]
+      END_SUB
+
+      SUB 34
+
+         GROUP 1
+
+            SUB 1
+"\n对目标定位点%s" 1 S1.G1.S34.G1.D1
+"的打击导致%s毁伤。" 1 unit_name_transform(S1.G1.S34.G1.D2)
+            END_SUB
+
+            SUB 2
+"\n行动受到打击目标定位点%s的影响。" 1 S1.G1.S34.G1.D1
+            END_SUB
+
+         END_GROUP
+
+      END_SUB
+
+   END_GROUP
+
+END_SUB
+
+SUB 2
+"<p class='table_name'>探测雷场情况</p>" 0
+"__start_table|编号|所属方|坐标\n" 0   
+   GROUP 1
+"|%s|%s|%s\n" 3 S2.G1.D2 No_Force_Side[S2.G1.D1] LOCATION(S2.G1.D3,S2.G1.D4)
+ END_GROUP 
+"__stop_table" 0
+END_SUB
+
+SUB 3
+"\n属方不明的补给存储点如下：" 0
+
+   GROUP 1
+
+      SUB 1
+"\n%s，%s。" 2 Target_Category[S3.G1.S1.D1] S3.G1.S1.D2
+      END_SUB
+
+      SUB 2
+"" 0
+      END_SUB
+
+      SUB 3
+"\n以下补给物资从补给存储目标%s中去除：" 1
+                                                             S3.G1.S3.D1
+      END_SUB
+
+      SUB 4
+"__start_table|补给|类型|数量|单位\n" 0   
+         GROUP 1
+"|%s|%s|%s%s\n" 4 S3.G1.S4.G1.D1
+                    SLP_Category_Name[S3.G1.S4.D1,S3.G1.S4.G1.D1]
+                           SLP_SC_AMT(S3.G1.S4.D1,S3.G1.S4.G1.D1,S3.G1.S4.G1.D2)
+                           SLP_SC_UOM(S3.G1.S4.D1,S3.G1.S4.G1.D1)
+         
+         END_GROUP 
+"__stop_table" 0
+      END_SUB
+
+      SUB 5
+"\n没有补给物资去除。" 0
+      END_SUB
+
+      SUB 6
+"\n%s毁坏。" 1 unit_name_transform(S3.G1.S6.D1)
+      END_SUB
+
+      SUB 34
+
+         GROUP 1
+
+            SUB 1
+"\n对目标定位点%s" 1 S3.G1.S34.G1.D1
+"的打击导致%s毁伤。" 1 unit_name_transform(S3.G1.S34.G1.D2)
+            END_SUB
+
+            SUB 2
+"\n行动受到打击目标定位点%s的影响。" 1 S3.G1.S34.G1.D1
+            END_SUB
+
+         END_GROUP
+
+      END_SUB
+
+   END_GROUP
+
+END_SUB
+
+SUB 4
+"\n该部队已获得%s个飞机机堡控制权。" 1 S4.D1
+END_SUB
+
+END_MAIN
+

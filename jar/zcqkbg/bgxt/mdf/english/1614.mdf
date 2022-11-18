@@ -1,0 +1,47 @@
+
+1614
+SUBJECT
+"%s%s的生存能力原型包、等级、心理战属性" 2 Survivability_Prototype[D2] D2
+MAIN
+
+"<p class='title'>  %s生存能力原型包、等级、心理战属性  </p>\n\n" 1 Survivability_Prototype[D2]
+
+SUB 1
+"  作战系统包:" 0 
+   GROUP 1
+"作战系统 %15.15s   %s系统产生一个部队包。" 2 
+                                               Combat_System[S1.G1.D1] S1.G1.D2
+"%s系统产生一个特种部队包。\n" 1   S1.G1.D3
+   END_GROUP
+END_SUB
+
+SUB 2
+"  补给类包:" 0 
+   GROUP 1
+"补给类 %15.15s   %8.8s %s 产生一个包。\n\n" 3 
+                                            Supply_Category[S2.G1.D1]
+                                               SLP_SC_AMT(0,S2.G1.D1,S2.G1.D2)
+                                               SLP_SC_UOM(0,S2.G1.D1)
+   END_GROUP
+END_SUB
+
+SUB 3
+"  对于%s部队损耗%s被认为是中度毁伤，" 2  Unit_Type[S3.D1] S3.D2
+"伤亡%s被认为是重度毁伤。\n\n" 1 S3.D3
+END_SUB
+
+SUB 4 
+"  对于隶属集团使用该生存力原型的部队，最脆弱的毁伤等级等于%s 。\n\n" 1 S4.D1 
+END_SUB 
+
+SUB 5
+"  当传单被炮弹抛撒或空中抛撒给使用该生存能力原型的部队时，" 0
+"部队中每个成员至多可得到%s份传单。\n\n" 1 S5.D1
+END_SUB
+
+SUB 6
+"  对于隶属集团使用该生存能力原型的部队，心理战效果最高等级为%s。\n"   1 S6.D1
+END_SUB
+
+END_MAIN                   
+

@@ -1,0 +1,48 @@
+
+5310
+SUBJECT
+"侦测发现面面导弹发射准备情况报告" 0
+MAIN
+"<p class='title'>侦测发现面面导弹发射准备情况报告</p>" 0
+
+SUB 1
+"\n%s向%s报告：" 2 unit_name_transform(D2) unit_name_transform(S1.D3)
+"于%s，" 1 GTIME(D1)
+"经%s侦测发现，" 1 Sensor_Type[S1.D2]
+"%s在%s地域，" 2 unit_name_transform(D3) LOCATION(D5,D6)
+"正在组织%s发射准备。" 1 Surface_Surface_Missile[D4]
+"无其他所属部队信息。" 0
+END_SUB
+
+SUB 2
+"\n%s编队%s" 2 Mission_Type[S2.D2] unit_name_transform(S2.D1)
+"向%s报告：" 1 unit_name_transform(D2)
+"于%s" 1 GTIME(D1)
+"侦测发现，" 0
+"%s在%s地域，" 2 unit_name_transform(D3) LOCATION(D5,D6)
+"正在组织%s发射准备。" 1 Surface_Surface_Missile[D4]
+"无其他所属部队信息。" 0
+END_SUB
+
+SUB 3
+"\n%s" 1 unit_name_transform(S3.D1)
+"向%s报告：" 1 unit_name_transform(D2)
+"于%s" 1 GTIME(D1)
+"侦测发现，" 0
+"%s在%s地域，" 2 unit_name_transform(D3) LOCATION(D5,D6)
+"正在组织%s发射准备。" 1 Surface_Surface_Missile[D4]
+"无其他所属部队信息。" 0
+END_SUB
+
+SUB 4
+"\n%s" 1 unit_name_transform(D2)
+"向%s报告：" 1 unit_name_transform(S4.D1)
+"于%s" 1 GTIME(D1)
+"侦测发现，" 0
+"%s在%s地域，" 2 unit_name_transform(D3) LOCATION(D5,D6)
+"正在组织%s发射准备。" 1 Surface_Surface_Missile[D4]
+"无其他所属部队信息。" 0
+END_SUB
+
+END_MAIN
+

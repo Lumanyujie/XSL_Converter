@@ -1,0 +1,163 @@
+
+3200
+SUBJECT
+"%s编队%s执行%s任务情况报告" 3 D2 Acceptance_Flag[D3] Launch_Or_Alert[D7]
+MAIN
+"<p class='title'>%s编队%s执行%s任务情况报告</p>" 3 unit_name_transform(D2) Acceptance_Flag[D3] Launch_Or_Alert[D7]
+SUB 1
+"\n%s编队%s执行%s任务，" 3 unit_name_transform(S1.D1) Acceptance_Flag[D3] 
+                                                       Launch_Or_Alert[D7]
+"要求%s架飞机出动，已安排%s架飞机做好准备。" 2 S1.D2 S1.D3
+END_SUB
+
+SUB 2
+   SUB 1
+"\n正在基地执行值班任务。" 0
+   END_SUB
+   SUB 2
+"\n计划于%s在基地执行值班任务。" 1 GTIME(D6)
+   END_SUB
+   SUB 3
+"\n计划于%s执行值班任务。" 1 GTIME(D6)
+   END_SUB
+END_SUB
+
+SUB 3
+"计划于%s起飞。" 1 GTIME(D6)
+END_SUB
+
+SUB 4
+"\n该空中编队%s执行%s任务，当前状态：%s。" 3 Acceptance_Flag[D3] 
+                            Launch_Or_Alert[D7] Air_Mission_Posture[S4.D1]
+"当能够起飞时，将通知您。" 0
+END_SUB
+
+SUB 5
+"\n该空中编队不能起飞。" 0
+"系统认为空中编队状态是%s，" 1 S5.D1
+"系统给出的原因中包含非法值%s，请告知技术人员。" 1 S5.D2
+"当能够起飞时，将通知您。" 0
+END_SUB
+
+SUB 6
+"\n原因：" 0
+   SUB 1
+"该空中编队飞机数量不足。" 0
+   END_SUB
+   SUB 2
+"该空中编队油料不足。" 0
+   END_SUB
+   SUB 3
+"该空中编队武器弹药不足。" 0
+   END_SUB
+   SUB 4
+"该空中编队补给物资不足。" 0
+   END_SUB
+   SUB 13
+"飞机挂载方案未定。" 0 
+   END_SUB
+   SUB 29
+"出航中队当前不在演习中。" 0
+   END_SUB
+   SUB 30
+"返航中队当前不在演习中。" 0
+   END_SUB
+END_SUB
+
+SUB 7
+"<p class='table_name'>空中编队急需补给物资明细</p>" 0
+   "__start_table|补给类型|索引号|数量\n" 0
+   GROUP 1
+"|%s|%s|%s%s\n" 4 SLP_Category_Name[D4,S7.G1.D1] S7.G1.D1 
+                    SLP_SC_AMT(D4,S7.G1.D1,S7.G1.D2) SLP_SC_UOM(D4,S7.G1.D1)
+   END_GROUP
+  "__stop_table" 0 
+"\n" 0
+END_SUB
+
+SUB 8
+"\n该空中编队没有指定挂载，故没有物资需求清单。" 0
+END_SUB
+
+SUB 9
+"\n飞机挂载方案（编号为%s），备选方案（编号为%s），已挂载如下：" 2 S9.D1 S9.D2
+END_SUB
+
+SUB 10
+"\n该空中编队的主挂载方案（编号为%s），其余挂载如下：" 1 S10.D1
+END_SUB
+
+SUB 11
+   SUB 1
+      SUB 1
+         GROUP 1      
+            "\n——%s，%s枚（发）。" 2 Targetable_Weapon[S11.S1.S1.G1.D1] S11.S1.S1.G1.D2
+         END_GROUP
+      END_SUB
+      SUB 2
+         "\n——未挂载武器。" 0
+      END_SUB
+   END_SUB
+
+   SUB 2
+      SUB 1
+         GROUP 1
+            "\n——%s（传感器）。" 1 Sensor_Type[S11.S2.S1.G1.D1]
+         END_GROUP
+      END_SUB
+      SUB 2
+         "\n——未挂载传感器。" 0
+      END_SUB
+   END_SUB
+
+   SUB 3
+      SUB 1
+         GROUP 1
+            "\n——%s。" 1 Jammer_Type[S11.S3.S1.G1.D1]
+         END_GROUP
+      END_SUB
+      SUB 2
+         "\n——未挂载干扰设备。" 0
+      END_SUB
+   END_SUB
+
+   SUB 4
+       SUB 1
+         GROUP 1
+            "\n——%s，%s%s。" 
+                   3 SLP_Category_Name[D4,S11.S4.S1.G1.D1]
+                     SLP_SC_AMT(D4,S11.S4.S1.G1.D1,S11.S4.S1.G1.D2)
+                     SLP_SC_UOM(D4,S11.S4.S1.G1.D1)
+         END_GROUP
+      END_SUB
+      SUB 2
+         "\n——无携行补给物资。" 0
+      END_SUB
+   END_SUB
+
+   SUB 6
+      "\n——备用燃油：%s%s。" 2 SLP_SC_AMT(D4,S11.S6.D2,S11.S6.D1)
+                                 SLP_SC_UOM(D4,S11.S6.D2)
+   END_SUB
+END_SUB
+
+SUB 12
+"\n注：用户已修改挂载方案中的武器数量，" 0
+
+   SUB 1
+      "数据库中定义的原武器挂载方案如下：" 0
+      "<p class='table_name'>原武器挂载方案明细</p>" 0
+      "__start_table|武器类别|数量\n" 0     
+      GROUP 1
+         "|%s|%s\n" 2 Targetable_Weapon[S12.S1.G1.D1]
+                                                        S12.S1.G1.D2
+      END_GROUP
+     "__stop_table" 0   
+   END_SUB
+   SUB 2
+      "数据库中定义的原方案无挂载。" 0
+   END_SUB
+END_SUB
+
+END_MAIN
+

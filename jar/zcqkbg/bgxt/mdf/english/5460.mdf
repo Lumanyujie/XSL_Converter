@@ -1,0 +1,62 @@
+
+5460
+SUBJECT
+"电子侦察情报汇总（%s月第%s号）" 2 Month_Name[D3] D2
+MAIN
+ 
+"<p class='title'>电子侦察情报汇总（%s月第%s号）</p>" 2 Month_Name[D3] D2
+GROUP 1
+ 
+   SUB 1
+"\n\n——信号代码：%s" 1 G1.S1.D1
+"\n从%s至%s，该信号持续发射。" 2 GTIME(D4) GTIME(D1)
+"经判别，信源类型：%s，" 1 Sensor_Type[G1.S1.D2]
+"属方：%s，" 1 unit_name_transform(G1.S1.D5)
+"链接武器：%s。" 1 unit_name_transform(G1.S1.D6)
+"功能：%s，" 1 English_ELINT_Function[G1.S1.D7]
+"坐标：%s，"  1 LOCATION(G1.S1.D8,G1.S1.D9)
+"电子情报标识：%s，" 1 G1.S1.D11
+"工作频率：%s兆赫，" 1 G1.S1.D12
+"扫描间隔：%s毫秒。" 1 G1.S1.D13
+
+   END_SUB
+ 
+   SUB 2
+"\n\n——信号代码：%s" 1 G1.S2.D1
+"\n%s开始，该信号停止发射。" 1 GTIME(D1)
+"信源类型：%s，" 1 Sensor_Type[G1.S2.D2]
+"属方：%s，" 1 unit_name_transform(G1.S2.D5)
+"功能：%s，" 1 English_ELINT_Function[G1.S2.D7]
+"坐标：%s，"  1 LOCATION(G1.S2.D8,G1.S2.D9)
+"电子情报标识：%s，" 1 G1.S2.D11
+"工作频率：%s兆赫，" 1 G1.S2.D12
+"扫描间隔：%s毫秒。" 1 G1.S2.D13
+
+"\n\n——信号代码：%s" 1 G1.S2.D1
+"\n从%s至%s，该信号持续发射。" 2 GTIME(D4) GTIME(D1)
+"经判别，信源类型：%s，" 1 Jammer_Type[G1.S2.D2]
+"属方：%s，" 1 unit_name_transform(G1.S2.D5)
+"功能：%s，" 1 English_ELINT_Function[G1.S2.D7]
+"坐标：%s，"  1 LOCATION(G1.S2.D8,G1.S2.D9)
+"电子情报标识：%s，" 1 G1.S2.D11
+"工作频率：%s兆赫，" 1 G1.S2.D12
+"扫描间隔：%s毫秒。" 1 G1.S2.D13
+
+   END_SUB
+ 
+   SUB 3
+"\n该信号由一艘%s" 1 Ship_Unit_Prototype[G1.S3.D3]
+"（%s）自%s，" 2 Ship_Class_Type[G1.S3.D2] General_ELINT_Type[G1.S3.D1]
+"经判别，为%s" 1 unit_name_transform(G1.S3.D5)
+"的%s。" 1 unit_name_transform(G1.S3.D4)
+END_SUB
+ 
+   SUB 4
+"\n该信号由一架%s（飞机）" 1 Aircraft_Type[G1.S4.D2]
+"自%s。" 1 General_ELINT_Type[G1.S4.D1]
+   END_SUB
+ 
+END_GROUP
+ 
+END_MAIN
+

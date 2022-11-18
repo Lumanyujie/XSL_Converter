@@ -1,0 +1,15 @@
+
+6510
+SUBJECT
+"%s运输能力报告" 1 unit_name_transform(D2)
+
+MAIN
+"<p class='title'>%s运输能力报告</p>" 1 unit_name_transform(D2)
+
+"__start_table|能力类别|初始能力|当前能力\n" 0
+"|干货运载能力（吨）|%s|%s\n" 2 UOM_AMT("DRY_WEIGHT",D3) UOM_AMT("DRY_WEIGHT",D4)
+"|液货运载能力（升）|%s|%s\n" 2 UOM_AMT("WET_WEIGHT",D5) UOM_AMT("WET_WEIGHT",D6)
+"__stop_table" 0
+
+END_MAIN
+

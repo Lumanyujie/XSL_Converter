@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msgs>  <modifiers/>    <msg index="1632"> <subject> <line>IFF异频雷达收发机模型参数</line> </subject> <main> <line>&lt;p class=&apos;title&apos;&gt;  IFF异频雷达收发机模型参数报告 &lt;/p&gt; <br/></line> <line>  场景中使用的敌我识别异频雷达模型（ITM）数值:<br/></line> <line><br/></line> <line>  __start_table |  ITM名称   |    代码类型<br/></line>  <group n="1"> <line>  |  <G1.D1 p="2" w="2"/> |<f j="left" n="IFF_Transponder_Mode" p="15" w="15"><G1.D1/></f>  | <f n="ITM_Codes"><G1.D2/></f><br/></line> </group><line>__stop_table</line> </main> </msg> </msgs>

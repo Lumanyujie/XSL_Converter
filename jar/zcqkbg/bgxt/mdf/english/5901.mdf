@@ -1,0 +1,14 @@
+
+5901
+SUBJECT
+"%s侦察情况报告" 1 unit_name_transform(D2)
+MAIN
+"<p class='title'>%s侦察情况报告</p>" 1 unit_name_transform(D2)
+"\n%s于%s，" 2 unit_name_transform(D2) GTIME(D1)
+SUB 7
+"发现%s" 1 unit_name_transform(S7.D2)
+"被%s击毁，该部无力将其击退。" 1 unit_name_transform(S7.D3)
+END_SUB
+ 
+END_MAIN
+

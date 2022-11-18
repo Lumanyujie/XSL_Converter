@@ -1,0 +1,77 @@
+
+1220
+SUBJECT
+"%s按阶段部署总体情况报告" 1 No_Force_Side[D2]
+MAIN
+
+"<p class='title'>%s按阶段部署总体情况报告</p>" 1 No_Force_Side[D2]
+
+SUB 1
+   "\n%s所有未到达的按阶段部署部队如下表所示：" 1 No_Force_Side[D2]
+   "<p class='table_name'>按阶段部署部队情况列表</p>" 0
+   "__start_table|序号|时间|部队名称|进入点|详情\n" 0
+   GROUP 1
+      SUB 1
+         "|%s|%s" 2 S1.G1.S1.D4 GTIME(S1.G1.S1.D1)
+         "|%s" 1 unit_name_transform(S1.G1.S1.D2)
+         "|%s" 1 unit_name_transform(S1.G1.S1.D3)
+         "|——先期部队：%s，" 1 unit_name_transform(S1.G1.S1.D5)
+         "保障部队：%s，" 1 unit_name_transform(S1.G1.S1.D6)
+         "上级部队：%s。" 1 unit_name_transform(S1.G1.S1.D7)
+      END_SUB
+      SUB 2
+         "<br>——抵达地域：%s。" 1 LOCATION(S1.G1.S2.D1,S1.G1.S2.D2)
+      END_SUB
+
+      SUB 3
+         "<br>——抵达后，向%s机动并加入该部。" 1 
+                  unit_name_transform(S1.G1.S3.D1)
+      END_SUB
+
+      SUB 4
+         "<br>——集结完毕后，将向%s地域机动。" 1 
+                  LOCATION(S1.G1.S4.D1,S1.G1.S4.D2)
+      END_SUB
+
+      SUB 5
+         "<br>——集结完毕后，向%s机动并加入该部。" 1 
+                  unit_name_transform(S1.G1.S5.D1)
+      END_SUB
+
+      SUB 6
+         "<br>——主基地：%s。" 1 
+                  unit_name_transform(S1.G1.S6.D1)
+      END_SUB
+
+      SUB 7
+         "<br>——登陆预备队: %s。" 1 
+                  unit_name_transform(S1.G1.S7.D1)
+      END_SUB
+
+      SUB 8
+         "<br>——在该处的飞行中队可在以下跑道降落：" 0 
+         GROUP 1
+            "%s．" 1 unit_name_transform(S1.G1.S8.G1.D1)
+         END_GROUP
+      END_SUB
+
+      SUB 9
+         "<br>——以下部队到达后将加入该部队：" 0
+         GROUP 1
+            "%s，" 1 unit_name_transform(S1.G1.S9.G1.D1)
+            "抵达时间：%s。" 1 GTIME(S1.G1.S9.G1.D2)
+         END_GROUP
+      END_SUB
+
+      "\n" 0
+
+   END_GROUP
+   "__stop_table" 0
+END_SUB
+
+SUB 2
+"\n%s所有按阶段部署部队已如期进入演习区。" 1 No_Force_Side[D2]
+END_SUB
+
+END_MAIN
+
