@@ -1,1 +1,1 @@
-${doc.M.text}
+${doc.template.@match.text}
