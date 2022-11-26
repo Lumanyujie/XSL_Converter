@@ -30,11 +30,11 @@ public class ToFtlUtil {
 
         try {
             //读取xml文件
-            Document document = reader.read("D:/Develop/IDEA/code_project/XSL_Converter/src/main/resources/sub1040.xsl");
+            Document document = reader.read("D:/Develop/IDEA/code_project/XSL_Converter/src/main/resources/msg1000.xsl");
             //得到根节点
             Element rootElement = document.getRootElement();
             //用另一个ftl文件来存储转换后的模板
-            String fileName = "D:/Develop/IDEA/code_project/XSL_Converter/src/main/resources/sub1040.ftl";
+            String fileName = "D:/Develop/IDEA/code_project/XSL_Converter/src/main/resources/msg1000.ftl";
             File ftlFile = new File(fileName);
             FileOutputStream fileOutputStream = new FileOutputStream(ftlFile);
             OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream);
@@ -52,8 +52,16 @@ public class ToFtlUtil {
                     String nodeName = subElement.getName();
                     //用StringBuilder来拼接中间部分
                     StringBuilder midStr = new StringBuilder();
-                    midStr.append(nodeName).append(".").append("@match.");
-                    int textNum = 0;//标记text
+                    String startPath = "";
+                    //获取template下的路径值
+                    if (subElement.attributeValue("match") != null) {
+                        String match = subElement.attributeValue("match");
+                        String[] splitMatch = match.split("/");
+                        for (String path : splitMatch) {
+                            startPath = startPath + path;
+                        }
+                    }
+
                     while (iterator.hasNext()) {//遍历template下节点
                         Element next = (Element) iterator.next();
 
@@ -64,46 +72,88 @@ public class ToFtlUtil {
                             midStr.append(name).append("(");//trans_word_FUN(
                             //2.得到子节点的迭代器，进行遍历
                             Iterator<Element> subIterator = next.elementIterator();
-                            int paramNum = 0;//用来定位whith-param
+                            //如果迭代器为空
+                            if (!subIterator.hasNext()) {
+                                midStr.append(",");
+                            }
                             while (subIterator.hasNext()) {
                                 Element subNext = subIterator.next();
                                 //3.再判断每个子节点中的子节点
                                 if (subNext.getName().equals("with-param")) {
-                                    //trans_word_FUN(with-param[0].
-                                    midStr.append(subNext.getName()).append("[").append(paramNum).append("]").append(".");
+
+                                    //如果有值就直接传进去
+                                    if (subNext.attributeValue("select") != null) {
+                                        String select = subNext.attributeValue("select");
+                                        midStr.append(select).append(",");
+                                        continue;
+                                    }
+
+                                    if (subNext.attributeValue("name") != null && subNext.element("call-template") == null && subNext.element("value-of") == null) {
+                                        String details = subNext.getText();
+                                        midStr.append(details).append(",");
+                                    }
+
                                     //文本参数
                                     if (subNext.element("text") != null) {
-                                        //trans_word_FUN(with-param[0].text,
-                                        midStr.append("text").append(",");
+                                        //trans_word_FUN('text',
+                                        Element textNode = subNext.element("text");
+                                        midStr.append("'").append(textNode.getText()).append("'").append(",");
                                     }
                                     //传值参数
                                     if (subNext.element("value-of") != null) {
-                                        //trans_word_FUN(with-param[0].value-of,
-                                        midStr.append("value-of.").append("@select").append(",");
+                                        //trans_word_FUN(MD@C,
+                                        //得到子节点及其属性内容
+                                        Element valueNode = subNext.element("value-of");
+                                        String select = valueNode.attributeValue("select");
+                                        //处理select,去掉分号
+                                        String[] split = select.split("/");
+                                        String sumPath = "";
+                                        for (String path : split) {
+                                            sumPath = sumPath + path;
+                                        }
+                                        midStr.append(sumPath).append(",");
                                     }
-                                    paramNum++;
+                                    //call-template
+                                    if (subNext.element("call-template") != null) {
+                                        Element funNode = subNext.element("call-template");
+                                        StringBuilder callTemplateParse = callTemplateParse(funNode);
+                                        midStr.append(callTemplateParse).append(",");
+                                    }
                                 }
                             }
                             //trans_word_FUN(with-param[0].text,with-param[1].value-of,
                             midStr.deleteCharAt(midStr.length() - 1);
                             midStr.append(")");
-                            String ftlStr = "${doc." + midStr + "}" + "\n";
+                            String ftlStr = "${staticMethod." + midStr + "}" + "\n";
                             writer.write(ftlStr);
                             writer.flush();
                             //midStr得初始化
                             midStr.setLength(0);
-                            midStr.append(nodeName).append(".").append("@match.");
                         }
 
                         //如果子节点为"text"
                         if (next.getName().equals("text")) {
+                            String text = next.getText();//获取文本节点的内容
+                            writer.write(text + "\n");
+                            writer.flush();
+                        }
+
+                        //如果子节点为value-of
+                        if (next.getName().equals("value-of")) {
                             String text = next.getName();//获取节点的文字
-                            String ftlStr = "${doc." + midStr + text + "[" + textNum + "]" + "}" + "\n";
-                            writer.write(ftlStr);
+                            //得到子节点及其属性内容
+                            String select = next.attributeValue("select");
+                            //处理select,去掉分号
+                            String[] split = select.split("/");
+                            String sumPath = "";
+                            for (String path : split) {
+                                sumPath = sumPath + path;
+                            }
+                            midStr.append(startPath).append(sumPath);
+                            String ftlStr = "${" + midStr + "}";
+                            writer.write(ftlStr + "\n");
                             writer.flush();
                             midStr.setLength(0);
-                            midStr.append(nodeName).append(".").append("@match.");
-                            textNum++;
                         }
                     }
                 }
@@ -116,4 +166,63 @@ public class ToFtlUtil {
 
     }
 
+    /**
+     * 处理call-template节点，返回一个完整的方法名和参数
+     * 例如：trans_word_FUN(Order,MD@C)
+     *
+     * @param next
+     * @return
+     */
+    public static StringBuilder callTemplateParse(Element next) {
+        StringBuilder sb = new StringBuilder();
+
+        if (next.getName().equals("call-template")) {
+            //1.得到节点->得到属性名称
+            String name = next.attributeValue("name");
+            sb.append(name).append("(");//trans_word_FUN(
+            //2.得到子节点的迭代器，进行遍历
+            Iterator<Element> subIterator = next.elementIterator();
+            //如果迭代器为空
+            if (!subIterator.hasNext()) {
+                sb.append(",");
+            }
+            while (subIterator.hasNext()) {
+                Element subNext = subIterator.next();
+                //3.再判断每个子节点中的子节点
+                if (subNext.getName().equals("with-param")) {
+
+                    //如果有值就直接传进去
+                    if (subNext.attributeValue("select") != null) {
+                        String select = subNext.attributeValue("select");
+                        sb.append(select).append(",");
+                        continue;
+                    }
+
+                    //文本参数
+                    if (subNext.element("text") != null) {
+                        //trans_word_FUN('text',
+                        Element textNode = subNext.element("text");
+                        sb.append("'").append(textNode.getText()).append("'").append(",");
+                    }
+                    //传值参数
+                    if (subNext.element("value-of") != null) {
+                        //trans_word_FUN(MD@C,
+                        //得到子节点及其属性内容
+                        Element valueNode = subNext.element("value-of");
+                        String select = valueNode.attributeValue("select");
+                        //处理select,去掉分号
+                        String[] split = select.split("/");
+                        String sumPath = "";
+                        for (String path : split) {
+                            sumPath = sumPath + path;
+                        }
+                        sb.append(sumPath).append(",");
+                    }
+                }
+            }
+            sb.deleteCharAt(sb.length() - 1);
+            sb.append(")");
+        }
+        return sb;
+    }
 }

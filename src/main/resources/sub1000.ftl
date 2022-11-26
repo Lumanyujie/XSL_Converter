@@ -1,4 +1,4 @@
-${doc.template.@match.unit_name_transform_FUN(with-param[0].value-of.@select)}
-${doc.template.@match.text[0]}
-${doc.template.@match.trans_word_FUN(with-param[0].text,with-param[1].value-of.@select)}
-${doc.template.@match.text[1]}
+${doc.unit_name_transform_FUN(MD@B)}
+收到
+${doc.trans_word_FUN('Order',MD@C)}
+命令情况报告
