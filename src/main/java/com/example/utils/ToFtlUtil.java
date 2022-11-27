@@ -14,7 +14,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * 转换字符串
@@ -155,6 +157,51 @@ public class ToFtlUtil {
                             writer.flush();
                             midStr.setLength(0);
                         }
+
+                        //如果子节点为variable
+                        if (next.getName().equals("variable")) {
+                            if (next.element("call-template") != null) {
+                                Element funNode = next.element("call-template");
+                                StringBuilder callTemplateParse = callTemplateParse(funNode);
+                                String ftl = "${" + callTemplateParse + "}";
+                                writer.write(ftl + "\n");
+                                writer.flush();
+                            }
+
+                            if (next.attributeValue("select") != null) {
+                                String funName = next.attributeValue("select");
+                                //修改占位符，将$改为${}，这里借助队列实现
+                                if (funName.contains("$")) {
+                                    Queue<Character> queue = new LinkedList<>();
+                                    //将新的占位符放入队列
+                                    for (int i = 0;i<funName.length();i++){
+                                        if (funName.charAt(i)=='$'){
+                                            queue.add(funName.charAt(i));
+                                            queue.add('{');
+                                        }else if (funName.charAt(i)==','||funName.charAt(i)==')'){
+                                            queue.add('}');
+                                            queue.add(funName.charAt(i));
+                                        }else {
+                                            queue.add(funName.charAt(i));
+                                        }
+
+                                    }
+                                    //从队列中读取
+
+                                    String newFunName = "";
+                                    int queueLength = queue.size();
+                                    for (int i = 0;i<queueLength;i++){
+                                        newFunName = newFunName + queue.peek();
+                                        queue.poll();
+                                    }
+                                    String ftl = "${" + newFunName + "}";
+                                    writer.write(ftl + "\n");
+                                    writer.flush();
+                                }
+                            }
+                        }
+
+                        //如果子节点为if
                     }
                 }
 
@@ -194,6 +241,32 @@ public class ToFtlUtil {
                     //如果有值就直接传进去
                     if (subNext.attributeValue("select") != null) {
                         String select = subNext.attributeValue("select");
+                        if (select.contains("$")) {
+                            Queue<Character> queue = new LinkedList<>();
+                            //将新的占位符放入队列
+                            for (int i = 0;i<select.length();i++){
+                                if (select.charAt(i)=='$'){
+                                    queue.add(select.charAt(i));
+                                    queue.add('{');
+                                }else if (select.charAt(i)==','||select.charAt(i)==')'){
+                                    queue.add('}');
+                                    queue.add(select.charAt(i));
+                                }else if (i==select.length()-1){
+                                    queue.add(select.charAt(i));
+                                    queue.add('}');
+                                }else {
+                                    queue.add(select.charAt(i));
+                                }
+                            }
+
+                            int queueLength = queue.size();
+                            for (int i = 0;i<queueLength;i++){
+                                sb.append(queue.poll());
+                            }
+
+                            sb.append(",");
+                            continue;
+                        }
                         sb.append(select).append(",");
                         continue;
                     }
